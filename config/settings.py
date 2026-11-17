@@ -23,6 +23,8 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [{'BACKEND': 'django.template.backends.django.DjangoTemplates', 'DIRS': [BASE_DIR / 'templates'], 'APP_DIRS': True, 'OPTIONS': {'context_processors': ['django.template.context_processors.request', 'django.contrib.auth.context_processors.auth', 'django.contrib.messages.context_processors.messages', 'core.context.navigation']}}]
 WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {'default': dj_database_url.config(default='sqlite:///' + str(BASE_DIR / 'demo.sqlite3'), conn_max_age=60)}
+if not DEBUG and DATABASES['default']['ENGINE']!='django.db.backends.postgresql':
+    raise RuntimeError('Production requires an explicit PostgreSQL DATABASE_URL; ephemeral SQLite is not supported.')
 AUTH_PASSWORD_VALIDATORS = [{'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'}]
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/Chicago'
@@ -37,6 +39,7 @@ SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Lax'
 SESSION_COOKIE_AGE = 3600
 SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_REDIRECT_EXEMPT = [r'^health/$']
 X_FRAME_OPTIONS = 'DENY'
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
