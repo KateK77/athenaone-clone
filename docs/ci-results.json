@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/KateK77/athenaone-clone",
+  "source_commit": "b4eeef2d74d4e141393aec804039617356370090",
+  "workflow_run": "https://github.com/KateK77/athenaone-clone/actions/runs/43990435586",
+  "conclusion": "success",
+  "unique_tests": 91,
+  "backend_tests": 83,
+  "browser_tests": 8,
+  "executions": [
+    {"environment": "Windows / Python 3.14.9 / SQLite / Chromium", "executed": 91, "passed": 91, "failed": 0, "skipped": 0, "seconds": 26.175},
+    {"environment": "GitHub Actions Ubuntu / Python 3.13.18 / SQLite / Chromium", "job_id": 133729310291, "executed": 91, "passed": 91, "failed": 0, "skipped": 0, "seconds": 31.673},
+    {"environment": "GitHub Actions Ubuntu / Python 3.13.18 / PostgreSQL 16 / Chromium", "job_id": 133729310715, "executed": 91, "passed": 91, "failed": 0, "skipped": 0, "seconds": 36.153}
+  ],
+  "not_run": ["Genuine CUA evaluation", "Render deployed smoke test", "Load and concurrency stress test", "Independent accessibility or security audit"],
+  "render_deployment": "Not provisioned"
+}

@@ -105,7 +105,7 @@ python manage.py test tests --verbosity 2
 
 Run only backend tests with `python manage.py test tests.test_workflows`. Run browser tests with `python manage.py test tests.test_browser`. Set `CAPTURE_SCREENSHOTS=1` to update the representative screenshots. The browser suite uses an isolated Django live-server test database, not the working demo database.
 
-The GitHub Actions workflow runs the suite against SQLite and PostgreSQL on Linux. See [testing and executed results](docs/testing.md); a configured CI workflow is not proof that a remote CI run passed.
+The final suite contains **91 tests: 83 backend/integration and 8 Chromium browser tests**. All passed locally and in both Linux/SQLite and Linux/PostgreSQL jobs in the [verified CI run](https://github.com/KateK77/athenaone-clone/actions/runs/43990435586). See [testing and executed results](docs/testing.md) for exact environments, counts, execution times and unperformed evaluations.
 
 ## Deployment
 

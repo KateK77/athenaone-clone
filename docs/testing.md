@@ -39,6 +39,19 @@ The first browser invocation stalled under the restricted process sandbox and wa
 | Confirmed local `seed_demo --reset` | Passed; rebuilt fixture and reset event |
 | Screenshot inspection | Dashboard and encounter workspace inspected; browser captures saved for seven representative views |
 
+## Verified GitHub Actions results
+
+The corrected source commit **`b4eeef2d74d4e141393aec804039617356370090`** passed both jobs in [GitHub Actions run 43990435586](https://github.com/KateK77/athenaone-clone/actions/runs/43990435586).
+
+| Environment | Executed | Passed | Failed | Skipped | Duration | Pass rate |
+|---|---:|---:|---:|---:|---:|---:|
+| Ubuntu, Python 3.13.18, SQLite, Chromium | 91 | 91 | 0 | 0 | 31.673 s | 100% |
+| Ubuntu, Python 3.13.18, PostgreSQL 16, Chromium | 91 | 91 | 0 | 0 | 36.153 s | 100% |
+
+These are repeated executions of the same 91 tests on two additional environments, not 182 additional unique tests. Combined with the local run, 273 test-method executions passed. Repository-level system and migration checks also passed in both jobs. The following final delivery commit changes documentation only; its application/test source is identical to the verified commit.
+
+The initial CI run failed because an explicitly empty `DATABASE_URL` was parsed as an unconfigured database. Its PostgreSQL sibling was cancelled by the matrix's former fail-fast setting. The corrected run above supersedes that failed run; the failure is retained in Git history and the Actions log.
+
 ## Coverage
 
 Backend tests cover authentication for all nine required accounts; invalid login; POST logout; CSRF; all admin lists/detail/create forms; role dashboards; role and patient restrictions; physician scope; message isolation; scoped foreign-key choices; future DOB and duplicate registration; directory search/pagination; appointment overlaps, adjacency, cancellation reuse, availability and department consistency; check-in rollback, copay handoff and replay protection; intake/BMI/ranges; note version conflicts, reconciliation, acknowledgments, immutable signed notes, addenda and placeholders; deterministic AI approval and escaped transcript text; order/task/result/release workflows; medication warnings; complete paid and partially paid claim flows; missing insurance/authorization and revalidation; duplicate claims; denial correction; payment amount and ownership constraints, DB positivity and replay protection; portal tasks/messages/renewals; reports/CSV and changing data; audit transitions; all nine FHIR-inspired exports; health; waitlist booking; authorization transitions; booking patient requests; task completion; administrator self-lockout prevention; locked charges and signed coding protection; longitudinal problem resolution; and fixture consistency.
@@ -70,7 +83,7 @@ All browser cases assert no page-level JavaScript errors. Screenshots are suppor
 
 ## Not run / not claimed
 
-- PostgreSQL runtime and concurrent booking/payment stress tests were not run locally. The GitHub Actions matrix is configured for PostgreSQL and SQLite; consult the actual remote run before claiming those passed.
+- PostgreSQL runtime was verified in GitHub Actions, as recorded above. Concurrent booking/payment stress tests were not performed locally or remotely.
 - Render platform-aware validation, paid cloud provisioning and deployed smoke tests were not performed.
 - Genuine Computer Use Agent evaluation, independent accessibility audit, load testing, penetration testing and medical/regulatory validation were not performed.
 
