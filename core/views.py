@@ -201,6 +201,8 @@ def actions_for(key,obj,user):
 @login_required
 def record_detail(request,key,pk):
     obj=get_object_or_404(scope(request,key),pk=pk); spec=R[key]
+    if key=='patients': return patient_chart(request,pk)
+    if key=='encounters': return encounter_view(request,pk)
     if key=='messages': return message_detail(request,obj)
     fields=[(field.verbose_name.title(),display(getattr(obj,field.name))) for field in obj._meta.fields if field.name!='id']
     extras={}
@@ -222,7 +224,7 @@ def record_action(request,key,pk):
             if key=='schedule': transition_appointment(request.user,pk,action)
             elif key=='insurance': verify_insurance(request.user,obj)
             elif key=='orders': order_action(request.user,obj,action)
-            elif key=='results': result_action(request.user,obj,action)
+            elif key=='results': result_action(request.user,obj,action,request.POST.get('comment') if action=='Reviewed' else None)
             elif key=='claims': claim_action(request.user,obj,action)
             elif key=='medications':
                 check_patient(request.user,obj.patient)
@@ -646,6 +648,7 @@ def fhir(request,resource,pk):
     p=path_value(obj,path) if path else obj; check_patient(request.user,p)
     if resource not in ['Patient','Appointment','Coverage']: require(request.user,CLINICAL|{'patient'})
     if role(request.user)=='patient' and resource=='DiagnosticReport' and not obj.released: raise PermissionDenied()
+    if role(request.user)=='patient' and resource=='MedicationRequest' and not obj.signed_at: raise PermissionDenied('Unsigned prescriptions are not released to the portal.')
     if role(request.user)=='patient' and resource=='ServiceRequest': raise PermissionDenied('Orders are not exported to the portal.')
     data={'resourceType':resource,'id':str(pk),'meta':{'tag':[{'code':'synthetic-educational-nonconformant'}]}}
     if resource!='Patient': data['subject']={'reference':f'Patient/{p.pk}'}

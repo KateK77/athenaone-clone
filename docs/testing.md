@@ -6,11 +6,11 @@ Execution date: **November 16, 2026 (America/Chicago)**.
 
 | Suite | Created | Executed | Passed | Failed | Skipped | Pass rate |
 |---|---:|---:|---:|---:|---:|---:|
-| Django backend, permissions and integration | 78 | 78 | 78 | 0 | 0 | 100% |
+| Django backend, permissions and integration | 83 | 83 | 83 | 0 | 0 | 100% |
 | Playwright Chromium browser | 8 | 8 | 8 | 0 | 0 | 100% |
-| **Total** | **86** | **86** | **86** | **0** | **0** | **100%** |
+| **Total** | **91** | **91** | **91** | **0** | **0** | **100%** |
 
-Pass rate = Passed / Executed × 100%. Final combined run: **86 tests in 27.309 seconds**, exit code 0. This count is test methods; parameterized subtests and assertions are not inflated into additional tests. The unedited combined command output is retained in `docs/test-output.txt`.
+Pass rate = Passed / Executed × 100%. Final combined local run: **91 tests in 26.175 seconds**, exit code 0. This count is test methods; parameterized subtests and assertions are not inflated into additional tests. The unedited combined command output is retained in `docs/test-output.txt`.
 
 Environment:
 
@@ -64,6 +64,9 @@ All browser cases assert no page-level JavaScript errors. Screenshots are suppor
 - New patient message form failing to select the owning patient by default.
 - Sidebar task count using a broader scope than the visible workqueue.
 - Claim edits validating empty JSON error lists as required content.
+- Empty `DATABASE_URL` disabling SQLite fallback in the first Linux CI run; blank values now use the local default and production still refuses SQLite.
+- Generic encounter detail bypassing the coding workspace's restricted field presentation; both routes now use the same dedicated view.
+- Patient JSON exports exposing their own unsigned medication drafts; unsigned prescriptions are now blocked.
 
 ## Not run / not claimed
 
@@ -71,7 +74,7 @@ All browser cases assert no page-level JavaScript errors. Screenshots are suppor
 - Render platform-aware validation, paid cloud provisioning and deployed smoke tests were not performed.
 - Genuine Computer Use Agent evaluation, independent accessibility audit, load testing, penetration testing and medical/regulatory validation were not performed.
 
-These are distinct unexecuted evaluation tracks, not skipped passing tests in the 86-test suite.
+These are distinct unexecuted evaluation tracks, not skipped passing tests in the 91-test suite.
 
 ## Reproduce
 

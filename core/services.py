@@ -123,7 +123,7 @@ def order_action(user, order, target):
     audit(user,'Order '+target,order)
 
 @transaction.atomic
-def result_action(user, result, target):
+def result_action(user, result, target, comment=None):
     require(user, {'admin','physician','nurse'} if target=='Published' else {'admin','physician'})
     result=LabResult.objects.select_for_update().get(pk=result.pk)
     check_encounter(user,result.order.encounter)
@@ -132,6 +132,9 @@ def result_action(user, result, target):
         task(result.patient,'Review '+result.order.test,'Result','physician',f'/records/results/{result.pk}/')
     elif target=='Reviewed' and result.status=='Published':
         result.status='Reviewed'; result.reviewed_by=user
+        if comment is not None:
+            if len(comment)>10000: raise ValidationError('Clinical comments must be at most 10,000 characters.')
+            result.comment=comment.strip()
         Task.objects.filter(related_url=f'/records/results/{result.pk}/',category='Result').update(status='Completed')
     elif target=='Released' and result.status=='Reviewed': result.released=True
     else: raise ValidationError('Publish, review, then release results in order.')

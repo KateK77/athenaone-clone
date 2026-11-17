@@ -1,6 +1,6 @@
 Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
 
-Found 86 test(s).
+Found 91 test(s).
 Operations to perform:
   Synchronize unmigrated apps: messages, staticfiles
   Apply all migrations: auth, clinical, contenttypes, core, engagement, revenue, sessions
@@ -41,6 +41,7 @@ test_approved_charge_locked_after_validation (tests.test_workflows.WorkflowTests
 test_audit_after_transition (tests.test_workflows.WorkflowTests.test_audit_after_transition) ... ok
 test_authorization_requires_support_and_transitions (tests.test_workflows.WorkflowTests.test_authorization_requires_support_and_transitions) ... ok
 test_billing_full_paid_workflow (tests.test_workflows.WorkflowTests.test_billing_full_paid_workflow) ... ok
+test_blank_database_url_uses_sqlite_locally (tests.test_workflows.WorkflowTests.test_blank_database_url_uses_sqlite_locally) ... ok
 test_cancelled_slot_reusable (tests.test_workflows.WorkflowTests.test_cancelled_slot_reusable) ... ok
 test_checkin_replay_cannot_duplicate_copay (tests.test_workflows.WorkflowTests.test_checkin_replay_cannot_duplicate_copay) ... ok
 test_checkin_to_encounter_and_copay (tests.test_workflows.WorkflowTests.test_checkin_to_encounter_and_copay) ... ok
@@ -59,6 +60,7 @@ test_fhir_resource_exports (tests.test_workflows.WorkflowTests.test_fhir_resourc
 test_fixture_schedule_and_clinical_consistency (tests.test_workflows.WorkflowTests.test_fixture_schedule_and_clinical_consistency) ... ok
 test_frontdesk_cannot_room (tests.test_workflows.WorkflowTests.test_frontdesk_cannot_room) ... ok
 test_future_birth_rejected (tests.test_workflows.WorkflowTests.test_future_birth_rejected) ... ok
+test_generic_encounter_route_preserves_coding_boundary (tests.test_workflows.WorkflowTests.test_generic_encounter_route_preserves_coding_boundary) ... ok
 test_health (tests.test_workflows.WorkflowTests.test_health) ... ok
 test_incomplete_checkin_rolls_back (tests.test_workflows.WorkflowTests.test_incomplete_checkin_rolls_back) ... ok
 test_intake_vitals_bmi (tests.test_workflows.WorkflowTests.test_intake_vitals_bmi) ... ok
@@ -74,6 +76,7 @@ test_order_task_and_result_portal_lifecycle (tests.test_workflows.WorkflowTests.
 test_outside_availability_rejected (tests.test_workflows.WorkflowTests.test_outside_availability_rejected) ... ok
 test_overpayment_negative_and_precision_rejected (tests.test_workflows.WorkflowTests.test_overpayment_negative_and_precision_rejected) ... ok
 test_partial_payment_and_balance (tests.test_workflows.WorkflowTests.test_partial_payment_and_balance) ... ok
+test_patient_cannot_export_unsigned_prescription (tests.test_workflows.WorkflowTests.test_patient_cannot_export_unsigned_prescription) ... ok
 test_patient_cannot_pay_another_balance (tests.test_workflows.WorkflowTests.test_patient_cannot_pay_another_balance) ... ok
 test_patient_form_choices_scoped (tests.test_workflows.WorkflowTests.test_patient_form_choices_scoped) ... ok
 test_patient_isolation_fhir (tests.test_workflows.WorkflowTests.test_patient_isolation_fhir) ... ok
@@ -86,12 +89,14 @@ test_portal_message_creates_staff_task (tests.test_workflows.WorkflowTests.test_
 test_portal_renewal_creates_task (tests.test_workflows.WorkflowTests.test_portal_renewal_creates_task) ... ok
 test_portal_request_enters_frontdesk_queue (tests.test_workflows.WorkflowTests.test_portal_request_enters_frontdesk_queue) ... ok
 test_primary_coding_cannot_change_signed_diagnosis (tests.test_workflows.WorkflowTests.test_primary_coding_cannot_change_signed_diagnosis) ... ok
+test_production_refuses_sqlite_fallback (tests.test_workflows.WorkflowTests.test_production_refuses_sqlite_fallback) ... ok
 test_registration_persists (tests.test_workflows.WorkflowTests.test_registration_persists) ... ok
 test_reports_csv (tests.test_workflows.WorkflowTests.test_reports_csv) ... ok
 test_reports_values_change_with_data (tests.test_workflows.WorkflowTests.test_reports_values_change_with_data) ... ok
 test_reset_requires_local_flag (tests.test_workflows.WorkflowTests.test_reset_requires_local_flag) ... ok
 test_resolve_longitudinal_problem_preserves_signed_note (tests.test_workflows.WorkflowTests.test_resolve_longitudinal_problem_preserves_signed_note) ... ok
 test_result_cannot_release_before_review (tests.test_workflows.WorkflowTests.test_result_cannot_release_before_review) ... ok
+test_result_review_records_clinician_comment (tests.test_workflows.WorkflowTests.test_result_review_records_clinician_comment) ... ok
 test_role_restrictions (tests.test_workflows.WorkflowTests.test_role_restrictions) ... ok
 test_search_and_pagination (tests.test_workflows.WorkflowTests.test_search_and_pagination) ... ok
 test_seed_disabled_outside_demo (tests.test_workflows.WorkflowTests.test_seed_disabled_outside_demo) ... ok
@@ -116,7 +121,7 @@ test_registration_to_encounter_signoff (tests.test_browser.BrowserTests.test_reg
 test_search_filter_and_patient_chart (tests.test_browser.BrowserTests.test_search_filter_and_patient_chart) ... ok
 
 ----------------------------------------------------------------------
-Ran 86 tests in 27.309s
+Ran 91 tests in 26.175s
 
 OK
 Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...

@@ -342,3 +342,24 @@ class WorkflowTests(TestCase):
         complete_checkin(self.admin,record)
         with self.assertRaises(ValidationError): complete_checkin(self.admin,record)
         self.assertEqual(Payment.objects.filter(checkin=record).count(),1)
+    def test_generic_encounter_route_preserves_coding_boundary(self):
+        self.e.intake='CLINICAL-INTAKE-SENSITIVE-TEST'; self.e.save()
+        self.login('billing'); r=self.client.get(f'/records/encounters/{self.e.pk}/')
+        self.assertTemplateUsed(r,'coding.html'); self.assertNotContains(r,'CLINICAL-INTAKE-SENSITIVE-TEST')
+    def test_patient_cannot_export_unsigned_prescription(self):
+        med=Medication.objects.create(patient=self.patient,provider=self.patient.provider,name='Demo medication',strength='Demo',dose='Demo',frequency='Demo')
+        self.login('patient'); self.assertEqual(self.client.get(f'/fhir/MedicationRequest/{med.pk}/').status_code,403)
+    def test_result_review_records_clinician_comment(self):
+        result=LabResult.objects.filter(status='Published',order__encounter__provider__user=self.doctor).first()
+        result_action(self.doctor,result,'Reviewed','Synthetic clinician review comment')
+        result.refresh_from_db(); self.assertEqual(result.comment,'Synthetic clinician review comment')
+    def test_blank_database_url_uses_sqlite_locally(self):
+        import os,subprocess,sys
+        env=os.environ.copy(); env.update(DATABASE_URL='',DEBUG='true')
+        result=subprocess.run([sys.executable,'-c',"from config.settings import DATABASES; print(DATABASES['default']['ENGINE'])"],capture_output=True,text=True,env=env)
+        self.assertEqual(result.returncode,0); self.assertIn('django.db.backends.sqlite3',result.stdout)
+    def test_production_refuses_sqlite_fallback(self):
+        import os,subprocess,sys,secrets
+        env=os.environ.copy(); env.update(DATABASE_URL='',DEBUG='false',SECRET_KEY=secrets.token_urlsafe(64))
+        result=subprocess.run([sys.executable,'-c','import config.settings'],capture_output=True,text=True,env=env)
+        self.assertNotEqual(result.returncode,0); self.assertIn('Production requires an explicit PostgreSQL',result.stderr)

@@ -22,7 +22,7 @@ MIDDLEWARE = ['django.middleware.security.SecurityMiddleware', 'whitenoise.middl
 ROOT_URLCONF = 'config.urls'
 TEMPLATES = [{'BACKEND': 'django.template.backends.django.DjangoTemplates', 'DIRS': [BASE_DIR / 'templates'], 'APP_DIRS': True, 'OPTIONS': {'context_processors': ['django.template.context_processors.request', 'django.contrib.auth.context_processors.auth', 'django.contrib.messages.context_processors.messages', 'core.context.navigation']}}]
 WSGI_APPLICATION = 'config.wsgi.application'
-DATABASES = {'default': dj_database_url.config(default='sqlite:///' + str(BASE_DIR / 'demo.sqlite3'), conn_max_age=60)}
+DATABASES = {'default': dj_database_url.parse(os.getenv('DATABASE_URL', '').strip() or 'sqlite:///' + str(BASE_DIR / 'demo.sqlite3'), conn_max_age=60)}
 if not DEBUG and DATABASES['default']['ENGINE']!='django.db.backends.postgresql':
     raise RuntimeError('Production requires an explicit PostgreSQL DATABASE_URL; ephemeral SQLite is not supported.')
 AUTH_PASSWORD_VALIDATORS = [{'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'}]
