@@ -1,0 +1,156 @@
+Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
+
+Found 114 test(s).
+Operations to perform:
+  Synchronize unmigrated apps: messages, staticfiles
+  Apply all migrations: auth, clinical, contenttypes, core, engagement, revenue, sessions
+Synchronizing apps without migrations:
+  Creating tables...
+    Running deferred SQL...
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying contenttypes.0002_remove_content_type_name... OK
+  Applying auth.0001_initial... OK
+  Applying auth.0002_alter_permission_name_max_length... OK
+  Applying auth.0003_alter_user_email_max_length... OK
+  Applying auth.0004_alter_user_username_opts... OK
+  Applying auth.0005_alter_user_last_login_null... OK
+  Applying auth.0006_require_contenttypes_0002... OK
+  Applying auth.0007_alter_validators_add_error_messages... OK
+  Applying auth.0008_alter_user_username_max_length... OK
+  Applying auth.0009_alter_user_last_name_max_length... OK
+  Applying auth.0010_alter_group_name_max_length... OK
+  Applying auth.0011_update_proxy_permissions... OK
+  Applying auth.0012_alter_user_first_name_max_length... OK
+  Applying core.0001_initial... OK
+  Applying clinical.0001_initial... OK
+  Applying revenue.0001_initial... OK
+  Applying clinical.0002_initial... OK
+  Applying clinical.0003_vitalsign_height_unit_vitalsign_weight_unit_and_more... OK
+  Applying clinical.0004_normalize_waiting_encounters... OK
+  Applying engagement.0001_initial... OK
+  Applying engagement.0002_messageread... OK
+  Applying revenue.0002_alter_claim_validation_errors_and_more... OK
+  Applying revenue.0003_claim_patient_responsibility... OK
+  Applying sessions.0001_initial... OK
+System check identified no issues (0 silenced).
+test_both_unit_systems_save_same_bmi (tests.test_v2.V2Tests.test_both_unit_systems_save_same_bmi) ... ok
+test_checkbox_false_and_true_persist_on_order (tests.test_v2.V2Tests.test_checkbox_false_and_true_persist_on_order) ... ok
+test_checkin_waits_for_physician_start (tests.test_v2.V2Tests.test_checkin_waits_for_physician_start) ... ok
+test_claim_validation_empty_states (tests.test_v2.V2Tests.test_claim_validation_empty_states) ... ok
+test_closed_claim_payment_hidden_and_post_blocked (tests.test_v2.V2Tests.test_closed_claim_payment_hidden_and_post_blocked) ... ok
+test_compose_subject_and_body_atomic (tests.test_v2.V2Tests.test_compose_subject_and_body_atomic) ... ok
+test_confirmed_patient_share_allows_only_that_amount (tests.test_v2.V2Tests.test_confirmed_patient_share_allows_only_that_amount) ... ok
+test_denial_is_not_patient_responsibility (tests.test_v2.V2Tests.test_denial_is_not_patient_responsibility) ... ok
+test_invalid_vitals_keep_typed_units_and_values (tests.test_v2.V2Tests.test_invalid_vitals_keep_typed_units_and_values) ... ok
+test_legacy_metric_post_and_existing_vitals_preserved (tests.test_v2.V2Tests.test_legacy_metric_post_and_existing_vitals_preserved) ... ok
+test_new_intake_defaults_imperial (tests.test_v2.V2Tests.test_new_intake_defaults_imperial) ... ok
+test_notification_scoping_and_list_does_not_mark_read (tests.test_v2.V2Tests.test_notification_scoping_and_list_does_not_mark_read) ... ok
+test_patient_search_choices_scoped_and_identified (tests.test_v2.V2Tests.test_patient_search_choices_scoped_and_identified) ... ok
+test_read_state_is_per_user_and_new_reply_is_unread (tests.test_v2.V2Tests.test_read_state_is_per_user_and_new_reply_is_unread) ... ok
+test_reporting_csv_filter_parity (tests.test_v2.V2Tests.test_reporting_csv_filter_parity) ... ok
+test_structured_audit_readable_in_detail_and_audit_list (tests.test_v2.V2Tests.test_structured_audit_readable_in_detail_and_audit_list) ... ok
+test_units_and_normalized_ranges_validated (tests.test_v2.V2Tests.test_units_and_normalized_ranges_validated) ... ok
+test_zero_balance_rejects_duplicate_payment (tests.test_v2.V2Tests.test_zero_balance_rejects_duplicate_payment) ... ok
+test_adjacent_appointments_allowed (tests.test_workflows.WorkflowTests.test_adjacent_appointments_allowed) ... ok
+test_admin_cannot_remove_own_access (tests.test_workflows.WorkflowTests.test_admin_cannot_remove_own_access) ... ok
+test_admin_pages_render (tests.test_workflows.WorkflowTests.test_admin_pages_render) ... ok
+test_ai_draft_requires_approval_and_never_signs (tests.test_workflows.WorkflowTests.test_ai_draft_requires_approval_and_never_signs) ... ok
+test_ai_output_escapes_transcript (tests.test_workflows.WorkflowTests.test_ai_output_escapes_transcript) ... ok
+test_all_demo_accounts_authenticate (tests.test_workflows.WorkflowTests.test_all_demo_accounts_authenticate) ... ok
+test_all_record_details_render (tests.test_workflows.WorkflowTests.test_all_record_details_render) ... ok
+test_anonymous_redirect (tests.test_workflows.WorkflowTests.test_anonymous_redirect) ... ok
+test_appointment_overlap_rejected (tests.test_workflows.WorkflowTests.test_appointment_overlap_rejected) ... ok
+test_approved_charge_locked_after_validation (tests.test_workflows.WorkflowTests.test_approved_charge_locked_after_validation) ... ok
+test_audit_after_transition (tests.test_workflows.WorkflowTests.test_audit_after_transition) ... ok
+test_authorization_requires_support_and_transitions (tests.test_workflows.WorkflowTests.test_authorization_requires_support_and_transitions) ... ok
+test_billing_full_paid_workflow (tests.test_workflows.WorkflowTests.test_billing_full_paid_workflow) ... ok
+test_blank_database_url_uses_sqlite_locally (tests.test_workflows.WorkflowTests.test_blank_database_url_uses_sqlite_locally) ... ok
+test_cancelled_slot_reusable (tests.test_workflows.WorkflowTests.test_cancelled_slot_reusable) ... ok
+test_checkin_replay_cannot_duplicate_copay (tests.test_workflows.WorkflowTests.test_checkin_replay_cannot_duplicate_copay) ... ok
+test_checkin_to_encounter_and_copay (tests.test_workflows.WorkflowTests.test_checkin_to_encounter_and_copay) ... ok
+test_claim_edit_preserves_empty_validation_lists (tests.test_workflows.WorkflowTests.test_claim_edit_preserves_empty_validation_lists) ... ok
+test_claim_scrub_blocking (tests.test_workflows.WorkflowTests.test_claim_scrub_blocking) ... ok
+test_claim_submit_revalidates (tests.test_workflows.WorkflowTests.test_claim_submit_revalidates) ... ok
+test_creation_forms_render (tests.test_workflows.WorkflowTests.test_creation_forms_render) ... ok
+test_cross_patient_order_diagnosis_rejected (tests.test_workflows.WorkflowTests.test_cross_patient_order_diagnosis_rejected) ... ok
+test_csrf_enforced (tests.test_workflows.WorkflowTests.test_csrf_enforced) ... ok
+test_denial_correction_resubmission (tests.test_workflows.WorkflowTests.test_denial_correction_resubmission) ... ok
+test_department_mismatch_rejected (tests.test_workflows.WorkflowTests.test_department_mismatch_rejected) ... ok
+test_duplicate_claim_rejected (tests.test_workflows.WorkflowTests.test_duplicate_claim_rejected) ... ok
+test_duplicate_patient_rejected (tests.test_workflows.WorkflowTests.test_duplicate_patient_rejected) ... ok
+test_every_role_dashboard (tests.test_workflows.WorkflowTests.test_every_role_dashboard) ... ok
+test_fhir_resource_exports (tests.test_workflows.WorkflowTests.test_fhir_resource_exports) ... ok
+test_fixture_schedule_and_clinical_consistency (tests.test_workflows.WorkflowTests.test_fixture_schedule_and_clinical_consistency) ... ok
+test_frontdesk_cannot_room (tests.test_workflows.WorkflowTests.test_frontdesk_cannot_room) ... ok
+test_future_birth_rejected (tests.test_workflows.WorkflowTests.test_future_birth_rejected) ... ok
+test_generic_encounter_route_preserves_coding_boundary (tests.test_workflows.WorkflowTests.test_generic_encounter_route_preserves_coding_boundary) ... ok
+test_health (tests.test_workflows.WorkflowTests.test_health) ... ok
+test_incomplete_checkin_rolls_back (tests.test_workflows.WorkflowTests.test_incomplete_checkin_rolls_back) ... ok
+test_intake_vitals_bmi (tests.test_workflows.WorkflowTests.test_intake_vitals_bmi) ... ok
+test_invalid_appointment_transition (tests.test_workflows.WorkflowTests.test_invalid_appointment_transition) ... ok
+test_invalid_login (tests.test_workflows.WorkflowTests.test_invalid_login) ... ok
+test_login_logout_post (tests.test_workflows.WorkflowTests.test_login_logout_post) ... ok
+test_medication_requires_warning_acknowledgment (tests.test_workflows.WorkflowTests.test_medication_requires_warning_acknowledgment) ... ok
+test_medication_warning (tests.test_workflows.WorkflowTests.test_medication_warning) ... ok
+test_missing_authorization_blocks (tests.test_workflows.WorkflowTests.test_missing_authorization_blocks) ... ok
+test_note_version_conflict (tests.test_workflows.WorkflowTests.test_note_version_conflict) ... ok
+test_nurse_cannot_sign (tests.test_workflows.WorkflowTests.test_nurse_cannot_sign) ... ok
+test_order_task_and_result_portal_lifecycle (tests.test_workflows.WorkflowTests.test_order_task_and_result_portal_lifecycle) ... ok
+test_outside_availability_rejected (tests.test_workflows.WorkflowTests.test_outside_availability_rejected) ... ok
+test_overpayment_negative_and_precision_rejected (tests.test_workflows.WorkflowTests.test_overpayment_negative_and_precision_rejected) ... ok
+test_partial_payment_and_balance (tests.test_workflows.WorkflowTests.test_partial_payment_and_balance) ... ok
+test_patient_cannot_export_unsigned_prescription (tests.test_workflows.WorkflowTests.test_patient_cannot_export_unsigned_prescription) ... ok
+test_patient_cannot_pay_another_balance (tests.test_workflows.WorkflowTests.test_patient_cannot_pay_another_balance) ... ok
+test_patient_form_choices_scoped (tests.test_workflows.WorkflowTests.test_patient_form_choices_scoped) ... ok
+test_patient_isolation_fhir (tests.test_workflows.WorkflowTests.test_patient_isolation_fhir) ... ok
+test_patient_message_isolation (tests.test_workflows.WorkflowTests.test_patient_message_isolation) ... ok
+test_patient_request_booking_integrates_schedule (tests.test_workflows.WorkflowTests.test_patient_request_booking_integrates_schedule) ... ok
+test_payment_database_positive_constraint (tests.test_workflows.WorkflowTests.test_payment_database_positive_constraint) ... ok
+test_payment_duplicate_form_prevented (tests.test_workflows.WorkflowTests.test_payment_duplicate_form_prevented) ... ok
+test_physician_assigned_scope (tests.test_workflows.WorkflowTests.test_physician_assigned_scope) ... ok
+test_portal_message_creates_staff_task (tests.test_workflows.WorkflowTests.test_portal_message_creates_staff_task) ... ok
+test_portal_renewal_creates_task (tests.test_workflows.WorkflowTests.test_portal_renewal_creates_task) ... ok
+test_portal_request_enters_frontdesk_queue (tests.test_workflows.WorkflowTests.test_portal_request_enters_frontdesk_queue) ... ok
+test_primary_coding_cannot_change_signed_diagnosis (tests.test_workflows.WorkflowTests.test_primary_coding_cannot_change_signed_diagnosis) ... ok
+test_production_refuses_sqlite_fallback (tests.test_workflows.WorkflowTests.test_production_refuses_sqlite_fallback) ... ok
+test_registration_persists (tests.test_workflows.WorkflowTests.test_registration_persists) ... ok
+test_reports_csv (tests.test_workflows.WorkflowTests.test_reports_csv) ... ok
+test_reports_values_change_with_data (tests.test_workflows.WorkflowTests.test_reports_values_change_with_data) ... ok
+test_reset_requires_local_flag (tests.test_workflows.WorkflowTests.test_reset_requires_local_flag) ... ok
+test_resolve_longitudinal_problem_preserves_signed_note (tests.test_workflows.WorkflowTests.test_resolve_longitudinal_problem_preserves_signed_note) ... ok
+test_result_cannot_release_before_review (tests.test_workflows.WorkflowTests.test_result_cannot_release_before_review) ... ok
+test_result_review_records_clinician_comment (tests.test_workflows.WorkflowTests.test_result_review_records_clinician_comment) ... ok
+test_role_restrictions (tests.test_workflows.WorkflowTests.test_role_restrictions) ... ok
+test_search_and_pagination (tests.test_workflows.WorkflowTests.test_search_and_pagination) ... ok
+test_seed_disabled_outside_demo (tests.test_workflows.WorkflowTests.test_seed_disabled_outside_demo) ... ok
+test_seed_idempotent (tests.test_workflows.WorkflowTests.test_seed_idempotent) ... ok
+test_seed_totals (tests.test_workflows.WorkflowTests.test_seed_totals) ... ok
+test_sign_rejects_template_placeholders (tests.test_workflows.WorkflowTests.test_sign_rejects_template_placeholders) ... ok
+test_sign_requires_acknowledgment (tests.test_workflows.WorkflowTests.test_sign_requires_acknowledgment) ... ok
+test_sign_requires_documentation (tests.test_workflows.WorkflowTests.test_sign_requires_documentation) ... ok
+test_sign_requires_reconciliation (tests.test_workflows.WorkflowTests.test_sign_requires_reconciliation) ... ok
+test_signed_note_immutable_and_addendum (tests.test_workflows.WorkflowTests.test_signed_note_immutable_and_addendum) ... ok
+test_task_completion_changes_dashboard_count (tests.test_workflows.WorkflowTests.test_task_completion_changes_dashboard_count) ... ok
+test_unreleased_result_hidden (tests.test_workflows.WorkflowTests.test_unreleased_result_hidden) ... ok
+test_vital_range_rejected (tests.test_workflows.WorkflowTests.test_vital_range_rejected) ... ok
+test_waitlist_books_matching_slot (tests.test_workflows.WorkflowTests.test_waitlist_books_matching_slot) ... ok
+test_ai_draft_and_preview (tests.test_browser.BrowserTests.test_ai_draft_and_preview) ... ok
+test_claim_denial_and_payment (tests.test_browser.BrowserTests.test_claim_denial_and_payment) ... ok
+test_invalid_form_retains_values (tests.test_browser.BrowserTests.test_invalid_form_retains_values) ... ok
+test_login_navigation_and_screenshots (tests.test_browser.BrowserTests.test_login_navigation_and_screenshots) ... ok
+test_mobile_layout_and_accessible_navigation (tests.test_browser.BrowserTests.test_mobile_layout_and_accessible_navigation) ... ok
+test_patient_portal_messages_and_requests (tests.test_browser.BrowserTests.test_patient_portal_messages_and_requests) ... ok
+test_registration_to_encounter_signoff (tests.test_browser.BrowserTests.test_registration_to_encounter_signoff) ... ok
+test_search_filter_and_patient_chart (tests.test_browser.BrowserTests.test_search_filter_and_patient_chart) ... ok
+test_v2_new_reply_updates_badge_without_reload (tests.test_browser.BrowserTests.test_v2_new_reply_updates_badge_without_reload) ... ok
+test_v2_patient_logout_menu_stays_in_viewport (tests.test_browser.BrowserTests.test_v2_patient_logout_menu_stays_in_viewport) ... ok
+test_v2_patient_search_and_empty_results (tests.test_browser.BrowserTests.test_v2_patient_search_and_empty_results) ... ok
+test_v2_unit_switching_and_saved_mobile_vitals (tests.test_browser.BrowserTests.test_v2_unit_switching_and_saved_mobile_vitals) ... ok
+test_v2_unread_notifications_and_single_compose (tests.test_browser.BrowserTests.test_v2_unread_notifications_and_single_compose) ... ok
+
+----------------------------------------------------------------------
+Ran 114 tests in 35.909s
+
+OK
+Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...

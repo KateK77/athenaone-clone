@@ -15,7 +15,7 @@ class Encounter(models.Model):
     patient = models.ForeignKey(Patient, related_name='encounters', on_delete=models.PROTECT)
     appointment = models.OneToOneField(Appointment, null=True, blank=True, on_delete=models.PROTECT)
     provider = models.ForeignKey(Provider, on_delete=models.PROTECT)
-    status = models.CharField(max_length=30, default='In Progress')
+    status = models.CharField(max_length=30, default='Scheduled')
     complaint = models.CharField(max_length=250)
     intake = models.TextField(blank=True)
     medications_reviewed = models.BooleanField(default=False)
@@ -97,6 +97,16 @@ class VitalSign(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     @property
     def bmi(self): return round(self.weight / (self.height/100)**2, 1)
+    height_unit = models.CharField(max_length=2, choices=[('in', 'in'), ('cm', 'cm')], default='cm')
+    weight_unit = models.CharField(max_length=2, choices=[('lb', 'lb'), ('kg', 'kg')], default='kg')
+    @property
+    def display_height(self):
+        from decimal import Decimal
+        return round(self.height / Decimal('2.54'), 2) if self.height_unit == 'in' else self.height
+    @property
+    def display_weight(self):
+        from decimal import Decimal
+        return round(self.weight / Decimal('0.45359237'), 2) if self.weight_unit == 'lb' else self.weight
     def __str__(self): return f'{self.systolic}/{self.diastolic} · HR {self.heart_rate} · BMI {self.bmi}'
 
 class Medication(models.Model):

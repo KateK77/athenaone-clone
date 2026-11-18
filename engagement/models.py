@@ -31,6 +31,13 @@ class Message(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     class Meta: ordering = ['created_at']
 
+class MessageRead(models.Model):
+    message = models.ForeignKey(Message, related_name='read_receipts', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    read_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        constraints = [models.UniqueConstraint(fields=['message', 'user'], name='unique_message_reader')]
+
 class AppointmentRequest(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     preferred_date = models.DateField()

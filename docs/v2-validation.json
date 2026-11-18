@@ -1,0 +1,43 @@
+{
+  "version": "V2",
+  "date": "2026-11-18",
+  "timezone": "America/Chicago",
+  "local_suite": {
+    "status": "PASS",
+    "executed": 114,
+    "passed": 114,
+    "failed": 0,
+    "skipped": 0,
+    "backend_integration": 101,
+    "browser": 13,
+    "duration_seconds": 35.909,
+    "environment": "Windows / Python 3.14.9 / SQLite / Chromium"
+  },
+  "system_check": "PASS",
+  "migration_drift": "PASS",
+  "existing_data": {
+    "existing_data_preserved": true,
+    "tables_checked": 13,
+    "counts": {
+      "core_patient": 101,
+      "core_appointment": 151,
+      "clinical_encounter": 101,
+      "clinical_clinicalnote": 101,
+      "clinical_vitalsign": 101,
+      "clinical_problem": 101,
+      "clinical_medicalorder": 101,
+      "clinical_labresult": 101,
+      "revenue_claim": 81,
+      "revenue_charge": 81,
+      "revenue_payment": 32,
+      "engagement_message": 32,
+      "engagement_messagethread": 31
+    }
+  },
+  "v1_original_sha256": "c4bebfb13d94c9d609766675edc2781d3401f1e40d0393098ea46ed30bf2b94a",
+  "standalone_v2_original_sections_retained": true,
+  "localhost_health": "PASS: HTTP 200 on port 18310",
+  "render_deployment": "NOT_RUN",
+  "cua_evaluation": "NOT_RUN",
+  "full_specification": "PARTIAL: inherited limitations remain documented in limitations.md"
+}

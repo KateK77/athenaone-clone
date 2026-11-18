@@ -20,17 +20,31 @@ class BrowserTests(StaticLiveServerTestCase):
     def setUp(self):
         call_command('seed_demo',stdout=StringIO())
         self.encounter_id=Encounter.objects.filter(provider__user__username='physician.demo',status='Documentation Pending').first().pk
+        self.v2_patient_id=Patient.objects.get(mrn='AF-100001').pk
+        self.v2_encounter_id=Encounter.objects.filter(patient__provider__department__name='Family Medicine',status='Documentation Pending').first().pk
+        if self._testMethodName == 'test_v2_unread_notifications_and_single_compose':
+            from engagement.models import Message
+            Message.objects.all().delete()
         self.playwright=sync_playwright().start()
         self.browser=self.playwright.chromium.launch(headless=True)
         self.context=self.browser.new_context(viewport={'width':1536,'height':1100})
         self.page=self.context.new_page()
         self.errors=[]
+        import traceback
+        from django.core.signals import got_request_exception
+        self.capture_server_error=lambda **kwargs: self.errors.append(traceback.format_exc())
+        got_request_exception.connect(self.capture_server_error)
         self.page.on('pageerror',lambda e:self.errors.append(str(e)))
         self.page.on('dialog',lambda d:d.accept())
     def tearDown(self):
         self.context.close(); self.browser.close(); self.playwright.stop()
-        self.assertEqual(self.errors,[],'Browser JavaScript errors')
-    def go(self,path): return self.page.goto(self.live_server_url+path)
+        from django.core.signals import got_request_exception
+        got_request_exception.disconnect(self.capture_server_error)
+        self.assertEqual(self.errors,[],'Browser JavaScript or server errors')
+    def go(self,path):
+        response=self.page.goto(self.live_server_url+path)
+        self.assertLess(response.status,500,f'Server error at {path}: {self.errors}')
+        return response
     def sign_in(self,role):
         self.go('/login/')
         if self.page.url.endswith('/dashboard/') or self.page.url.endswith('/portal/'):
@@ -71,7 +85,7 @@ class BrowserTests(StaticLiveServerTestCase):
         p.get_by_label('Provider:',exact=True).select_option(label='Dr. Alex Morgan'); p.get_by_label('Consent:',exact=True).check(); self.save()
         expect(p.locator('.alert.success')).to_contain_text('saved')
         patient_url=p.url; patient_id=patient_url.rstrip('/').split('/')[-1]
-        p.get_by_role('link',name='+ Add',exact=True).click()
+        p.get_by_role('link',name='+ Add insurance',exact=True).click()
         p.get_by_label('Payer:',exact=True).fill('Synthetic Test Health'); p.get_by_label('Plan:',exact=True).fill('Demo PPO')
         p.get_by_label('Member id:').fill('NS999999'); p.get_by_label('Subscriber:',exact=True).fill('Browser Fictional')
         p.get_by_label('Effective:',exact=True).fill('2020-01-01'); p.get_by_label('Expiration:',exact=True).fill('2035-12-31'); self.save(); self.action('Verify eligibility')
@@ -91,11 +105,13 @@ class BrowserTests(StaticLiveServerTestCase):
         self.sign_in('nurse'); self.go(encounter_url); p.get_by_role('link',name='Record intake & vitals',exact=True).click()
         p.get_by_label('Intake:',exact=True).fill('Medication, allergy, and history review completed for this synthetic visit.')
         for name in ['Medications reviewed:','Allergies reviewed:','History reviewed:']: p.get_by_label(name,exact=True).check()
+        p.get_by_label('Height unit:',exact=True).select_option('cm'); p.get_by_label('Weight unit:',exact=True).select_option('kg')
         for name,val in [('Systolic:','120'),('Diastolic:','80'),('Heart rate:','72'),('Respiratory rate:','16'),('Temperature:','36.7'),('Oxygen:','98'),('Height:','175'),('Weight:','70'),('Pain:','0')]: p.get_by_label(name,exact=True).fill(val)
         self.save(); expect(p.locator('.alert.success')).to_contain_text('vital signs saved')
         p.goto(appointment_url); self.action('Roomed')
         self.sign_in('physician'); p.goto(appointment_url); self.action('In Progress'); self.go(encounter_url)
-        p.get_by_role('link',name='+ Add',exact=True).first.click(); p.get_by_label('Code:',exact=True).select_option(label='I10 · Essential hypertension'); p.get_by_label('Primary:',exact=True).check(); self.save()
+        expect(p.get_by_role('link',name='+ Add diagnosis',exact=True)).to_be_visible()
+        p.get_by_role('link',name='+ Add diagnosis',exact=True).click(); p.get_by_label('Code:',exact=True).select_option(label='I10 · Essential hypertension'); p.get_by_label('Primary:',exact=True).check(); self.save()
         self.go(encounter_url)
         for field,text in [('Subjective','Patient reports follow-up for blood pressure.'),('Objective','Recorded vitals reviewed. Synthetic exam documented.'),('Assessment','Hypertension follow-up; clinician reviewed.'),('Plan','Follow-up in the demonstration clinic. Patient instructions recorded.')]: p.get_by_label(field+':',exact=True).fill(text)
         p.get_by_role('button',name='Save draft',exact=True).click(); expect(p.locator('.alert.success')).to_contain_text('Save draft completed')
@@ -137,7 +153,7 @@ class BrowserTests(StaticLiveServerTestCase):
         self.sign_in('patient'); expect(self.page.get_by_role('heading',name='Your health, in one place',exact=True)).to_be_visible(); self.snap('portal')
         self.page.get_by_label('Preferred date',exact=True).fill('2027-03-08'); self.page.get_by_label('Reason for visit',exact=True).fill('Browser synthetic request')
         self.page.get_by_role('button',name='Send request',exact=True).click(); expect(self.page.locator('main')).to_contain_text('Browser synthetic request')
-        self.page.get_by_role('link',name='+ Message care team',exact=False).click(); self.page.get_by_label('Subject:',exact=True).fill('Browser portal question'); self.save()
+        self.page.get_by_role('link',name='+ Message care team',exact=False).click(); self.page.get_by_label('Subject:',exact=True).fill('Browser portal question'); self.page.get_by_label('Message:',exact=True).fill('Initial portal message.'); self.page.get_by_role('button',name='Send message',exact=True).click()
         self.page.get_by_label('Your message',exact=True).fill('Synthetic question about visit preparation.'); self.page.get_by_role('button',name='Send message →',exact=True).click()
         self.page.reload(); expect(self.page.locator('.message-history')).to_contain_text('Synthetic question about visit preparation.')
         response=self.go('/records/claims/'); self.assertEqual(response.status,403)
@@ -154,3 +170,105 @@ class BrowserTests(StaticLiveServerTestCase):
         for field,value in [('First name:','Invalid'),('Last name:','Synthetic'),('Date of birth:','2099-01-01'),('Phone:','202-555-0188'),('Address:','Demo Ave')]: p.get_by_label(field,exact=True).fill(value)
         p.get_by_label('Sex:',exact=True).select_option('Male'); p.get_by_label('Provider:',exact=True).select_option(label='Dr. Alex Morgan'); self.save()
         expect(p.locator('.errorlist')).to_contain_text('Birth date cannot be in the future.'); expect(p.get_by_label('First name:',exact=True)).to_have_value('Invalid')
+
+    def v2_snap(self, name):
+        if os.getenv('CAPTURE_V2_SCREENSHOTS') == '1':
+            self.page.locator('.sidebar').evaluate('(el) => Promise.all(el.getAnimations().map(a => a.finished.catch(() => {})))')
+            folder=Path(__file__).resolve().parent.parent/'docs'/'screenshots'
+            self.page.screenshot(path=str(folder/(name+'.png')),full_page=True)
+
+    def test_v2_patient_search_and_empty_results(self):
+        self.sign_in('frontdesk');self.go('/records/schedule/new/')
+        search=self.page.get_by_label('Search patient by name or MRN',exact=True)
+        search.fill('Jamie Alder')
+        expect(self.page.locator('#id_patient')).to_contain_text('AF-100001')
+        expect(self.page.locator('#id_patient-search-status')).to_contain_text('1 matching choices')
+        search.fill('AF-100001');search.press('Enter')
+        expect(self.page.locator('#id_patient')).to_be_focused()
+        self.page.locator('#id_patient').select_option(str(self.v2_patient_id))
+        search.fill('No such patient 12345')
+        expect(self.page.locator('#id_patient-search-status')).to_contain_text('No matches')
+        expect(self.page.locator('#id_patient')).to_have_value(str(self.v2_patient_id))
+        search.press('Escape');self.v2_snap('v2-patient-search')
+
+    def test_v2_unit_switching_and_saved_mobile_vitals(self):
+        self.sign_in('nurse')
+        self.go(f'/encounters/{self.v2_encounter_id}/intake/')
+        p=self.page
+        expect(p.get_by_label('Height unit:',exact=True)).to_have_value('in')
+        expect(p.get_by_label('Weight unit:',exact=True)).to_have_value('lb')
+        p.get_by_label('Height unit:',exact=True).select_option('cm');p.get_by_label('Weight unit:',exact=True).select_option('kg')
+        for name,val in [('Systolic:','120'),('Diastolic:','80'),('Heart rate:','72'),('Respiratory rate:','16'),('Temperature:','36.7'),('Oxygen:','98'),('Height:','175'),('Weight:','70'),('Pain:','0')]:p.get_by_label(name,exact=True).fill(val)
+        for _ in range(4):
+            p.get_by_label('Height unit:',exact=True).select_option('in');p.get_by_label('Weight unit:',exact=True).select_option('lb')
+            expect(p.locator('#bmi-preview')).to_contain_text('22.9')
+            p.get_by_label('Height unit:',exact=True).select_option('cm');p.get_by_label('Weight unit:',exact=True).select_option('kg')
+        expect(p.get_by_label('Height:',exact=True)).to_have_value('175');expect(p.get_by_label('Weight:',exact=True)).to_have_value('70')
+        p.get_by_label('Height unit:',exact=True).select_option('in');p.get_by_label('Weight unit:',exact=True).select_option('lb')
+        self.v2_snap('v2-unit-selection');self.save();p.reload()
+        p.set_viewport_size({'width':390,'height':844})
+        expect(p.locator('.encounter-patient .card')).to_be_visible()
+        expect(p.locator('.encounter-patient')).to_contain_text('68.90 in')
+        expect(p.locator('.encounter-patient')).to_contain_text('154.32 lb')
+        expect(p.locator('.encounter-patient')).to_contain_text('BMI 22.9')
+        self.assertLessEqual(p.evaluate('document.documentElement.scrollWidth'),391)
+        self.v2_snap('v2-mobile-vitals')
+
+    def test_v2_patient_logout_menu_stays_in_viewport(self):
+        self.sign_in('patient')
+        for width in [390,700,1280]:
+            self.page.set_viewport_size({'width':width,'height':844})
+            self.page.locator('details.profile').evaluate('(el)=>el.open=true')
+            button=self.page.get_by_role('button',name='Sign out',exact=True)
+            expect(button).to_be_in_viewport()
+            bounds=self.page.locator('.profile-menu').bounding_box()
+            self.assertGreaterEqual(bounds['x'],0);self.assertLessEqual(bounds['x']+bounds['width'],width)
+            self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),width+1)
+        self.page.set_viewport_size({'width':390,'height':844});self.v2_snap('v2-patient-logout')
+        self.page.get_by_role('button',name='Sign out',exact=True).click()
+        expect(self.page.locator('#username')).to_be_visible()
+
+    def test_v2_unread_notifications_and_single_compose(self):
+        self.sign_in('patient');self.go('/records/messages/new/')
+        p=self.page
+        p.get_by_label('Subject:',exact=True).fill('V2 message notification')
+        p.get_by_label('Message:',exact=True).fill('Synthetic initial body from compose form.')
+        p.get_by_role('button',name='Send message',exact=True).click()
+        thread_url=p.url
+        expect(p.locator('.message-history')).to_contain_text('Synthetic initial body')
+        self.sign_in('physician');self.go('/records/messages/')
+        expect(p.locator('.message-notification .unread-count')).to_have_text('1')
+        row=p.locator('tr').filter(has=p.get_by_role('link',name='V2 message notification',exact=True))
+        expect(row.locator('.unread-label')).to_be_visible();self.v2_snap('v2-unread-messages')
+        row.get_by_role('link',name='V2 message notification',exact=True).click()
+        expect(p.locator('.message-notification .unread-count')).to_be_hidden()
+
+        p.get_by_label('Your message',exact=True).fill('Synthetic clinician reply.')
+        p.get_by_role('button',name='Send message →',exact=True).click()
+        self.sign_in('patient');expect(p.locator('.message-notification .unread-count')).to_have_text('1')
+        p.goto(thread_url);expect(p.locator('.message-history')).to_contain_text('Synthetic clinician reply.')
+        expect(p.locator('.message-notification .unread-count')).to_be_hidden()
+
+    def test_v2_new_reply_updates_badge_without_reload(self):
+        self.page.clock.install()
+        self.sign_in('patient');self.go('/records/messages/new/')
+        p=self.page
+        p.get_by_label('Subject:',exact=True).fill('V2 live badge')
+        p.get_by_label('Message:',exact=True).fill('Synthetic notification check.')
+        p.get_by_role('button',name='Send message',exact=True).click()
+        thread_url=p.url
+        self.go('/records/messages/')
+        staff_context=self.browser.new_context()
+        try:
+            staff=staff_context.new_page();staff.goto(self.live_server_url+'/login/')
+            staff.locator('#username').fill('physician.demo');staff.locator('#password').fill('DemoCare2026!')
+            staff.get_by_role('button',name='Sign in to AthenaFlow').click();staff.goto(thread_url)
+            staff.get_by_label('Your message',exact=True).fill('A newly received reply.')
+            staff.get_by_role('button',name='Send message →',exact=True).click()
+            expect(staff.locator('.message-history')).to_contain_text('A newly received reply.')
+            p.bring_to_front();p.clock.fast_forward(21000)
+            row=p.locator('tr').filter(has=p.get_by_role('link',name='V2 live badge',exact=True))
+            expect(row.locator('.unread-label')).to_be_visible()
+            expect(p.locator('.message-notification .unread-count')).to_be_visible()
+        finally:
+            staff_context.close()

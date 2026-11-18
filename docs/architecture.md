@@ -64,3 +64,7 @@ Approval applies the draft to an unsigned note through the normal versioned save
 Audit events retain actor, entity, object ID, action, timestamp and structured transition metadata. They cover successful user mutations, sign-offs, exports, payment posting and workflow validation failures. The log is read-only through the application. It is not an external, cryptographically tamper-proof audit system. Not every invalid form or login attempt is separately persisted; server error reporting/central monitoring is not integrated.
 
 The Render Blueprint separates web compute from persistent PostgreSQL and keeps reset disabled. It has been schema-validated, not deployed as part of the local build. CI configuration covers Linux SQLite and PostgreSQL; local executed results are recorded separately.
+
+## V2 shared components
+
+`core/presentation.py` formats structured events and currency without trusting HTML. `engagement/messaging.py` scopes incoming unread messages and records unique per-user read receipts. `VitalForm` validates unit conversions before metric model validation; vital rows retain selected display units. Claim patient responsibility is separate from total outstanding balance and confirmed by an audited billing action. `static/v2.css` provides responsive corrections; `static/app.js` progressively enhances native selectors, units and message badges.

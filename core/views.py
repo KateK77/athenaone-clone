@@ -25,6 +25,8 @@ from core.access import *
 from core.services import *
 from core.forms import *
 from core.registry import R,path_value
+from core.presentation import readable, money
+from engagement.messaging import unread_messages, mark_read, MESSAGE_ROLES
 
 def error_text(exc): return ' '.join(exc.messages) if isinstance(exc,ValidationError) else str(exc)
 
@@ -59,12 +61,39 @@ def scope(request,key):
     if key in ['encounters','schedule'] and role(request.user)=='physician': qs=qs.filter(provider__user=request.user)
     return qs
 
+@login_required
+def message_notifications(request):
+    require(request.user, MESSAGE_ROLES)
+    counts = dict(unread_messages(request.user).values('thread_id').annotate(n=Count('pk')).values_list('thread_id', 'n'))
+    response = JsonResponse({'count': sum(counts.values()), 'threads': counts})
+    response['Cache-Control'] = 'no-store'
+    return response
+
+@login_required
+@require_POST
+def confirm_responsibility(request, pk):
+    require(request.user, {'admin','billing'})
+    with transaction.atomic():
+        claim = get_object_or_404(Claim.objects.select_for_update(), pk=pk)
+        check_patient(request.user, claim.patient)
+        try:
+            amount = Decimal(request.POST.get('amount',''))
+            if not claim.can_post_payment or not amount.is_finite() or amount < 0 or amount > claim.balance or amount.as_tuple().exponent < -2:
+                raise ValueError()
+            claim.patient_responsibility = amount
+            claim.save(update_fields=['patient_responsibility'])
+            audit(request.user,'Patient responsibility confirmed',claim,amount=str(amount))
+            messages.success(request,'Patient responsibility confirmed.')
+        except (ValueError, InvalidOperation):
+            messages.error(request,'Enter a nonnegative amount with at most two decimals, no greater than an eligible claim balance.')
+    return redirect(record_url('claims',claim))
+
 def display(value):
     if isinstance(value,bool): return 'Yes' if value else 'No'
     if value is None or value=='': return '—'
     if isinstance(value,datetime): return timezone.localtime(value).strftime('%b %d, %Y · %I:%M %p')
     if isinstance(value,Decimal): return f'{value:,.2f}'
-    return str(value)
+    return readable(value)
 
 def record_url(key,obj):
     if key=='patients': return f'/patients/{obj.pk}/'
@@ -102,7 +131,8 @@ def record_list(request,key):
     if sort.lstrip('-') in fields: qs=qs.order_by(sort)
     elif not qs.ordered: qs=qs.order_by('-pk')
     paginator=Paginator(qs.distinct(),20); page=paginator.get_page(request.GET.get('page'))
-    rows=[{'obj':obj,'url':record_url(key,obj),'cells':[display(path_value(obj,c)) for c in spec.columns]} for obj in page]
+    unread_counts = dict(unread_messages(request.user).values('thread_id').annotate(n=Count('pk')).values_list('thread_id','n')) if key == 'messages' else {}
+    rows=[{'obj':obj,'unread':unread_counts.get(obj.pk,0),'url':record_url(key,obj),'cells':[(money(path_value(obj,c)) if c in {'amount','copay','deductible','total','balance'} else display(path_value(obj,c))) for c in spec.columns]} for obj in page]
     statuses=spec.model.objects.values_list('status',flat=True).distinct() if 'status' in fields else []
     query=request.GET.copy(); query.pop('page',None)
     return render(request,'list.html',{'active':key,'key':key,'title':spec.title,'subtitle':'Live workqueue · changes are saved to the practice record','rows':rows,'headers':headers(spec),'columns':spec.columns,'page':page,'query':query.urlencode(),'q':q,'statuses':statuses,'status':status,'can_create':role(request.user) in spec.write and key not in ['claims','denials'],'providers':Provider.objects.all(),'sort':sort})
@@ -160,6 +190,8 @@ def record_edit(request,key,pk=None):
                     current=spec.model.objects.select_for_update().get(pk=obj.pk)
                     if not editable(key,current): raise ValidationError('This record is now locked. Reload to view its current state.')
                 saved=form.save(commit=False)
+                if key == 'claims':
+                    saved.status='Draft'; saved.validation_errors=[]; saved.validation_warnings=[]
                 validate_record(request.user,key,saved,not pk)
                 if key=='schedule':
                     old=Appointment.objects.get(pk=pk) if pk else None
@@ -167,19 +199,23 @@ def record_edit(request,key,pk=None):
                     if old and old.start!=saved.start: audit(request.user,'Appointment rescheduled',saved,old_start=old.start.isoformat(),new_start=saved.start.isoformat())
                 else:
                     saved.full_clean(); saved.save(); audit(request.user,'Record updated' if pk else 'Record created',saved)
+                if key == 'messages' and not pk:
+                    msg = Message.objects.create(thread=saved, sender=request.user, body=form.cleaned_data['body'])
+                    audit(request.user,'Message sent',msg)
+                    if role(request.user) == 'patient': task(saved.patient,'Reply: '+saved.subject,'Message','nurse',record_url('messages',saved))
                 if key=='results': order_action(request.user,saved.order,'Completed') if saved.order.status=='Processing' else None
             messages.success(request,'Record saved successfully.')
             return redirect(record_url(key,saved))
         except (ValidationError,IntegrityError) as exc:
             form.add_error(None,error_text(exc) if isinstance(exc,ValidationError) else 'This record conflicts with an existing record. Reload and try again.')
-    return render(request,'form.html',{'active':key,'title':('Edit ' if pk else 'New ')+spec.title,'form':form,'back':record_url(key,obj) if obj else f'/records/{key}/','hint':'All changes persist. Use fictional information only.'})
+    return render(request,'form.html',{'active':key,'title':('Edit ' if pk else 'New ')+spec.title,'form':form,'back':record_url(key,obj) if obj else f'/records/{key}/','submit_label':'Send message' if key == 'messages' and not pk else 'Save changes','hint':'All changes persist. Use fictional information only.'})
 
 def actions_for(key,obj,user):
     r=role(user); acts=[]
     if key=='schedule':
         for target in APPOINTMENT_TRANSITIONS.get(obj.status,[]):
             if target=='Checked In': continue
-            if (target in ['Roomed','In Progress'] and r in CLINICAL) or (target=='Completed' and r in {'admin','physician'}) or (target not in ['Roomed','In Progress','Completed'] and r in OPERATIONS): acts.append(target)
+            if (target == 'Roomed' and r in CLINICAL) or (target == 'In Progress' and r in {'admin','physician'}) or (target=='Completed' and r in {'admin','physician'}) or (target not in ['Roomed','In Progress','Completed'] and r in OPERATIONS): acts.append(target)
     elif key=='insurance' and r in OPERATIONS|{'billing'}: acts=['Verify eligibility']
     elif key=='orders':
         options={'Draft':['Signed','Cancelled'],'Signed':['Processing','Cancelled'],'Processing':['Completed','Failed','Cancelled']}.get(obj.status,[])
@@ -204,7 +240,10 @@ def record_detail(request,key,pk):
     if key=='patients': return patient_chart(request,pk)
     if key=='encounters': return encounter_view(request,pk)
     if key=='messages': return message_detail(request,obj)
-    fields=[(field.verbose_name.title(),display(getattr(obj,field.name))) for field in obj._meta.fields if field.name!='id']
+    fields=[(field.verbose_name.title(),(money(getattr(obj,field.name)) if field.name in {'amount','copay','deductible','patient_responsibility'} else display(getattr(obj,field.name)))) for field in obj._meta.fields if field.name!='id']
+    if key == 'claims':
+        checked = obj.status not in ['Draft','Ready for Review']
+        fields = [(label, ('Not yet validated' if not checked else readable(obj.validation_errors) if obj.validation_errors else 'No validation errors') if label == 'Validation Errors' else ('Not yet validated' if not checked else readable(obj.validation_warnings) if obj.validation_warnings else 'No validation warnings') if label == 'Validation Warnings' else value) for label,value in fields]
     extras={}
     if key=='claims': extras.update(total=obj.total,balance=obj.balance,payments=obj.payments.all(),errors=obj.validation_errors,warnings=obj.validation_warnings)
     if key=='medications': extras['warnings']=medication_warnings(obj)
@@ -422,7 +461,7 @@ def intake(request,pk):
             Task.objects.filter(related_url=f'/encounters/{e.pk}/',category='Intake').update(status='Completed')
             audit(request.user,'Intake and vitals recorded',e)
         messages.success(request,'Intake and vital signs saved to the chart.'); return redirect('encounter',pk=pk)
-    return render(request,'form.html',{'active':'encounters','title':'Clinical intake · '+str(e.patient),'form':form,'form2':vitals,'back':f'/encounters/{pk}/','hint':'Vital signs use °C, cm, and kg. BMI is calculated from height and weight.'})
+    return render(request,'form.html',{'active':'encounters','title':'Clinical intake · '+str(e.patient),'form':form,'form2':vitals,'back':f'/encounters/{pk}/','hint':'Height defaults to inches and weight to pounds. Select cm or kg when needed; changing units converts the value. BMI is calculated automatically.'})
 
 @login_required
 @require_POST
@@ -437,9 +476,11 @@ def bill_encounter(request,pk):
 def payment_view(request,pk):
     require(request.user,{'admin','billing','patient'})
     claim=get_object_or_404(Claim,pk=pk,encounter__patient__in=patients_for(request.user))
+    if not claim.can_post_payment or (role(request.user)=='patient' and not claim.can_patient_pay):
+        raise PermissionDenied('No payment is available. Billing must confirm patient responsibility, and the claim must have an eligible outstanding balance.')
     token_key=f'payment-token-{pk}'
     if token_key not in request.session: request.session[token_key]=uuid.uuid4().hex
-    form=PaymentForm(request.POST or None,initial={'amount':claim.balance,'source':'Patient','token':request.session[token_key]})
+    form=PaymentForm(request.POST or None,initial={'amount':claim.patient_due if role(request.user)=='patient' else claim.balance,'source':'Patient','token':request.session[token_key]})
     if role(request.user)=='patient': form.fields['source'].choices=[('Patient','Patient')]
     if request.method=='POST' and form.is_valid():
         try:
@@ -474,8 +515,9 @@ def message_detail(request,thread):
                 if role(request.user)=='patient': task(thread.patient,'Reply: '+thread.subject,'Message','nurse',record_url('messages',thread))
                 else: Task.objects.filter(related_url=record_url('messages',thread),category='Message').update(status='Completed')
             messages.success(request,'Message sent.'); return redirect(record_url('messages',thread))
-    thread.messages.exclude(sender=request.user).update(read=True)
-    return render(request,'messages.html',{'active':'messages','title':thread.subject,'thread':thread,'thread_messages':thread.messages.select_related('sender')})
+    displayed = list(thread.messages.select_related('sender'))
+    mark_read(request.user, displayed)
+    return render(request,'messages.html',{'active':'messages','title':thread.subject,'thread':thread,'thread_messages':displayed})
 
 @login_required
 def portal(request):
@@ -506,7 +548,7 @@ def portal(request):
             messages.success(request,action+' saved.'); return redirect('portal')
         except (ValidationError,ValueError) as exc: messages.error(request,error_text(exc))
     claims=Claim.objects.filter(encounter__patient=p)
-    return render(request,'portal.html',{'active':'portal','title':'Your health, in one place','patient':p,'appointments':p.appointments.filter(start__gte=timezone.now()).exclude(status__in=['Cancelled','No Show'])[:8],'results':LabResult.objects.filter(order__encounter__patient=p,released=True,status='Reviewed'),'medications':p.medications.filter(status='Active'),'notes':ClinicalNote.objects.filter(encounter__patient=p,signed_at__isnull=False),'claims':claims,'balance':sum((c.balance for c in claims),Decimal(0)),'payments':p.payments.all(),'requests':AppointmentRequest.objects.filter(patient=p),'unread':Message.objects.filter(thread__patient=p,read=False).exclude(sender=request.user).count()})
+    return render(request,'portal.html',{'active':'portal','title':'Your health, in one place','patient':p,'appointments':p.appointments.filter(start__gte=timezone.now()).exclude(status__in=['Cancelled','No Show'])[:8],'results':LabResult.objects.filter(order__encounter__patient=p,released=True,status='Reviewed'),'medications':p.medications.filter(status='Active'),'notes':ClinicalNote.objects.filter(encounter__patient=p,signed_at__isnull=False),'claims':claims,'balance':sum((c.balance for c in claims),Decimal(0)),'payments':p.payments.all(),'requests':AppointmentRequest.objects.filter(patient=p),'unread':unread_messages(request.user).count()})
 
 @login_required
 def request_booking(request,pk):
@@ -580,7 +622,7 @@ def reports(request):
     if request.GET.get('export')=='csv':
         response=HttpResponse(content_type='text/csv'); response['Content-Disposition']='attachment; filename="athenaflow-report.csv"'
         writer=csv.writer(response); writer.writerow(['Metric','Value','Start','End'])
-        for name,val in metrics+list(aging.items()): writer.writerow([name,val,start,end])
+        for name,val in metrics+[(label,money(value)) for label,value in aging.items()]: writer.writerow([name,val,start,end])
         audit(request.user,'Report exported',request.user); return response
     query=request.GET.copy(); query['export']='csv'
     weekdays=sum(1 for offset in range((end-start).days+1) if (start+timedelta(days=offset)).weekday()<5)

@@ -28,6 +28,7 @@ class Claim(models.Model):
     policy = models.ForeignKey(InsurancePolicy, null=True, blank=True, on_delete=models.PROTECT)
     status = models.CharField(max_length=30, default='Draft')
     scenario = models.CharField(max_length=30, default='Pay', choices=[(s,s) for s in ['Pay','Partial','Deny','Reject']])
+    patient_responsibility = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True, validators=[MinValueValidator(0)])
     validation_errors = models.JSONField(default=list, blank=True)
     validation_warnings = models.JSONField(default=list, blank=True)
     submitted_at = models.DateTimeField(null=True, blank=True)
@@ -38,6 +39,15 @@ class Claim(models.Model):
     def total(self): return sum((c.amount*c.units for c in self.encounter.charges.all()), Decimal('0.00'))
     @property
     def balance(self): return self.total - sum((p.amount for p in self.payments.all()), Decimal('0.00'))
+    @property
+    def can_post_payment(self):
+        return self.status in ['Adjudicated', 'Partially Paid', 'Denied'] and self.balance > 0
+    @property
+    def patient_due(self):
+        return min(self.patient_responsibility or Decimal('0'), max(self.balance, Decimal('0')))
+    @property
+    def can_patient_pay(self):
+        return self.can_post_payment and self.patient_due > 0
     def __str__(self): return f'CLM-{self.pk:05d}' if self.pk else 'New claim'
 
 class Denial(models.Model):

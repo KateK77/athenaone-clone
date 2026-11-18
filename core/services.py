@@ -39,7 +39,8 @@ def transition_appointment(user, pk, target):
     a = Appointment.objects.select_for_update().select_related('patient').get(pk=pk)
     check_patient(user,a.patient)
     if role(user)=='physician' and a.provider.user_id!=user.pk: raise PermissionDenied('This appointment is assigned to another clinician.')
-    if target in ['Roomed','In Progress']: require(user,CLINICAL)
+    if target == 'Roomed': require(user,CLINICAL)
+    elif target == 'In Progress': require(user,{'admin','physician'})
     elif target == 'Completed': require(user,{'admin','physician'})
     else: require(user,OPERATIONS | ({'patient'} if target=='Cancelled' else set()))
     if role(user)=='patient' and a.start <= timezone.now(): raise ValidationError('Past appointments cannot be cancelled.')
@@ -49,6 +50,8 @@ def transition_appointment(user, pk, target):
     before=a.status
     a.status=target
     a.save(update_fields=['status'])
+    if target == 'In Progress':
+        Encounter.objects.filter(appointment=a,status='Scheduled').update(status='In Progress')
     audit(user,'Appointment transition',a,before=before,after=target)
     return a
 
@@ -187,8 +190,11 @@ def post_payment(user, claim, amount, source='Patient', reference=None):
     if role(user)=='patient' and source!='Patient': raise ValidationError('Only patient payments are permitted.')
     if claim.status not in ['Adjudicated','Partially Paid','Denied','Paid']: raise ValidationError('Payments require an adjudicated claim.')
     amount=Decimal(amount)
+    if role(user)=='patient' and (not claim.can_patient_pay or amount > claim.patient_due): raise ValidationError('Billing must confirm the patient responsibility before payment. Payment cannot exceed that amount.')
     if not amount.is_finite() or amount<=0 or amount.as_tuple().exponent < -2 or amount>claim.balance: raise ValidationError('Payment must be positive, at most two decimals, and no greater than the balance.')
     payment=Payment.objects.create(patient=claim.patient,claim=claim,amount=amount,source=source,reference=reference or 'SIM-'+uuid.uuid4().hex[:16].upper())
+    if claim.patient_responsibility is not None:
+        claim.patient_responsibility = max(Decimal('0'), claim.patient_responsibility - amount) if source == 'Patient' else min(claim.patient_responsibility, claim.balance)
     claim.status='Paid' if claim.balance==0 else 'Partially Paid'; claim.save()
     audit(user,'Simulated payment posted',payment,amount=str(amount))
     return payment
@@ -220,7 +226,7 @@ def claim_action(user, claim, action):
         else: claim.status='Paid'
     elif action=='Correct' and before in ['Denied','Rejected']:
         if hasattr(claim,'denial') and not claim.denial.appeal.strip(): raise ValidationError('Record an appeal before correcting this denial.')
-        claim.status='Draft'; claim.scenario='Pay'; claim.validation_errors=[]
+        claim.status='Draft'; claim.scenario='Pay'; claim.validation_errors=[]; claim.validation_warnings=[]; claim.patient_responsibility=None
         if hasattr(claim,'denial'):
             claim.denial.status='Corrected'; claim.denial.save()
             Task.objects.filter(related_url=f'/records/claims/{claim.pk}/',category='Denial').update(status='Completed')

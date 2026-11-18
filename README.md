@@ -6,6 +6,12 @@ The application connects registration, scheduling, clinical intake, physician do
 
 ![AthenaFlow practice dashboard](docs/screenshots/dashboard.png)
 
+## V2 iteration
+
+[Description V1](description_v1.md) preserves the original complete brief; [Description V2](description_v2.md) integrates the second iteration into a complete standalone specification. See the [V2 implementation and validation record](docs/v2-iteration.md) for coverage and migration behavior.
+
+V2 adds searchable patient selectors, imperial/metric intake with automatic conversion, readable audit histories, explicit workflow states, per-user unread message badges, one-step message composition, reliable mobile logout, and confirmed patient responsibility before portal payment. Existing clinical and financial records are retained through additive migrations. Apply migrations before running the updated server; do not reset your existing demo database.
+
 ## Run locally
 
 Requirements: Python 3.13 or 3.14 and an internet connection for the initial package installation. After installation, primary demonstration workflows run offline. SQLite is used locally; production requires PostgreSQL.
@@ -23,7 +29,7 @@ python -m venv .venv
 ./.venv/Scripts/python.exe -m pip install -r requirements.txt
 ./.venv/Scripts/python.exe manage.py migrate
 ./.venv/Scripts/python.exe manage.py seed_demo
-./.venv/Scripts/python.exe manage.py runserver 127.0.0.1:8000
+./.venv/Scripts/python.exe manage.py runserver 127.0.0.1:18310
 ```
 
 macOS / Linux:
@@ -34,10 +40,10 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py seed_demo
-python manage.py runserver 127.0.0.1:8000
+python manage.py runserver 127.0.0.1:18310
 ```
 
-Open **http://127.0.0.1:8000/**. Do not use Django's development server for public hosting.
+Open **http://127.0.0.1:18310/**. Do not use Django's development server for public hosting.
 
 `seed_demo` is idempotent. It creates a fictional practice with 3 departments, 8 providers, 100 patients, 150 appointments, 100 encounters and notes, 100 diagnoses, 150 medications, 100 orders and results, 80 claims, 20 denials, 30 payments, 20 authorizations, 30 message threads, and 5 waitlist entries. The default anchor is the current date in America/Chicago. Use `--anchor-date 2026-11-16` for a fixed research fixture.
 

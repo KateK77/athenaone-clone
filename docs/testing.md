@@ -98,3 +98,7 @@ python manage.py test tests --verbosity 2
 ```
 
 Use `python manage.py test tests.test_workflows` or `tests.test_browser` to select a suite. Set `PLAYWRIGHT_BROWSERS_PATH` only if using a non-default browser installation. Set `CAPTURE_SCREENSHOTS=1` to regenerate screenshot artifacts. Do not run tests against the user's working demo database; Django creates and destroys its own test database.
+
+## V2 validation
+
+The V1 evidence above is retained as version history. V2 final local results: 114/114 passed, zero failures or skips; 101 backend/integration cases and 13 Playwright Chromium cases. See [V2 validation](v2-validation.json), [execution log](v2-test-output.txt), and [iteration details](v2-iteration.md). Remote Actions results belong to their exact commit and must be checked independently.

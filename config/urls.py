@@ -8,6 +8,8 @@ urlpatterns=[
  path('patients/<int:pk>/',v.patient_chart,name='patient'),path('appointments/<int:pk>/check-in/',v.checkin,name='checkin'),
  path('encounters/<int:pk>/',v.encounter_view,name='encounter'),path('encounters/<int:pk>/intake/',v.intake,name='intake'),path('encounters/<int:pk>/bill/',v.bill_encounter,name='bill_encounter'),
  path('claims/<int:pk>/payment/',v.payment_view,name='payment'),path('payments/<int:pk>/receipt/',v.receipt,name='receipt'),
+ path('messages/notifications/',v.message_notifications,name='message_notifications'),
+ path('claims/<int:pk>/responsibility/',v.confirm_responsibility,name='confirm_responsibility'),
  path('portal/',v.portal,name='portal'),path('requests/<int:pk>/book/',v.request_booking,name='request_booking'),path('ai/',v.ai_page,name='ai'),path('reports/',v.reports,name='reports'),
  path('administration/',v.administration,name='administration'),path('administration/staff/new/',v.staff_edit,name='staff_create'),path('administration/staff/<int:pk>/',v.staff_edit,name='staff_edit'),path('administration/reset/',v.reset_demo,name='reset'),path('help/',v.help_view,name='help'),path('fhir/<str:resource>/<int:pk>/',v.fhir,name='fhir'),
 ]

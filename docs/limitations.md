@@ -24,7 +24,7 @@ The original brief describes a much larger enterprise product than this version.
 ## Financial limits
 
 - All payer, insurance, pharmacy and payment interactions are local simulations. No real transaction endpoint or card storage exists.
-- One claim is permitted per encounter. Professional/institutional electronic claim formats, remittance files, line adjudication, contractual adjustments, coordination of benefits, refunds, write-offs and patient/insurer responsibility separation are not modeled.
+- One claim is permitted per encounter. Professional/institutional electronic claim formats, remittance files, line adjudication, contractual adjustments, coordination of benefits, refunds, write-offs are not modeled. V2 adds an explicit billing-confirmed patient responsibility amount; this is not payer-derived line adjudication.
 - Charge amounts may be manually entered; claim scrubbing does not provide clinical coding advice or actual payer policy validation.
 - Payments allocate to a single claim. Copays larger than the claim remain unallocated and need future credit/refund workflow support.
 - Receipt previews and portal balance lists exist; a formal printable statement-generation engine is missing.
@@ -46,3 +46,7 @@ The original brief describes a much larger enterprise product than this version.
 - Playwright is browser automation, not a genuine Computer Use Agent evaluation. No CUA evaluation has been performed.
 - Accessibility has semantic labels, focusable controls, responsive layouts and basic keyboard tests; there is no independent WCAG audit.
 - No load test, recovery drill, penetration test or regulated-system validation has been performed.
+
+## V2-specific boundaries
+
+See [V2 iteration](v2-iteration.md) for polling behavior, legacy read receipts, unit storage precision and current selector scale. Full Description V2 preserves all original requirements; remaining enterprise features above are not implicitly marked implemented by the V2 feedback fixes.
