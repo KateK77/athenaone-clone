@@ -10,7 +10,7 @@
     "skipped": 0,
     "backend_integration": 112,
     "browser": 17,
-    "duration_seconds": 49.982,
+    "duration_seconds": 44.238,
     "environment": "Windows / Python 3.14.9 / SQLite / Chromium"
   },
   "system_check": "PASS",

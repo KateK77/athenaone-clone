@@ -1,6 +1,6 @@
+Found 129 test(s).
 Creating test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
 
-Found 129 test(s).
 Operations to perform:
   Synchronize unmigrated apps: messages, staticfiles
   Apply all migrations: auth, clinical, contenttypes, core, engagement, revenue, sessions
@@ -166,7 +166,7 @@ test_v3_readability_and_complete_selected_patient (tests.test_browser.BrowserTes
 test_v3_schedule_auto_date_and_responsive_appointments (tests.test_browser.BrowserTests.test_v3_schedule_auto_date_and_responsive_appointments) ... ok
 
 ----------------------------------------------------------------------
-Ran 129 tests in 49.982s
+Ran 129 tests in 44.238s
 
 OK
 Destroying test database for alias 'default' ('file:memorydb_default?mode=memory&cache=shared')...
