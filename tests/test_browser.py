@@ -22,6 +22,7 @@ class BrowserTests(StaticLiveServerTestCase):
         self.encounter_id=Encounter.objects.filter(provider__user__username='physician.demo',status='Documentation Pending').first().pk
         self.v2_patient_id=Patient.objects.get(mrn='AF-100001').pk
         self.v2_encounter_id=Encounter.objects.filter(patient__provider__department__name='Family Medicine',status='Documentation Pending').first().pk
+        self.v3_schedule_date=timezone.localtime(Encounter.objects.get(pk=self.encounter_id).appointment.start).date().isoformat()
         if self._testMethodName == 'test_v2_unread_notifications_and_single_compose':
             from engagement.models import Message
             Message.objects.all().delete()
@@ -58,6 +59,78 @@ class BrowserTests(StaticLiveServerTestCase):
             self.page.screenshot(path=str(folder/(name+'.png')),full_page=True)
     def save(self): self.page.get_by_role('button',name='Save changes',exact=True).click()
     def action(self,name): self.page.get_by_role('button',name=name+' →',exact=True).click()
+
+    def v3_snap(self,name):
+        if os.getenv('CAPTURE_V3_SCREENSHOTS')=='1':
+            self.page.evaluate('window.scrollTo(0,0)')
+            self.page.evaluate('Promise.all(document.getAnimations().map(a=>a.finished.catch(()=>{})))')
+            self.page.screenshot(path=str(Path(__file__).resolve().parent.parent/'docs'/'screenshots'/('v3-'+name+'.png')),full_page=True)
+
+    def assert_no_page_overflow(self):
+        self.assertLessEqual(self.page.evaluate('document.documentElement.scrollWidth'),self.page.viewport_size['width']+1)
+
+    def test_v3_readability_and_complete_selected_patient(self):
+        self.go('/login/')
+        role=self.page.get_by_role('button',name='Front Desk',exact=True)
+        self.assertGreaterEqual(role.bounding_box()['height'],44)
+        self.assertGreaterEqual(role.evaluate('e=>parseFloat(getComputedStyle(e).fontSize)'),16)
+        self.v3_snap('login')
+        self.sign_in('frontdesk'); self.go('/records/schedule/new/')
+        self.page.get_by_label('Search patient by name or MRN',exact=True).fill('AF-100001')
+        self.page.locator('#id_patient').select_option(str(self.v2_patient_id))
+        summary=self.page.locator('.selected-record').first
+        expect(summary).to_contain_text('Jamie Alder'); expect(summary).to_contain_text('AF-100001')
+        expect(summary).to_contain_text('DOB')
+        for width in [1280,390]:
+            self.page.set_viewport_size({'width':width,'height':900});self.assert_no_page_overflow()
+            field=self.page.locator('#id_patient')
+            self.assertGreaterEqual(field.evaluate('e=>parseFloat(getComputedStyle(e).fontSize)'),16)
+            self.assertGreaterEqual(field.evaluate('e=>parseFloat(getComputedStyle(e).borderTopWidth)'),2)
+        self.v3_snap('patient-selection-mobile')
+
+    def test_v3_schedule_auto_date_and_responsive_appointments(self):
+        self.sign_in('frontdesk'); self.go('/schedule/')
+        field=self.page.get_by_label('Schedule date',exact=True)
+        field.fill(self.v3_schedule_date)
+        expect(self.page).to_have_url(__import__('re').compile('date='+self.v3_schedule_date))
+        expect(self.page.locator('.appointment-block').first).to_be_visible()
+        self.assertGreaterEqual(self.page.locator('.appointment-block strong').first.evaluate('e=>parseFloat(getComputedStyle(e).fontSize)'),18)
+        self.v3_snap('schedule')
+        self.page.set_viewport_size({'width':390,'height':844});self.assert_no_page_overflow();self.v3_snap('schedule-mobile')
+        self.page.get_by_role('link',name='Next date',exact=True).click()
+        self.assertNotEqual(self.page.get_by_label('Schedule date',exact=True).input_value(),self.v3_schedule_date)
+
+    def test_v3_portal_prominent_actions_and_contact_editing(self):
+        self.sign_in('patient');self.v3_snap('portal')
+        shortcuts=self.page.get_by_role('navigation',name='Patient portal shortcuts')
+        expect(shortcuts).to_be_visible()
+        shortcuts.get_by_role('link',name='Medications & renewals',exact=True).click()
+        renewal=self.page.get_by_role('button',name='Request medication renewal',exact=True).first
+        expect(renewal).to_be_visible();self.assertGreaterEqual(renewal.bounding_box()['height'],44)
+        self.page.get_by_text('Update contact information',exact=True).click()
+        self.page.get_by_label('Phone',exact=True).fill('202-555-0123')
+        self.page.get_by_role('button',name='Save information',exact=True).click()
+        self.page.get_by_text('Update contact information',exact=True).click()
+        expect(self.page.get_by_label('Phone',exact=True)).to_have_value('202-555-0123')
+        self.page.set_viewport_size({'width':390,'height':844});self.assert_no_page_overflow();self.v3_snap('portal-mobile')
+
+    def test_v3_conversion_and_receipt_return_after_browser_back(self):
+        self.sign_in('nurse');self.go(f'/encounters/{self.v2_encounter_id}/intake/')
+        p=self.page
+        for name,value in [('Systolic:','120'),('Diastolic:','79'),('Heart rate:','72'),('Respiratory rate:','16'),('Temperature:','36.7'),('Oxygen:','98'),('Height:','70'),('Weight:','150'),('Pain:','0')]:p.get_by_label(name,exact=True).fill(value)
+        for _ in range(5):
+            p.get_by_label('Weight unit:',exact=True).select_option('kg');expect(p.get_by_label('Weight:',exact=True)).to_have_value('68.04')
+            p.get_by_label('Weight unit:',exact=True).select_option('lb');expect(p.get_by_label('Weight:',exact=True)).to_have_value('150')
+        p.get_by_label('Height unit:',exact=True).select_option('cm');p.get_by_label('Weight unit:',exact=True).select_option('kg')
+        self.v3_snap('intake');self.save();p.reload();expect(p.locator('.encounter-patient')).to_contain_text('68.04 kg');self.v3_snap('encounter')
+        self.sign_in('billing');self.go('/records/claims/?status=Partially%20Paid');p.locator('tbody tr').first.get_by_role('link').last.click()
+        claim_url=p.url;self.v3_snap('claim')
+        p.get_by_role('link',name='Post simulated payment',exact=True).click()
+        p.get_by_label('Amount:',exact=True).fill('1.00');p.get_by_role('button',name='Post simulated payment',exact=True).click()
+        expect(p.get_by_role('heading',name='Payment recorded',exact=True)).to_be_visible()
+        expect(p.get_by_role('link',name='← Return to claim',exact=True)).to_have_attribute('href',claim_url.replace(self.live_server_url,''))
+        self.v3_snap('receipt');p.go_back();expect(p).to_have_url(claim_url)
+        expect(p.locator('.workflow-panel')).to_be_visible()
 
     def test_login_navigation_and_screenshots(self):
         self.go('/login/'); self.snap('login')
@@ -133,7 +206,7 @@ class BrowserTests(StaticLiveServerTestCase):
         self.page.get_by_role('button',name='Generate draft',exact=True).click()
         expect(self.page.locator('.ai-card')).to_contain_text('Unreviewed draft')
         self.page.get_by_label('I reviewed this draft and will complete missing details.').check()
-        self.page.get_by_role('button',name='Apply reviewed draft',exact=True).click()
+        self.page.get_by_role('button',name='Apply to unsigned draft',exact=True).click()
         expect(self.page.get_by_label('Subjective:',exact=True)).to_contain_text('Synthetic visit')
         self.page.get_by_role('button',name='Preview note',exact=True).click()
         expect(self.page.locator('#note-dialog')).to_be_visible(); self.page.get_by_role('button',name='Close preview',exact=True).click()
@@ -146,7 +219,7 @@ class BrowserTests(StaticLiveServerTestCase):
         self.page.get_by_label('Appeal:',exact=True).fill('Synthetic authorization documentation supplied for reprocessing.'); self.save(); self.page.goto(claim_url); self.action('Correct')
         expect(self.page.locator('.card-header .status').first).to_have_text('Draft')
         self.go('/records/claims/?status=Partially%20Paid'); self.page.locator('tbody tr').first.get_by_role('link').last.click()
-        self.page.get_by_role('link',name='Post simulated payment',exact=True).click(); self.page.get_by_label('Amount:',exact=True).fill('1.00'); self.save()
+        self.page.get_by_role('link',name='Post simulated payment',exact=True).click(); self.page.get_by_label('Amount:',exact=True).fill('1.00'); self.page.get_by_role('button',name='Post simulated payment',exact=True).click()
         expect(self.page.get_by_role('heading',name='Payment recorded',exact=True)).to_be_visible(); expect(self.page.locator('.receipt-amount')).to_have_text('$1.00')
 
     def test_patient_portal_messages_and_requests(self):
@@ -208,7 +281,7 @@ class BrowserTests(StaticLiveServerTestCase):
         self.v2_snap('v2-unit-selection');self.save();p.reload()
         p.set_viewport_size({'width':390,'height':844})
         expect(p.locator('.encounter-patient .card')).to_be_visible()
-        expect(p.locator('.encounter-patient')).to_contain_text('68.90 in')
+        expect(p.locator('.encounter-patient')).to_contain_text('68.9 in')
         expect(p.locator('.encounter-patient')).to_contain_text('154.32 lb')
         expect(p.locator('.encounter-patient')).to_contain_text('BMI 22.9')
         self.assertLessEqual(p.evaluate('document.documentElement.scrollWidth'),391)

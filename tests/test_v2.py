@@ -40,7 +40,7 @@ class V2Tests(TestCase):
         self.assertEqual(form['weight_unit'].value(), 'lb')
 
     def test_both_unit_systems_save_same_bmi(self):
-        for kwargs in [{},dict(height='68.897638',weight='154.323584',height_unit='in',weight_unit='lb')]:
+        for kwargs in [{},dict(height='68.9',weight='154.32',height_unit='in',weight_unit='lb',height_canonical='175',weight_canonical='70')]:
             form = self.vitals(**kwargs)
             self.assertTrue(form.is_valid(), form.errors)
             v = form.save(commit=False)

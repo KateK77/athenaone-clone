@@ -4,7 +4,15 @@ An independent, educational Django simulation inspired by the **workflows** of a
 
 The application connects registration, scheduling, clinical intake, physician documentation, orders, laboratory review, billing, simulated claims, and a patient portal. It is a working research prototype, **not a complete reproduction of the commercial product**. The feature inventory and limitations distinguish implemented workflows from simplified and missing requirements.
 
-![AthenaFlow practice dashboard](docs/screenshots/dashboard.png)
+![AthenaFlow V3 patient portal](docs/screenshots/v3-portal.png)
+
+## V3 iteration
+
+[Description V3](description_v3.md) integrates the complete product specification with the third iteration. [Implementation, validation and migration details](docs/v3-iteration.md) map each change to its checks.
+
+V3 increases typography and control contrast throughout the application, reorganizes the patient portal and calendar, displays complete selected patient identities, preserves measurement conversion precision with two-decimal display, clarifies unsigned AI drafts, places claim actions prominently, adds receipt return paths, and fixes submission-date reporting. The existing demonstration records are preserved. Back up an existing database and run `python manage.py migrate` before starting V3; do not reset or reseed it.
+
+Local verification: **129/129 automated cases passed**, plus live desktop/mobile layout checks. V1 and V2 descriptions, screenshots and release records remain available below and in Git history.
 
 ## V2 iteration
 

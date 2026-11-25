@@ -66,8 +66,10 @@ class CheckInForm(forms.ModelForm):
         fields=['identity','demographics','insurance','consent','intake_forms','copay']
 
 class VitalForm(forms.ModelForm):
-    height = forms.DecimalField(max_digits=12, decimal_places=6, label='Height', widget=forms.NumberInput(attrs={'step':'any'}))
-    weight = forms.DecimalField(max_digits=12, decimal_places=6, label='Weight', widget=forms.NumberInput(attrs={'step':'any'}))
+    height_canonical = forms.CharField(required=False, max_length=64, widget=forms.HiddenInput)
+    weight_canonical = forms.CharField(required=False, max_length=64, widget=forms.HiddenInput)
+    height = forms.DecimalField(max_digits=8, decimal_places=2, label='Height', widget=forms.NumberInput(attrs={'step':'0.01'}))
+    weight = forms.DecimalField(max_digits=8, decimal_places=2, label='Weight', widget=forms.NumberInput(attrs={'step':'0.01'}))
     height_unit = forms.ChoiceField(choices=[('in','Inches (in)'),('cm','Centimeters (cm)')], initial='in', label='Height unit')
     weight_unit = forms.ChoiceField(choices=[('lb','Pounds (lb)'),('kg','Kilograms (kg)')], initial='lb', label='Weight unit')
 
@@ -80,25 +82,39 @@ class VitalForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
         if not self.instance.pk:
             self.initial.update(height_unit='in', weight_unit='lb')
+        else:
+            self.initial.update(height=self.instance.display_height, weight=self.instance.display_weight,
+                                height_canonical=self.instance.height, weight_canonical=self.instance.weight)
         self.order_fields(['systolic','diastolic','heart_rate','respiratory_rate','temperature','oxygen','height','height_unit','weight','weight_unit','pain'])
         for name, unit in {'systolic':'mmHg','diastolic':'mmHg','heart_rate':'bpm','respiratory_rate':'breaths/min','pain':'0–10 (0 = no pain; 10 = worst pain)'}.items():
             self.fields[name].help_text = unit
         self.fields['height'].help_text = 'Uses the selected height unit.'
         self.fields['weight'].help_text = 'Uses the selected weight unit.'
 
+    def normalized_measurement(self, name, factor, low, high):
+        from decimal import InvalidOperation
+        displayed = self.cleaned_data[name]
+        value = displayed * factor
+        # Carry full precision only when it represents this exact two-decimal input.
+        try:
+            candidate = Decimal(self.data.get(name + '_canonical', ''))
+            if (candidate.is_finite() and low <= candidate <= high
+                    and abs(candidate / factor - displayed) <= Decimal('0.005')):
+                value = candidate
+        except (InvalidOperation, ValueError, TypeError):
+            pass
+        if not low <= value <= high:
+            unit = 'cm' if name == 'height' else 'kg'
+            raise forms.ValidationError(f'{name.title()} must be between {low} and {high} {unit}.')
+        return value.quantize(Decimal('0.00000001'))
+
     def clean_height(self):
-        value = self.cleaned_data['height']
-        if self.data.get('height_unit') == 'in': value *= Decimal('2.54')
-        if not Decimal('30') <= value <= Decimal('250'):
-            raise forms.ValidationError('Height must be between 30 and 250 cm (11.82–98.42 in).')
-        return value.quantize(Decimal('0.1'))
+        factor = Decimal('2.54') if self.data.get('height_unit') == 'in' else Decimal(1)
+        return self.normalized_measurement('height', factor, Decimal(30), Decimal(250))
 
     def clean_weight(self):
-        value = self.cleaned_data['weight']
-        if self.data.get('weight_unit') == 'lb': value *= Decimal('0.45359237')
-        if not Decimal('1') <= value <= Decimal('500'):
-            raise forms.ValidationError('Weight must be between 1 and 500 kg (2.21–1102.31 lb).')
-        return value.quantize(Decimal('0.1'))
+        factor = Decimal('0.45359237') if self.data.get('weight_unit') == 'lb' else Decimal(1)
+        return self.normalized_measurement('weight', factor, Decimal(1), Decimal(500))
 
     class Meta:
         model=VitalSign

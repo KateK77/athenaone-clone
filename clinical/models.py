@@ -91,23 +91,30 @@ class VitalSign(models.Model):
     respiratory_rate = models.PositiveSmallIntegerField(default=16, validators=[MinValueValidator(4),MaxValueValidator(80)])
     temperature = models.DecimalField(max_digits=4,decimal_places=1, validators=[MinValueValidator(30),MaxValueValidator(45)], help_text='°C')
     oxygen = models.PositiveSmallIntegerField(validators=[MinValueValidator(50),MaxValueValidator(100)], help_text='%')
-    height = models.DecimalField(max_digits=5,decimal_places=1, validators=[MinValueValidator(30),MaxValueValidator(250)], help_text='cm')
-    weight = models.DecimalField(max_digits=5,decimal_places=1, validators=[MinValueValidator(1),MaxValueValidator(500)], help_text='kg')
+    height = models.DecimalField(max_digits=12,decimal_places=8, validators=[MinValueValidator(30),MaxValueValidator(250)], help_text='cm')
+    weight = models.DecimalField(max_digits=12,decimal_places=8, validators=[MinValueValidator(1),MaxValueValidator(500)], help_text='kg')
     pain = models.PositiveSmallIntegerField(default=0, validators=[MaxValueValidator(10)])
     created_at = models.DateTimeField(auto_now_add=True)
     @property
     def bmi(self): return round(self.weight / (self.height/100)**2, 1)
     height_unit = models.CharField(max_length=2, choices=[('in', 'in'), ('cm', 'cm')], default='cm')
     weight_unit = models.CharField(max_length=2, choices=[('lb', 'lb'), ('kg', 'kg')], default='kg')
+    @staticmethod
+    def measurement_text(value):
+        return format(value, '.2f').rstrip('0').rstrip('.')
     @property
     def display_height(self):
         from decimal import Decimal
-        return round(self.height / Decimal('2.54'), 2) if self.height_unit == 'in' else self.height
+        return self.measurement_text(self.height / Decimal('2.54') if self.height_unit == 'in' else self.height)
     @property
     def display_weight(self):
         from decimal import Decimal
-        return round(self.weight / Decimal('0.45359237'), 2) if self.weight_unit == 'lb' else self.weight
-    def __str__(self): return f'{self.systolic}/{self.diastolic} · HR {self.heart_rate} · BMI {self.bmi}'
+        return self.measurement_text(self.weight / Decimal('0.45359237') if self.weight_unit == 'lb' else self.weight)
+    def __str__(self):
+        return (f'Blood pressure {self.systolic}/{self.diastolic} mmHg · Heart rate {self.heart_rate} bpm · '
+                f'Respiratory rate {self.respiratory_rate} breaths/min · Temperature {self.temperature} °C · '
+                f'SpO₂ {self.oxygen}% · Height {self.display_height} {self.height_unit} · '
+                f'Weight {self.display_weight} {self.weight_unit} · BMI {self.bmi} · Pain {self.pain}/10')
 
 class Medication(models.Model):
     patient = models.ForeignKey(Patient, related_name='medications', on_delete=models.CASCADE)

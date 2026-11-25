@@ -1,0 +1,288 @@
+{
+  "version": "V3",
+  "date": "2026-11-25",
+  "timezone": "America/Chicago",
+  "local_suite": {
+    "status": "PASS",
+    "executed": 129,
+    "passed": 129,
+    "failed": 0,
+    "skipped": 0,
+    "backend_integration": 112,
+    "browser": 17,
+    "duration_seconds": 49.982,
+    "environment": "Windows / Python 3.14.9 / SQLite / Chromium"
+  },
+  "system_check": "PASS",
+  "migration_drift": "PASS",
+  "existing_data": {
+    "tables": 35,
+    "rows": 1936,
+    "unchanged": true,
+    "changed_tables": []
+  },
+  "acceptance_data_read_only_check": {
+    "local_report": {
+      "Appointments": 0,
+      "No-show rate": "0.0%",
+      "Encounters": 1,
+      "Completion rate": "0.0%",
+      "Total charges": "$0.00",
+      "Simulated payments": "$151.00",
+      "Outstanding": "$0.00",
+      "Denial rate": "0.0%",
+      "Unsigned notes": 1,
+      "Results awaiting review": 0,
+      "Claims submitted": 1,
+      "Acceptance rate": "100.0%"
+    },
+    "claim_130_balance": "53.00",
+    "claim_81_status": "Paid",
+    "claim_161_status": "Closed",
+    "encounter_202_status": "Documentation Pending",
+    "discontinued_demo_prescription_preserved": true
+  },
+  "live_layout_checks": {
+    "health": {
+      "status": "ok",
+      "application": "AthenaFlow",
+      "external_transactions": "simulated"
+    },
+    "checks": [
+      {
+        "role": "frontdesk",
+        "path": "/schedule/?date=2026-11-26",
+        "viewport": 1536,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "frontdesk",
+        "path": "/schedule/?date=2026-11-26",
+        "viewport": 1280,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "frontdesk",
+        "path": "/schedule/?date=2026-11-26",
+        "viewport": 768,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "frontdesk",
+        "path": "/schedule/?date=2026-11-26",
+        "viewport": 390,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "frontdesk",
+        "path": "/records/schedule/new/",
+        "viewport": 1536,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "frontdesk",
+        "path": "/records/schedule/new/",
+        "viewport": 1280,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "frontdesk",
+        "path": "/records/schedule/new/",
+        "viewport": 768,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "frontdesk",
+        "path": "/records/schedule/new/",
+        "viewport": 390,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "physician",
+        "path": "/encounters/202/",
+        "viewport": 1536,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "physician",
+        "path": "/encounters/202/",
+        "viewport": 1280,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "physician",
+        "path": "/encounters/202/",
+        "viewport": 768,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "physician",
+        "path": "/encounters/202/",
+        "viewport": 390,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "physician",
+        "path": "/encounters/202/intake/",
+        "viewport": 1536,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "physician",
+        "path": "/encounters/202/intake/",
+        "viewport": 1280,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "physician",
+        "path": "/encounters/202/intake/",
+        "viewport": 768,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "physician",
+        "path": "/encounters/202/intake/",
+        "viewport": 390,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/records/claims/81/",
+        "viewport": 1536,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/records/claims/81/",
+        "viewport": 1280,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/records/claims/81/",
+        "viewport": 768,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/records/claims/81/",
+        "viewport": 390,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/records/claims/130/",
+        "viewport": 1536,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/records/claims/130/",
+        "viewport": 1280,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/records/claims/130/",
+        "viewport": 768,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/records/claims/130/",
+        "viewport": 390,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/reports/?start=2026-11-25&end=2026-11-25",
+        "viewport": 1536,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/reports/?start=2026-11-25&end=2026-11-25",
+        "viewport": 1280,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/reports/?start=2026-11-25&end=2026-11-25",
+        "viewport": 768,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "billing",
+        "path": "/reports/?start=2026-11-25&end=2026-11-25",
+        "viewport": 390,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "patient",
+        "path": "/portal/",
+        "viewport": 1536,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "patient",
+        "path": "/portal/",
+        "viewport": 1280,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "patient",
+        "path": "/portal/",
+        "viewport": 768,
+        "overflow": false,
+        "body_font_px": 16
+      },
+      {
+        "role": "patient",
+        "path": "/portal/",
+        "viewport": 390,
+        "overflow": false,
+        "body_font_px": 16
+      }
+    ],
+    "javascript_errors": []
+  },
+  "preserved_specifications_sha256": {
+    "description_v1.md": "c4bebfb13d94c9d609766675edc2781d3401f1e40d0393098ea46ed30bf2b94a",
+    "description_v2.md": "6eadabad6c423dcefb77dad5eb18fa8953d95fa2d99492e240dc33c49c2f9fca",
+    "docs/original-brief.txt": "c4bebfb13d94c9d609766675edc2781d3401f1e40d0393098ea46ed30bf2b94a"
+  },
+  "remote_ci": "See the GitHub Actions run for the exact pushed commit; not inferred from local SQLite results.",
+  "cua_evaluation": "NOT_RUN",
+  "independent_accessibility_audit": "NOT_RUN",
+  "public_deployment": "NOT_RUN"
+}

@@ -102,3 +102,7 @@ Use `python manage.py test tests.test_workflows` or `tests.test_browser` to sele
 ## V2 validation
 
 The V1 evidence above is retained as version history. V2 final local results: 114/114 passed, zero failures or skips; 101 backend/integration cases and 13 Playwright Chromium cases. See [V2 validation](v2-validation.json), [execution log](v2-test-output.txt), and [iteration details](v2-iteration.md). Remote Actions results belong to their exact commit and must be checked independently.
+
+## V3 validation
+
+On November 25, 2026, the full local suite passed **129/129** cases (112 backend/integration and 17 Playwright Chromium), with no failures or skips. See [V3 validation](v3-validation.json), [execution log](v3-test-output.txt), and [iteration details](v3-iteration.md). Additional live checks covered eight pages at 1536, 1280, 768 and 390 pixels. The migration retained every value in 35 application tables / 1,936 pre-existing rows. GitHub Actions runs the suite on both SQLite and PostgreSQL; its results apply to the exact pushed commit. No CUA evaluation was performed.

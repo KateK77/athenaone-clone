@@ -17,6 +17,7 @@ from django.http import JsonResponse,HttpResponse,Http404
 from django.shortcuts import render,redirect,get_object_or_404
 from django.utils import timezone
 from django.views.decorators.http import require_POST
+from django.views.decorators.cache import never_cache
 from core.models import *
 from clinical.models import *
 from revenue.models import *
@@ -208,7 +209,7 @@ def record_edit(request,key,pk=None):
             return redirect(record_url(key,saved))
         except (ValidationError,IntegrityError) as exc:
             form.add_error(None,error_text(exc) if isinstance(exc,ValidationError) else 'This record conflicts with an existing record. Reload and try again.')
-    return render(request,'form.html',{'active':key,'title':('Edit ' if pk else 'New ')+spec.title,'form':form,'back':record_url(key,obj) if obj else f'/records/{key}/','submit_label':'Send message' if key == 'messages' and not pk else 'Save changes','hint':'All changes persist. Use fictional information only.'})
+    return render(request,'form.html',{'active':key,'title':('Edit ' if pk else 'New ')+spec.title,'form':form,'back':record_url(key,obj) if obj else f'/records/{key}/','related_claim':obj.claim if key=='denials' and obj else None,'submit_label':'Send message' if key == 'messages' and not pk else 'Save changes','hint':'All changes persist. Use fictional information only.'})
 
 def actions_for(key,obj,user):
     r=role(user); acts=[]
@@ -246,6 +247,19 @@ def record_detail(request,key,pk):
         fields = [(label, ('Not yet validated' if not checked else readable(obj.validation_errors) if obj.validation_errors else 'No validation errors') if label == 'Validation Errors' else ('Not yet validated' if not checked else readable(obj.validation_warnings) if obj.validation_warnings else 'No validation warnings') if label == 'Validation Warnings' else value) for label,value in fields]
     extras={}
     if key=='claims': extras.update(total=obj.total,balance=obj.balance,payments=obj.payments.all(),errors=obj.validation_errors,warnings=obj.validation_warnings)
+    if key=='claims':
+        extras['workflow_hint']={
+            'Draft':'Next: review the corrected claim before validation.',
+            'Ready for Review':'Next: validate the claim and resolve any blocking errors.',
+            'Validation Failed':'Resolve the listed errors, then validate again.',
+            'Validated':'Next: submit the validated claim to the simulated payer.',
+            'Submitted':'Next: retrieve the simulated payer response.',
+            'Accepted':'Next: adjudicate the accepted claim to record its simulated outcome.',
+            'Denied':'Review the denial and supporting information, then correct the claim to start a new review.',
+            'Rejected':'Correct the rejected claim, then review and validate it again.',
+            'Paid':'Payment is complete. Close the claim when your review is finished.',
+            'Closed':'This claim is closed. Its payment and activity history remain available.',
+        }.get(obj.status,'Review the claim balance and available related actions.')
     if key=='medications': extras['warnings']=medication_warnings(obj)
     if key=='waitlist': extras['hint']='Find & book slot checks weekdays and provider conflicts within the requested dates. Notification is recorded as a simulated task.'
     return render(request,'detail.html',{'active':key,'title':str(obj),'subtitle':spec.title,'key':key,'obj':obj,'fields':fields,'actions':actions_for(key,obj,request.user),'can_edit':role(request.user) in spec.write and editable(key,obj),'extras':extras,'events':AuditEvent.objects.filter(entity=obj._meta.label,object_id=str(obj.pk))[:20]})
@@ -354,7 +368,19 @@ def schedule(request):
         if provider.isdigit(): providers=providers.filter(pk=provider)
         if department.isdigit(): providers=providers.filter(department_id=department)
         for p in providers: columns.append({'label':p.name,'appointments':[a for a in qs if a.provider_id==p.pk]})
-    return render(request,'schedule.html',{'active':'schedule','title':'Schedule','subtitle':'Coordinate the day. Keep care moving.','day':day,'prev':day-timedelta(days=7 if view=='week' else 1),'next':day+timedelta(days=7 if view=='week' else 1),'columns':columns,'view':view,'providers':Provider.objects.all(),'can_book':role(request.user) in OPERATIONS,'count':qs.count(),'requests_count':AppointmentRequest.objects.filter(status='Requested').count()})
+    if view != 'week':
+        empty_columns=[c for c in columns if not c['appointments']]
+        columns=[c for c in columns if c['appointments']]
+    else:
+        empty_columns=[]
+    navigation=request.GET.copy()
+    navigation['date']=(day-timedelta(days=7 if view=='week' else 1)).isoformat()
+    prev_query=navigation.urlencode()
+    navigation['date']=(day+timedelta(days=7 if view=='week' else 1)).isoformat()
+    next_query=navigation.urlencode()
+    navigation['date']=timezone.localdate().isoformat()
+    today_query=navigation.urlencode()
+    return render(request,'schedule.html',{'active':'schedule','title':'Schedule','subtitle':'Coordinate the day. Keep care moving.','day':day,'prev':day-timedelta(days=7 if view=='week' else 1),'next':day+timedelta(days=7 if view=='week' else 1),'columns':columns,'empty_columns':empty_columns,'first':first,'last':last,'prev_query':prev_query,'next_query':next_query,'today_query':today_query,'view':view,'providers':Provider.objects.all(),'can_book':role(request.user) in OPERATIONS,'count':qs.count(),'requests_count':AppointmentRequest.objects.filter(status='Requested').count()})
 
 @login_required
 def checkin(request,pk):
@@ -443,7 +469,7 @@ def encounter_view(request,pk):
                     new=save_note(request.user,e,{k:getattr(previous,k) for k in ['subjective','objective','assessment','plan']},request.POST.get('version',0))
                     new.provenance=f'Copied from note #{previous.pk} v{previous.version}; requires review'; new.save(); audit(request.user,'Note copied forward',new,source_note=previous.pk)
             else: raise ValidationError('Unknown action.')
-            messages.success(request,action+' completed.')
+            messages.success(request,'AI draft applied. The note remains unsigned. Complete missing details, save, and review before signing.' if action=='Approve AI draft' else action+' completed.')
             return redirect('encounter',pk=pk)
         except (ValidationError,ValueError) as exc: messages.error(request,error_text(exc))
     return render(request,'encounter.html',{'active':'encounters','title':str(e),'encounter':e,'patient':e.patient,'note':note,'form':form,'vitals':e.vitals.order_by('-created_at').first(),'problems':e.diagnoses.select_related('code'),'orders':e.orders.all(),'can_document':role(request.user) in {'admin','physician'},'ai_draft':e.ai_drafts.filter(status='Unreviewed').order_by('-created_at').first(),'versions':note.versions.order_by('-version')})
@@ -473,6 +499,7 @@ def bill_encounter(request,pk):
     except ValidationError as exc: messages.error(request,error_text(exc)); return redirect('encounter',pk=pk)
 
 @login_required
+@never_cache
 def payment_view(request,pk):
     require(request.user,{'admin','billing','patient'})
     claim=get_object_or_404(Claim,pk=pk,encounter__patient__in=patients_for(request.user))
@@ -493,13 +520,19 @@ def payment_view(request,pk):
             messages.success(request,'Simulated payment posted. No money was transferred.')
             return redirect('receipt',pk=payment.pk)
         except ValidationError as exc: form.add_error(None,error_text(exc))
-    return render(request,'form.html',{'active':'claims','title':f'Simulated payment · {claim}','form':form,'hint':f'Outstanding balance: ${claim.balance}. No card details are collected.','back':'/portal/' if role(request.user)=='patient' else record_url('claims',claim)})
+    return render(request,'form.html',{'active':'claims','title':f'Simulated payment · {claim}','payment_return':'/portal/#bills' if role(request.user)=='patient' else record_url('claims',claim),'submit_label':'Post simulated payment','form':form,'hint':f'Outstanding balance: ${claim.balance}. No card details are collected.','back':'/portal/' if role(request.user)=='patient' else record_url('claims',claim)})
 
 @login_required
+@never_cache
 def receipt(request,pk):
     require(request.user,FINANCE|{'frontdesk','patient'})
     payment=get_object_or_404(Payment,pk=pk,patient__in=patients_for(request.user))
-    return render(request,'receipt.html',{'title':'Payment receipt','payment':payment})
+    finance_access=role(request.user) in FINANCE
+    claim_url=record_url('claims',payment.claim) if payment.claim_id and finance_access else None
+    return render(request,'receipt.html',{'title':'Payment receipt','payment':payment,'claim_url':claim_url,
+        'return_url':claim_url or ('/portal/#bills' if role(request.user)=='patient' else f'/patients/{payment.patient_id}/?tab=Billing'),
+        'return_label':'Return to claim' if claim_url else 'Return to bills',
+        'history_url':claim_url+'#payment-history' if claim_url else '/portal/#bills' if role(request.user)=='patient' else f'/patients/{payment.patient_id}/?tab=Billing'})
 
 @login_required
 def message_detail(request,thread):
@@ -602,16 +635,25 @@ def reports(request):
     except ValueError:
         messages.error(request,'Invalid reporting date range. Showing the last 30 days.'); start=timezone.localdate()-timedelta(days=30); end=timezone.localdate()
     apps=apps.filter(start__date__range=[start,end]); encounters=encounters.filter(created_at__date__range=[start,end]); claims=claims.filter(encounter__in=encounters); payments=payments.filter(created_at__date__range=[start,end])
+    submitted=Claim.objects.filter(submitted_at__date__range=[start,end])
     for field in ['provider','department']:
         value=request.GET.get(field,'')
         if value.isdigit():
             lookup='provider_id' if field=='provider' else 'provider__department_id'
-            apps=apps.filter(**{lookup:value}); encounters=encounters.filter(**{lookup:value}); claims=claims.filter(encounter__in=encounters); payments=payments.filter(claim__encounter__in=encounters)
+            apps=apps.filter(**{lookup:value}); encounters=encounters.filter(**{lookup:value}); claims=claims.filter(encounter__in=encounters); submitted=submitted.filter(**{'encounter__'+lookup:value}); payments=payments.filter(Q(**{'claim__encounter__'+lookup:value}) | Q(claim__isnull=True, **{'checkin__appointment__'+lookup:value}))
     total=sum((c.total for c in claims),Decimal(0)); balance=sum((c.balance for c in claims),Decimal(0)); paid=payments.aggregate(s=Sum('amount'))['s'] or 0
     denial_rate=round(claims.filter(status='Denied').count()/max(claims.count(),1)*100,1)
-    submitted=claims.exclude(submitted_at=None)
     accepted=submitted.filter(status__in=['Accepted','Adjudicated','Paid','Closed','Partially Paid','Denied'])
     metrics=[('Appointments',apps.count()),('No-show rate',f'{apps.filter(status="No Show").count()/max(apps.count(),1)*100:.1f}%'),('Encounters',encounters.count()),('Completion rate',f'{encounters.filter(status__in=["Signed","Closed"]).count()/max(encounters.count(),1)*100:.1f}%'),('Total charges',f'${total:,.2f}'),('Simulated payments',f'${paid:,.2f}'),('Outstanding',f'${balance:,.2f}'),('Denial rate',f'{denial_rate}%'),('Unsigned notes',encounters.exclude(status__in=['Signed','Closed']).count()),('Results awaiting review',LabResult.objects.filter(order__encounter__in=encounters,status='Published').count()),('Claims submitted',submitted.count()),('Acceptance rate',f'{accepted.count()/max(submitted.count(),1)*100:.1f}%')]
+    bases={
+        'Appointments':'Scheduled visit date', 'No-show rate':'Scheduled visit date',
+        'Encounters':'Encounter creation date', 'Completion rate':'Current state · encounter creation date',
+        'Total charges':'Current charges · encounter creation date',
+        'Simulated payments':'Payment posting date', 'Outstanding':'Current balance · encounter creation date',
+        'Denial rate':'Current state · encounter creation date', 'Unsigned notes':'Current state · encounter creation date',
+        'Results awaiting review':'Current state · encounter creation date',
+        'Claims submitted':'Latest submission date', 'Acceptance rate':'Current state · latest submission date',
+    }
     aging={x:Decimal(0) for x in ['0–30 days','31–60 days','61–90 days','90+ days']}
     for c in claims:
         days=(timezone.localdate()-c.created_at.date()).days
@@ -621,8 +663,8 @@ def reports(request):
     for row in distribution: row['width']=round(row['count']/max(apps.count(),1)*100)
     if request.GET.get('export')=='csv':
         response=HttpResponse(content_type='text/csv'); response['Content-Disposition']='attachment; filename="athenaflow-report.csv"'
-        writer=csv.writer(response); writer.writerow(['Metric','Value','Start','End'])
-        for name,val in metrics+[(label,money(value)) for label,value in aging.items()]: writer.writerow([name,val,start,end])
+        writer=csv.writer(response); writer.writerow(['Metric','Value','Start','End','Date basis','Provider','Department'])
+        for name,val in metrics+[(label,money(value)) for label,value in aging.items()]: writer.writerow([name,val,start,end,bases.get(name,'Current balance · encounter creation date'),request.GET.get('provider','') or 'All',request.GET.get('department','') or 'All'])
         audit(request.user,'Report exported',request.user); return response
     query=request.GET.copy(); query['export']='csv'
     weekdays=sum(1 for offset in range((end-start).days+1) if (start+timedelta(days=offset)).weekday()<5)
@@ -638,7 +680,7 @@ def reports(request):
     trend=list(payments.annotate(day=TruncDate('created_at')).values('day').annotate(amount=Sum('amount')).order_by('day'))
     max_amount=max((row['amount'] for row in trend),default=Decimal(1))
     for row in trend: row['width']=round(row['amount']/max(max_amount,1)*100)
-    return render(request,'reports.html',{'active':'reports','title':'Practice analytics','subtitle':'Calculated from your practice records','metrics':metrics,'aging':aging.items(),'distribution':distribution,'utilization':utilization,'trend':trend,'start':start,'end':end,'providers':Provider.objects.all(),'export_query':query.urlencode(),'diagnoses':Problem.objects.filter(encounter__in=encounters).values('code__description').annotate(count=Count('pk')).order_by('-count')[:6]})
+    return render(request,'reports.html',{'active':'reports','title':'Practice analytics','subtitle':'Calculated from your practice records','metrics':metrics,'metric_cards':[(name,val,bases[name]) for name,val in metrics],'aging':aging.items(),'distribution':distribution,'utilization':utilization,'trend':trend,'start':start,'end':end,'providers':Provider.objects.all(),'export_query':query.urlencode(),'diagnoses':Problem.objects.filter(encounter__in=encounters).values('code__description').annotate(count=Count('pk')).order_by('-count')[:6]})
 
 @login_required
 def administration(request):

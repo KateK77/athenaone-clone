@@ -18,6 +18,8 @@ document.querySelectorAll('select[data-search-select]').forEach(select => {
   const status = document.createElement('small'); status.id = `${select.id}-search-status`;
   status.setAttribute('role','status'); select.setAttribute('aria-describedby',status.id);
   select.before(label,input); select.after(status);
+  const selectedSummary=document.createElement('div'); selectedSummary.className='selected-record';
+  selectedSummary.setAttribute('role','status'); status.after(selectedSummary);
   const filter = () => {
     const selected = select.value;
     const words = input.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -25,6 +27,7 @@ document.querySelectorAll('select[data-search-select]').forEach(select => {
     const visible = options.filter(option => !option.value || option.value === selected || matches.includes(option));
     select.replaceChildren(...visible.map(option => option.cloneNode(true)));
     select.value = selected;
+    selectedSummary.textContent = selected ? 'Selected: ' + select.selectedOptions[0].textContent : '';
     select.size = words.length ? Math.min(6,Math.max(2,visible.length)) : 1;
     status.textContent = words.length ? `${matches.length ? `${matches.length} matching choices.` : 'No matches.'} Current selection stays until you choose another.` : 'Type to narrow the list, then select a patient or record.';
   };
@@ -42,20 +45,36 @@ const heightUnit = document.querySelector('#id_height_unit'), weightUnit = docum
 const bmi = document.querySelector('#bmi-preview');
 if(height && weight && heightUnit && weightUnit){
   const factor = unit => ({in:2.54,cm:1,lb:0.45359237,kg:1})[unit];
+  const values = new Map();
   const preview = () => {
-    const h=Number(height.value)*factor(heightUnit.value), w=Number(weight.value)*factor(weightUnit.value);
+    const h=values.get(height), w=values.get(weight);
     if(bmi) bmi.textContent = h>0 && w>0 ? `BMI preview: ${(w / ((h/100)**2)).toFixed(1)}` : 'Enter height and weight to calculate BMI.';
   };
   [[height,heightUnit],[weight,weightUnit]].forEach(([field,unit]) => {
-    let canonical = field.value === '' ? null : Number(field.value)*factor(unit.value);
-    field.addEventListener('input',()=>{canonical=field.value===''?null:Number(field.value)*factor(unit.value);preview();});
+    const hidden=document.querySelector(`#id_${field.name}_canonical`);
+    const supplied=Number(hidden?.value), displayed=Number(field.value);
+    let canonical=field.value==='' ? null : displayed*factor(unit.value);
+    if(hidden?.value && Number.isFinite(supplied) && Math.abs(supplied/factor(unit.value)-displayed)<=0.005)canonical=supplied;
+    const sync=()=>{values.set(field,canonical);if(hidden)hidden.value=canonical===null?'':canonical.toFixed(8);preview();};
+    field.addEventListener('input',()=>{canonical=field.value===''?null:Number(field.value)*factor(unit.value);sync();});
+    field.addEventListener('blur',()=>{if(field.value!=='' && Number.isFinite(canonical)){field.value=String(Number((canonical/factor(unit.value)).toFixed(2)));sync();}});
     unit.addEventListener('change',()=>{
-      if(canonical!==null && Number.isFinite(canonical)) field.value=String(Number((canonical/factor(unit.value)).toFixed(6)));
-      preview();
+      if(canonical!==null && Number.isFinite(canonical))field.value=String(Number((canonical/factor(unit.value)).toFixed(2)));
+      sync();
     });
+    sync();
   });
-  preview();
 }
+
+document.querySelector('[data-schedule-filters]')?.addEventListener('change',event=>{
+  if(event.target.matches('select,input[type=date]'))event.currentTarget.requestSubmit();
+});
+// A restored payment form returns to a fresh balance instead of replaying an old amount.
+window.addEventListener('pageshow',event=>{
+  const form=document.querySelector('[data-payment-return]');
+  const restored=event.persisted || performance.getEntriesByType('navigation')[0]?.type==='back_forward';
+  if(form && restored)window.location.replace(form.dataset.paymentReturn);
+});
 
 // Message badges stay current in visible pages; no external notification service.
 if(document.querySelector('.message-notification')){

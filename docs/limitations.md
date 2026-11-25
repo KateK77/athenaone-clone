@@ -50,3 +50,11 @@ The original brief describes a much larger enterprise product than this version.
 ## V2-specific boundaries
 
 See [V2 iteration](v2-iteration.md) for polling behavior, legacy read receipts, unit storage precision and current selector scale. Full Description V2 preserves all original requirements; remaining enterprise features above are not implicitly marked implemented by the V2 feedback fixes.
+
+## V3-specific boundaries
+
+V3 supersedes the V2 one-decimal measurement storage boundary with eight-decimal canonical storage and at most two visible decimal places. Existing rounded records cannot regain discarded precision. Canonical conversion metadata is accepted only when it agrees with the visible measurement and allowed range.
+
+Reports identify the date basis of each metric. Submission counts use each claim's latest submission date; historical submission-attempt counts and historical as-of balances remain outside the model. The CSV includes three additional scope columns. Browser history restoration redirects stale payment forms to current balances when JavaScript is active; backend duplicate and balance checks remain independent.
+
+[Description V3](../description_v3.md) preserves the broader requirements; the inherited omissions above remain. See [V3 validation](v3-iteration.md) for actual local checks, migration preservation and screenshots. No new external pharmacy, payer, payment or live LLM integration was introduced.

@@ -43,3 +43,7 @@ Status is relative to the complete original brief. **Implemented** applies to th
 | CUA evaluation | Independent Computer Use Agent evaluation | Missing | — | Not performed | Playwright is not a substitute |
 
 The original specification remains the authority for evaluating omissions. See `limitations.md` for additional details and `testing.md` for actual executed test totals.
+
+## V3 interface and workflow improvements
+
+Implemented: shared readable typography and control contrast; full selected patient summaries; responsive schedule grouping with synchronized filters; compact portal sections and visible renewal actions; two-decimal measurement display with eight-decimal canonical storage; explicit unsigned AI application and complete objective units; prominent claim next steps and denial return links; payment receipt navigation and stale-form restoration handling; independent submission/payment date cohorts and CSV scope labels. See [V3 iteration](v3-iteration.md) for verification and compatibility details. These improvements do not change Partial or Missing classifications for the broader enterprise features above.

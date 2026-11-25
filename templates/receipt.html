@@ -1,1 +1,23 @@
-{% extends 'base.html' %}{% load presentation %}{% block content %}<section class="card receipt"><span class="pill">SIMULATED PAYMENT</span><h2>Payment recorded</h2><strong class="receipt-amount">{{ payment.amount|money }}</strong><dl class="detail-fields"><div><dt>Receipt reference</dt><dd>{{ payment.reference }}</dd></div><div><dt>Patient</dt><dd>{{ payment.patient }}</dd></div><div><dt>Source</dt><dd>{{ payment.source }}</dd></div><div><dt>Claim</dt><dd>{{ payment.claim|default:'Visit copay credit' }}</dd></div><div><dt>Date</dt><dd>{{ payment.created_at }}</dd></div></dl><p>No money was transferred. This receipt records a synthetic transaction.</p><button class="button secondary print-page" type="button">Print receipt</button></section>{% endblock %}
+{% extends 'base.html' %}
+{% load presentation %}
+{% block heading_actions %}<a class="button" href="{{ return_url }}">← {{ return_label }}</a>{% endblock %}
+{% block content %}
+<section class="card receipt">
+  <span class="pill">SIMULATED PAYMENT</span>
+  <h2>Payment recorded</h2>
+  <strong class="receipt-amount">{{ payment.amount|money }}</strong>
+  {% if payment.claim %}<p class="receipt-balance"><strong>Current outstanding balance: {{ payment.claim.balance|money }}</strong></p>{% endif %}
+  <div class="receipt-actions">
+    <a class="button" href="{{ history_url }}">View payment history</a>
+    <button class="button secondary print-page" type="button">Print receipt</button>
+  </div>
+  <dl class="detail-fields">
+    <div><dt>Receipt reference</dt><dd>{{ payment.reference }}</dd></div>
+    <div><dt>Patient</dt><dd>{{ payment.patient }}</dd></div>
+    <div><dt>Source</dt><dd>{{ payment.source }}</dd></div>
+    <div><dt>Claim</dt><dd>{% if claim_url %}<a class="text-link" href="{{ claim_url }}">{{ payment.claim }} ↗</a>{% else %}{{ payment.claim|default:'Visit copay credit' }}{% endif %}</dd></div>
+    <div><dt>Date</dt><dd>{{ payment.created_at }}</dd></div>
+  </dl>
+  <p>No money was transferred. This receipt records a synthetic transaction.</p>
+</section>
+{% endblock %}
