@@ -1,0 +1,10 @@
+{
+  "suite_id": "AthenaFlow-V3-Independent-CUA-472",
+  "completed_ids": [],
+  "next_test_id": "AF3-004",
+  "execution_sequence": 1,
+  "in_progress_test_id": null,
+  "last_uploaded_batch": null,
+  "last_remote_commit": null,
+  "pending_uploads": []
+}

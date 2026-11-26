@@ -1,0 +1,26 @@
+{
+  "run_id": null,
+  "target_url": null,
+  "repository": "https://github.com/KateK77/athenaone-clone",
+  "source_branch": null,
+  "source_commit": null,
+  "served_commit": null,
+  "commit_verification": "UNVERIFIED",
+  "source_vs_served_evidence": [],
+  "model": "UNKNOWN_UNEXPOSED",
+  "reasoning_effort": "UNKNOWN_UNEXPOSED",
+  "browser_name": null,
+  "browser_version": null,
+  "computer_use_tool": null,
+  "screenshot_driven": null,
+  "execution_timezone": null,
+  "application_timezone": null,
+  "locale": null,
+  "viewports": [],
+  "demo_data_seed": null,
+  "fixture_baseline": null,
+  "paid_api_calls": 0,
+  "notes": [
+    "No browser execution occurred during benchmark design."
+  ]
+}

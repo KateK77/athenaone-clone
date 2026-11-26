@@ -1,0 +1,391 @@
+{
+  "suite_id": "AthenaFlow-V3-Independent-CUA-472",
+  "result_policy": "current_snapshot",
+  "overall": {
+    "total": 472,
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT_RUN": 472,
+    "evaluated": 0,
+    "evaluated_pass_rate": null,
+    "execution_coverage": 0.0,
+    "suite_success_fraction": 0.0
+  },
+  "by_difficulty": {
+    "Easy": {
+      "total": 26,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 26,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Medium": {
+      "total": 296,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 296,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Hard": {
+      "total": 127,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 127,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Expert": {
+      "total": 23,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 23,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    }
+  },
+  "by_module": {
+    "Authentication and role boundaries": {
+      "total": 18,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 18,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Global navigation and accessibility": {
+      "total": 20,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 20,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Registration and patient selection": {
+      "total": 24,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 24,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Longitudinal patient chart": {
+      "total": 14,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 14,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Scheduling and waitlist": {
+      "total": 26,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 26,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Front desk check-in": {
+      "total": 12,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 12,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Vitals units and clinical intake": {
+      "total": 26,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 26,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Encounters notes and signatures": {
+      "total": 24,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 24,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Problems and diagnoses": {
+      "total": 12,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 12,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Medication management": {
+      "total": 16,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 16,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Medical orders": {
+      "total": 16,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 16,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Laboratory processing and result release": {
+      "total": 16,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 16,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Insurance coverage and eligibility": {
+      "total": 16,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 16,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Charge capture and coding": {
+      "total": 16,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 16,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Claim validation and payer lifecycle": {
+      "total": 26,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 26,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Denials and appeals": {
+      "total": 12,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 12,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Prior authorization": {
+      "total": 14,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 14,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Payments responsibility and receipts": {
+      "total": 24,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 24,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Patient portal workflows": {
+      "total": 18,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 18,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Messaging unread state and privacy": {
+      "total": 18,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 18,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "AI assistance and unsigned documentation": {
+      "total": 24,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 24,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Clinical inbox and tasks": {
+      "total": 10,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 10,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Analytics cohorts filters and CSV parity": {
+      "total": 24,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 24,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Read-only interoperability through browser": {
+      "total": 10,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 10,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Administration and safe demo management": {
+      "total": 12,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 12,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Audit trails and readable activity": {
+      "total": 10,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 10,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    },
+    "Integrated multi-role workflows": {
+      "total": 14,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 14,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    }
+  },
+  "by_environment_segment": {
+    "UNBOUND": {
+      "total": 472,
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_RUN": 472,
+      "evaluated": 0,
+      "evaluated_pass_rate": null,
+      "execution_coverage": 0.0,
+      "suite_success_fraction": 0.0
+    }
+  },
+  "attempts_recorded": 0,
+  "interrupted_attempts": 0,
+  "limitations": [
+    "Statistics reflect supplied ledgers, not independent verification of screenshots or execution.",
+    "UNVERIFIED commit/model fields must remain disclosed."
+  ],
+  "first_final_outcome": {
+    "total": 472,
+    "PASS": 0,
+    "FAIL": 0,
+    "BLOCKED": 0,
+    "NOT_RUN": 472,
+    "evaluated": 0,
+    "evaluated_pass_rate": null,
+    "execution_coverage": 0.0,
+    "suite_success_fraction": 0.0
+  },
+  "retry_disclosure": "First final outcome comes only from append-only attempts; interrupted NOT_RUN attempts are counted separately."
+}

@@ -1,0 +1,473 @@
+﻿Requirement key,Source document,Source sections,Module,Test ID,Distinct condition or workflow,Difficulty,Verification mode
+AF3-AUTH-01,description_v3.md,5; 28; 32,AUTH,AF3-001,Administrator demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-02,description_v3.md,5; 28; 32,AUTH,AF3-002,Manager demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-03,description_v3.md,5; 28; 32,AUTH,AF3-003,Front desk demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-04,description_v3.md,5; 28; 32,AUTH,AF3-004,Physician demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-05,description_v3.md,5; 28; 32,AUTH,AF3-005,Nurse demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-06,description_v3.md,5; 28; 32,AUTH,AF3-006,Medical assistant demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-07,description_v3.md,5; 28; 32,AUTH,AF3-007,Billing demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-08,description_v3.md,5; 28; 32,AUTH,AF3-008,Coder demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-09,description_v3.md,5; 28; 32,AUTH,AF3-009,Patient demo login,Easy,Browser CUA; UI-visible scope only
+AF3-AUTH-10,description_v3.md,5; 28; 32,AUTH,AF3-010,Invalid password rejected,Medium,Browser CUA; UI-visible scope only
+AF3-AUTH-11,description_v3.md,5; 28; 32,AUTH,AF3-011,Required login fields,Medium,Browser CUA; UI-visible scope only
+AF3-AUTH-12,description_v3.md,5; 28; 32,AUTH,AF3-012,Logout invalidates authenticated navigation,Medium,Browser CUA; UI-visible scope only
+AF3-AUTH-13,description_v3.md,5; 28; 32,AUTH,AF3-013,Unauthenticated direct staff URL,Hard,Browser CUA; UI-visible scope only
+AF3-AUTH-14,description_v3.md,5; 28; 32,AUTH,AF3-014,Front desk cannot sign note,Hard,Browser CUA; UI-visible scope only
+AF3-AUTH-15,description_v3.md,5; 28; 32,AUTH,AF3-015,Nurse cannot sign physician documentation,Hard,Browser CUA; UI-visible scope only
+AF3-AUTH-16,description_v3.md,5; 28; 32,AUTH,AF3-016,Patient cannot open another chart,Hard,Browser CUA; UI-visible scope only
+AF3-AUTH-17,description_v3.md,5; 28; 32,AUTH,AF3-017,Billing role cannot manage staff roles,Hard,Browser CUA; UI-visible scope only
+AF3-AUTH-18,description_v3.md,5; 28; 32,AUTH,AF3-018,Cross-role session identity isolation,Hard,Browser CUA; UI-visible scope only
+AF3-UX-01,description_v3.md,4; 7.1; 31,UX,AF3-019,Global patient search identity,Easy,Browser CUA; UI-visible scope only
+AF3-UX-02,description_v3.md,4; 7.1; 31,UX,AF3-020,Role-aware navigation destinations,Medium,Browser CUA; UI-visible scope only
+AF3-UX-03,description_v3.md,4; 7.1; 31,UX,AF3-021,Department context changes coherently,Medium,Browser CUA; UI-visible scope only
+AF3-UX-04,description_v3.md,4; 7.1; 31,UX,AF3-022,Account dropdown at desktop width,Medium,Browser CUA; UI-visible scope only
+AF3-UX-05,description_v3.md,4; 7.1; 31,UX,AF3-023,Staff account dropdown on narrow viewport,Medium,Browser CUA; UI-visible scope only
+AF3-UX-06,description_v3.md,4; 7.1; 31,UX,AF3-024,Portal account dropdown without global search,Medium,Browser CUA; UI-visible scope only
+AF3-UX-07,description_v3.md,4; 7.1; 31,UX,AF3-025,Tablet navigation and content reflow,Medium,Browser CUA; UI-visible scope only
+AF3-UX-08,description_v3.md,4; 7.1; 31,UX,AF3-026,Mobile chart essential information,Medium,Browser CUA; UI-visible scope only
+AF3-UX-09,description_v3.md,4; 7.1; 31,UX,AF3-027,Keyboard form operation,Medium,Browser CUA; UI-visible scope only
+AF3-UX-10,description_v3.md,4; 7.1; 31,UX,AF3-028,Checkbox label toggles control,Medium,Browser CUA; UI-visible scope only
+AF3-UX-11,description_v3.md,4; 7.1; 31,UX,AF3-029,Explicit clinical action names,Easy,Browser CUA; UI-visible scope only
+AF3-UX-12,description_v3.md,4; 7.1; 31,UX,AF3-030,Readable typography at default zoom,Medium,Browser CUA; UI-visible scope only
+AF3-UX-13,description_v3.md,4; 7.1; 31,UX,AF3-031,Recognizable buttons and focus,Medium,Browser CUA; UI-visible scope only
+AF3-UX-14,description_v3.md,4; 7.1; 31,UX,AF3-032,Form spacing and amount width,Medium,Browser CUA; UI-visible scope only
+AF3-UX-15,description_v3.md,4; 7.1; 31,UX,AF3-033,Responsive long tables,Medium,Browser CUA; UI-visible scope only
+AF3-UX-16,description_v3.md,4; 7.1; 31,UX,AF3-034,Readable empty state,Easy,Browser CUA; UI-visible scope only
+AF3-UX-17,description_v3.md,4; 7.1; 31,UX,AF3-035,Recoverable field validation,Medium,Browser CUA; UI-visible scope only
+AF3-UX-18,description_v3.md,4; 7.1; 31,UX,AF3-036,Destructive-action cancellation,Medium,Browser CUA; UI-visible scope only
+AF3-UX-19,description_v3.md,4; 7.1; 31,UX,AF3-037,Loading interaction does not duplicate submission,Medium,Browser CUA; UI-visible scope only
+AF3-UX-20,description_v3.md,4; 7.1; 31,UX,AF3-038,Patient selection summary wraps,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-01,description_v3.md,7; 26,PAT,AF3-039,Register complete patient,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-02,description_v3.md,7; 26,PAT,AF3-040,Minimal required registration,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-03,description_v3.md,7; 26,PAT,AF3-041,Required identity validation,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-04,description_v3.md,7; 26,PAT,AF3-042,Duplicate MRN rejected,Hard,Browser CUA; UI-visible scope only
+AF3-PAT-05,description_v3.md,7; 26,PAT,AF3-043,Duplicate demographic warning,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-06,description_v3.md,7; 26,PAT,AF3-044,Search before registering,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-07,description_v3.md,7; 26,PAT,AF3-045,Edit contact information,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-08,description_v3.md,7; 26,PAT,AF3-046,Optional preferred name and language,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-09,description_v3.md,7; 26,PAT,AF3-047,Emergency contact persistence,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-10,description_v3.md,7; 26,PAT,AF3-048,Consent state persistence,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-11,description_v3.md,7; 26,PAT,AF3-049,Invalid demographic formatting,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-12,description_v3.md,7; 26,PAT,AF3-050,Directory search by exact MRN,Easy,Browser CUA; UI-visible scope only
+AF3-PAT-13,description_v3.md,7; 26,PAT,AF3-051,Directory search by name,Easy,Browser CUA; UI-visible scope only
+AF3-PAT-14,description_v3.md,7; 26,PAT,AF3-052,DOB directory filter,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-15,description_v3.md,7; 26,PAT,AF3-053,Provider and department directory filters,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-16,description_v3.md,7; 26,PAT,AF3-054,Patient status filter,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-17,description_v3.md,7; 26,PAT,AF3-055,Directory sorting and pagination,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-18,description_v3.md,7; 26,PAT,AF3-056,Patient selector typed name filter,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-19,description_v3.md,7; 26,PAT,AF3-057,Patient selector typed MRN filter,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-20,description_v3.md,7; 26,PAT,AF3-058,Search does not replace selection,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-21,description_v3.md,7; 26,PAT,AF3-059,Keyboard patient selection and empty result,Medium,Browser CUA; UI-visible scope only
+AF3-PAT-22,description_v3.md,7; 26,PAT,AF3-060,Patient selection survives validation,Hard,Browser CUA; UI-visible scope only
+AF3-PAT-23,description_v3.md,7; 26,PAT,AF3-061,Diagnosis and encounter selectors prevent wrong-patient context,Hard,Browser CUA; UI-visible scope only
+AF3-PAT-24,description_v3.md,7; 26,PAT,AF3-062,Scoped patient selector for restricted role,Hard,Browser CUA; UI-visible scope only
+AF3-CHART-01,description_v3.md,7.3; 26,CHART,AF3-063,Summary reconciles patient identity,Easy,Browser CUA; UI-visible scope only
+AF3-CHART-02,description_v3.md,7.3; 26,CHART,AF3-064,Encounter history opens correct visit,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-03,description_v3.md,7.3; 26,CHART,AF3-065,Medical and surgical histories persist,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-04,description_v3.md,7.3; 26,CHART,AF3-066,Family and social histories remain distinct,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-05,description_v3.md,7.3; 26,CHART,AF3-067,Add allergy and review chart banner,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-06,description_v3.md,7.3; 26,CHART,AF3-068,Allergy edit history and current state,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-07,description_v3.md,7.3; 26,CHART,AF3-069,Chart medication status display,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-08,description_v3.md,7.3; 26,CHART,AF3-070,Vitals chronology and units,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-09,description_v3.md,7.3; 26,CHART,AF3-071,Orders and results cross-links,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-10,description_v3.md,7.3; 26,CHART,AF3-072,Clinical document association,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-11,description_v3.md,7.3; 26,CHART,AF3-073,Immunization record display,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-12,description_v3.md,7.3; 26,CHART,AF3-074,Chart appointment history,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-13,description_v3.md,7.3; 26,CHART,AF3-075,Chart billing summary links,Medium,Browser CUA; UI-visible scope only
+AF3-CHART-14,description_v3.md,7.3; 26,CHART,AF3-076,Chart consistency after new diagnosis,Hard,Browser CUA; UI-visible scope only
+AF3-SCHED-01,description_v3.md,8,SCHED,AF3-077,Create appointment with default duration,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-02,description_v3.md,8,SCHED,AF3-078,Daily date change auto-updates,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-03,description_v3.md,8,SCHED,AF3-079,Provider filter auto-updates,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-04,description_v3.md,8,SCHED,AF3-080,Department filter auto-updates,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-05,description_v3.md,8,SCHED,AF3-081,Date navigation retains filters,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-06,description_v3.md,8,SCHED,AF3-082,Week heading and chronological ordering,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-07,description_v3.md,8,SCHED,AF3-083,Appointment-bearing provider groups prominent,Easy,Browser CUA; UI-visible scope only
+AF3-SCHED-08,description_v3.md,8,SCHED,AF3-084,Narrow schedule avoids empty horizontal canvas,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-09,description_v3.md,8,SCHED,AF3-085,Calendar card opens correct details,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-10,description_v3.md,8,SCHED,AF3-086,Provider overlap prevented,Hard,Browser CUA; UI-visible scope only
+AF3-SCHED-11,description_v3.md,8,SCHED,AF3-087,Back-to-back booking boundary,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-12,description_v3.md,8,SCHED,AF3-088,Different-provider simultaneous booking,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-13,description_v3.md,8,SCHED,AF3-089,Unavailable provider slot rejected,Hard,Browser CUA; UI-visible scope only
+AF3-SCHED-14,description_v3.md,8,SCHED,AF3-090,Reschedule retains appointment identity/history,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-15,description_v3.md,8,SCHED,AF3-091,Cancel appointment,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-16,description_v3.md,8,SCHED,AF3-092,Confirm scheduled appointment,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-17,description_v3.md,8,SCHED,AF3-093,Mark arrived appointment,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-18,description_v3.md,8,SCHED,AF3-094,Mark no-show appointment,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-19,description_v3.md,8,SCHED,AF3-095,Invalid lifecycle transition rejected,Hard,Browser CUA; UI-visible scope only
+AF3-SCHED-20,description_v3.md,8,SCHED,AF3-096,Check-out completion boundary,Hard,Browser CUA; UI-visible scope only
+AF3-SCHED-21,description_v3.md,8,SCHED,AF3-097,Appointment type duration configuration reflected,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-22,description_v3.md,8,SCHED,AF3-098,Waitlist enrollment preferences,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-23,description_v3.md,8,SCHED,AF3-099,Waitlist matching respects preferences,Hard,Browser CUA; UI-visible scope only
+AF3-SCHED-24,description_v3.md,8,SCHED,AF3-100,Waitlist simulated notification,Medium,Browser CUA; UI-visible scope only
+AF3-SCHED-25,description_v3.md,8,SCHED,AF3-101,Waitlist booking resolves entry,Hard,Browser CUA; UI-visible scope only
+AF3-SCHED-26,description_v3.md,8,SCHED,AF3-102,Schedule Apply fallback present and usable,Medium,Browser CUA; UI-visible scope only
+AF3-CHECK-01,description_v3.md,9; 11.2; 26,CHECK,AF3-103,Check-in identity step,Medium,Browser CUA; UI-visible scope only
+AF3-CHECK-02,description_v3.md,9; 11.2; 26,CHECK,AF3-104,Check-in demographics step,Medium,Browser CUA; UI-visible scope only
+AF3-CHECK-03,description_v3.md,9; 11.2; 26,CHECK,AF3-105,Check-in coverage review,Medium,Browser CUA; UI-visible scope only
+AF3-CHECK-04,description_v3.md,9; 11.2; 26,CHECK,AF3-106,Consent blocks incomplete check-in,Medium,Browser CUA; UI-visible scope only
+AF3-CHECK-05,description_v3.md,9; 11.2; 26,CHECK,AF3-107,Intake forms completion indicator,Medium,Browser CUA; UI-visible scope only
+AF3-CHECK-06,description_v3.md,9; 11.2; 26,CHECK,AF3-108,Simulated copay during check-in,Medium,Browser CUA; UI-visible scope only
+AF3-CHECK-07,description_v3.md,9; 11.2; 26,CHECK,AF3-109,Copay revisit does not double charge,Hard,Browser CUA; UI-visible scope only
+AF3-CHECK-08,description_v3.md,9; 11.2; 26,CHECK,AF3-110,Check-in resumes saved progress,Medium,Browser CUA; UI-visible scope only
+AF3-CHECK-09,description_v3.md,9; 11.2; 26,CHECK,AF3-111,Complete check-in creates worklist entry,Hard,Browser CUA; UI-visible scope only
+AF3-CHECK-10,description_v3.md,9; 11.2; 26,CHECK,AF3-112,Initial encounter does not start physician care,Hard,Browser CUA; UI-visible scope only
+AF3-CHECK-11,description_v3.md,9; 11.2; 26,CHECK,AF3-113,Missing registration requirements block completion,Hard,Browser CUA; UI-visible scope only
+AF3-CHECK-12,description_v3.md,9; 11.2; 26,CHECK,AF3-114,Check-in history is readable,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-01,description_v3.md,10,VITAL,AF3-115,New intake defaults to imperial units,Easy,Browser CUA; UI-visible scope only
+AF3-VITAL-02,description_v3.md,10,VITAL,AF3-116,Independent unit selection,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-03,description_v3.md,10,VITAL,AF3-117,Imperial to metric conversion,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-04,description_v3.md,10,VITAL,AF3-118,Metric to imperial conversion,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-05,description_v3.md,10,VITAL,AF3-119,Repeated unit toggle before saving,Hard,Browser CUA; UI-visible scope only
+AF3-VITAL-06,description_v3.md,10,VITAL,AF3-120,Precision survives save and reload,Hard,Browser CUA; UI-visible scope only
+AF3-VITAL-07,description_v3.md,10,VITAL,AF3-121,Changing converted value overrides original measurement,Hard,Browser CUA; UI-visible scope only
+AF3-VITAL-08,description_v3.md,10,VITAL,AF3-122,Changed converted weight persists,Hard,Browser CUA; UI-visible scope only
+AF3-VITAL-09,description_v3.md,10,VITAL,AF3-123,BMI automatic calculation,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-10,description_v3.md,10,VITAL,AF3-124,BMI invariant under unit switches,Hard,Browser CUA; UI-visible scope only
+AF3-VITAL-11,description_v3.md,10,VITAL,AF3-125,Trailing zeros suppressed,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-12,description_v3.md,10,VITAL,AF3-126,At most two displayed decimals,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-13,description_v3.md,10,VITAL,AF3-127,Validation preserves selected units,Hard,Browser CUA; UI-visible scope only
+AF3-VITAL-14,description_v3.md,10,VITAL,AF3-128,Unit conversion after validation error,Hard,Browser CUA; UI-visible scope only
+AF3-VITAL-15,description_v3.md,10,VITAL,AF3-129,Zero or negative height rejected,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-16,description_v3.md,10,VITAL,AF3-130,Zero or negative weight rejected,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-17,description_v3.md,10,VITAL,AF3-131,Pain range boundary accepted,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-18,description_v3.md,10,VITAL,AF3-132,Pain outside range rejected,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-19,description_v3.md,10,VITAL,AF3-133,All vital fields show units,Easy,Browser CUA; UI-visible scope only
+AF3-VITAL-20,description_v3.md,10,VITAL,AF3-134,Complete vitals set persists,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-21,description_v3.md,10,VITAL,AF3-135,Vital author and timestamp,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-22,description_v3.md,10,VITAL,AF3-136,Existing metric record keeps meaning,Hard,Browser CUA; UI-visible scope only
+AF3-VITAL-23,description_v3.md,10,VITAL,AF3-137,Chief complaint and intake note transfer,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-24,description_v3.md,10,VITAL,AF3-138,Reconciliation and review indicators,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-25,description_v3.md,10,VITAL,AF3-139,Screening questions and observations,Medium,Browser CUA; UI-visible scope only
+AF3-VITAL-26,description_v3.md,10,VITAL,AF3-140,Assistant rooming cannot start physician care,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-01,description_v3.md,11; 26,ENC,AF3-141,Encounter workspace patient context,Easy,Browser CUA; UI-visible scope only
+AF3-ENC-02,description_v3.md,11; 26,ENC,AF3-142,Appointment and documentation states separately labeled,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-03,description_v3.md,11; 26,ENC,AF3-143,Assigned physician starts care,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-04,description_v3.md,11; 26,ENC,AF3-144,Unassigned physician cannot start care,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-05,description_v3.md,11; 26,ENC,AF3-145,Administrator can start permitted care,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-06,description_v3.md,11; 26,ENC,AF3-146,Save complete SOAP draft,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-07,description_v3.md,11; 26,ENC,AF3-147,Edit existing unsigned draft,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-08,description_v3.md,11; 26,ENC,AF3-148,Preview note matches draft,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-09,description_v3.md,11; 26,ENC,AF3-149,Clinical template insertion,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-10,description_v3.md,11; 26,ENC,AF3-150,Clinical macro expansion,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-11,description_v3.md,11; 26,ENC,AF3-151,Copy-forward provenance,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-12,description_v3.md,11; 26,ENC,AF3-152,Documentation Pending state,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-13,description_v3.md,11; 26,ENC,AF3-153,Ready for Sign-off state,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-14,description_v3.md,11; 26,ENC,AF3-154,Required documentation blocks signing,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-15,description_v3.md,11; 26,ENC,AF3-155,Missing encounter diagnosis blocks signing,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-16,description_v3.md,11; 26,ENC,AF3-156,Order-state gate on sign-off,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-17,description_v3.md,11; 26,ENC,AF3-157,Acknowledgment gate on sign-off,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-18,description_v3.md,11; 26,ENC,AF3-158,Sign note records signature details,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-19,description_v3.md,11; 26,ENC,AF3-159,Signed note immutable on revisit,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-20,description_v3.md,11; 26,ENC,AF3-160,Auditable addendum preserves original,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-21,description_v3.md,11; 26,ENC,AF3-161,Close signed encounter,Medium,Browser CUA; UI-visible scope only
+AF3-ENC-22,description_v3.md,11; 26,ENC,AF3-162,Closed encounter cannot become fresh draft silently,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-23,description_v3.md,11; 26,ENC,AF3-163,Draft version provenance after successive saves,Hard,Browser CUA; UI-visible scope only
+AF3-ENC-24,description_v3.md,11; 26,ENC,AF3-164,Starting care preserves an authored draft,Hard,Browser CUA; UI-visible scope only
+AF3-DX-01,description_v3.md,12; 4.2,DX,AF3-165,Add longitudinal problem,Medium,Browser CUA; UI-visible scope only
+AF3-DX-02,description_v3.md,12; 4.2,DX,AF3-166,Edit problem details,Medium,Browser CUA; UI-visible scope only
+AF3-DX-03,description_v3.md,12; 4.2,DX,AF3-167,Resolve active problem,Medium,Browser CUA; UI-visible scope only
+AF3-DX-04,description_v3.md,12; 4.2,DX,AF3-168,Reactivate resolved problem,Medium,Browser CUA; UI-visible scope only
+AF3-DX-05,description_v3.md,12; 4.2,DX,AF3-169,Encounter diagnosis association,Medium,Browser CUA; UI-visible scope only
+AF3-DX-06,description_v3.md,12; 4.2,DX,AF3-170,Primary diagnosis true persists,Medium,Browser CUA; UI-visible scope only
+AF3-DX-07,description_v3.md,12; 4.2,DX,AF3-171,Primary diagnosis false persists,Medium,Browser CUA; UI-visible scope only
+AF3-DX-08,description_v3.md,12; 4.2,DX,AF3-172,Primary checkbox survives error,Hard,Browser CUA; UI-visible scope only
+AF3-DX-09,description_v3.md,12; 4.2,DX,AF3-173,Secondary diagnoses retained,Medium,Browser CUA; UI-visible scope only
+AF3-DX-10,description_v3.md,12; 4.2,DX,AF3-174,Curated code selection matches label,Medium,Browser CUA; UI-visible scope only
+AF3-DX-11,description_v3.md,12; 4.2,DX,AF3-175,Diagnosis-to-order linkage,Hard,Browser CUA; UI-visible scope only
+AF3-DX-12,description_v3.md,12; 4.2,DX,AF3-176,Diagnosis cannot cross patient boundaries,Hard,Browser CUA; UI-visible scope only
+AF3-MED-01,description_v3.md,13,MED,AF3-177,Medication details and status,Easy,Browser CUA; UI-visible scope only
+AF3-MED-02,description_v3.md,13,MED,AF3-178,Medication catalog search,Medium,Browser CUA; UI-visible scope only
+AF3-MED-03,description_v3.md,13,MED,AF3-179,Create prescription draft,Medium,Browser CUA; UI-visible scope only
+AF3-MED-04,description_v3.md,13,MED,AF3-180,Edit prescription draft,Medium,Browser CUA; UI-visible scope only
+AF3-MED-05,description_v3.md,13,MED,AF3-181,Prescription review before signing,Medium,Browser CUA; UI-visible scope only
+AF3-MED-06,description_v3.md,13,MED,AF3-182,Sign simulated prescription,Medium,Browser CUA; UI-visible scope only
+AF3-MED-07,description_v3.md,13,MED,AF3-183,Missing prescription fields block save/sign,Hard,Browser CUA; UI-visible scope only
+AF3-MED-08,description_v3.md,13,MED,AF3-184,Prescription quantity invalid input,Medium,Browser CUA; UI-visible scope only
+AF3-MED-09,description_v3.md,13,MED,AF3-185,Nurse cannot sign prescription,Hard,Browser CUA; UI-visible scope only
+AF3-MED-10,description_v3.md,13,MED,AF3-186,Duplicate medication warning,Medium,Browser CUA; UI-visible scope only
+AF3-MED-11,description_v3.md,13,MED,AF3-187,Synthetic allergy warning,Medium,Browser CUA; UI-visible scope only
+AF3-MED-12,description_v3.md,13,MED,AF3-188,Non-trigger medication does not show wrong allergy,Medium,Browser CUA; UI-visible scope only
+AF3-MED-13,description_v3.md,13,MED,AF3-189,Medication reconciliation completion,Medium,Browser CUA; UI-visible scope only
+AF3-MED-14,description_v3.md,13,MED,AF3-190,Medication history after discontinuation,Medium,Browser CUA; UI-visible scope only
+AF3-MED-15,description_v3.md,13,MED,AF3-191,Medication start and end dates,Medium,Browser CUA; UI-visible scope only
+AF3-MED-16,description_v3.md,13,MED,AF3-192,Prescription patient context preserved,Hard,Browser CUA; UI-visible scope only
+AF3-ORDER-01,description_v3.md,14.1; 14.2; 26,ORDER,AF3-193,Create laboratory order,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-02,description_v3.md,14.1; 14.2; 26,ORDER,AF3-194,Create imaging order,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-03,description_v3.md,14.1; 14.2; 26,ORDER,AF3-195,Create referral order,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-04,description_v3.md,14.1; 14.2; 26,ORDER,AF3-196,Create procedure order,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-05,description_v3.md,14.1; 14.2; 26,ORDER,AF3-197,Create medication category order,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-06,description_v3.md,14.1; 14.2; 26,ORDER,AF3-198,Order priority and detail persistence,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-07,description_v3.md,14.1; 14.2; 26,ORDER,AF3-199,Sign draft order,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-08,description_v3.md,14.1; 14.2; 26,ORDER,AF3-200,Signing creates processing task,Hard,Browser CUA; UI-visible scope only
+AF3-ORDER-09,description_v3.md,14.1; 14.2; 26,ORDER,AF3-201,Processing transition,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-10,description_v3.md,14.1; 14.2; 26,ORDER,AF3-202,Complete processing order,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-11,description_v3.md,14.1; 14.2; 26,ORDER,AF3-203,Cancel eligible order,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-12,description_v3.md,14.1; 14.2; 26,ORDER,AF3-204,Record failed processing,Medium,Browser CUA; UI-visible scope only
+AF3-ORDER-13,description_v3.md,14.1; 14.2; 26,ORDER,AF3-205,Prevent invalid order transition,Hard,Browser CUA; UI-visible scope only
+AF3-ORDER-14,description_v3.md,14.1; 14.2; 26,ORDER,AF3-206,Missing diagnosis blocks required order workflow,Hard,Browser CUA; UI-visible scope only
+AF3-ORDER-15,description_v3.md,14.1; 14.2; 26,ORDER,AF3-207,Order cancelled does not complete from stale page,Hard,Browser CUA; UI-visible scope only
+AF3-ORDER-16,description_v3.md,14.1; 14.2; 26,ORDER,AF3-208,Order filtering by patient/status,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-01,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-209,Pending lab workqueue,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-02,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-210,Specimen collection recorded,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-03,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-211,Processing state reflected,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-04,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-212,Enter numeric lab result,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-05,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-213,Abnormal flag preserved,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-06,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-214,Publish entered result,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-07,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-215,Physician reviews result,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-08,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-216,Clinical comment on result,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-09,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-217,Unreleased result hidden from portal,Hard,Browser CUA; UI-visible scope only
+AF3-LAB-10,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-218,Release result to patient,Hard,Browser CUA; UI-visible scope only
+AF3-LAB-11,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-219,Other patient's released result denied,Hard,Browser CUA; UI-visible scope only
+AF3-LAB-12,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-220,Result table panels remain distinguishable,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-13,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-221,Missing result value validation,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-14,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-222,Review status does not equal patient release,Hard,Browser CUA; UI-visible scope only
+AF3-LAB-15,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-223,Result timestamp ordering,Medium,Browser CUA; UI-visible scope only
+AF3-LAB-16,description_v3.md,14.3; 14.4; 20.4,LAB,AF3-224,Published result preserves source order context,Hard,Browser CUA; UI-visible scope only
+AF3-INS-01,description_v3.md,15,INS,AF3-225,Add primary insurance coverage,Medium,Browser CUA; UI-visible scope only
+AF3-INS-02,description_v3.md,15,INS,AF3-226,Add secondary coverage,Medium,Browser CUA; UI-visible scope only
+AF3-INS-03,description_v3.md,15,INS,AF3-227,Edit insurance member information,Medium,Browser CUA; UI-visible scope only
+AF3-INS-04,description_v3.md,15,INS,AF3-228,Insurance required-field validation,Medium,Browser CUA; UI-visible scope only
+AF3-INS-05,description_v3.md,15,INS,AF3-229,Coverage date interval validation,Medium,Browser CUA; UI-visible scope only
+AF3-INS-06,description_v3.md,15,INS,AF3-230,Active eligibility simulation,Medium,Browser CUA; UI-visible scope only
+AF3-INS-07,description_v3.md,15,INS,AF3-231,Inactive eligibility simulation,Medium,Browser CUA; UI-visible scope only
+AF3-INS-08,description_v3.md,15,INS,AF3-232,Coverage not found scenario,Medium,Browser CUA; UI-visible scope only
+AF3-INS-09,description_v3.md,15,INS,AF3-233,Verification pending scenario,Medium,Browser CUA; UI-visible scope only
+AF3-INS-10,description_v3.md,15,INS,AF3-234,Verification error scenario,Medium,Browser CUA; UI-visible scope only
+AF3-INS-11,description_v3.md,15,INS,AF3-235,Eligibility history on reverification,Medium,Browser CUA; UI-visible scope only
+AF3-INS-12,description_v3.md,15,INS,AF3-236,Expired coverage queue,Medium,Browser CUA; UI-visible scope only
+AF3-INS-13,description_v3.md,15,INS,AF3-237,Missing member ID queue,Medium,Browser CUA; UI-visible scope only
+AF3-INS-14,description_v3.md,15,INS,AF3-238,Unverified appointment queue,Medium,Browser CUA; UI-visible scope only
+AF3-INS-15,description_v3.md,15,INS,AF3-239,Authorization requirement flag true/false,Medium,Browser CUA; UI-visible scope only
+AF3-INS-16,description_v3.md,15,INS,AF3-240,Insurance coverage stays patient-scoped,Hard,Browser CUA; UI-visible scope only
+AF3-CODE-01,description_v3.md,16.1; 16.2,CODE,AF3-241,Signed/completed encounter billing eligibility,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-02,description_v3.md,16.1; 16.2,CODE,AF3-242,Unsigned encounter cannot masquerade as billable completion,Hard,Browser CUA; UI-visible scope only
+AF3-CODE-03,description_v3.md,16.1; 16.2,CODE,AF3-243,Create charge from encounter,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-04,description_v3.md,16.1; 16.2,CODE,AF3-244,Multiple charge units total,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-05,description_v3.md,16.1; 16.2,CODE,AF3-245,ICD-10-CM coding selection,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-06,description_v3.md,16.1; 16.2,CODE,AF3-246,CPT/HCPCS procedure selection,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-07,description_v3.md,16.1; 16.2,CODE,AF3-247,Link diagnosis to procedure,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-08,description_v3.md,16.1; 16.2,CODE,AF3-248,Missing diagnosis code warning,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-09,description_v3.md,16.1; 16.2,CODE,AF3-249,Missing procedure code warning,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-10,description_v3.md,16.1; 16.2,CODE,AF3-250,Duplicate charge detection,Hard,Browser CUA; UI-visible scope only
+AF3-CODE-11,description_v3.md,16.1; 16.2,CODE,AF3-251,Coding review completion,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-12,description_v3.md,16.1; 16.2,CODE,AF3-252,Charge approval,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-13,description_v3.md,16.1; 16.2,CODE,AF3-253,Correct coding issue and re-review,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-14,description_v3.md,16.1; 16.2,CODE,AF3-254,Invalid charge amount,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-15,description_v3.md,16.1; 16.2,CODE,AF3-255,Invalid charge units,Medium,Browser CUA; UI-visible scope only
+AF3-CODE-16,description_v3.md,16.1; 16.2,CODE,AF3-256,Coding role cannot silently sign clinical note,Hard,Browser CUA; UI-visible scope only
+AF3-CLAIM-01,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-257,Generate draft claim from approved charges,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-02,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-258,Claim current stage and next action,Easy,Browser CUA; UI-visible scope only
+AF3-CLAIM-03,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-259,Claim ready for review transition,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-04,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-260,Not yet validated differs from clean validation,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-05,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-261,Missing diagnosis scrub error,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-06,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-262,Missing procedure scrub error,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-07,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-263,Missing insurance scrub error,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-08,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-264,Invalid member format scrub error,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-09,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-265,Missing provider scrub error,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-10,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-266,Duplicate claim scrub error,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-11,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-267,Incomplete demographics scrub error,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-12,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-268,Missing required authorization scrub error,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-13,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-269,Validation errors and warnings separately rendered,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-14,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-270,Blocking validation prevents submission,Hard,Browser CUA; UI-visible scope only
+AF3-CLAIM-15,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-271,Claim input change invalidates clean validation,Hard,Browser CUA; UI-visible scope only
+AF3-CLAIM-16,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-272,Correct claim and validate successfully,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-17,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-273,Submit validated claim,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-18,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-274,Payer accepted response,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-19,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-275,Payer rejected response,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-20,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-276,Payer denied response,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-21,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-277,Payer partially paid response,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-22,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-278,Payer paid response,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-23,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-279,Adjudication stage progression,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-24,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-280,Close fully settled claim,Medium,Browser CUA; UI-visible scope only
+AF3-CLAIM-25,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-281,Invalid claim transition denied,Hard,Browser CUA; UI-visible scope only
+AF3-CLAIM-26,description_v3.md,16.3; 16.4; 16.5; 16.6,CLAIM,AF3-282,Repeated submit from stale browser tab,Hard,Browser CUA; UI-visible scope only
+AF3-DEN-01,description_v3.md,17; 16.4,DEN,AF3-283,Denial dashboard reconciliation,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-02,description_v3.md,17; 16.4,DEN,AF3-284,Denial detail links to claim,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-03,description_v3.md,17; 16.4,DEN,AF3-285,Denial reason categories distinguishable,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-04,description_v3.md,17; 16.4,DEN,AF3-286,Add denial investigation note,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-05,description_v3.md,17; 16.4,DEN,AF3-287,Correct permitted claim field,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-06,description_v3.md,17; 16.4,DEN,AF3-288,Resubmit corrected denial,Hard,Browser CUA; UI-visible scope only
+AF3-DEN-07,description_v3.md,17; 16.4,DEN,AF3-289,Create appeal draft,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-08,description_v3.md,17; 16.4,DEN,AF3-290,Appeal supporting documentation,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-09,description_v3.md,17; 16.4,DEN,AF3-291,Mark denial resolved,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-10,description_v3.md,17; 16.4,DEN,AF3-292,Resolution preserves original outcome,Hard,Browser CUA; UI-visible scope only
+AF3-DEN-11,description_v3.md,17; 16.4,DEN,AF3-293,Denial payer and reason combined filters,Medium,Browser CUA; UI-visible scope only
+AF3-DEN-12,description_v3.md,17; 16.4,DEN,AF3-294,Front desk cannot adjudicate denial,Hard,Browser CUA; UI-visible scope only
+AF3-PA-01,description_v3.md,18; 4.2,PA,AF3-295,Create authorization request draft,Medium,Browser CUA; UI-visible scope only
+AF3-PA-02,description_v3.md,18; 4.2,PA,AF3-296,Authorization required fields,Medium,Browser CUA; UI-visible scope only
+AF3-PA-03,description_v3.md,18; 4.2,PA,AF3-297,Authorization insurance scope,Medium,Browser CUA; UI-visible scope only
+AF3-PA-04,description_v3.md,18; 4.2,PA,AF3-298,Submit simulated authorization,Medium,Browser CUA; UI-visible scope only
+AF3-PA-05,description_v3.md,18; 4.2,PA,AF3-299,Pending Review transition,Medium,Browser CUA; UI-visible scope only
+AF3-PA-06,description_v3.md,18; 4.2,PA,AF3-300,Additional information requested,Medium,Browser CUA; UI-visible scope only
+AF3-PA-07,description_v3.md,18; 4.2,PA,AF3-301,Provide supporting information,Medium,Browser CUA; UI-visible scope only
+AF3-PA-08,description_v3.md,18; 4.2,PA,AF3-302,Approved authorization decision,Medium,Browser CUA; UI-visible scope only
+AF3-PA-09,description_v3.md,18; 4.2,PA,AF3-303,Denied authorization decision,Medium,Browser CUA; UI-visible scope only
+AF3-PA-10,description_v3.md,18; 4.2,PA,AF3-304,Expired authorization,Medium,Browser CUA; UI-visible scope only
+AF3-PA-11,description_v3.md,18; 4.2,PA,AF3-305,Approval satisfies matching claim gate,Hard,Browser CUA; UI-visible scope only
+AF3-PA-12,description_v3.md,18; 4.2,PA,AF3-306,Wrong service approval cannot satisfy gate,Hard,Browser CUA; UI-visible scope only
+AF3-PA-13,description_v3.md,18; 4.2,PA,AF3-307,Expired approval cannot satisfy claim gate,Hard,Browser CUA; UI-visible scope only
+AF3-PA-14,description_v3.md,18; 4.2,PA,AF3-308,Authorization required checkbox preserves false after error,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-01,description_v3.md,19; 20; 23.4,PAY,AF3-309,Post simulated insurance payment,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-02,description_v3.md,19; 20; 23.4,PAY,AF3-310,Partial patient payment reduces confirmed responsibility,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-03,description_v3.md,19; 20; 23.4,PAY,AF3-311,Full confirmed patient responsibility payment,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-04,description_v3.md,19; 20; 23.4,PAY,AF3-312,Payment cannot exceed total claim balance,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-05,description_v3.md,19; 20; 23.4,PAY,AF3-313,Patient cannot exceed confirmed responsibility,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-06,description_v3.md,19; 20; 23.4,PAY,AF3-314,Unconfirmed responsibility withholds patient payment,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-07,description_v3.md,19; 20; 23.4,PAY,AF3-315,Denied balance is not automatically patient debt,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-08,description_v3.md,19; 20; 23.4,PAY,AF3-316,Staff confirms adjudicated responsibility,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-09,description_v3.md,19; 20; 23.4,PAY,AF3-317,Responsibility cannot exceed outstanding balance,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-10,description_v3.md,19; 20; 23.4,PAY,AF3-318,Responsibility cannot be confirmed before adjudication,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-11,description_v3.md,19; 20; 23.4,PAY,AF3-319,Patient cannot confirm their own responsibility,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-12,description_v3.md,19; 20; 23.4,PAY,AF3-320,Staff payment blocked in invalid claim state,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-13,description_v3.md,19; 20; 23.4,PAY,AF3-321,Paid/closed claims do not invite payment,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-14,description_v3.md,19; 20; 23.4,PAY,AF3-322,Zero and negative payments rejected,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-15,description_v3.md,19; 20; 23.4,PAY,AF3-323,Receipt refresh is idempotent,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-16,description_v3.md,19; 20; 23.4,PAY,AF3-324,Back navigation does not restore ready-to-pay stale form,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-17,description_v3.md,19; 20; 23.4,PAY,AF3-325,Two-tab stale-balance protection,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-18,description_v3.md,19; 20; 23.4,PAY,AF3-326,Staff receipt return paths,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-19,description_v3.md,19; 20; 23.4,PAY,AF3-327,Patient receipt return path and role scope,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-20,description_v3.md,19; 20; 23.4,PAY,AF3-328,Print receipt preview,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-21,description_v3.md,19; 20; 23.4,PAY,AF3-329,Money formatting across billing,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-22,description_v3.md,19; 20; 23.4,PAY,AF3-330,Payment allocated to intended claim,Hard,Browser CUA; UI-visible scope only
+AF3-PAY-23,description_v3.md,19; 20; 23.4,PAY,AF3-331,Statement and payment history reconciliation,Medium,Browser CUA; UI-visible scope only
+AF3-PAY-24,description_v3.md,19; 20; 23.4,PAY,AF3-332,Other patient's receipt inaccessible,Hard,Browser CUA; UI-visible scope only
+AF3-PORT-01,description_v3.md,20; 20.1; 20.3,PORT,AF3-333,Portal health overview shortcuts,Easy,Browser CUA; UI-visible scope only
+AF3-PORT-02,description_v3.md,20; 20.1; 20.3,PORT,AF3-334,Upcoming appointment detail,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-03,description_v3.md,20; 20.1; 20.3,PORT,AF3-335,Request new appointment,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-04,description_v3.md,20; 20.1; 20.3,PORT,AF3-336,Cancel eligible portal appointment,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-05,description_v3.md,20; 20.1; 20.3,PORT,AF3-337,Ineligible portal cancellation denied,Hard,Browser CUA; UI-visible scope only
+AF3-PORT-06,description_v3.md,20; 20.1; 20.3,PORT,AF3-338,Complete simulated pre-check-in,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-07,description_v3.md,20; 20.1; 20.3,PORT,AF3-339,Visit summary accessible,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-08,description_v3.md,20; 20.1; 20.3,PORT,AF3-340,Released results shortcut,Easy,Browser CUA; UI-visible scope only
+AF3-PORT-09,description_v3.md,20; 20.1; 20.3,PORT,AF3-341,Renewal action adjacent to medication,Easy,Browser CUA; UI-visible scope only
+AF3-PORT-10,description_v3.md,20; 20.1; 20.3,PORT,AF3-342,Submit medication renewal request,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-11,description_v3.md,20; 20.1; 20.3,PORT,AF3-343,Renewal request status discoverable,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-12,description_v3.md,20; 20.1; 20.3,PORT,AF3-344,Contact update permitted fields,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-13,description_v3.md,20; 20.1; 20.3,PORT,AF3-345,Portal does not allow protected demographic edits,Hard,Browser CUA; UI-visible scope only
+AF3-PORT-14,description_v3.md,20; 20.1; 20.3,PORT,AF3-346,Portal narrow layout and compact summaries,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-15,description_v3.md,20; 20.1; 20.3,PORT,AF3-347,Portal empty clinical sections,Medium,Browser CUA; UI-visible scope only
+AF3-PORT-16,description_v3.md,20; 20.1; 20.3,PORT,AF3-348,Other patient's appointment denied,Hard,Browser CUA; UI-visible scope only
+AF3-PORT-17,description_v3.md,20; 20.1; 20.3,PORT,AF3-349,Other patient's medication denied,Hard,Browser CUA; UI-visible scope only
+AF3-PORT-18,description_v3.md,20; 20.1; 20.3,PORT,AF3-350,Portal bills distinguish financial categories,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-01,description_v3.md,22; 20.2,MSG,AF3-351,Compose subject and first body atomically,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-02,description_v3.md,22; 20.2,MSG,AF3-352,Compose error preserves content,Hard,Browser CUA; UI-visible scope only
+AF3-MSG-03,description_v3.md,22; 20.2,MSG,AF3-353,Staff reply stays in patient thread,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-04,description_v3.md,22; 20.2,MSG,AF3-354,Sender names timestamps and receipts,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-05,description_v3.md,22; 20.2,MSG,AF3-355,Navigation unread count updates on incoming message,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-06,description_v3.md,22; 20.2,MSG,AF3-356,Unread thread visual label,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-07,description_v3.md,22; 20.2,MSG,AF3-357,Opening thread marks displayed messages read,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-08,description_v3.md,22; 20.2,MSG,AF3-358,Read-state isolation across authorized staff,Expert,Browser CUA; UI-visible scope only
+AF3-MSG-09,description_v3.md,22; 20.2,MSG,AF3-359,Own sent messages do not increase unread count,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-10,description_v3.md,22; 20.2,MSG,AF3-360,New incoming reply restores unread,Hard,Browser CUA; UI-visible scope only
+AF3-MSG-11,description_v3.md,22; 20.2,MSG,AF3-361,Active page refresh without full reload,Hard,Browser CUA; UI-visible scope only
+AF3-MSG-12,description_v3.md,22; 20.2,MSG,AF3-362,Unread count respects patient scope,Hard,Browser CUA; UI-visible scope only
+AF3-MSG-13,description_v3.md,22; 20.2,MSG,AF3-363,Direct other-patient thread denied,Hard,Browser CUA; UI-visible scope only
+AF3-MSG-14,description_v3.md,22; 20.2,MSG,AF3-364,Direct unauthorized reply denied,Hard,Browser CUA; UI-visible scope only
+AF3-MSG-15,description_v3.md,22; 20.2,MSG,AF3-365,Unread state persists across logout,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-16,description_v3.md,22; 20.2,MSG,AF3-366,Message history survives refresh,Medium,Browser CUA; UI-visible scope only
+AF3-MSG-17,description_v3.md,22; 20.2,MSG,AF3-367,Read only displayed messages,Hard,Browser CUA; UI-visible scope only
+AF3-MSG-18,description_v3.md,22; 20.2,MSG,AF3-368,Messages discoverable by permitted role,Medium,Browser CUA; UI-visible scope only
+AF3-AI-01,description_v3.md,21,AI,AF3-369,Deterministic demo mode without API key,Medium,Browser CUA; UI-visible scope only
+AF3-AI-02,description_v3.md,21,AI,AF3-370,Patient summary grounded in chart,Hard,Browser CUA; UI-visible scope only
+AF3-AI-03,description_v3.md,21,AI,AF3-371,Missing chart information not invented,Hard,Browser CUA; UI-visible scope only
+AF3-AI-04,description_v3.md,21,AI,AF3-372,Encounter preparation from selected appointment,Medium,Browser CUA; UI-visible scope only
+AF3-AI-05,description_v3.md,21,AI,AF3-373,SOAP drafting from synthetic transcript,Medium,Browser CUA; UI-visible scope only
+AF3-AI-06,description_v3.md,21,AI,AF3-374,Editable AI output correction,Medium,Browser CUA; UI-visible scope only
+AF3-AI-07,description_v3.md,21,AI,AF3-375,Generation application saving signing labels,Easy,Browser CUA; UI-visible scope only
+AF3-AI-08,description_v3.md,21,AI,AF3-376,Apply AI output leaves note unsigned,Hard,Browser CUA; UI-visible scope only
+AF3-AI-09,description_v3.md,21,AI,AF3-377,Save applied draft leaves note unsigned,Hard,Browser CUA; UI-visible scope only
+AF3-AI-10,description_v3.md,21,AI,AF3-378,Explicit human review before signing,Hard,Browser CUA; UI-visible scope only
+AF3-AI-11,description_v3.md,21,AI,AF3-379,AI cannot overwrite signed note,Hard,Browser CUA; UI-visible scope only
+AF3-AI-12,description_v3.md,21,AI,AF3-380,AI objectives include all recorded vitals,Hard,Browser CUA; UI-visible scope only
+AF3-AI-13,description_v3.md,21,AI,AF3-381,AI missing vitals remain missing,Hard,Browser CUA; UI-visible scope only
+AF3-AI-14,description_v3.md,21,AI,AF3-382,AI draft respects selected measurement units,Hard,Browser CUA; UI-visible scope only
+AF3-AI-15,description_v3.md,21,AI,AF3-383,Text scribe works without audio backend,Medium,Browser CUA; UI-visible scope only
+AF3-AI-16,description_v3.md,21,AI,AF3-384,AI preparation does not create diagnoses,Hard,Browser CUA; UI-visible scope only
+AF3-AI-17,description_v3.md,21,AI,AF3-385,AI preparation does not create orders,Hard,Browser CUA; UI-visible scope only
+AF3-AI-18,description_v3.md,21,AI,AF3-386,Documentation gap assistance,Medium,Browser CUA; UI-visible scope only
+AF3-AI-19,description_v3.md,21,AI,AF3-387,Source versus suggestion presentation,Medium,Browser CUA; UI-visible scope only
+AF3-AI-20,description_v3.md,21,AI,AF3-388,AI patient switch resets context,Hard,Browser CUA; UI-visible scope only
+AF3-AI-21,description_v3.md,21,AI,AF3-389,AI draft persistence and provenance,Medium,Browser CUA; UI-visible scope only
+AF3-AI-22,description_v3.md,21,AI,AF3-390,Empty transcript validation,Medium,Browser CUA; UI-visible scope only
+AF3-AI-23,description_v3.md,21,AI,AF3-391,Clinical approval cannot be granted by front desk,Hard,Browser CUA; UI-visible scope only
+AF3-AI-24,description_v3.md,21,AI,AF3-392,AI draft fact audit using fixed transcript,Expert,Browser CUA; UI-visible scope only
+AF3-TASK-01,description_v3.md,22; 26,TASK,AF3-393,Shared inbox categories and task context,Easy,Browser CUA; UI-visible scope only
+AF3-TASK-02,description_v3.md,22; 26,TASK,AF3-394,Assign unassigned task,Medium,Browser CUA; UI-visible scope only
+AF3-TASK-03,description_v3.md,22; 26,TASK,AF3-395,Reassign task,Medium,Browser CUA; UI-visible scope only
+AF3-TASK-04,description_v3.md,22; 26,TASK,AF3-396,Complete task,Medium,Browser CUA; UI-visible scope only
+AF3-TASK-05,description_v3.md,22; 26,TASK,AF3-397,Task priority edit,Medium,Browser CUA; UI-visible scope only
+AF3-TASK-06,description_v3.md,22; 26,TASK,AF3-398,Task status and category filters,Medium,Browser CUA; UI-visible scope only
+AF3-TASK-07,description_v3.md,22; 26,TASK,AF3-399,Task search by patient/context,Medium,Browser CUA; UI-visible scope only
+AF3-TASK-08,description_v3.md,22; 26,TASK,AF3-400,Task link preserves patient context,Hard,Browser CUA; UI-visible scope only
+AF3-TASK-09,description_v3.md,22; 26,TASK,AF3-401,Unauthorized task modification denied,Hard,Browser CUA; UI-visible scope only
+AF3-TASK-10,description_v3.md,22; 26,TASK,AF3-402,Completed task updates dashboard count,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-01,description_v3.md,6; 23,REPORT,AF3-403,Physician dashboard real queue counts,Medium,Browser CUA; UI-visible scope only
+AF3-REPORT-02,description_v3.md,6; 23,REPORT,AF3-404,Front desk dashboard operations,Medium,Browser CUA; UI-visible scope only
+AF3-REPORT-03,description_v3.md,6; 23,REPORT,AF3-405,Billing dashboard balances and queues,Medium,Browser CUA; UI-visible scope only
+AF3-REPORT-04,description_v3.md,6; 23,REPORT,AF3-406,Admin dashboard operational totals,Medium,Browser CUA; UI-visible scope only
+AF3-REPORT-05,description_v3.md,6; 23,REPORT,AF3-407,Report date range and active filters visible,Medium,Browser CUA; UI-visible scope only
+AF3-REPORT-06,description_v3.md,6; 23,REPORT,AF3-408,Appointment cohort uses scheduled dates,Medium,Browser CUA; UI-visible scope only
+AF3-REPORT-07,description_v3.md,6; 23,REPORT,AF3-409,Encounter cohort uses encounter creation dates,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-08,description_v3.md,6; 23,REPORT,AF3-410,Submitted claim from older encounter included,Expert,Browser CUA; UI-visible scope only
+AF3-REPORT-09,description_v3.md,6; 23,REPORT,AF3-411,Latest resubmission determines submitted cohort,Expert,Browser CUA; UI-visible scope only
+AF3-REPORT-10,description_v3.md,6; 23,REPORT,AF3-412,Acceptance uses current submitted-cohort state,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-11,description_v3.md,6; 23,REPORT,AF3-413,Payment metrics use posting dates,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-12,description_v3.md,6; 23,REPORT,AF3-414,Provider-filtered unlinked check-in copay,Expert,Browser CUA; UI-visible scope only
+AF3-REPORT-13,description_v3.md,6; 23,REPORT,AF3-415,Linked copay counted exactly once,Expert,Browser CUA; UI-visible scope only
+AF3-REPORT-14,description_v3.md,6; 23,REPORT,AF3-416,Department filter independently scopes payments,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-15,description_v3.md,6; 23,REPORT,AF3-417,Provider and department intersection,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-16,description_v3.md,6; 23,REPORT,AF3-418,Current charge balance denial cohort,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-17,description_v3.md,6; 23,REPORT,AF3-419,Zero encounter-cohort balance is not practice zero,Expert,Browser CUA; UI-visible scope only
+AF3-REPORT-18,description_v3.md,6; 23,REPORT,AF3-420,A/R aging uses documented current balance basis,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-19,description_v3.md,6; 23,REPORT,AF3-421,No-show rate denominator explicit and reproducible,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-20,description_v3.md,6; 23,REPORT,AF3-422,Encounter completion and unsigned metrics,Hard,Browser CUA; UI-visible scope only
+AF3-REPORT-21,description_v3.md,6; 23,REPORT,AF3-423,Empty cohort metrics,Medium,Browser CUA; UI-visible scope only
+AF3-REPORT-22,description_v3.md,6; 23,REPORT,AF3-424,CSV matches filtered page,Expert,Browser CUA; UI-visible scope only
+AF3-REPORT-23,description_v3.md,6; 23,REPORT,AF3-425,Financial trend formatting,Medium,Browser CUA; UI-visible scope only
+AF3-REPORT-24,description_v3.md,6; 23,REPORT,AF3-426,Invalid or reversed report dates recover safely,Hard,Browser CUA; UI-visible scope only
+AF3-FHIR-01,description_v3.md,24; 32,FHIR,AF3-427,Patient JSON mapping,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-02,description_v3.md,24; 32,FHIR,AF3-428,Appointment JSON mapping,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-03,description_v3.md,24; 32,FHIR,AF3-429,Encounter JSON mapping,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-04,description_v3.md,24; 32,FHIR,AF3-430,Condition JSON mapping,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-05,description_v3.md,24; 32,FHIR,AF3-431,Observation JSON units,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-06,description_v3.md,24; 32,FHIR,AF3-432,MedicationRequest JSON mapping,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-07,description_v3.md,24; 32,FHIR,AF3-433,ServiceRequest JSON mapping,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-08,description_v3.md,24; 32,FHIR,AF3-434,DiagnosticReport JSON mapping,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-09,description_v3.md,24; 32,FHIR,AF3-435,Coverage JSON mapping,Medium,Browser CUA; UI-visible scope only
+AF3-FHIR-10,description_v3.md,24; 32,FHIR,AF3-436,Resource access control and read-only surface,Hard,Browser CUA; UI-visible scope only
+AF3-ADMIN-01,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-437,Create synthetic staff account,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-02,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-438,Change staff role and verify session permissions,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-03,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-439,Deactivate test staff account,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-04,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-440,Manage department,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-05,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-441,Manage provider assignment,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-06,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-442,Configure appointment type,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-07,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-443,Practice settings persist,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-08,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-444,Demo account documentation covers all roles,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-09,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-445,Reset warning and cancel path,Medium,Browser CUA; UI-visible scope only
+AF3-ADMIN-10,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-446,Non-admin reset denied,Hard,Browser CUA; UI-visible scope only
+AF3-ADMIN-11,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-447,Confirmed reset restores consistent demo state,Expert,Browser CUA; UI-visible scope only
+AF3-ADMIN-12,description_v3.md,5.1; 27; 28; 29,ADMIN,AF3-448,Manager operational settings boundaries,Hard,Browser CUA; UI-visible scope only
+AF3-AUDIT-01,description_v3.md,26; 31; 32,AUDIT,AF3-449,Registration audit event,Medium,Browser CUA; UI-visible scope only
+AF3-AUDIT-02,description_v3.md,26; 31; 32,AUDIT,AF3-450,Demographic edit audit event,Medium,Browser CUA; UI-visible scope only
+AF3-AUDIT-03,description_v3.md,26; 31; 32,AUDIT,AF3-451,State transition human-readable,Medium,Browser CUA; UI-visible scope only
+AF3-AUDIT-04,description_v3.md,26; 31; 32,AUDIT,AF3-452,Eligibility history human-readable,Medium,Browser CUA; UI-visible scope only
+AF3-AUDIT-05,description_v3.md,26; 31; 32,AUDIT,AF3-453,Financial audit for responsibility confirmation,Medium,Browser CUA; UI-visible scope only
+AF3-AUDIT-06,description_v3.md,26; 31; 32,AUDIT,AF3-454,Signed-note audit traceability,Medium,Browser CUA; UI-visible scope only
+AF3-AUDIT-07,description_v3.md,26; 31; 32,AUDIT,AF3-455,Audit filtering by actor and action,Medium,Browser CUA; UI-visible scope only
+AF3-AUDIT-08,description_v3.md,26; 31; 32,AUDIT,AF3-456,Audit access denied to patient,Hard,Browser CUA; UI-visible scope only
+AF3-AUDIT-09,description_v3.md,26; 31; 32,AUDIT,AF3-457,Rendered special-character activity values,Medium,Browser CUA; UI-visible scope only
+AF3-AUDIT-10,description_v3.md,26; 31; 32,AUDIT,AF3-458,No raw containers in ordinary histories,Medium,Browser CUA; UI-visible scope only
+AF3-E2E-01,description_v3.md,26; 36,E2E,AF3-459,New patient to completed clinical visit,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-02,description_v3.md,26; 36,E2E,AF3-460,Clinical order to patient-visible result,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-03,description_v3.md,26; 36,E2E,AF3-461,Encounter to settled claim,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-04,description_v3.md,26; 36,E2E,AF3-462,Denial correction to acceptance,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-05,description_v3.md,26; 36,E2E,AF3-463,Authorization-required service to valid claim,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-06,description_v3.md,26; 36,E2E,AF3-464,Portal message through staff resolution,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-07,description_v3.md,26; 36,E2E,AF3-465,Renewal request through physician prescription,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-08,description_v3.md,26; 36,E2E,AF3-466,Copay to claim linkage and report reconciliation,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-09,description_v3.md,26; 36,E2E,AF3-467,Adjudication to partial portal payment,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-10,description_v3.md,26; 36,E2E,AF3-468,Unit conversion through AI and signed note,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-11,description_v3.md,26; 36,E2E,AF3-469,Wrong-patient prevention across clinical workflow,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-12,description_v3.md,26; 36,E2E,AF3-470,Persisted workflow after logout and new session,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-13,description_v3.md,26; 36,E2E,AF3-471,Multi-cohort reporting with old encounter and new money,Expert,Browser CUA; UI-visible scope only
+AF3-E2E-14,description_v3.md,26; 36,E2E,AF3-472,Post-evaluation role privacy regression,Expert,Browser CUA; UI-visible scope only

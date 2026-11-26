@@ -1,0 +1,35 @@
+{
+  "kind": "PACKAGE_VALIDATION_ONLY",
+  "application_cua_tests_executed": 0,
+  "checks": [
+    "Untampered suite and 472 NOT_RUN rows accepted",
+    "Changed frozen bytes rejected",
+    "Unsupported PASS without evidence/criteria/attempt rejected",
+    "Duplicate result ID rejected",
+    "Exact conversion fixture arithmetic independently recalculated"
+  ],
+  "unique_test_ids": 472,
+  "unique_titles": 472,
+  "module_count": 27,
+  "difficulty_counts": {
+    "Easy": 26,
+    "Medium": 296,
+    "Hard": 127,
+    "Expert": 23
+  },
+  "initial_status_counts": {
+    "NOT_RUN": 472
+  },
+  "source_bytes_preserved": true,
+  "xlsx_verified": [
+    "2 worksheets rendered and visually reviewed",
+    "inventory formula values match JSON",
+    "no formula errors observed",
+    "native filter table and frozen row/column panes verified in XLSX"
+  ],
+  "limitations": [
+    "No application accessed or tested",
+    "No GitHub repository mutation performed",
+    "No actual CUA result or screenshot evidence generated"
+  ]
+}

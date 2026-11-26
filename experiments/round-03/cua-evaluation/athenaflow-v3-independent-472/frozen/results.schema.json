@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AthenaFlow CUA current result rows",
+  "type": "array",
+  "minItems": 472,
+  "maxItems": 472,
+  "items": {
+    "type": "object",
+    "required": [
+      "test_id",
+      "status",
+      "attempt_number",
+      "reason_code",
+      "criteria_results",
+      "evidence"
+    ],
+    "properties": {
+      "test_id": {
+        "type": "string",
+        "pattern": "^AF3-[0-9]{3}$"
+      },
+      "status": {
+        "enum": [
+          "PASS",
+          "FAIL",
+          "BLOCKED",
+          "NOT_RUN"
+        ]
+      },
+      "attempt_number": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "reason_code": {
+        "type": "string"
+      },
+      "observed_result": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "criteria_results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "criterion_id",
+            "verdict",
+            "observation",
+            "evidence_paths"
+          ],
+          "properties": {
+            "criterion_id": {
+              "type": "string"
+            },
+            "verdict": {
+              "enum": [
+                "SATISFIED",
+                "VIOLATED",
+                "UNOBSERVED"
+              ]
+            },
+            "observation": {
+              "type": "string"
+            },
+            "evidence_paths": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "path",
+            "kind",
+            "sha256"
+          ],
+          "properties": {
+            "path": {
+              "type": "string"
+            },
+            "kind": {
+              "enum": [
+                "screenshot",
+                "native_trace",
+                "authored_action_log",
+                "download",
+                "tool_error",
+                "other"
+              ]
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        }
+      }
+    }
+  }
+}

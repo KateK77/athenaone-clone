@@ -1,0 +1,1616 @@
+﻿Test ID,Execution sequence,Module,Difficulty,Title,Roles,Description sections,Preconditions and data,Steps,Acceptance criteria,Initial status
+AF3-001,11,Authentication and role boundaries,Easy,Administrator demo login,all roles,5; 28; 32,Signed out; documented admin.demo credentials,"1. Sign in as admin.demo
+2. Open the account menu","C1: Administrator identity and role are visible
+C2: Administration is reachable",NOT_RUN
+AF3-002,12,Authentication and role boundaries,Easy,Manager demo login,all roles,5; 28; 32,Signed out; documented manager.demo credentials,"1. Sign in as manager.demo
+2. Open operational dashboard","C1: Manager identity is correct
+C2: Operational dashboard loads without an authorization error",NOT_RUN
+AF3-003,13,Authentication and role boundaries,Easy,Front desk demo login,all roles,5; 28; 32,Signed out; documented frontdesk.demo credentials,"1. Sign in as frontdesk.demo
+2. Open scheduling","C1: Front desk identity is correct
+C2: Scheduling workspace is accessible",NOT_RUN
+AF3-004,1,Authentication and role boundaries,Easy,Physician demo login,all roles,5; 28; 32,Signed out; documented physician.demo credentials,"1. Sign in as physician.demo
+2. Open assigned patient chart","C1: Physician identity is correct
+C2: Assigned chart opens",NOT_RUN
+AF3-005,14,Authentication and role boundaries,Easy,Nurse demo login,all roles,5; 28; 32,Signed out; documented nurse.demo credentials,"1. Sign in as nurse.demo
+2. Open nursing worklist","C1: Nurse identity is correct
+C2: Nursing worklist opens",NOT_RUN
+AF3-006,15,Authentication and role boundaries,Easy,Medical assistant demo login,all roles,5; 28; 32,Signed out; documented assistant.demo credentials,"1. Sign in as assistant.demo
+2. Open intake workflow","C1: Medical assistant identity is correct
+C2: Permitted intake workflow opens",NOT_RUN
+AF3-007,16,Authentication and role boundaries,Easy,Billing demo login,all roles,5; 28; 32,Signed out; documented billing.demo credentials,"1. Sign in as billing.demo
+2. Open claims","C1: Billing identity is correct
+C2: Claim workspace opens",NOT_RUN
+AF3-008,17,Authentication and role boundaries,Easy,Coder demo login,all roles,5; 28; 32,Signed out; documented coder.demo credentials,"1. Sign in as coder.demo
+2. Open coding workspace","C1: Coder identity is correct
+C2: Coding workspace opens",NOT_RUN
+AF3-009,18,Authentication and role boundaries,Easy,Patient demo login,all roles,5; 28; 32,Signed out; documented patient.demo credentials,"1. Sign in as patient.demo
+2. Open portal overview","C1: Patient identity is correct
+C2: Only the linked patient's overview is shown",NOT_RUN
+AF3-010,19,Authentication and role boundaries,Medium,Invalid password rejected,all roles,5; 28; 32,Signed out; valid public demo username,"1. Enter the username with deliberately incorrect password once
+2. Submit sign-in","C1: No authenticated session is created
+C2: Readable error permits correction without disclosing secrets",NOT_RUN
+AF3-011,20,Authentication and role boundaries,Medium,Required login fields,all roles,5; 28; 32,Signed out,"1. Submit empty login form
+2. Enter only username and submit","C1: Missing required input is identified
+C2: No authenticated session is created",NOT_RUN
+AF3-012,21,Authentication and role boundaries,Medium,Logout invalidates authenticated navigation,all roles,5; 28; 32,Signed-in physician; chart URL recorded from UI,"1. Sign out
+2. Use Back then reload the chart URL","C1: Authenticated chart data cannot be retrieved after logout
+C2: Sign-in or access-denied page is displayed",NOT_RUN
+AF3-013,22,Authentication and role boundaries,Hard,Unauthenticated direct staff URL,all roles,5; 28; 32,Signed out; real staff URL recorded from authorized UI,"1. Paste the recorded staff URL in browser address bar
+2. Navigate","C1: Protected content is withheld
+C2: Authentication is requested without a server traceback",NOT_RUN
+AF3-014,23,Authentication and role boundaries,Hard,Front desk cannot sign note,all roles,5; 28; 32,frontdesk.demo; unsigned encounter; sign URL observed while authorized if exposed,"1. Open encounter as front desk
+2. Attempt signing through any available action or previously observed URL","C1: No physician signature is created
+C2: Missing action alone is insufficient evidence when an observed direct URL is available",NOT_RUN
+AF3-015,24,Authentication and role boundaries,Hard,Nurse cannot sign physician documentation,all roles,5; 28; 32,nurse.demo; unsigned physician note,"1. Open note as nurse
+2. Try offered sign action or previously observed signing page
+3. Reopen note as physician","C1: Note remains unsigned
+C2: Unauthorized signing is denied without changing content",NOT_RUN
+AF3-016,25,Authentication and role boundaries,Hard,Patient cannot open another chart,all roles,5; 28; 32,Two synthetic patients A and B; B chart URL observed by authorized staff,"1. Sign in as patient A
+2. Navigate directly to B chart URL","C1: No B identity or clinical content is disclosed
+C2: Access is denied or redirected safely",NOT_RUN
+AF3-017,26,Authentication and role boundaries,Hard,Billing role cannot manage staff roles,all roles,5; 28; 32,billing.demo; account administration URL observed as admin,"1. Open recorded administration URL as billing user
+2. Attempt any exposed role edit","C1: Staff role changes are denied
+C2: Existing roles remain unchanged",NOT_RUN
+AF3-018,27,Authentication and role boundaries,Hard,Cross-role session identity isolation,all roles,5; 28; 32,Physician signed in; patient credentials available,"1. Sign out physician
+2. Sign in patient in same browser
+3. Revisit previous staff page","C1: Patient permissions govern the new session
+C2: Previous physician access is not retained",NOT_RUN
+AF3-019,2,Global navigation and accessibility,Easy,Global patient search identity,physician; patient,4; 7.1; 31,Two patients with similar names and distinct MRNs,"1. Search common name globally
+2. Inspect results
+3. Select intended MRN","C1: Results distinguish name MRN and DOB
+C2: Selected chart matches intended patient",NOT_RUN
+AF3-020,28,Global navigation and accessibility,Medium,Role-aware navigation destinations,physician; patient,4; 7.1; 31,Physician account; permitted modules listed in source,1. Visit dashboard schedule patients encounters inbox orders results medications and AI links,"C1: Each permitted link opens its named workspace
+C2: No dead navigation or misleading destination is encountered",NOT_RUN
+AF3-021,29,Global navigation and accessibility,Medium,Department context changes coherently,physician; patient,4; 7.1; 31,Staff account with two authorized departments,"1. Select department A
+2. Open schedule
+3. Select B
+4. Inspect active context","C1: Selected department is visible
+C2: Department-dependent views reflect the selected context without mislabeling records",NOT_RUN
+AF3-022,30,Global navigation and accessibility,Medium,Account dropdown at desktop width,physician; patient,4; 7.1; 31,Staff logged in; 1440x900 viewport,"1. Open account menu
+2. Reach Sign out using keyboard","C1: Menu stays in viewport
+C2: Sign out is fully visible and keyboard reachable",NOT_RUN
+AF3-023,31,Global navigation and accessibility,Medium,Staff account dropdown on narrow viewport,physician; patient,4; 7.1; 31,Staff logged in; 390x844 viewport,"1. Open account menu
+2. Tab to Sign out
+3. Activate it","C1: Menu and sign-out control remain visible
+C2: Logout completes",NOT_RUN
+AF3-024,32,Global navigation and accessibility,Medium,Portal account dropdown without global search,physician; patient,4; 7.1; 31,Patient logged in; 390x844 viewport,"1. Open account menu
+2. Reach and activate Sign out","C1: Menu is within viewport despite absent global search
+C2: Logout works",NOT_RUN
+AF3-025,33,Global navigation and accessibility,Medium,Tablet navigation and content reflow,physician; patient,4; 7.1; 31,Physician chart open; 768x1024 viewport,"1. Open navigation
+2. Switch to encounter
+3. Inspect patient summary","C1: Navigation is usable
+C2: Identifiers allergies and vitals remain visible without overlapping panels",NOT_RUN
+AF3-026,34,Global navigation and accessibility,Medium,Mobile chart essential information,physician; patient,4; 7.1; 31,Populated chart; 390x844 viewport,"1. Open chart summary
+2. Scroll through vitals and allergies","C1: Name MRN DOB allergies and recorded vitals remain readable
+C2: Clinical cards reflow instead of hiding essential information",NOT_RUN
+AF3-027,35,Global navigation and accessibility,Medium,Keyboard form operation,physician; patient,4; 7.1; 31,Registration form with known valid input,"1. Use Tab and Shift+Tab through fields
+2. Select dropdown option with keyboard
+3. Submit valid form","C1: Focus is visibly tracked
+C2: Essential form actions can be completed without pointer-only controls",NOT_RUN
+AF3-028,36,Global navigation and accessibility,Medium,Checkbox label toggles control,physician; patient,4; 7.1; 31,Diagnosis primary checkbox and authorization-required checkbox available,"1. Click label once
+2. Inspect state
+3. Click label again","C1: Label and control operate together
+C2: Checked and unchecked states are visually distinct",NOT_RUN
+AF3-029,37,Global navigation and accessibility,Easy,Explicit clinical action names,physician; patient,4; 7.1; 31,Patient chart with permitted create actions,1. Inspect insurance diagnosis order and message entry points,"C1: Actions use clear contextual names equivalent to Add insurance Add diagnosis Add order and New message
+C2: Insurance coverage is identified explicitly",NOT_RUN
+AF3-030,38,Global navigation and accessibility,Medium,Readable typography at default zoom,physician; patient,4; 7.1; 31,Desktop and mobile viewports; browser zoom 100 percent,"1. Inspect sign-in staff form and portal
+2. Capture screenshots","C1: Text controls and secondary labels are readable without clipping
+C2: Exact CSS pixel-size conformance is not claimed from screenshots alone",NOT_RUN
+AF3-031,39,Global navigation and accessibility,Medium,Recognizable buttons and focus,physician; patient,4; 7.1; 31,Staff form with primary and secondary actions,"1. Inspect controls without hovering
+2. Tab through actions","C1: Primary action is visually distinct
+C2: Secondary actions have readable borders and text
+C3: Focused control is apparent",NOT_RUN
+AF3-032,40,Global navigation and accessibility,Medium,Form spacing and amount width,physician; patient,4; 7.1; 31,Payment form; 390x844 viewport,"1. Inspect last field submit action and amount entry
+2. Type 1234.56 without submitting","C1: Final field and action have usable separation
+C2: Amount remains readable within available width",NOT_RUN
+AF3-033,41,Global navigation and accessibility,Medium,Responsive long tables,physician; patient,4; 7.1; 31,Patient directory and claims table; 390x844 viewport,"1. Inspect table
+2. Use provided scroll or stacked layout
+3. Open a row action","C1: Essential cells and actions are reachable
+C2: Whole page does not require horizontal hunting caused by overflowing layout",NOT_RUN
+AF3-034,42,Global navigation and accessibility,Easy,Readable empty state,physician; patient,4; 7.1; 31,A documented filter yielding zero appointments,"1. Apply empty-result filter
+2. Inspect workspace","C1: Explicit empty-state explanation appears
+C2: No stale rows remain and recovery controls are available",NOT_RUN
+AF3-035,43,Global navigation and accessibility,Medium,Recoverable field validation,physician; patient,4; 7.1; 31,Registration form with one missing required field,"1. Enter other valid values
+2. Submit
+3. Correct missing field","C1: Readable field error appears
+C2: Other submitted values persist
+C3: Correction can be saved",NOT_RUN
+AF3-036,44,Global navigation and accessibility,Medium,Destructive-action cancellation,physician; patient,4; 7.1; 31,Existing cancellable appointment,"1. Open cancellation confirmation
+2. Choose keep or dismiss
+3. Reload appointment","C1: No cancellation occurs
+C2: Appointment retains original status and details",NOT_RUN
+AF3-037,45,Global navigation and accessibility,Medium,Loading interaction does not duplicate submission,physician; patient,4; 7.1; 31,Synthetic message compose form,"1. Enter subject/body
+2. Activate submit twice quickly using visible control
+3. Open thread list","C1: Only one intended thread is created
+C2: UI gives progress or disables duplicate action, or equivalent safe behavior",NOT_RUN
+AF3-038,46,Global navigation and accessibility,Medium,Patient selection summary wraps,physician; patient,4; 7.1; 31,Form patient selector; long synthetic patient name; 390x844,"1. Select patient
+2. Inspect selection summary after closing dropdown","C1: Full name MRN and DOB remain visible in a wrapping summary
+C2: Native dropdown truncation does not hide identity",NOT_RUN
+AF3-039,3,Registration and patient selection,Medium,Register complete patient,frontdesk,7; 26,Unique per-case synthetic MRN; valid demographic fixture,"1. Search MRN to exclude duplicate
+2. Complete registration with all required fields
+3. Save
+4. Reload directory","C1: Exactly one new patient exists
+C2: MRN name DOB and contact match entered values",NOT_RUN
+AF3-040,47,Registration and patient selection,Medium,Minimal required registration,frontdesk,7; 26,Unused synthetic identity; optional fields blank,"1. Complete only UI-required registration fields
+2. Save
+3. Open chart","C1: Required-only record saves
+C2: Optional omissions do not produce fabricated values",NOT_RUN
+AF3-041,48,Registration and patient selection,Medium,Required identity validation,frontdesk,7; 26,New registration; all required identity fields empty,"1. Fill contact only
+2. Submit","C1: Required identity fields are identified
+C2: No incomplete patient is created",NOT_RUN
+AF3-042,49,Registration and patient selection,Hard,Duplicate MRN rejected,frontdesk,7; 26,Existing patient A MRN,"1. Register another name with A's MRN
+2. Submit
+3. Search MRN","C1: Duplicate is rejected
+C2: Original patient is unchanged and no second record appears",NOT_RUN
+AF3-043,50,Registration and patient selection,Medium,Duplicate demographic warning,frontdesk,7; 26,Existing patient with known name and DOB,"1. Start new registration with same name and DOB and unused MRN
+2. Submit or review duplicate check","C1: Potential duplicate is clearly surfaced
+C2: User is not silently redirected to or merged with the existing patient",NOT_RUN
+AF3-044,51,Registration and patient selection,Medium,Search before registering,frontdesk,7; 26,Existing patient A,"1. Search A by MRN from registration entry workflow
+2. Open matching result","C1: Existing identity is easy to find before creation
+C2: No new record is created by searching",NOT_RUN
+AF3-045,52,Registration and patient selection,Medium,Edit contact information,frontdesk,7; 26,Patient A with recorded phone/address,"1. Change phone and address to fixture values
+2. Save
+3. Reload chart","C1: New contact information persists
+C2: MRN and clinical history remain unchanged",NOT_RUN
+AF3-046,53,Registration and patient selection,Medium,Optional preferred name and language,frontdesk,7; 26,Patient A,"1. Set preferred name and preferred language
+2. Save
+3. Reopen demographics","C1: Both fields retain chosen values
+C2: Legal name is preserved separately",NOT_RUN
+AF3-047,54,Registration and patient selection,Medium,Emergency contact persistence,frontdesk,7; 26,Patient A; synthetic emergency contact,"1. Add name relationship and phone
+2. Save
+3. Reload demographics","C1: Emergency contact matches saved values
+C2: Patient's own phone is not overwritten",NOT_RUN
+AF3-048,55,Registration and patient selection,Medium,Consent state persistence,frontdesk,7; 26,Patient with editable consent state,"1. Set recorded consent status
+2. Save
+3. Reload
+4. Change to another offered state and save","C1: Each explicit state persists
+C2: Consent is distinguishable from an unchecked form that was never saved",NOT_RUN
+AF3-049,56,Registration and patient selection,Medium,Invalid demographic formatting,frontdesk,7; 26,New registration; email value not-an-email and nonnumeric DOB input where possible,"1. Enter malformed values
+2. Submit using browser form","C1: Invalid input is rejected with readable guidance
+C2: No corrupted patient record is created",NOT_RUN
+AF3-050,57,Registration and patient selection,Easy,Directory search by exact MRN,frontdesk,7; 26,Existing unique MRN,"1. Search exact MRN
+2. Open result","C1: Result identifies the expected patient
+C2: No similarly named patient's chart is opened",NOT_RUN
+AF3-051,58,Registration and patient selection,Easy,Directory search by name,frontdesk,7; 26,Two known patients sharing last name,1. Search shared last name,"C1: Both matching records are discoverable
+C2: MRN and DOB distinguish them",NOT_RUN
+AF3-052,59,Registration and patient selection,Medium,DOB directory filter,frontdesk,7; 26,Known patients on different birth dates,"1. Apply DOB filter for A
+2. Inspect results
+3. Clear filter","C1: Returned rows match requested birth date
+C2: Clearing restores broader results",NOT_RUN
+AF3-053,60,Registration and patient selection,Medium,Provider and department directory filters,frontdesk,7; 26,Patients assigned to distinct providers/departments,"1. Filter by provider A and department A
+2. Inspect rows
+3. Change provider","C1: Displayed scope follows selected filters
+C2: Filter labels match rendered data",NOT_RUN
+AF3-054,61,Registration and patient selection,Medium,Patient status filter,frontdesk,7; 26,Known active and inactive patients,"1. Filter Active
+2. Filter Inactive
+3. Clear filter","C1: Each view reflects chosen patient status
+C2: Inactive records are not mislabeled as active",NOT_RUN
+AF3-055,62,Registration and patient selection,Medium,Directory sorting and pagination,frontdesk,7; 26,More patients than one page; known names at page boundary,"1. Sort by offered name column
+2. Move to next page
+3. Return","C1: Ordering follows chosen direction
+C2: Rows are not duplicated or lost at the tested boundary",NOT_RUN
+AF3-056,63,Registration and patient selection,Medium,Patient selector typed name filter,frontdesk,7; 26,Scheduling form; similar-name patients,"1. Type full name into patient selector
+2. Select by MRN and DOB","C1: Search narrows candidates
+C2: Selected identity is unambiguous",NOT_RUN
+AF3-057,64,Registration and patient selection,Medium,Patient selector typed MRN filter,frontdesk,7; 26,Insurance form; patient A,"1. Type A's MRN
+2. Select result
+3. Save valid policy","C1: Correct patient is selected
+C2: Policy attaches to A",NOT_RUN
+AF3-058,65,Registration and patient selection,Medium,Search does not replace selection,frontdesk,7; 26,Clinical form with patient A preselected,"1. Search for B without selecting B
+2. Inspect summary
+3. Save valid A-associated record","C1: Selection remains A until explicitly changed
+C2: Saved record belongs to A",NOT_RUN
+AF3-059,66,Registration and patient selection,Medium,Keyboard patient selection and empty result,frontdesk,7; 26,Scheduling patient selector,"1. Type impossible search value
+2. Inspect empty state
+3. Search A
+4. Select using arrows and Enter","C1: Empty result is explicit
+C2: Keyboard selection resolves A with correct identifiers",NOT_RUN
+AF3-060,67,Registration and patient selection,Hard,Patient selection survives validation,frontdesk,7; 26,Insurance form with patient A selected and missing member ID,"1. Submit invalid form
+2. Inspect selection
+3. Correct member ID
+4. Save","C1: A stays selected through error
+C2: Entered valid values persist
+C3: Saved coverage belongs to A",NOT_RUN
+AF3-061,68,Registration and patient selection,Hard,Diagnosis and encounter selectors prevent wrong-patient context,frontdesk,7; 26,Patients A/B with distinct encounters and diagnoses,"1. Select A in order form
+2. Inspect related selectors
+3. Select an available A encounter and diagnosis","C1: Related choices show sufficient context
+C2: B-only records cannot be linked to A through exposed UI",NOT_RUN
+AF3-062,69,Registration and patient selection,Hard,Scoped patient selector for restricted role,frontdesk,7; 26,Assigned physician with documented patient scope; out-of-scope B fixture,"1. Search B's exact MRN in clinical selector
+2. Attempt known B form URL if available","C1: Search and direct form obey the same documented patient scope
+C2: No out-of-scope record can be created or accessed",NOT_RUN
+AF3-063,70,Longitudinal patient chart,Easy,Summary reconciles patient identity,physician,7.3; 26,Patient A with demographic and clinical fixture,"1. Open chart Summary
+2. Compare name MRN DOB sex and provider to demographics","C1: Identity matches patient record
+C2: No cross-patient summary data appears",NOT_RUN
+AF3-064,71,Longitudinal patient chart,Medium,Encounter history opens correct visit,physician,7.3; 26,Patient with two encounters on different dates,"1. Open Encounters tab
+2. Select older visit
+3. Return and select newer visit","C1: Dates statuses and providers distinguish visits
+C2: Each link opens the selected encounter",NOT_RUN
+AF3-065,72,Longitudinal patient chart,Medium,Medical and surgical histories persist,physician,7.3; 26,Patient A; permitted history editing,"1. Add synthetic medical and surgical history entries
+2. Save
+3. Reload tabs","C1: Entries persist in their correct history categories
+C2: Patient linkage remains A",NOT_RUN
+AF3-066,73,Longitudinal patient chart,Medium,Family and social histories remain distinct,physician,7.3; 26,Patient A; editable history,"1. Add family-history marker and separate social-history marker
+2. Save
+3. Reload","C1: Both markers persist in correct sections
+C2: One category does not overwrite the other",NOT_RUN
+AF3-067,74,Longitudinal patient chart,Medium,Add allergy and review chart banner,physician,7.3; 26,Patient A; synthetic penicillin allergy with reaction rash,"1. Add allergy
+2. Save
+3. Open encounter summary","C1: Allergy substance and reaction persist
+C2: Encounter allergy display reflects the change",NOT_RUN
+AF3-068,75,Longitudinal patient chart,Medium,Allergy edit history and current state,physician,7.3; 26,Patient with allergy entry,"1. Edit reaction severity using offered controls
+2. Save
+3. Reopen allergy list","C1: Current allergy details reflect edit
+C2: Unrelated allergies are unchanged",NOT_RUN
+AF3-069,76,Longitudinal patient chart,Medium,Chart medication status display,physician,7.3; 26,Patient with one active and one discontinued medication,"1. Open Medications tab
+2. Inspect current and history views","C1: Active versus discontinued status is distinguishable
+C2: Discontinued medication is not shown as actively taken without qualification",NOT_RUN
+AF3-070,77,Longitudinal patient chart,Medium,Vitals chronology and units,physician,7.3; 26,Patient with two timestamped vitals sets using different recorded units,"1. Open Vitals tab
+2. Open encounter entries","C1: Chronology author and units distinguish measurements
+C2: Latest values do not overwrite historical measurements",NOT_RUN
+AF3-071,78,Longitudinal patient chart,Medium,Orders and results cross-links,physician,7.3; 26,Patient with order and published result,"1. Open Orders tab
+2. Follow related result
+3. Return through chart","C1: Order result and patient references agree
+C2: Links do not open another patient's result",NOT_RUN
+AF3-072,79,Longitudinal patient chart,Medium,Clinical document association,physician,7.3; 26,Patient A; supported document upload or creation; synthetic text document,"1. Attach or create document through UI
+2. Save
+3. Reopen Documents tab","C1: Document title and patient association persist
+C2: Document is retrievable through the UI",NOT_RUN
+AF3-073,80,Longitudinal patient chart,Medium,Immunization record display,physician,7.3; 26,Patient with seeded immunization entry,"1. Open Immunizations tab
+2. Inspect details
+3. Reload","C1: Immunization name date and available details persist
+C2: No unsupported administration is implied by merely viewing",NOT_RUN
+AF3-074,81,Longitudinal patient chart,Medium,Chart appointment history,physician,7.3; 26,Patient with past and future appointments,"1. Open Appointments tab
+2. Open each appointment","C1: History includes correct date provider and status
+C2: Navigation stays scoped to the patient",NOT_RUN
+AF3-075,82,Longitudinal patient chart,Medium,Chart billing summary links,physician,7.3; 26,Patient with one known claim and balance,"1. Open Billing tab
+2. Open related claim as permitted staff","C1: Balance matches claim detail
+C2: Claim identity and patient linkage agree",NOT_RUN
+AF3-076,83,Longitudinal patient chart,Hard,Chart consistency after new diagnosis,physician,7.3; 26,Patient A with open encounter,"1. Add diagnosis in encounter
+2. Open longitudinal chart and encounter again","C1: Diagnosis appears in its intended encounter or problem scope
+C2: No unintended duplicate or different-patient diagnosis is created",NOT_RUN
+AF3-077,84,Scheduling and waitlist,Medium,Create appointment with default duration,frontdesk; manager,8,Patient A; future free provider slot; configured appointment type,"1. Select patient provider date time and visit type
+2. Inspect default duration
+3. Save
+4. Reload schedule","C1: Appointment uses configured duration
+C2: Card shows correct patient time type reason duration and status",NOT_RUN
+AF3-078,4,Scheduling and waitlist,Medium,Daily date change auto-updates,frontdesk; manager,8,Appointments on dates D and D+1; JavaScript enabled,1. Change schedule date to D+1 without pressing Apply,"C1: Heading identifies D+1
+C2: Rendered appointments change to D+1 without a second action",NOT_RUN
+AF3-079,85,Scheduling and waitlist,Medium,Provider filter auto-updates,frontdesk; manager,8,Appointments for providers A and B; JavaScript enabled,1. Change provider filter to A without pressing Apply,"C1: Only selected provider's applicable appointments remain
+C2: Visible active filter matches results",NOT_RUN
+AF3-080,86,Scheduling and waitlist,Medium,Department filter auto-updates,frontdesk; manager,8,Appointments in two departments; JavaScript enabled,1. Change department filter without pressing Apply,"C1: Schedule changes to selected department
+C2: Displayed heading and context remain coherent",NOT_RUN
+AF3-081,87,Scheduling and waitlist,Medium,Date navigation retains filters,frontdesk; manager,8,Provider A and department A filters active,"1. Move one day forward
+2. Move back","C1: Provider and department filters stay selected
+C2: Rendered rows follow date and retained filters",NOT_RUN
+AF3-082,88,Scheduling and waitlist,Medium,Week heading and chronological ordering,frontdesk; manager,8,Appointments spanning a known week,"1. Switch to week view
+2. Inspect dates and times
+3. Navigate next week","C1: Heading matches actual rendered week
+C2: Appointments are chronological within displayed days",NOT_RUN
+AF3-083,89,Scheduling and waitlist,Easy,Appointment-bearing provider groups prominent,frontdesk; manager,8,Providers with and without appointments on selected day,"1. Open day schedule
+2. Inspect group organization","C1: Populated groups are readily visible
+C2: Empty groups are compact and labeled no appointments rather than available",NOT_RUN
+AF3-084,90,Scheduling and waitlist,Medium,Narrow schedule avoids empty horizontal canvas,frontdesk; manager,8,Mixed populated and empty provider groups; 390x844,"1. Open schedule
+2. Locate populated provider appointments
+3. Open one card","C1: Appointment details and actions are reachable
+C2: Mostly empty wide canvas does not obscure populated groups",NOT_RUN
+AF3-085,91,Scheduling and waitlist,Medium,Calendar card opens correct details,frontdesk; manager,8,Two adjacent appointments for same provider,"1. Open second card
+2. Compare details with card","C1: Patient time duration reason and status match selected appointment
+C2: First appointment is not opened accidentally",NOT_RUN
+AF3-086,92,Scheduling and waitlist,Hard,Provider overlap prevented,frontdesk; manager,8,Existing provider A appointment 10:00-10:30 on D,"1. Attempt second A appointment 10:15-10:45 on D
+2. Submit","C1: Overlap is rejected unless an explicit pre-recorded scheduling rule permits it
+C2: Existing appointment remains unchanged",NOT_RUN
+AF3-087,93,Scheduling and waitlist,Medium,Back-to-back booking boundary,frontdesk; manager,8,Provider A available 10:00-11:00; booking 10:00-10:30,1. Book 10:30-11:00 on same day,"C1: Adjacent non-overlapping slot is accepted under recorded availability rules
+C2: No false overlap is reported",NOT_RUN
+AF3-088,94,Scheduling and waitlist,Medium,Different-provider simultaneous booking,frontdesk; manager,8,Two available providers; distinct patients; same time,"1. Book provider A at time T
+2. Book provider B at T","C1: Both independent appointments can exist
+C2: Provider conflict is not incorrectly applied across providers",NOT_RUN
+AF3-089,95,Scheduling and waitlist,Hard,Unavailable provider slot rejected,frontdesk; manager,8,Documented provider unavailability interval,1. Attempt appointment wholly within unavailable interval,"C1: UI prevents or rejects booking with explanation
+C2: No appointment is persisted in prohibited slot",NOT_RUN
+AF3-090,96,Scheduling and waitlist,Medium,Reschedule retains appointment identity/history,frontdesk; manager,8,Existing future appointment,"1. Move to valid different date/time
+2. Save
+3. Open history and both schedule dates","C1: Appointment appears in new slot and not as active in old slot
+C2: Reschedule is traceable without duplicate active booking",NOT_RUN
+AF3-091,97,Scheduling and waitlist,Medium,Cancel appointment,frontdesk; manager,8,Existing cancellable appointment,"1. Cancel with synthetic reason
+2. Confirm
+3. Reload schedule and history","C1: Cancelled status persists
+C2: Appointment history retains cancellation and original identity",NOT_RUN
+AF3-092,98,Scheduling and waitlist,Medium,Confirm scheduled appointment,frontdesk; manager,8,Scheduled appointment,"1. Choose Confirm
+2. Reload details","C1: Status becomes Confirmed
+C2: History records transition",NOT_RUN
+AF3-093,99,Scheduling and waitlist,Medium,Mark arrived appointment,frontdesk; manager,8,Confirmed appointment,"1. Choose Mark arrived
+2. Reload front desk list","C1: Status becomes Arrived
+C2: Arrival is visible to front desk workflow",NOT_RUN
+AF3-094,100,Scheduling and waitlist,Medium,Mark no-show appointment,frontdesk; manager,8,Eligible past scheduled appointment under documented rules,"1. Choose No Show
+2. Confirm if requested
+3. Reload","C1: No Show state persists
+C2: History identifies transition",NOT_RUN
+AF3-095,101,Scheduling and waitlist,Hard,Invalid lifecycle transition rejected,frontdesk; manager,8,Cancelled appointment; previously observed status action URL where applicable,"1. Open details
+2. Attempt offered Roomed or Complete action, or observed action page","C1: Invalid transition is unavailable or denied
+C2: Cancelled appointment does not become active without documented restoration",NOT_RUN
+AF3-096,102,Scheduling and waitlist,Hard,Check-out completion boundary,frontdesk; manager,8,Completed appointment with required checkout details,"1. Complete allowed check-out action
+2. Reload history","C1: Appointment becomes Checked Out
+C2: Earlier clinical completion history remains intact",NOT_RUN
+AF3-097,103,Scheduling and waitlist,Medium,Appointment type duration configuration reflected,frontdesk; manager,8,Admin can configure demo visit type; manager/front desk booking,"1. Set test type duration to 25 minutes as admin
+2. Book that type as front desk","C1: New appointment defaults to 25 minutes
+C2: Unrelated appointment types retain previous defaults",NOT_RUN
+AF3-098,104,Scheduling and waitlist,Medium,Waitlist enrollment preferences,frontdesk; manager,8,Patient A awaiting appointment,"1. Add waitlist entry with provider A and date range D1-D2
+2. Save
+3. Reload","C1: Patient provider and date range persist
+C2: Entry appears in waitlist",NOT_RUN
+AF3-099,105,Scheduling and waitlist,Hard,Waitlist matching respects preferences,frontdesk; manager,8,Waitlist entry for provider A D1-D2; one matching and one outside slot,1. Open available-slot matches,"C1: Matching slot is offered
+C2: Outside date/provider slot is not mislabeled as a matching preference",NOT_RUN
+AF3-100,106,Scheduling and waitlist,Medium,Waitlist simulated notification,frontdesk; manager,8,Matching waitlist entry and open slot,"1. Trigger simulated notification
+2. Open entry history","C1: Notification is clearly simulated
+C2: Status or history records notification without implying real delivery",NOT_RUN
+AF3-101,107,Scheduling and waitlist,Hard,Waitlist booking resolves entry,frontdesk; manager,8,Notified entry with free matching slot,"1. Book through waitlist
+2. Open schedule and waitlist","C1: Exactly one appointment appears
+C2: Waitlist entry no longer presents the same request as unbooked",NOT_RUN
+AF3-102,108,Scheduling and waitlist,Medium,Schedule Apply fallback present and usable,frontdesk; manager,8,Schedule date/filter controls,"1. Inspect explicit Apply control
+2. Change date and activate Apply
+3. Inspect heading and results","C1: Explicit fallback can submit selected filters
+C2: Rendered period and filters agree; JavaScript-disabled behavior is a separately disclosed unverified condition unless browser can disable JS without scripts",NOT_RUN
+AF3-103,109,Front desk check-in,Medium,Check-in identity step,frontdesk,9; 11.2; 26,Arrived appointment for A,"1. Start check-in
+2. Inspect patient identity
+3. Confirm identity step","C1: Name MRN and DOB identify A
+C2: Identity confirmation is reflected in step progress",NOT_RUN
+AF3-104,110,Front desk check-in,Medium,Check-in demographics step,frontdesk,9; 11.2; 26,Patient with editable phone and arrived appointment,"1. Update phone during check-in
+2. Save step
+3. Open demographics","C1: Corrected phone persists
+C2: Demographic step completion is visible",NOT_RUN
+AF3-105,111,Front desk check-in,Medium,Check-in coverage review,frontdesk,9; 11.2; 26,Patient with policy and arrived appointment,"1. Review insurance in check-in
+2. Run simulated verification
+3. Save step","C1: Coverage status is visible
+C2: Verification belongs to selected patient and policy",NOT_RUN
+AF3-106,112,Front desk check-in,Medium,Consent blocks incomplete check-in,frontdesk,9; 11.2; 26,Required consent missing; remaining required steps complete,1. Attempt final check-in without consent,"C1: Check-in is not finalized
+C2: Missing mandatory consent is identified",NOT_RUN
+AF3-107,113,Front desk check-in,Medium,Intake forms completion indicator,frontdesk,9; 11.2; 26,Check-in requires supported intake form,"1. Complete intake form
+2. Save
+3. Reopen check-in","C1: Submitted answers persist
+C2: Step indicator reflects completion",NOT_RUN
+AF3-108,114,Front desk check-in,Medium,Simulated copay during check-in,frontdesk,9; 11.2; 26,Eligible appointment; no prior copay; amount 25.00,"1. Record simulated copay 25.00
+2. View receipt/history","C1: One 25.00 copay is recorded
+C2: Amount and simulated nature are explicit",NOT_RUN
+AF3-109,115,Front desk check-in,Hard,Copay revisit does not double charge,frontdesk,9; 11.2; 26,Appointment with 25.00 copay already recorded,"1. Return to check-in
+2. Reload confirmation
+3. Inspect payment history","C1: Original copay remains singular
+C2: Balance and history do not add another 25.00",NOT_RUN
+AF3-110,116,Front desk check-in,Medium,Check-in resumes saved progress,frontdesk,9; 11.2; 26,Partially completed workflow,"1. Save demographics step
+2. Leave page
+3. Reopen check-in","C1: Completed step remains complete
+C2: Unfinished mandatory steps remain identifiable",NOT_RUN
+AF3-111,117,Front desk check-in,Hard,Complete check-in creates worklist entry,frontdesk,9; 11.2; 26,All mandatory steps satisfied; arrived appointment,"1. Finalize check-in
+2. Sign in as nurse
+3. Open worklist","C1: Appointment is Checked In
+C2: Patient appears once in nursing worklist",NOT_RUN
+AF3-112,118,Front desk check-in,Hard,Initial encounter does not start physician care,frontdesk,9; 11.2; 26,Appointment before physician start; completed front desk check-in,"1. Open newly created encounter
+2. Compare appointment and encounter states","C1: Encounter starts Scheduled
+C2: Checked In appointment is not falsely labeled physician In Progress",NOT_RUN
+AF3-113,119,Front desk check-in,Hard,Missing registration requirements block completion,frontdesk,9; 11.2; 26,Patient missing one explicitly required registration item,"1. Attempt final check-in
+2. Correct item through UI
+3. Retry","C1: Initial completion is rejected with specific missing item
+C2: Completion succeeds after correction",NOT_RUN
+AF3-114,120,Front desk check-in,Medium,Check-in history is readable,frontdesk,9; 11.2; 26,Completed check-in with 25.00 copay,1. Open activity history,"C1: Check-in event includes actor timestamp and formatted $25.00
+C2: Raw dictionaries arrays and object syntax are not displayed",NOT_RUN
+AF3-115,5,Vitals units and clinical intake,Easy,New intake defaults to imperial units,nurse; assistant,10,Fresh intake form with no prior measurements,"1. Open intake
+2. Inspect height and weight selectors","C1: Height defaults to in
+C2: Weight defaults to lb",NOT_RUN
+AF3-116,121,Vitals units and clinical intake,Medium,Independent unit selection,nurse; assistant,10,New intake; height 170 cm and weight 150 lb,"1. Set height cm and weight lb independently
+2. Save
+3. Reload","C1: Each unit selection persists independently
+C2: Saved values retain represented measurements",NOT_RUN
+AF3-117,122,Vitals units and clinical intake,Medium,Imperial to metric conversion,nurse; assistant,10,Unsaved height 65 in and weight 150 lb,1. Switch height to cm and weight to kg,"C1: Height displays 165.1 cm
+C2: Weight displays 68.04 kg with no more than two decimals",NOT_RUN
+AF3-118,123,Vitals units and clinical intake,Medium,Metric to imperial conversion,nurse; assistant,10,Unsaved height 170 cm and weight 70 kg,1. Switch to in and lb,"C1: Height displays 66.93 in
+C2: Weight displays 154.32 lb with no more than two decimals",NOT_RUN
+AF3-119,124,Vitals units and clinical intake,Hard,Repeated unit toggle before saving,nurse; assistant,10,Enter 65.37 in and 147.29 lb,"1. Toggle both units five round trips without editing
+2. Return to original units","C1: Original displayed values 65.37 in and 147.29 lb are restored
+C2: Rounding does not accumulate across toggles",NOT_RUN
+AF3-120,125,Vitals units and clinical intake,Hard,Precision survives save and reload,nurse; assistant,10,Enter height 65.37 in and weight 147.29 lb,"1. Save
+2. Reload
+3. Switch to metric
+4. Switch back
+5. Save and reload","C1: Original imperial values remain 65.37 and 147.29
+C2: Metric display is 166.04 cm and 66.81 kg; internal eight-decimal storage is not claimed directly verified",NOT_RUN
+AF3-121,126,Vitals units and clinical intake,Hard,Changing converted value overrides original measurement,nurse; assistant,10,Enter height 65 in~Switch to cm showing 165.1 cm,"1. Edit height to 170 cm
+2. Save
+3. Reload
+4. Switch to in","C1: Saved height is 170 cm and converts to 66.93 in
+C2: Old canonical value does not restore 65 in",NOT_RUN
+AF3-122,127,Vitals units and clinical intake,Hard,Changed converted weight persists,nurse; assistant,10,Enter 150 lb and convert to kg,"1. Replace displayed weight with 70 kg
+2. Save
+3. Reload
+4. Switch to lb","C1: Saved weight is 70 kg and converts to 154.32 lb
+C2: Original 150 lb does not override the edit",NOT_RUN
+AF3-123,128,Vitals units and clinical intake,Medium,BMI automatic calculation,nurse; assistant,10,Height 170 cm and weight 70 kg,"1. Enter both measurements
+2. Save
+3. Inspect BMI","C1: BMI displays 24.2
+C2: BMI is labeled and shown to one decimal place",NOT_RUN
+AF3-124,129,Vitals units and clinical intake,Hard,BMI invariant under unit switches,nurse; assistant,10,Height 170 cm weight 70 kg with BMI 24.2,"1. Toggle height only
+2. Toggle weight only
+3. Save and reload","C1: BMI remains 24.2
+C2: Independent unit changes do not change represented BMI",NOT_RUN
+AF3-125,130,Vitals units and clinical intake,Medium,Trailing zeros suppressed,nurse; assistant,10,Enter 65.00 in and 150.00 lb,"1. Save
+2. Open saved vitals","C1: Height and weight display without unnecessary decimal zeros
+C2: Units remain explicit",NOT_RUN
+AF3-126,131,Vitals units and clinical intake,Medium,At most two displayed decimals,nurse; assistant,10,Editable input permits 65.375 in and 147.295 lb or equivalent fixture,"1. Enter values
+2. Save or follow displayed precision validation
+3. Reload accepted measurement","C1: UI consistently limits displayed height/weight to at most two decimals
+C2: Any input rejection is explicit and preserves values; exact internal rounding mode is not inferred",NOT_RUN
+AF3-127,132,Vitals units and clinical intake,Hard,Validation preserves selected units,nurse; assistant,10,Height 170 cm and weight 154.32 lb; one invalid required vital field,"1. Submit
+2. Inspect error form
+3. Correct invalid field
+4. Save","C1: cm/lb selections and valid measurements survive error
+C2: Saved values represent submitted measurements",NOT_RUN
+AF3-128,133,Vitals units and clinical intake,Hard,Unit conversion after validation error,nurse; assistant,10,Enter 65.37 in 147.29 lb; induce required-field error,"1. Submit
+2. Toggle units on returned form
+3. Correct error
+4. Save
+5. Reload","C1: Conversion remains consistent with original entered measurements
+C2: Stale error-page metadata does not silently replace values",NOT_RUN
+AF3-129,134,Vitals units and clinical intake,Medium,Zero or negative height rejected,nurse; assistant,10,Fresh intake with otherwise valid values,"1. Enter 0 height
+2. Submit
+3. Enter negative height where browser permits
+4. Submit","C1: Nonpositive height cannot be saved
+C2: Readable validation identifies height",NOT_RUN
+AF3-130,135,Vitals units and clinical intake,Medium,Zero or negative weight rejected,nurse; assistant,10,Fresh intake with otherwise valid values,"1. Enter 0 weight
+2. Submit
+3. Enter negative weight where browser permits
+4. Submit","C1: Nonpositive weight cannot be saved
+C2: No impossible BMI is stored visibly",NOT_RUN
+AF3-131,136,Vitals units and clinical intake,Medium,Pain range boundary accepted,nurse; assistant,10,Intake with otherwise valid vitals,"1. Save pain 0
+2. Reopen editable intake
+3. Save pain 10","C1: Both endpoints are accepted
+C2: Saved pain remains within labeled 0-10 scale",NOT_RUN
+AF3-132,137,Vitals units and clinical intake,Medium,Pain outside range rejected,nurse; assistant,10,Fresh intake,"1. Enter pain 11
+2. Submit
+3. Try -1 where possible","C1: Out-of-range values cannot be saved
+C2: Pain validation is understandable",NOT_RUN
+AF3-133,138,Vitals units and clinical intake,Easy,All vital fields show units,nurse; assistant,10,Fresh intake form,1. Inspect BP heart rate respiratory rate temperature oxygen and pain labels,"C1: Labels show mmHg bpm breaths/min degrees Celsius percent and 0-10 respectively
+C2: Units are not ambiguous",NOT_RUN
+AF3-134,139,Vitals units and clinical intake,Medium,Complete vitals set persists,nurse; assistant,10,BP 120/80 HR 72 RR 16 temp 36.8 SpO2 98 height 65 in weight 150 lb pain 2,"1. Enter complete set
+2. Save
+3. Reload encounter and chart","C1: All nine measurements and BMI are visible with correct units
+C2: No field disappears from saved views",NOT_RUN
+AF3-135,140,Vitals units and clinical intake,Medium,Vital author and timestamp,nurse; assistant,10,Nurse entering a new complete vitals set,"1. Save vitals
+2. Open chronological history","C1: Author identifies acting nurse
+C2: Timestamp corresponds to saved entry and distinguishes earlier measurements",NOT_RUN
+AF3-136,141,Vitals units and clinical intake,Hard,Existing metric record keeps meaning,nurse; assistant,10,Existing height 170 cm weight 70 kg fixture,"1. Open historical vitals
+2. View/edit without changing measurements
+3. Save if applicable","C1: Original measurements retain metric meaning
+C2: Defaults do not reinterpret 170 as inches or 70 as pounds",NOT_RUN
+AF3-137,142,Vitals units and clinical intake,Medium,Chief complaint and intake note transfer,nurse; assistant,10,Nurse on A encounter; unique complaint and observation text,"1. Enter chief complaint and intake note
+2. Save
+3. Open as physician","C1: Physician encounter contains entered complaint and observations
+C2: Intake note purpose is explained in form",NOT_RUN
+AF3-138,143,Vitals units and clinical intake,Medium,Reconciliation and review indicators,nurse; assistant,10,Patient with known medication allergy and history entries,"1. Complete medication reconciliation allergy review and history review
+2. Save
+3. Reload","C1: Each completed review is distinguishable
+C2: Review state persists without changing unrelated clinical records",NOT_RUN
+AF3-139,144,Vitals units and clinical intake,Medium,Screening questions and observations,nurse; assistant,10,Intake with supported screening items,"1. Record permitted answers and observation marker
+2. Save
+3. Reopen intake","C1: Answers and observation persist
+C2: Physician can find the recorded intake information",NOT_RUN
+AF3-140,145,Vitals units and clinical intake,Hard,Assistant rooming cannot start physician care,nurse; assistant,10,assistant.demo; checked-in appointment,"1. Record intake
+2. Choose Roomed
+3. Attempt physician Start if exposed
+4. Open as physician","C1: Roomed state persists
+C2: Physician care remains unstarted until assigned physician or admin starts it",NOT_RUN
+AF3-141,146,Encounters notes and signatures,Easy,Encounter workspace patient context,physician,11; 26,Assigned patient with history problems medications allergies and recent vitals,"1. Open encounter workspace
+2. Inspect clinical panels","C1: Relevant patient context and documentation areas are accessible
+C2: Patient identity remains clear",NOT_RUN
+AF3-142,147,Encounters notes and signatures,Medium,Appointment and documentation states separately labeled,physician,11; 26,Roomed appointment and Scheduled encounter,"1. Open encounter
+2. Inspect both status labels","C1: Appointment progress and documentation status are distinct
+C2: Roomed does not imply a signed or started encounter",NOT_RUN
+AF3-143,148,Encounters notes and signatures,Medium,Assigned physician starts care,physician,11; 26,Roomed appointment; assigned physician signed in,"1. Choose Start physician care
+2. Reload appointment and encounter","C1: Appointment care progresses to In Progress
+C2: Encounter moves to In Progress with actor/history",NOT_RUN
+AF3-144,149,Encounters notes and signatures,Hard,Unassigned physician cannot start care,physician,11; 26,Second physician not assigned to encounter under documented scope,"1. Open encounter or observed start page as unassigned physician
+2. Attempt Start if offered","C1: Start is denied
+C2: Assigned physician and original states remain unchanged",NOT_RUN
+AF3-145,150,Encounters notes and signatures,Hard,Administrator can start permitted care,physician,11; 26,Roomed appointment; admin account,"1. Open appointment
+2. Start physician care through offered authorized action","C1: Start succeeds for administrator
+C2: History identifies administrator rather than falsely attributing physician action",NOT_RUN
+AF3-146,6,Encounters notes and signatures,Medium,Save complete SOAP draft,physician,11; 26,In-progress encounter; distinct text for all SOAP subsections,"1. Enter complaint HPI ROS exam assessment and plan
+2. Save Draft
+3. Reload","C1: All submitted sections persist
+C2: Note remains unsigned",NOT_RUN
+AF3-147,151,Encounters notes and signatures,Medium,Edit existing unsigned draft,physician,11; 26,Draft note with markers in Subjective and Plan,"1. Change Plan only
+2. Save
+3. Reload","C1: Plan changes persist
+C2: Unedited Subjective remains intact
+C3: No signature appears",NOT_RUN
+AF3-148,152,Encounters notes and signatures,Medium,Preview note matches draft,physician,11; 26,Draft with known SOAP text and recorded vitals,"1. Open Preview
+2. Compare sections and values","C1: Preview reflects current saved draft and patient context
+C2: Preview does not sign note",NOT_RUN
+AF3-149,153,Encounters notes and signatures,Medium,Clinical template insertion,physician,11; 26,In-progress encounter; available template,"1. Select template
+2. Apply
+3. Edit one section
+4. Save","C1: Template populates editable content
+C2: Saved edit is retained
+C3: Template does not introduce another patient's facts",NOT_RUN
+AF3-150,154,Encounters notes and signatures,Medium,Clinical macro expansion,physician,11; 26,Unsigned note; documented available macro,"1. Insert macro using visible workflow
+2. Review expanded text
+3. Save","C1: Macro produces intended readable text
+C2: Draft remains editable and unsigned",NOT_RUN
+AF3-151,155,Encounters notes and signatures,Hard,Copy-forward provenance,physician,11; 26,Patient with prior note and new unsigned encounter,"1. Copy forward prior content using UI
+2. Inspect source/provenance
+3. Save","C1: Copied content identifies its source
+C2: New note is not presented as newly observed facts without provenance",NOT_RUN
+AF3-152,156,Encounters notes and signatures,Medium,Documentation Pending state,physician,11; 26,In-progress encounter with incomplete draft,"1. Use permitted workflow to mark documentation pending
+2. Reload","C1: Documentation Pending state persists
+C2: Appointment progress remains separately labeled",NOT_RUN
+AF3-153,157,Encounters notes and signatures,Medium,Ready for Sign-off state,physician,11; 26,Draft satisfying documented preparation requirements,"1. Move to Ready for Sign-off
+2. Open unsigned-note workqueue","C1: Encounter is ready but unsigned
+C2: Workqueue reflects need for clinician signature",NOT_RUN
+AF3-154,158,Encounters notes and signatures,Hard,Required documentation blocks signing,physician,11; 26,Draft missing an explicitly required section,"1. Attempt Sign
+2. Inspect error and status","C1: Signature is not created
+C2: Missing documentation is identified",NOT_RUN
+AF3-155,159,Encounters notes and signatures,Hard,Missing encounter diagnosis blocks signing,physician,11; 26,Otherwise signable note without encounter diagnosis,1. Attempt Sign,"C1: Signature is not created
+C2: Missing diagnosis is explained",NOT_RUN
+AF3-156,160,Encounters notes and signatures,Hard,Order-state gate on sign-off,physician,11; 26,Encounter with an order state documented to block sign-off,"1. Attempt Sign
+2. Resolve blocking order through UI
+3. Retry","C1: Initial sign-off is blocked with order reason
+C2: After resolution allowed sign-off can proceed",NOT_RUN
+AF3-157,161,Encounters notes and signatures,Hard,Acknowledgment gate on sign-off,physician,11; 26,Signable encounter with required acknowledgment unchecked,"1. Attempt Sign
+2. Complete acknowledgment
+3. Retry","C1: Unchecked requirement blocks signing
+C2: Acknowledged valid note can be signed",NOT_RUN
+AF3-158,162,Encounters notes and signatures,Medium,Sign note records signature details,physician,11; 26,Complete note all gates satisfied,"1. Explicitly Sign
+2. Open signed note details","C1: Signing clinician timestamp and version are visible
+C2: Signed state persists",NOT_RUN
+AF3-159,163,Encounters notes and signatures,Hard,Signed note immutable on revisit,physician,11; 26,Signed note; previous edit page URL recorded before signing,"1. Open signed note
+2. Revisit edit page via browser
+3. Attempt any exposed edit","C1: Original signed content cannot be silently changed
+C2: Editing is denied or routed to auditable addendum",NOT_RUN
+AF3-160,164,Encounters notes and signatures,Hard,Auditable addendum preserves original,physician,11; 26,Signed note; correction text marker,"1. Create addendum
+2. Save/sign as required
+3. Open original and addendum","C1: Original signed text is retained
+C2: Addendum author time and association are visible",NOT_RUN
+AF3-161,165,Encounters notes and signatures,Medium,Close signed encounter,physician,11; 26,Signed encounter meeting closure prerequisites,"1. Close encounter
+2. Reload chart history","C1: Encounter becomes Closed
+C2: Signed note and signature metadata remain intact",NOT_RUN
+AF3-162,166,Encounters notes and signatures,Hard,Closed encounter cannot become fresh draft silently,physician,11; 26,Closed signed encounter; prior draft-edit URL known,"1. Navigate to prior edit URL
+2. Attempt editable action if present","C1: Closed signed content is preserved
+C2: No unsigned overwrite is created",NOT_RUN
+AF3-163,167,Encounters notes and signatures,Hard,Draft version provenance after successive saves,physician,11; 26,Unsigned note with first version text,"1. Save first version
+2. Change text and save again
+3. Open available version/history view","C1: Saved revisions are traceable through versions or audit history
+C2: Current draft matches latest save without misattributing author",NOT_RUN
+AF3-164,168,Encounters notes and signatures,Hard,Starting care preserves an authored draft,physician,11; 26,Scheduled encounter linked to unstarted appointment but containing authored draft fixture,"1. Start physician care as assigned physician
+2. Reload note","C1: Authored draft content remains unchanged
+C2: Lifecycle transition does not reset documentation",NOT_RUN
+AF3-165,169,Problems and diagnoses,Medium,Add longitudinal problem,physician; coder,12; 4.2,Patient A; curated diabetes entry,"1. Open problem list
+2. Add curated diabetes diagnosis and note
+3. Save
+4. Reload","C1: Problem name code status and note persist
+C2: Problem belongs to A",NOT_RUN
+AF3-166,170,Problems and diagnoses,Medium,Edit problem details,physician; coder,12; 4.2,Existing active problem,"1. Edit permitted clinical note/status detail
+2. Save
+3. Reload","C1: Edited field persists
+C2: Problem identity and unrelated entries remain unchanged",NOT_RUN
+AF3-167,171,Problems and diagnoses,Medium,Resolve active problem,physician; coder,12; 4.2,Existing active problem,"1. Choose Resolve
+2. Save
+3. Reopen active and history views","C1: Resolved status persists
+C2: Historical problem remains accessible",NOT_RUN
+AF3-168,172,Problems and diagnoses,Medium,Reactivate resolved problem,physician; coder,12; 4.2,Resolved problem eligible for reactivation,"1. Choose Reactivate
+2. Save
+3. Reload","C1: Problem is active again
+C2: Existing history is retained without creating an unintended duplicate",NOT_RUN
+AF3-169,173,Problems and diagnoses,Medium,Encounter diagnosis association,physician; coder,12; 4.2,Two encounters for patient A,"1. Add curated diagnosis to newer encounter
+2. Open both encounters","C1: Diagnosis is linked to intended encounter
+C2: Older encounter does not gain unintended association",NOT_RUN
+AF3-170,174,Problems and diagnoses,Medium,Primary diagnosis true persists,physician; coder,12; 4.2,Encounter diagnosis with primary unchecked,"1. Read primary explanation
+2. Check Primary
+3. Save
+4. Reload","C1: Primary designation persists
+C2: Explanatory text clarifies meaning",NOT_RUN
+AF3-171,175,Problems and diagnoses,Medium,Primary diagnosis false persists,physician; coder,12; 4.2,Editable diagnosis currently primary; valid alternative primary if required,"1. Uncheck Primary
+2. Save
+3. Reload","C1: Explicit false state persists
+C2: Prior checked state does not silently return",NOT_RUN
+AF3-172,176,Problems and diagnoses,Hard,Primary checkbox survives error,physician; coder,12; 4.2,New diagnosis with Primary checked but required code missing,"1. Submit
+2. Inspect checkbox
+3. Choose code
+4. Save","C1: Checked state survives validation error
+C2: Saved diagnosis matches chosen designation",NOT_RUN
+AF3-173,177,Problems and diagnoses,Medium,Secondary diagnoses retained,physician; coder,12; 4.2,Encounter with primary diagnosis and two secondary diagnoses,"1. Add secondary diagnoses
+2. Save
+3. Reopen","C1: All intended diagnoses persist
+C2: Primary and secondary designations remain distinguishable",NOT_RUN
+AF3-174,178,Problems and diagnoses,Medium,Curated code selection matches label,physician; coder,12; 4.2,Curated ICD-10-CM catalog entry visible,"1. Search catalog
+2. Select code
+3. Save diagnosis
+4. Inspect saved label/code","C1: Saved label and code match selection
+C2: Catalog is not advertised as complete official terminology",NOT_RUN
+AF3-175,179,Problems and diagnoses,Hard,Diagnosis-to-order linkage,physician; coder,12; 4.2,A encounter with two diagnoses; new lab order,"1. Select second diagnosis on order
+2. Save
+3. Open order","C1: Order references selected diagnosis and correct encounter
+C2: First diagnosis is not silently substituted",NOT_RUN
+AF3-176,180,Problems and diagnoses,Hard,Diagnosis cannot cross patient boundaries,physician; coder,12; 4.2,A order form; B diagnosis known from authorized chart,"1. Inspect diagnosis options with A selected
+2. Try an observed B-linked form URL where applicable","C1: B-only diagnosis cannot be attached to A through UI
+C2: Existing A and B diagnoses remain intact",NOT_RUN
+AF3-177,181,Medication management,Easy,Medication details and status,physician; nurse,13,Patient with complete active medication entry,1. Open medication detail,"C1: Name strength dose route frequency dates provider and status are visible
+C2: Patient association is correct",NOT_RUN
+AF3-178,182,Medication management,Medium,Medication catalog search,physician; nurse,13,Curated catalog with known item,"1. Search medication name
+2. Choose strength
+3. Inspect selected item","C1: Chosen name and strength match catalog result
+C2: Selection is not silently replaced",NOT_RUN
+AF3-179,183,Medication management,Medium,Create prescription draft,physician; nurse,13,Patient A; curated medication; simulated pharmacy,"1. Fill dose route frequency duration quantity and pharmacy
+2. Save draft
+3. Reload","C1: All prescription fields persist
+C2: Prescription remains unsigned and simulated",NOT_RUN
+AF3-180,184,Medication management,Medium,Edit prescription draft,physician; nurse,13,Unsigned prescription with quantity 30,"1. Change quantity to 60
+2. Save
+3. Reload","C1: Quantity becomes 60
+C2: Unchanged medication and route remain intact",NOT_RUN
+AF3-181,185,Medication management,Medium,Prescription review before signing,physician; nurse,13,Complete unsigned prescription,"1. Open review
+2. Compare dose route frequency quantity and pharmacy","C1: Review matches saved prescription
+C2: Review itself does not sign or transmit",NOT_RUN
+AF3-182,186,Medication management,Medium,Sign simulated prescription,physician; nurse,13,Physician; valid reviewed draft,"1. Explicitly sign
+2. Open medication/history view","C1: Signed simulated prescription is recorded
+C2: No real pharmacy transmission is represented",NOT_RUN
+AF3-183,187,Medication management,Hard,Missing prescription fields block save/sign,physician; nurse,13,Draft missing required dose or pharmacy as declared by form,"1. Attempt save/sign
+2. Inspect error","C1: Incomplete prescription is rejected
+C2: Required missing fields are identified",NOT_RUN
+AF3-184,188,Medication management,Medium,Prescription quantity invalid input,physician; nurse,13,Otherwise valid prescription; quantity zero or negative,"1. Enter invalid quantity
+2. Submit","C1: Nonpositive quantity cannot become a valid signed prescription
+C2: Error is readable",NOT_RUN
+AF3-185,189,Medication management,Hard,Nurse cannot sign prescription,physician; nurse,13,nurse.demo; physician prescription draft and observed sign page,"1. Open prescription as nurse
+2. Try exposed signing action or page","C1: No physician prescription signature is created
+C2: Action is denied or unavailable with direct URL denial where observable",NOT_RUN
+AF3-186,190,Medication management,Medium,Duplicate medication warning,physician; nurse,13,Patient already taking medication M,"1. Create draft for same curated medication M
+2. Review","C1: Synthetic duplicate warning is displayed
+C2: Warning identifies relevant existing medication",NOT_RUN
+AF3-187,191,Medication management,Medium,Synthetic allergy warning,physician; nurse,13,Patient with seeded allergy triggering documented rule,"1. Choose medication matching trigger
+2. Review prescription","C1: Allergy warning identifies synthetic conflict
+C2: Prototype does not claim validated decision support",NOT_RUN
+AF3-188,192,Medication management,Medium,Non-trigger medication does not show wrong allergy,physician; nurse,13,Same patient; documented non-trigger medication,"1. Choose non-trigger medication
+2. Review","C1: No allergy conflict falsely references another drug or patient
+C2: Existing allergy remains visible for review",NOT_RUN
+AF3-189,193,Medication management,Medium,Medication reconciliation completion,physician; nurse,13,Nurse; patient with medication list,"1. Review list
+2. Record reconciliation complete
+3. Reload encounter","C1: Reconciliation status persists
+C2: Review does not sign a prescription",NOT_RUN
+AF3-190,194,Medication management,Medium,Medication history after discontinuation,physician; nurse,13,Medication eligible for permitted status edit,"1. Mark discontinued through supported UI
+2. Save
+3. Open active list and history","C1: Discontinued state is visible
+C2: Historical entry remains and is not shown as active without qualification",NOT_RUN
+AF3-191,195,Medication management,Medium,Medication start and end dates,physician; nurse,13,Draft with valid start/end dates,"1. Save dates
+2. Reload medication detail","C1: Dates persist accurately
+C2: Start/end labels do not swap",NOT_RUN
+AF3-192,196,Medication management,Hard,Prescription patient context preserved,physician; nurse,13,Two patients with similar names; A draft prescription,"1. Navigate away and back to A prescription
+2. Sign as authorized physician
+3. Open B medication list","C1: Prescription stays associated with A
+C2: B does not gain A's medication",NOT_RUN
+AF3-193,197,Medical orders,Medium,Create laboratory order,physician,14.1; 14.2; 26,A encounter with diagnosis; curated CBC test,"1. Add laboratory order selecting CBC and diagnosis
+2. Save draft
+3. Reload","C1: Order identifies patient encounter clinician category diagnosis priority and date
+C2: Status is Draft",NOT_RUN
+AF3-194,198,Medical orders,Medium,Create imaging order,physician,14.1; 14.2; 26,A encounter; supported imaging catalog entry,"1. Add imaging order
+2. Save
+3. Open detail","C1: Imaging category and requested service persist
+C2: Patient and encounter links are correct",NOT_RUN
+AF3-195,199,Medical orders,Medium,Create referral order,physician,14.1; 14.2; 26,A encounter; supported referral destination,"1. Add referral with reason
+2. Save
+3. Reload","C1: Referral destination and reason persist
+C2: Order remains associated with A",NOT_RUN
+AF3-196,200,Medical orders,Medium,Create procedure order,physician,14.1; 14.2; 26,A encounter; supported procedure entry,"1. Add procedure order with diagnosis
+2. Save
+3. Reload","C1: Procedure and diagnosis association persist
+C2: No other encounter gains order",NOT_RUN
+AF3-197,201,Medical orders,Medium,Create medication category order,physician,14.1; 14.2; 26,A encounter; medication order workflow available,"1. Create medication-category order through designated UI
+2. Open detail","C1: Order category is Medication
+C2: Clinical context is preserved and transaction is simulated",NOT_RUN
+AF3-198,202,Medical orders,Medium,Order priority and detail persistence,physician,14.1; 14.2; 26,Draft lab order with normal priority,"1. Change to supported urgent priority
+2. Save
+3. Reload","C1: Priority persists
+C2: Other order details stay unchanged",NOT_RUN
+AF3-199,203,Medical orders,Medium,Sign draft order,physician,14.1; 14.2; 26,Complete draft order,"1. Review
+2. Sign
+3. Reload","C1: Status becomes Signed
+C2: Signing action is recorded",NOT_RUN
+AF3-200,204,Medical orders,Hard,Signing creates processing task,physician,14.1; 14.2; 26,Unsigned lab order with no processing task,"1. Sign order
+2. Open processing task queue","C1: One task is associated with signed order
+C2: No task for another patient is substituted",NOT_RUN
+AF3-201,205,Medical orders,Medium,Processing transition,physician,14.1; 14.2; 26,Signed order,"1. Move to Processing through authorized workflow
+2. Reload","C1: Status becomes Processing
+C2: History retains signing event",NOT_RUN
+AF3-202,206,Medical orders,Medium,Complete processing order,physician,14.1; 14.2; 26,Processing order with required completion information,"1. Complete order
+2. Reload chart Orders tab","C1: Completed status persists
+C2: Order appears consistently in chart and processing view",NOT_RUN
+AF3-203,207,Medical orders,Medium,Cancel eligible order,physician,14.1; 14.2; 26,Draft or signed order whose documented rule permits cancellation,"1. Cancel with reason
+2. Confirm
+3. Reload","C1: Cancelled status and reason persist
+C2: Cancelled order is not treated as active processing",NOT_RUN
+AF3-204,208,Medical orders,Medium,Record failed processing,physician,14.1; 14.2; 26,Order with supported deterministic failed-processing scenario,"1. Execute documented simulated failure through UI
+2. Open order history","C1: Failed status and reason are visible
+C2: Failure is not misreported as Completed",NOT_RUN
+AF3-205,209,Medical orders,Hard,Prevent invalid order transition,physician,14.1; 14.2; 26,Draft order with incomplete prerequisites,1. Try completing directly through exposed action or previously observed completion page,"C1: Invalid Draft-to-Completed transition is denied
+C2: Draft is not silently completed",NOT_RUN
+AF3-206,210,Medical orders,Hard,Missing diagnosis blocks required order workflow,physician,14.1; 14.2; 26,Order type requires diagnosis; no diagnosis selected,"1. Attempt save/sign
+2. Inspect feedback","C1: Missing association is identified
+C2: Order cannot progress past documented blocking gate",NOT_RUN
+AF3-207,211,Medical orders,Hard,Order cancelled does not complete from stale page,physician,14.1; 14.2; 26,Cancellable order opened in two browser tabs,"1. Cancel in tab one
+2. Return to tab two and attempt old action
+3. Reload","C1: Stale action cannot complete cancelled order
+C2: Current state remains consistent",NOT_RUN
+AF3-208,212,Medical orders,Medium,Order filtering by patient/status,physician,14.1; 14.2; 26,Known Draft Signed and Completed orders across patients,"1. Filter patient A and Signed
+2. Open displayed order","C1: Results satisfy both filters
+C2: Order count/details do not include unrelated patient B",NOT_RUN
+AF3-209,213,Laboratory processing and result release,Medium,Pending lab workqueue,physician; authorized processing staff,14.3; 14.4; 20.4,Signed CBC order awaiting specimen,"1. Open lab-processing queue
+2. Locate order by patient and order ID","C1: Correct pending order is present
+C2: It is not labeled completed",NOT_RUN
+AF3-210,214,Laboratory processing and result release,Medium,Specimen collection recorded,physician; authorized processing staff,14.3; 14.4; 20.4,Pending lab order,"1. Record specimen collected
+2. Reload lab timeline","C1: Collection step is recorded for correct order
+C2: Time and current processing state are distinguishable",NOT_RUN
+AF3-211,215,Laboratory processing and result release,Medium,Processing state reflected,physician; authorized processing staff,14.3; 14.4; 20.4,Specimen-collected order,"1. Start lab processing
+2. Open order detail","C1: Processing state appears in both lab and order views
+C2: Patient linkage agrees",NOT_RUN
+AF3-212,216,Laboratory processing and result release,Medium,Enter numeric lab result,physician; authorized processing staff,14.3; 14.4; 20.4,Processing HbA1c order; synthetic value 7.2 percent; interval from fixture,"1. Enter value unit and reference interval
+2. Save draft result
+3. Reload","C1: Value 7.2 unit and interval persist
+C2: Draft is not prematurely released",NOT_RUN
+AF3-213,217,Laboratory processing and result release,Medium,Abnormal flag preserved,physician; authorized processing staff,14.3; 14.4; 20.4,Synthetic lab result marked abnormal by documented fixture rule,"1. Save flagged result
+2. Open result detail","C1: Abnormal flag is explicit and tied to reference interval/value
+C2: No unsupported diagnosis is asserted",NOT_RUN
+AF3-214,218,Laboratory processing and result release,Medium,Publish entered result,physician; authorized processing staff,14.3; 14.4; 20.4,Complete unpublished result,"1. Publish through processing UI
+2. Open physician result inbox","C1: Published result appears for review
+C2: Timestamp and pending review state are visible",NOT_RUN
+AF3-215,219,Laboratory processing and result release,Medium,Physician reviews result,physician; authorized processing staff,14.3; 14.4; 20.4,Published unreviewed result,"1. Open as physician
+2. Mark reviewed
+3. Reload","C1: Review state persists
+C2: Reviewer and time are traceable where provided",NOT_RUN
+AF3-216,220,Laboratory processing and result release,Medium,Clinical comment on result,physician; authorized processing staff,14.3; 14.4; 20.4,Published result; authorized physician,"1. Add comment marker
+2. Save
+3. Reopen","C1: Comment persists on correct result
+C2: Original numeric value is not overwritten by comment",NOT_RUN
+AF3-217,221,Laboratory processing and result release,Hard,Unreleased result hidden from portal,physician; authorized processing staff,14.3; 14.4; 20.4,Published staff result not released; linked patient login,"1. Open portal results
+2. Navigate to observed staff result URL as patient","C1: Unreleased result content is withheld
+C2: No indirect detail page reveals it",NOT_RUN
+AF3-218,222,Laboratory processing and result release,Hard,Release result to patient,physician; authorized processing staff,14.3; 14.4; 20.4,Reviewed result eligible for release,"1. Release as physician
+2. Sign in linked patient
+3. Open results","C1: Released result becomes visible with correct value unit and date
+C2: Only linked patient sees it",NOT_RUN
+AF3-219,223,Laboratory processing and result release,Hard,Other patient's released result denied,physician; authorized processing staff,14.3; 14.4; 20.4,Released result for B; patient A session; B URL observed as authorized staff,1. Navigate directly to B result URL as A,"C1: B result value and identity are not disclosed
+C2: Access is denied safely",NOT_RUN
+AF3-220,224,Laboratory processing and result release,Medium,Result table panels remain distinguishable,physician; authorized processing staff,14.3; 14.4; 20.4,Patient with CBC CMP HbA1c lipid TSH and urinalysis fixtures,"1. Open each result from list
+2. Inspect labels and data","C1: Each supported test displays its own name and values
+C2: One generic result is not reused misleadingly across tests",NOT_RUN
+AF3-221,225,Laboratory processing and result release,Medium,Missing result value validation,physician; authorized processing staff,14.3; 14.4; 20.4,Result entry form with required value blank,"1. Complete other fields
+2. Submit","C1: Incomplete result cannot be published
+C2: Missing value error preserves entered context",NOT_RUN
+AF3-222,226,Laboratory processing and result release,Hard,Review status does not equal patient release,physician; authorized processing staff,14.3; 14.4; 20.4,Unreviewed unreleased result,"1. Mark reviewed only
+2. Open linked patient portal","C1: Result remains hidden until explicit permitted release
+C2: Reviewed and Released are distinguishable states",NOT_RUN
+AF3-223,227,Laboratory processing and result release,Medium,Result timestamp ordering,physician; authorized processing staff,14.3; 14.4; 20.4,Two published results with different timestamps,"1. Open chart Results
+2. Change available sort or inspect default chronological order","C1: Timestamps identify each result
+C2: Order follows displayed sort direction",NOT_RUN
+AF3-224,228,Laboratory processing and result release,Hard,Published result preserves source order context,physician; authorized processing staff,14.3; 14.4; 20.4,Result for A order with encounter E,"1. Open result
+2. Follow order and encounter links","C1: Patient order service and encounter match
+C2: Review/release never moves result to another encounter",NOT_RUN
+AF3-225,229,Insurance coverage and eligibility,Medium,Add primary insurance coverage,frontdesk; billing,15,Patient A; synthetic payer/plan/member/subscriber data,"1. Choose Add insurance
+2. Complete all policy fields
+3. Save
+4. Reload chart coverage",C1: Payer plan member group subscriber relationship dates and primary designation persist,NOT_RUN
+AF3-226,230,Insurance coverage and eligibility,Medium,Add secondary coverage,frontdesk; billing,15,Patient with primary policy; distinct synthetic secondary policy,"1. Add secondary insurance
+2. Save
+3. Inspect both policies","C1: Both policies remain distinct
+C2: Secondary does not silently replace primary",NOT_RUN
+AF3-227,231,Insurance coverage and eligibility,Medium,Edit insurance member information,frontdesk; billing,15,Existing editable policy,"1. Change member/group identifiers to valid synthetic values
+2. Save
+3. Reload","C1: New identifiers persist
+C2: Patient and payer association remain correct",NOT_RUN
+AF3-228,232,Insurance coverage and eligibility,Medium,Insurance required-field validation,frontdesk; billing,15,New policy with required member ID blank,"1. Fill other fields
+2. Submit
+3. Correct missing value","C1: Required field is identified
+C2: Valid values and selected patient survive error
+C3: Corrected policy saves",NOT_RUN
+AF3-229,233,Insurance coverage and eligibility,Medium,Coverage date interval validation,frontdesk; billing,15,New policy with expiration earlier than effective date,"1. Enter inverted dates
+2. Submit","C1: Inconsistent coverage interval is rejected or explicitly flagged as invalid
+C2: It cannot be silently treated as valid active coverage",NOT_RUN
+AF3-230,234,Insurance coverage and eligibility,Medium,Active eligibility simulation,frontdesk; billing,15,Policy mapped to documented deterministic Active scenario,"1. Run simulated eligibility verification
+2. Inspect result",C1: Active status timestamp copay deductible and out-of-pocket details are visible as synthetic,NOT_RUN
+AF3-231,235,Insurance coverage and eligibility,Medium,Inactive eligibility simulation,frontdesk; billing,15,Policy mapped to deterministic Inactive scenario,"1. Run verification
+2. Open coverage workqueue","C1: Inactive status is shown
+C2: Issue enters appropriate failure workqueue",NOT_RUN
+AF3-232,236,Insurance coverage and eligibility,Medium,Coverage not found scenario,frontdesk; billing,15,Policy mapped to deterministic Not Found scenario,"1. Run verification
+2. Inspect feedback","C1: Coverage Not Found is distinct from Active or generic success
+C2: Retry/correction path is understandable",NOT_RUN
+AF3-233,237,Insurance coverage and eligibility,Medium,Verification pending scenario,frontdesk; billing,15,Policy mapped to deterministic Pending scenario,"1. Run verification
+2. Reload details","C1: Verification Pending remains distinguishable
+C2: UI does not falsely report completed verification",NOT_RUN
+AF3-234,238,Insurance coverage and eligibility,Medium,Verification error scenario,frontdesk; billing,15,Policy mapped to deterministic Error scenario,"1. Run verification
+2. Inspect recovery controls","C1: Verification Error is explicit
+C2: Existing policy information remains and correction/retry is possible",NOT_RUN
+AF3-235,239,Insurance coverage and eligibility,Medium,Eligibility history on reverification,frontdesk; billing,15,Policy previously verified; documented scenario can be changed via permitted UI,"1. Update allowed scenario-driving policy field
+2. Reverify
+3. Open history","C1: New timestamp and result are recorded
+C2: Prior verification outcome remains traceable",NOT_RUN
+AF3-236,240,Insurance coverage and eligibility,Medium,Expired coverage queue,frontdesk; billing,15,Policy whose expiration precedes evaluation date,"1. Open insurance workqueue
+2. Filter expired coverage","C1: Policy is identified as expired
+C2: Patient and affected appointment context are available",NOT_RUN
+AF3-237,241,Insurance coverage and eligibility,Medium,Missing member ID queue,frontdesk; billing,15,Existing deliberately incomplete synthetic policy fixture,"1. Open insurance workqueue
+2. Filter missing identifiers","C1: Missing member ID issue is visible
+C2: Correct policy and patient are linked",NOT_RUN
+AF3-238,242,Insurance coverage and eligibility,Medium,Unverified appointment queue,frontdesk; billing,15,Upcoming appointment with unverified coverage,"1. Open unverified appointment queue
+2. Verify coverage through UI
+3. Return","C1: Appointment is initially flagged
+C2: Queue updates after successful verification",NOT_RUN
+AF3-239,243,Insurance coverage and eligibility,Medium,Authorization requirement flag true/false,frontdesk; billing,15,Policy or related service form exposes authorization-required checkbox,"1. Read explanation
+2. Save checked
+3. Reload
+4. Save unchecked
+5. Reload","C1: Both true and false persist
+C2: Requirement meaning is explained",NOT_RUN
+AF3-240,244,Insurance coverage and eligibility,Hard,Insurance coverage stays patient-scoped,frontdesk; billing,15,A policy; patient B portal session; policy URL observed by staff,1. Open recorded A policy page as B,"C1: A coverage/member data are not disclosed
+C2: Unauthorized edit is not possible",NOT_RUN
+AF3-241,245,Charge capture and coding,Medium,Signed/completed encounter billing eligibility,coder; billing,16.1; 16.2,Completed signed encounter without charges,"1. Open unbilled encounters
+2. Locate encounter
+3. Open charge capture",C1: Eligible encounter appears with correct patient provider and service context,NOT_RUN
+AF3-242,246,Charge capture and coding,Hard,Unsigned encounter cannot masquerade as billable completion,coder; billing,16.1; 16.2,Unsigned incomplete encounter,"1. Open unbilled/charge workflow
+2. Attempt final charge approval if exposed","C1: Workflow does not claim encounter is signed/completed
+C2: Any required completion gate is enforced",NOT_RUN
+AF3-243,247,Charge capture and coding,Medium,Create charge from encounter,coder; billing,16.1; 16.2,Eligible encounter; curated procedure; one unit; amount 125.00,"1. Create charge
+2. Save
+3. Reload",C1: Patient encounter provider diagnosis procedure units amount and billing status persist,NOT_RUN
+AF3-244,248,Charge capture and coding,Medium,Multiple charge units total,coder; billing,16.1; 16.2,Eligible charge; documented unit-price semantics; price 75.00 units 3,"1. Set price and units
+2. Save
+3. Inspect extended total","C1: Extended amount is 225.00 under recorded unit-price semantics
+C2: Field labels make amount basis clear",NOT_RUN
+AF3-245,249,Charge capture and coding,Medium,ICD-10-CM coding selection,coder; billing,16.1; 16.2,Eligible encounter diagnosis; curated code,"1. Search diagnosis catalog
+2. Assign code
+3. Save","C1: Selected code and label persist
+C2: Encounter association remains correct",NOT_RUN
+AF3-246,250,Charge capture and coding,Medium,CPT/HCPCS procedure selection,coder; billing,16.1; 16.2,Charge with curated procedure selector,"1. Search procedure code
+2. Choose code
+3. Save","C1: Procedure code and label match selection
+C2: Catalog is described as a curated demonstration",NOT_RUN
+AF3-247,251,Charge capture and coding,Medium,Link diagnosis to procedure,coder; billing,16.1; 16.2,Encounter with two diagnoses and a charge,"1. Choose second diagnosis for charge
+2. Save
+3. Reopen","C1: Charge links to intended diagnosis
+C2: Unselected diagnosis is not substituted",NOT_RUN
+AF3-248,252,Charge capture and coding,Medium,Missing diagnosis code warning,coder; billing,16.1; 16.2,Editable charge with missing required diagnosis code,"1. Open coding review
+2. Attempt approval","C1: Missing code issue is readable
+C2: Invalid charge cannot silently pass required coding gate",NOT_RUN
+AF3-249,253,Charge capture and coding,Medium,Missing procedure code warning,coder; billing,16.1; 16.2,Editable charge without required procedure code,"1. Run coding review
+2. Attempt approval","C1: Procedure deficiency is identified
+C2: Missing code is not replaced with invented code",NOT_RUN
+AF3-250,254,Charge capture and coding,Hard,Duplicate charge detection,coder; billing,16.1; 16.2,Existing charge for service fixture,"1. Attempt equivalent second charge using same encounter service/date/units
+2. Review","C1: Potential duplicate is detected under documented rule
+C2: Duplicate is not silently accepted as a clean unique charge",NOT_RUN
+AF3-251,255,Charge capture and coding,Medium,Coding review completion,coder; billing,16.1; 16.2,Complete valid charge,"1. Perform coding review
+2. Save review decision
+3. Reload","C1: Review state is recorded
+C2: Charge data remain unchanged",NOT_RUN
+AF3-252,256,Charge capture and coding,Medium,Charge approval,coder; billing,16.1; 16.2,Reviewed valid charge,"1. Approve charge
+2. Open billing workqueue","C1: Approved status persists
+C2: Charge becomes available to permitted claim workflow",NOT_RUN
+AF3-253,257,Charge capture and coding,Medium,Correct coding issue and re-review,coder; billing,16.1; 16.2,Charge with known missing code warning,"1. Select valid code
+2. Save
+3. Run coding review again","C1: Resolved issue disappears from current review
+C2: New review does not retain stale blocking status",NOT_RUN
+AF3-254,258,Charge capture and coding,Medium,Invalid charge amount,coder; billing,16.1; 16.2,Charge form; negative amount,"1. Enter -10.00
+2. Submit","C1: Negative charge cannot be approved as ordinary positive service charge
+C2: Validation preserves other fields",NOT_RUN
+AF3-255,259,Charge capture and coding,Medium,Invalid charge units,coder; billing,16.1; 16.2,Charge form with units 0 or negative,"1. Enter invalid units
+2. Submit","C1: Invalid units are rejected
+C2: No malformed charge is created",NOT_RUN
+AF3-256,260,Charge capture and coding,Hard,Coding role cannot silently sign clinical note,coder; billing,16.1; 16.2,coder.demo; unsigned encounter underlying charge,"1. Open associated note
+2. Attempt available signing page/action","C1: Clinical note remains unsigned
+C2: Coding permissions do not grant physician signature",NOT_RUN
+AF3-257,261,Claim validation and payer lifecycle,Medium,Generate draft claim from approved charges,billing,16.3; 16.4; 16.5; 16.6,Approved charges 125.00 and 75.00 for same eligible encounter,"1. Generate claim
+2. Open detail",C1: Draft claim has correct patient provider service date payer diagnoses procedures and total 200.00,NOT_RUN
+AF3-258,262,Claim validation and payer lifecycle,Easy,Claim current stage and next action,billing,16.3; 16.4; 16.5; 16.6,Claim at Ready for Review,"1. Open detail top area
+2. Inspect workflow guidance","C1: Current stage and authorized next action are adjacent and clear
+C2: Secondary actions are separate",NOT_RUN
+AF3-259,263,Claim validation and payer lifecycle,Medium,Claim ready for review transition,billing,16.3; 16.4; 16.5; 16.6,Complete draft claim,"1. Move to Ready for Review
+2. Reload","C1: State persists
+C2: History records transition",NOT_RUN
+AF3-260,264,Claim validation and payer lifecycle,Medium,Not yet validated differs from clean validation,billing,16.3; 16.4; 16.5; 16.6,New claim never scrubbed,"1. Open validation section
+2. Run clean validation
+3. Reopen","C1: Initial state says not yet validated
+C2: After success no errors and no warnings are distinguishable from unvalidated state",NOT_RUN
+AF3-261,7,Claim validation and payer lifecycle,Medium,Missing diagnosis scrub error,billing,16.3; 16.4; 16.5; 16.6,Claim fixture without required diagnosis,1. Run validation,"C1: Readable blocking diagnosis error appears
+C2: Claim is not submission-ready",NOT_RUN
+AF3-262,265,Claim validation and payer lifecycle,Medium,Missing procedure scrub error,billing,16.3; 16.4; 16.5; 16.6,Claim fixture lacking required procedure code,1. Run validation,"C1: Readable procedure error appears
+C2: Claim is not submission-ready",NOT_RUN
+AF3-263,266,Claim validation and payer lifecycle,Medium,Missing insurance scrub error,billing,16.3; 16.4; 16.5; 16.6,Claim fixture without coverage,1. Run validation,"C1: Missing insurance is identified
+C2: Validation does not invent a payer",NOT_RUN
+AF3-264,267,Claim validation and payer lifecycle,Medium,Invalid member format scrub error,billing,16.3; 16.4; 16.5; 16.6,Claim with member identifier invalid under documented simulator rule,1. Run validation,"C1: Member-format error explains required correction
+C2: Claim cannot be submitted with blocking error",NOT_RUN
+AF3-265,268,Claim validation and payer lifecycle,Medium,Missing provider scrub error,billing,16.3; 16.4; 16.5; 16.6,Deliberately incomplete claim fixture with no required provider,1. Run validation,"C1: Missing-provider error is displayed
+C2: Claim is not falsely Validated",NOT_RUN
+AF3-266,269,Claim validation and payer lifecycle,Medium,Duplicate claim scrub error,billing,16.3; 16.4; 16.5; 16.6,Existing claim; equivalent second claim fixture,1. Run validation on duplicate candidate,"C1: Duplicate issue references relevant conflict
+C2: Candidate is not silently treated as clean",NOT_RUN
+AF3-267,270,Claim validation and payer lifecycle,Medium,Incomplete demographics scrub error,billing,16.3; 16.4; 16.5; 16.6,Claim fixture with a required demographic item missing,1. Run validation,"C1: Specific demographic deficiency appears
+C2: Blocking issue prevents submission",NOT_RUN
+AF3-268,271,Claim validation and payer lifecycle,Medium,Missing required authorization scrub error,billing,16.3; 16.4; 16.5; 16.6,Service requires authorization; no valid linked approval,1. Run validation,"C1: Missing authorization issue is displayed
+C2: Submission is blocked until gate is satisfied",NOT_RUN
+AF3-269,272,Claim validation and payer lifecycle,Medium,Validation errors and warnings separately rendered,billing,16.3; 16.4; 16.5; 16.6,Deterministic fixture producing an error and a warning,"1. Run validation
+2. Inspect sections","C1: Each issue is readable and correctly classified
+C2: No raw array dictionary or empty-list syntax appears",NOT_RUN
+AF3-270,273,Claim validation and payer lifecycle,Hard,Blocking validation prevents submission,billing,16.3; 16.4; 16.5; 16.6,Claim currently Validation Failed with known blocking error,1. Attempt Submit via exposed action or previously observed submit page,"C1: No Submitted state or payer response is created
+C2: Blocking reason remains visible",NOT_RUN
+AF3-271,274,Claim validation and payer lifecycle,Hard,Claim input change invalidates clean validation,billing,16.3; 16.4; 16.5; 16.6,Validated unsubmitted claim,"1. Change editable member ID or charge input affecting validation
+2. Save
+3. Inspect validation and attempt submit","C1: Old clean validation is invalidated
+C2: Required revalidation occurs before submission",NOT_RUN
+AF3-272,275,Claim validation and payer lifecycle,Medium,Correct claim and validate successfully,billing,16.3; 16.4; 16.5; 16.6,Claim with one known correctable error,"1. Correct offending field
+2. Save
+3. Run validation","C1: Blocking issue clears
+C2: State becomes Validated only after successful fresh validation",NOT_RUN
+AF3-273,276,Claim validation and payer lifecycle,Medium,Submit validated claim,billing,16.3; 16.4; 16.5; 16.6,Validated claim; deterministic accepted scenario,"1. Submit simulated claim
+2. Reload history","C1: State becomes Submitted or documented subsequent deterministic state
+C2: Submission timestamp and event are recorded
+C3: No real payer transmission is claimed",NOT_RUN
+AF3-274,277,Claim validation and payer lifecycle,Medium,Payer accepted response,billing,16.3; 16.4; 16.5; 16.6,Submitted claim mapped to Accepted scenario,"1. Run documented local payer simulation
+2. Reload","C1: Accepted response and history are recorded
+C2: No denial or payment is fabricated",NOT_RUN
+AF3-275,278,Claim validation and payer lifecycle,Medium,Payer rejected response,billing,16.3; 16.4; 16.5; 16.6,Submitted claim mapped to Rejected scenario,"1. Run local payer simulation
+2. Open rejection details","C1: Rejected status includes reason and correction path
+C2: Original submission history remains",NOT_RUN
+AF3-276,279,Claim validation and payer lifecycle,Medium,Payer denied response,billing,16.3; 16.4; 16.5; 16.6,Submitted eligible claim mapped to Denied scenario,"1. Run local payer simulation
+2. Open denial queue","C1: Denied status appears
+C2: Associated denial entry is created",NOT_RUN
+AF3-277,280,Claim validation and payer lifecycle,Medium,Payer partially paid response,billing,16.3; 16.4; 16.5; 16.6,Adjudicable claim mapped to partial-payment scenario with specified amount,"1. Run simulation
+2. Open claim and payment history","C1: Partially Paid status and posted amount match deterministic scenario
+C2: Remaining balance reconciles",NOT_RUN
+AF3-278,281,Claim validation and payer lifecycle,Medium,Payer paid response,billing,16.3; 16.4; 16.5; 16.6,Eligible claim mapped to full-payment scenario,"1. Run simulation
+2. Inspect balance and history","C1: Paid state has zero outstanding balance
+C2: One simulated payment event or documented adjudication payment record is traceable",NOT_RUN
+AF3-279,282,Claim validation and payer lifecycle,Medium,Adjudication stage progression,billing,16.3; 16.4; 16.5; 16.6,Accepted claim with documented adjudication workflow,"1. Record simulated adjudication
+2. Reload","C1: Adjudicated state or documented resolved payment state is recorded
+C2: History preserves Accepted-to-adjudication progression",NOT_RUN
+AF3-280,283,Claim validation and payer lifecycle,Medium,Close fully settled claim,billing,16.3; 16.4; 16.5; 16.6,Paid claim with zero outstanding balance,"1. Choose Close
+2. Reload","C1: Claim becomes Closed
+C2: Financial history remains visible",NOT_RUN
+AF3-281,284,Claim validation and payer lifecycle,Hard,Invalid claim transition denied,billing,16.3; 16.4; 16.5; 16.6,Draft unvalidated claim,1. Try exposed Paid or Close action or previously observed state-action page,"C1: Draft cannot bypass validation/submission/adjudication gates
+C2: No fabricated settlement occurs",NOT_RUN
+AF3-282,285,Claim validation and payer lifecycle,Hard,Repeated submit from stale browser tab,billing,16.3; 16.4; 16.5; 16.6,Validated claim open in two tabs,"1. Submit in tab one
+2. Use stale Submit in tab two
+3. Inspect history","C1: Duplicate submission is rejected or safely idempotent
+C2: No unintended second claim or payer transaction appears",NOT_RUN
+AF3-283,286,Denials and appeals,Medium,Denial dashboard reconciliation,billing,17; 16.4,Known denial fixtures with amounts and payers,"1. Open denial dashboard
+2. Compare totals with filtered denial rows",C1: Count outstanding amount payer/reason groups and aging correspond to visible scope,NOT_RUN
+AF3-284,287,Denials and appeals,Medium,Denial detail links to claim,billing,17; 16.4,Existing denied claim,"1. Open denial detail
+2. Follow Back to claim
+3. Open denial edit
+4. Follow claim link",C1: Both detail and edit expose explicit correct claim links,NOT_RUN
+AF3-285,288,Denials and appeals,Medium,Denial reason categories distinguishable,billing,17; 16.4,Fixtures for inactive coverage missing authorization coding mismatch duplicate filing documentation and demographics,"1. Filter each available reason
+2. Open representative details","C1: Each fixture retains its recorded reason
+C2: Reasons are not collapsed into unrelated generic descriptions",NOT_RUN
+AF3-286,289,Denials and appeals,Medium,Add denial investigation note,billing,17; 16.4,Open unresolved denial,"1. Add unique investigation note
+2. Save
+3. Reload","C1: Note persists with appropriate actor/time association
+C2: Original reason remains",NOT_RUN
+AF3-287,290,Denials and appeals,Medium,Correct permitted claim field,billing,17; 16.4,Denial caused by documented member-ID issue,"1. Follow related claim
+2. Correct allowed member ID
+3. Save
+4. Return to denial","C1: Correction persists
+C2: Original denial remains available",NOT_RUN
+AF3-288,291,Denials and appeals,Hard,Resubmit corrected denial,billing,17; 16.4,Denied claim with correctable issue; correction completed,"1. Revalidate
+2. Submit permitted corrected claim
+3. Open claim history","C1: Resubmission is recorded
+C2: Prior denial and original submission remain traceable",NOT_RUN
+AF3-289,292,Denials and appeals,Medium,Create appeal draft,billing,17; 16.4,Denied claim; synthetic supporting explanation,"1. Open appeal creation
+2. Enter explanation
+3. Save draft
+4. Reload","C1: Appeal text and claim association persist
+C2: Draft is not falsely transmitted externally",NOT_RUN
+AF3-290,293,Denials and appeals,Medium,Appeal supporting documentation,billing,17; 16.4,Appeal draft; supported synthetic attachment/reference workflow,"1. Attach or select synthetic supporting document
+2. Save
+3. Reopen","C1: Supporting document remains linked to appeal
+C2: Other patient's documents are not exposed",NOT_RUN
+AF3-291,294,Denials and appeals,Medium,Mark denial resolved,billing,17; 16.4,Denial meeting documented resolution conditions,"1. Record resolution note
+2. Mark resolved
+3. Reload workqueue","C1: Resolved status persists
+C2: Unresolved queue/count updates appropriately",NOT_RUN
+AF3-292,295,Denials and appeals,Hard,Resolution preserves original outcome,billing,17; 16.4,Resolved denial after successful correction,1. Open historical denial and related claim,"C1: Original denied outcome reason amount and history remain
+C2: Correction does not delete prior outcome",NOT_RUN
+AF3-293,296,Denials and appeals,Medium,Denial payer and reason combined filters,billing,17; 16.4,Denials across two payers and reasons,"1. Apply payer A and missing-authorization reason
+2. Inspect rows
+3. Clear one filter","C1: Rows follow both active filters
+C2: Clearing one preserves the other",NOT_RUN
+AF3-294,297,Denials and appeals,Hard,Front desk cannot adjudicate denial,billing,17; 16.4,frontdesk.demo; observed denial resolution URL,"1. Open denial resolution page
+2. Try any exposed resolve/appeal submission action","C1: Unauthorized financial resolution is denied
+C2: Denial state remains unchanged",NOT_RUN
+AF3-295,298,Prior authorization,Medium,Create authorization request draft,physician; billing; authorized staff,18; 4.2,Patient A policy; service diagnosis and provider,"1. Create request with required fields
+2. Save
+3. Reload",C1: Patient insurance service diagnosis provider dates and Draft status persist,NOT_RUN
+AF3-296,299,Prior authorization,Medium,Authorization required fields,physician; billing; authorized staff,18; 4.2,New request missing service and diagnosis,1. Submit incomplete form,"C1: Missing required fields are explained
+C2: No invalid submitted authorization is created",NOT_RUN
+AF3-297,300,Prior authorization,Medium,Authorization insurance scope,physician; billing; authorized staff,18; 4.2,Patient A with primary policy; B policy exists,"1. Open A request
+2. Inspect insurance choices
+3. Select A policy","C1: Choices obey patient scope
+C2: Request cannot use B-only coverage through visible UI",NOT_RUN
+AF3-298,301,Prior authorization,Medium,Submit simulated authorization,physician; billing; authorized staff,18; 4.2,Complete draft request,"1. Submit
+2. Reload detail/history","C1: Submitted status and date persist
+C2: Request is explicitly simulated",NOT_RUN
+AF3-299,302,Prior authorization,Medium,Pending Review transition,physician; billing; authorized staff,18; 4.2,Submitted request,"1. Apply documented pending-review simulated workflow
+2. Reload","C1: Pending Review state is distinguishable from Approved
+C2: History records transition",NOT_RUN
+AF3-300,303,Prior authorization,Medium,Additional information requested,physician; billing; authorized staff,18; 4.2,Pending request with deterministic additional-information scenario,"1. Record simulated information request
+2. Open details","C1: Requested information and status are visible
+C2: Request is not treated as approved",NOT_RUN
+AF3-301,304,Prior authorization,Medium,Provide supporting information,physician; billing; authorized staff,18; 4.2,Request awaiting information; synthetic supporting document/text,"1. Add required supporting material
+2. Save/resubmit as offered","C1: Supporting content persists
+C2: Workflow reflects response without erasing original request",NOT_RUN
+AF3-302,305,Prior authorization,Medium,Approved authorization decision,physician; billing; authorized staff,18; 4.2,Pending request mapped to approval scenario,"1. Record simulated approval and expiration
+2. Reload",C1: Approved status service scope and expiration persist,NOT_RUN
+AF3-303,306,Prior authorization,Medium,Denied authorization decision,physician; billing; authorized staff,18; 4.2,Pending request mapped to denial scenario,"1. Record simulated denial with reason
+2. Reload","C1: Denied status and reason persist
+C2: Related service is not shown as authorized",NOT_RUN
+AF3-304,307,Prior authorization,Medium,Expired authorization,physician; billing; authorized staff,18; 4.2,Previously approved fixture with past expiration,1. Open request and relevant service authorization status,"C1: Expired status or clear expired validity is shown
+C2: It is not treated as currently valid approval",NOT_RUN
+AF3-305,308,Prior authorization,Hard,Approval satisfies matching claim gate,physician; billing; authorized staff,18; 4.2,Claim blocked solely for missing matching authorization; approved matching request,"1. Link approval through UI
+2. Revalidate claim","C1: Authorization error clears for matching patient service and validity period
+C2: Other validation rules still apply",NOT_RUN
+AF3-306,309,Prior authorization,Hard,Wrong service approval cannot satisfy gate,physician; billing; authorized staff,18; 4.2,Approved authorization for service X; claim requires service Y,"1. Attempt linking through available UI
+2. Validate claim","C1: Mismatched approval is rejected or does not clear required gate
+C2: Claim remains blocked appropriately",NOT_RUN
+AF3-307,310,Prior authorization,Hard,Expired approval cannot satisfy claim gate,physician; billing; authorized staff,18; 4.2,Claim requiring currently valid authorization; expired matching approval,"1. Link expired approval if allowed
+2. Run validation","C1: Expired approval does not satisfy current requirement
+C2: Reason is understandable",NOT_RUN
+AF3-308,311,Prior authorization,Hard,Authorization required checkbox preserves false after error,physician; billing; authorized staff,18; 4.2,Request/service form with checkbox and another missing field,"1. Set checkbox false
+2. Submit invalid form
+3. Correct missing field
+4. Save
+5. Reload","C1: Explicit false survives error and save
+C2: UI explains meaning rather than restoring old true value",NOT_RUN
+AF3-309,312,Payments responsibility and receipts,Medium,Post simulated insurance payment,billing; patient,19; 20; 23.4,Adjudicated claim balance 200.00; permitted staff,"1. Post insurance payment 50.00
+2. Open receipt and history","C1: One 50.00 payment exists
+C2: Outstanding balance becomes 150.00",NOT_RUN
+AF3-310,313,Payments responsibility and receipts,Medium,Partial patient payment reduces confirmed responsibility,billing; patient,19; 20; 23.4,Adjudicated claim balance 200.00; confirmed responsibility 80.00; linked patient,"1. Pay simulated 30.00
+2. Reload portal bill and history","C1: Responsibility becomes 50.00
+C2: Claim outstanding balance becomes 170.00
+C3: One receipt exists",NOT_RUN
+AF3-311,314,Payments responsibility and receipts,Medium,Full confirmed patient responsibility payment,billing; patient,19; 20; 23.4,Claim balance 200.00 confirmed patient responsibility 80.00,"1. Pay simulated 80.00 as linked patient
+2. Reload","C1: Patient responsibility becomes zero
+C2: Remaining claim balance 120.00 is not falsely called patient debt",NOT_RUN
+AF3-312,315,Payments responsibility and receipts,Hard,Payment cannot exceed total claim balance,billing; patient,19; 20; 23.4,Eligible claim balance 50.00; staff payment form,"1. Enter 50.01
+2. Submit","C1: Overpayment is rejected
+C2: Balance and payment count remain unchanged",NOT_RUN
+AF3-313,316,Payments responsibility and receipts,Hard,Patient cannot exceed confirmed responsibility,billing; patient,19; 20; 23.4,Claim balance 200.00 responsibility 40.00; patient payment form,"1. Enter 40.01
+2. Submit","C1: Payment is rejected even though total balance is larger
+C2: Responsibility and history are unchanged",NOT_RUN
+AF3-314,10,Payments responsibility and receipts,Hard,Unconfirmed responsibility withholds patient payment,billing; patient,19; 20; 23.4,Adjudicated claim with positive balance but no confirmed patient responsibility,"1. Open portal bill
+2. Try observed related payment page if available","C1: Bill says awaiting billing review or equivalent
+C2: Patient cannot pay unconfirmed amount",NOT_RUN
+AF3-315,317,Payments responsibility and receipts,Hard,Denied balance is not automatically patient debt,billing; patient,19; 20; 23.4,Denied claim with positive balance and no confirmed patient responsibility,1. Open linked patient bills,"C1: Denied balance is not labeled as amount patient owes
+C2: Patient payment action is withheld",NOT_RUN
+AF3-316,318,Payments responsibility and receipts,Medium,Staff confirms adjudicated responsibility,billing; patient,19; 20; 23.4,Adjudicated claim balance 200.00 with no prior responsibility confirmation,"1. Confirm responsibility 75.00 as authorized billing staff
+2. Open portal as patient","C1: Patient owes 75.00 explicitly
+C2: Confirmation is auditable and separate from 200.00 total balance",NOT_RUN
+AF3-317,319,Payments responsibility and receipts,Hard,Responsibility cannot exceed outstanding balance,billing; patient,19; 20; 23.4,Adjudicated claim balance 200.00,1. Attempt confirm responsibility 200.01,"C1: Out-of-bounds confirmation is rejected
+C2: Previous responsibility amount is preserved",NOT_RUN
+AF3-318,320,Payments responsibility and receipts,Hard,Responsibility cannot be confirmed before adjudication,billing; patient,19; 20; 23.4,Unadjudicated Draft or Submitted claim,"1. Open observed responsibility page
+2. Attempt confirmation if offered","C1: Confirmation is denied in ineligible state
+C2: Portal does not gain payable responsibility",NOT_RUN
+AF3-319,321,Payments responsibility and receipts,Hard,Patient cannot confirm their own responsibility,billing; patient,19; 20; 23.4,Patient session; staff confirmation URL observed on own claim,"1. Navigate to confirmation URL
+2. Attempt exposed action","C1: Unauthorized confirmation is rejected
+C2: Financial responsibility is unchanged",NOT_RUN
+AF3-320,322,Payments responsibility and receipts,Hard,Staff payment blocked in invalid claim state,billing; patient,19; 20; 23.4,Draft unadjudicated claim with charges,"1. Open observed payment page
+2. Attempt positive payment if exposed","C1: Payment is rejected due to state
+C2: No receipt or payment history entry is created",NOT_RUN
+AF3-321,323,Payments responsibility and receipts,Hard,Paid/closed claims do not invite payment,billing; patient,19; 20; 23.4,Paid claim and Closed claim with zero balance,"1. Open each as staff
+2. Visit prior payment URL if known","C1: Payment action is absent or disabled
+C2: Direct navigation cannot submit additional positive payment",NOT_RUN
+AF3-322,324,Payments responsibility and receipts,Medium,Zero and negative payments rejected,billing; patient,19; 20; 23.4,Eligible claim with positive balance,"1. Enter 0 and submit
+2. Enter -1 where possible and submit","C1: Neither amount posts a payment
+C2: Readable amount validation is shown",NOT_RUN
+AF3-323,325,Payments responsibility and receipts,Hard,Receipt refresh is idempotent,billing; patient,19; 20; 23.4,New successful simulated 25.00 payment,"1. Reload receipt twice
+2. Inspect payment history","C1: Only one 25.00 payment exists
+C2: Balance changes once",NOT_RUN
+AF3-324,326,Payments responsibility and receipts,Hard,Back navigation does not restore ready-to-pay stale form,billing; patient,19; 20; 23.4,Successful payment from form,"1. Press Back
+2. Inspect restored page
+3. Reload if needed","C1: Completed form is not presented as ready for duplicate submission
+C2: History shows one payment",NOT_RUN
+AF3-325,327,Payments responsibility and receipts,Hard,Two-tab stale-balance protection,billing; patient,19; 20; 23.4,Claim balance and responsibility 50.00; same payment form in two tabs,"1. Pay 50.00 in tab one
+2. Attempt 50.00 from tab two","C1: Second attempt is rejected or safely deduplicated
+C2: Balance never becomes negative",NOT_RUN
+AF3-326,328,Payments responsibility and receipts,Medium,Staff receipt return paths,billing; patient,19; 20; 23.4,Successful staff payment,"1. Open receipt
+2. Use related claim link
+3. Return to receipt and payment history","C1: Prominent correct claim and history navigation works
+C2: Updated balance is displayed to authorized staff",NOT_RUN
+AF3-327,329,Payments responsibility and receipts,Medium,Patient receipt return path and role scope,billing; patient,19; 20; 23.4,Successful patient payment,"1. Open receipt
+2. Return to portal bills
+3. Inspect available claim links","C1: Portal return is prominent
+C2: Staff-only claim detail is not exposed to patient
+C3: Receipt offers print action",NOT_RUN
+AF3-328,330,Payments responsibility and receipts,Medium,Print receipt preview,billing; patient,19; 20; 23.4,Successful simulated payment receipt,"1. Activate Print
+2. Inspect browser print preview
+3. Cancel printing","C1: Preview contains correct patient-safe amount date and transaction reference
+C2: No extra payment is posted",NOT_RUN
+AF3-329,331,Payments responsibility and receipts,Medium,Money formatting across billing,billing; patient,19; 20; 23.4,Claim/statement/receipt values including 1234.50 and zero,"1. Open financial views
+2. Inspect amount labels","C1: Amounts display currency symbol thousands separator and two decimals
+C2: Zero uses $0.00 where currency is displayed",NOT_RUN
+AF3-330,332,Payments responsibility and receipts,Hard,Payment allocated to intended claim,billing; patient,19; 20; 23.4,Patient with two claims A balance 200 and B balance 300,"1. Post 50 to A
+2. Open both claim histories and account balance","C1: A becomes 150 B stays 300
+C2: Account outstanding sum decreases by exactly 50",NOT_RUN
+AF3-331,333,Payments responsibility and receipts,Medium,Statement and payment history reconciliation,billing; patient,19; 20; 23.4,Patient with known charges payments and confirmed responsibility,"1. Open statement and payment history
+2. Compare to claims","C1: Statement totals reconcile with displayed records and scope
+C2: Confirmed patient amount is distinguishable from payer balance",NOT_RUN
+AF3-332,334,Payments responsibility and receipts,Hard,Other patient's receipt inaccessible,billing; patient,19; 20; 23.4,Receipt for B; patient A session; URL observed by authorized user,1. Navigate to B receipt URL,"C1: B receipt and payment details are withheld
+C2: No print view bypass exposes them",NOT_RUN
+AF3-333,335,Patient portal workflows,Easy,Portal health overview shortcuts,patient,20; 20.1; 20.3,Patient with upcoming visit results medications messages and bills,"1. Open dashboard
+2. Inspect and follow primary shortcuts","C1: Messages appointments results medications and bills are discoverable
+C2: Health overview is not displaced by large empty forms",NOT_RUN
+AF3-334,336,Patient portal workflows,Medium,Upcoming appointment detail,patient,20; 20.1; 20.3,Patient with future appointment,"1. Open upcoming appointment
+2. Inspect provider time location/type and status","C1: Details match staff scheduling record
+C2: Only own appointment is shown",NOT_RUN
+AF3-335,337,Patient portal workflows,Medium,Request new appointment,patient,20; 20.1; 20.3,Patient A; requested provider/date/reason,"1. Submit appointment request
+2. Open staff scheduling workflow","C1: Request persists with A and requested preferences
+C2: Staff can find request without it being falsely presented as confirmed booking",NOT_RUN
+AF3-336,338,Patient portal workflows,Medium,Cancel eligible portal appointment,patient,20; 20.1; 20.3,Own appointment eligible under documented cancellation rules,"1. Cancel
+2. Confirm
+3. Reload portal and staff schedule","C1: Cancelled status appears consistently
+C2: No unrelated appointment changes",NOT_RUN
+AF3-337,339,Patient portal workflows,Hard,Ineligible portal cancellation denied,patient,20; 20.1; 20.3,Own completed or otherwise ineligible appointment,1. Try cancellation through exposed action or recorded cancellation page,"C1: Cancellation is blocked with clear status/rule
+C2: Historical completed appointment remains intact",NOT_RUN
+AF3-338,340,Patient portal workflows,Medium,Complete simulated pre-check-in,patient,20; 20.1; 20.3,Upcoming appointment with portal pre-check-in,"1. Complete required contact consent and intake steps
+2. Submit
+3. Open staff check-in","C1: Submitted information persists
+C2: Staff can see pre-check-in progress without falsely starting physician care",NOT_RUN
+AF3-339,341,Patient portal workflows,Medium,Visit summary accessible,patient,20; 20.1; 20.3,Own encounter with patient-visible signed visit summary,1. Open recent visit summary,"C1: Correct visit date instructions and permitted clinical summary appear
+C2: No other patient's documentation is included",NOT_RUN
+AF3-340,342,Patient portal workflows,Easy,Released results shortcut,patient,20; 20.1; 20.3,Patient with one released and one unreleased result,"1. Open results shortcut
+2. Inspect recent list","C1: Released result is discoverable
+C2: Unreleased result is absent from patient list",NOT_RUN
+AF3-341,343,Patient portal workflows,Easy,Renewal action adjacent to medication,patient,20; 20.1; 20.3,Patient with two active medications,"1. Open medication section
+2. Inspect each medication card","C1: Each eligible medication has an adjacent clearly named Request medication renewal action
+C2: Buttons identify the relevant medication context",NOT_RUN
+AF3-342,344,Patient portal workflows,Medium,Submit medication renewal request,patient,20; 20.1; 20.3,Own active medication eligible for renewal,"1. Request renewal with synthetic comment
+2. Submit
+3. Open staff renewal queue","C1: Request identifies correct medication and patient
+C2: No prescription is automatically signed",NOT_RUN
+AF3-343,345,Patient portal workflows,Medium,Renewal request status discoverable,patient,20; 20.1; 20.3,Existing submitted renewal request,"1. Return to medication/request area
+2. Inspect status/history","C1: Submitted request is acknowledged and distinguishable from a completed prescription
+C2: Patient is not misled that refill was transmitted",NOT_RUN
+AF3-344,346,Patient portal workflows,Medium,Contact update permitted fields,patient,20; 20.1; 20.3,Patient A with known phone/address,"1. Update permitted contact fields
+2. Save
+3. Open staff demographics","C1: Changed contact fields persist consistently
+C2: Protected clinical identifiers are not silently edited",NOT_RUN
+AF3-345,347,Patient portal workflows,Hard,Portal does not allow protected demographic edits,patient,20; 20.1; 20.3,Patient account; protected MRN or role field visible only to staff,"1. Open personal-information form
+2. Try recorded staff edit URL if available","C1: Patient cannot alter MRN staff role or another patient's identity
+C2: Permitted contact editing remains separate",NOT_RUN
+AF3-346,348,Patient portal workflows,Medium,Portal narrow layout and compact summaries,patient,20; 20.1; 20.3,390x844 viewport; populated patient dashboard,"1. Inspect health cards appointment request and contact sections
+2. Use one shortcut","C1: Cards stack readably
+C2: Actions and fields remain visible with adequate spacing
+C3: No oversized empty block obscures main health actions",NOT_RUN
+AF3-347,349,Patient portal workflows,Medium,Portal empty clinical sections,patient,20; 20.1; 20.3,Synthetic patient with no released results and no upcoming appointment,1. Open portal overview results and appointments,"C1: Explicit empty states appear
+C2: No invented visit/result is shown
+C3: Request/contact actions remain discoverable",NOT_RUN
+AF3-348,350,Patient portal workflows,Hard,Other patient's appointment denied,patient,20; 20.1; 20.3,Patient A session; B appointment URL observed while authorized,1. Navigate to B appointment detail/request-edit page,"C1: B appointment information is withheld
+C2: No cancellation or modification of B appointment is possible",NOT_RUN
+AF3-349,351,Patient portal workflows,Hard,Other patient's medication denied,patient,20; 20.1; 20.3,Patient A session; B medication/renewal URL observed as staff,1. Open B medication or renewal page,"C1: B medication data are withheld
+C2: A cannot submit renewal for B",NOT_RUN
+AF3-350,352,Patient portal workflows,Medium,Portal bills distinguish financial categories,patient,20; 20.1; 20.3,Own claim balance 200 confirmed responsibility 50 and payer portion 150,"1. Open bill summary
+2. Inspect payable amount and explanation","C1: Patient payable amount is 50
+C2: Total claim balance is not mislabeled as confirmed patient responsibility",NOT_RUN
+AF3-351,8,Messaging unread state and privacy,Medium,Compose subject and first body atomically,patient; physician; nurse,22; 20.2,Patient A; empty compose form,"1. Enter unique subject and initial body
+2. Send
+3. Open thread","C1: One thread contains both subject and first message
+C2: No empty orphan thread is created",NOT_RUN
+AF3-352,353,Messaging unread state and privacy,Hard,Compose error preserves content,patient; physician; nurse,22; 20.2,Compose with subject entered but required body blank,"1. Submit
+2. Inspect error
+3. Enter body
+4. Send","C1: Subject survives error
+C2: Successful send creates one complete thread rather than an empty draft artifact",NOT_RUN
+AF3-353,354,Messaging unread state and privacy,Medium,Staff reply stays in patient thread,patient; physician; nurse,22; 20.2,Existing patient A message thread,"1. Reply as authorized staff
+2. Open as patient","C1: Reply appears in same thread with correct patient scope
+C2: No separate unrelated thread is created",NOT_RUN
+AF3-354,355,Messaging unread state and privacy,Medium,Sender names timestamps and receipts,patient; physician; nurse,22; 20.2,Thread containing patient and staff messages,"1. Open conversation
+2. Inspect messages and read indicators",C1: Readable sender names timestamps and available read receipts distinguish each message,NOT_RUN
+AF3-355,356,Messaging unread state and privacy,Medium,Navigation unread count updates on incoming message,patient; physician; nurse,22; 20.2,Staff signed in on active page; patient in separate browser session,"1. Patient sends new thread/message
+2. Observe staff Messages navigation","C1: Incoming unread count increases appropriately within recorded refresh window
+C2: Always discoverable message entry point shows new activity",NOT_RUN
+AF3-356,357,Messaging unread state and privacy,Medium,Unread thread visual label,patient; physician; nurse,22; 20.2,Staff has unread incoming thread,1. Open message list without opening thread,"C1: Unread thread has explicit label/dot and bold subject
+C2: Read thread is visually distinguishable",NOT_RUN
+AF3-357,358,Messaging unread state and privacy,Medium,Opening thread marks displayed messages read,patient; physician; nurse,22; 20.2,Current user with known unread count and unread thread,"1. Open thread
+2. Read rendered messages
+3. Return to list","C1: Displayed incoming messages become read for current user
+C2: Count decreases by corresponding unread unit defined in UI",NOT_RUN
+AF3-358,359,Messaging unread state and privacy,Expert,Read-state isolation across authorized staff,patient; physician; nurse,22; 20.2,Same incoming thread visible to staff A and B; both unread in separate sessions,"1. A opens thread
+2. Inspect B's list/count without opening thread","C1: A's read state clears
+C2: B remains unread
+C3: One staff reader does not clear another's state",NOT_RUN
+AF3-359,360,Messaging unread state and privacy,Medium,Own sent messages do not increase unread count,patient; physician; nurse,22; 20.2,User with known unread baseline,"1. Send new message or reply
+2. Inspect own count",C1: Own outgoing message does not increase sender's unread count,NOT_RUN
+AF3-360,361,Messaging unread state and privacy,Hard,New incoming reply restores unread,patient; physician; nurse,22; 20.2,Thread previously read by staff A,"1. Patient replies
+2. Observe active staff page
+3. Open list","C1: Thread becomes unread for A again
+C2: Unread count/marker updates without external push setup",NOT_RUN
+AF3-361,362,Messaging unread state and privacy,Hard,Active page refresh without full reload,patient; physician; nurse,22; 20.2,Staff on non-messages authenticated page; known baseline,"1. Send incoming message from patient session
+2. Observe staff badge without manual page reload","C1: Badge refreshes while page is active within documented or bounded observation window
+C2: No email/SMS is required",NOT_RUN
+AF3-362,363,Messaging unread state and privacy,Hard,Unread count respects patient scope,patient; physician; nurse,22; 20.2,Patients A/B with separate new messages; A portal session,"1. Send staff reply only to B
+2. Inspect A badge and list","C1: A count does not reflect B's message
+C2: No B thread metadata appears",NOT_RUN
+AF3-363,364,Messaging unread state and privacy,Hard,Direct other-patient thread denied,patient; physician; nurse,22; 20.2,Patient A; B thread URL observed by authorized staff,1. Navigate to B thread URL,"C1: B subject body participants and timestamps are withheld
+C2: No read receipt is falsely attributed to A",NOT_RUN
+AF3-364,365,Messaging unread state and privacy,Hard,Direct unauthorized reply denied,patient; physician; nurse,22; 20.2,Patient A; B reply page URL observed by authorized staff,"1. Open B reply page
+2. Attempt any exposed reply","C1: No message from A is added to B thread
+C2: Unauthorized action is rejected",NOT_RUN
+AF3-365,366,Messaging unread state and privacy,Medium,Unread state persists across logout,patient; physician; nurse,22; 20.2,User opens and reads a thread,"1. Sign out
+2. Sign in same user
+3. Reopen message list","C1: Read state persists
+C2: Thread is not reset to unread without new incoming message",NOT_RUN
+AF3-366,367,Messaging unread state and privacy,Medium,Message history survives refresh,patient; physician; nurse,22; 20.2,Thread with three distinct messages,"1. Reload conversation
+2. Navigate away and back","C1: Messages retain content order authors and times
+C2: No duplicate is appended by refresh",NOT_RUN
+AF3-367,368,Messaging unread state and privacy,Hard,Read only displayed messages,patient; physician; nurse,22; 20.2,Thread fixture supports pagination/lazy loading with unread messages not yet displayed,"1. Open initial visible segment
+2. Inspect count
+3. Load remaining messages through UI","C1: Only displayed messages are marked read until more are displayed
+C2: If UI displays entire thread at once, all rendered messages may be read and limitation is recorded",NOT_RUN
+AF3-368,369,Messaging unread state and privacy,Medium,Messages discoverable by permitted role,patient; physician; nurse,22; 20.2,Nurse account with authorized patient conversation,"1. Locate Messages from role-aware navigation
+2. Compose or reply through allowed action","C1: Message entry is discoverable with unread indicator
+C2: Permitted conversation can be reached without hidden URL knowledge",NOT_RUN
+AF3-369,370,AI assistance and unsigned documentation,Medium,Deterministic demo mode without API key,physician,21,Documented local demo mode; synthetic chart,"1. Open AI assistant
+2. Generate patient summary","C1: Summary workflow works without requesting paid API key
+C2: Mode is clearly identified as demo/simulated where appropriate",NOT_RUN
+AF3-370,371,AI assistance and unsigned documentation,Hard,Patient summary grounded in chart,physician,21,A chart with known problems medications allergies labs and pending orders,"1. Generate summary
+2. Compare each factual statement to visible chart","C1: Summary covers available major categories
+C2: No unsupported patient facts or another patient's data are asserted",NOT_RUN
+AF3-371,372,AI assistance and unsigned documentation,Hard,Missing chart information not invented,physician,21,Synthetic chart lacking allergy/history detail,"1. Generate summary
+2. Inspect statements about absent categories",C1: Absent information is identified as unavailable/unknown rather than fabricated normal or negative findings,NOT_RUN
+AF3-372,373,AI assistance and unsigned documentation,Medium,Encounter preparation from selected appointment,physician,21,A future appointment with recent changes and pending tasks,"1. Generate encounter preparation
+2. Compare visit reason chart changes and tasks","C1: Preparation reflects selected appointment context
+C2: Source facts and generated suggestions are distinguishable",NOT_RUN
+AF3-373,374,AI assistance and unsigned documentation,Medium,SOAP drafting from synthetic transcript,physician,21,In-progress A encounter; supplied synthetic transcript and chart context,"1. Paste transcript
+2. Generate SOAP draft","C1: Draft has Subjective Objective Assessment and Plan
+C2: Transcript and chart facts are represented without automatic signing",NOT_RUN
+AF3-374,375,AI assistance and unsigned documentation,Medium,Editable AI output correction,physician,21,Generated draft with editable text,"1. Change one generated sentence to correction marker
+2. Save draft output if offered
+3. Reopen","C1: Clinician correction is retained
+C2: Editable output remains unapproved/unsigned until explicit action",NOT_RUN
+AF3-375,376,AI assistance and unsigned documentation,Easy,Generation application saving signing labels,physician,21,Generated note draft ready for application,1. Inspect available actions and explanatory text,"C1: Apply to unsigned draft or equivalent explicit label appears
+C2: Generation application save and signing are visibly distinct
+C3: Apply explicitly states it does not sign",NOT_RUN
+AF3-376,9,AI assistance and unsigned documentation,Hard,Apply AI output leaves note unsigned,physician,21,Unsigned encounter note; reviewed generated draft,"1. Apply to unsigned draft
+2. Inspect note and encounter status","C1: Content transfers to unsigned draft
+C2: No signing clinician timestamp or Signed state is created",NOT_RUN
+AF3-377,377,AI assistance and unsigned documentation,Hard,Save applied draft leaves note unsigned,physician,21,Applied AI draft requiring clinician review,"1. Complete missing details
+2. Save Draft
+3. Reload","C1: Content persists
+C2: Save is not treated as signature",NOT_RUN
+AF3-378,378,AI assistance and unsigned documentation,Hard,Explicit human review before signing,physician,21,AI-applied complete draft and all ordinary sign-off prerequisites,"1. Review content and acknowledge required checks
+2. Explicitly Sign","C1: Signature occurs only after clinician action
+C2: Signing metadata identifies acting clinician",NOT_RUN
+AF3-379,379,AI assistance and unsigned documentation,Hard,AI cannot overwrite signed note,physician,21,Signed note with recorded text; generated alternative draft,"1. Open AI workflow
+2. Attempt Apply to same signed note","C1: Signed original is unchanged
+C2: Application is blocked or routed to auditable correction workflow",NOT_RUN
+AF3-380,380,AI assistance and unsigned documentation,Hard,AI objectives include all recorded vitals,physician,21,Complete vitals fixture: BP120/80 HR72 RR16 T36.8 SpO2 98 H65in W150lb BMI25.0 pain2,"1. Generate SOAP draft
+2. Inspect Objective","C1: All recorded measurements are present with labels and units
+C2: BMI is consistent with recorded values and pain is included",NOT_RUN
+AF3-381,381,AI assistance and unsigned documentation,Hard,AI missing vitals remain missing,physician,21,Encounter with no respiratory rate or pain recorded,"1. Generate draft
+2. Inspect Objective","C1: Absent respiratory rate/pain are not invented
+C2: Present measurements remain accurate",NOT_RUN
+AF3-382,382,AI assistance and unsigned documentation,Hard,AI draft respects selected measurement units,physician,21,Encounter saved at 65.37in and 147.29lb,"1. Generate draft
+2. Compare height/weight to saved vitals","C1: Units and represented measurements agree with chart
+C2: No unexplained inches/cm or pounds/kg swap appears",NOT_RUN
+AF3-383,383,AI assistance and unsigned documentation,Medium,Text scribe works without audio backend,physician,21,No configured transcription provider; demo text workflow,"1. Enter supplied transcript
+2. Generate note","C1: Text-based workflow remains functional
+C2: UI does not falsely claim recorded/transcribed audio",NOT_RUN
+AF3-384,384,AI assistance and unsigned documentation,Hard,AI preparation does not create diagnoses,physician,21,Unsigned encounter; baseline diagnosis list captured,"1. Generate encounter preparation
+2. Inspect any diagnosis suggestions
+3. Reopen encounter diagnosis list without accepting suggestions","C1: Generation alone creates no diagnosis
+C2: Any suggestions that are shown remain distinguishable from approved diagnoses",NOT_RUN
+AF3-385,385,AI assistance and unsigned documentation,Hard,AI preparation does not create orders,physician,21,Unsigned encounter; baseline order list captured,"1. Generate encounter preparation
+2. Inspect any suggested orders
+3. Reopen order list without approving suggestions","C1: No signed or active order is created by generation alone
+C2: Any suggestions remain separate from explicitly accepted orders",NOT_RUN
+AF3-386,386,AI assistance and unsigned documentation,Medium,Documentation gap assistance,physician,21,Encounter intentionally missing plan detail; demo assistant supports gap review,"1. Generate preparation/gap review
+2. Inspect output","C1: Missing information is highlighted as a documentation gap
+C2: Assistant does not manufacture missing plan as established fact",NOT_RUN
+AF3-387,387,AI assistance and unsigned documentation,Medium,Source versus suggestion presentation,physician,21,Chart fact and generated follow-up suggestion available,"1. Generate preparation or summary
+2. Inspect organization","C1: Known facts and suggested next steps are distinguishable
+C2: Suggestions are not labeled completed care",NOT_RUN
+AF3-388,388,AI assistance and unsigned documentation,Hard,AI patient switch resets context,physician,21,Generate summary for A; B has distinct allergy and medication markers,"1. Switch to B via visible selector
+2. Generate new summary","C1: B summary uses B data
+C2: A-specific markers do not leak into B output",NOT_RUN
+AF3-389,389,AI assistance and unsigned documentation,Medium,AI draft persistence and provenance,physician,21,Generated draft applied and saved; AI history available,"1. Reload encounter
+2. Open AI/draft history","C1: Saved content persists
+C2: Generated origin and available request/model/prompt information are traceable without invented metadata",NOT_RUN
+AF3-390,390,AI assistance and unsigned documentation,Medium,Empty transcript validation,physician,21,Text scribe form with no transcript and insufficient structured content,"1. Attempt generate
+2. Inspect feedback","C1: Input requirement is explained or output explicitly reflects only available chart data
+C2: No fictitious conversation is invented",NOT_RUN
+AF3-391,391,AI assistance and unsigned documentation,Hard,Clinical approval cannot be granted by front desk,physician,21,frontdesk.demo; AI apply/sign URL observed as physician,"1. Open recorded AI application/signing page
+2. Attempt exposed action","C1: Front desk cannot approve/sign physician documentation
+C2: Unsigned and signed notes remain unchanged",NOT_RUN
+AF3-392,392,AI assistance and unsigned documentation,Expert,AI draft fact audit using fixed transcript,physician,21,A chart explicitly has penicillin allergy; transcript says headache two days and no vitals supplied,"1. Generate draft from fixed transcript
+2. Compare every asserted symptom measurement medication and plan to sources","C1: Headache duration and known allergy are accurate
+C2: No unprovided fever normal exam or treatment is asserted as completed fact
+C3: Any proposals are marked suggestions",NOT_RUN
+AF3-393,393,Clinical inbox and tasks,Easy,Shared inbox categories and task context,physician; nurse; authorized staff,22; 26,Tasks from results notes orders renewals messages authorizations documentation and billing fixtures,"1. Open shared inbox
+2. Inspect representative rows","C1: Categories are distinguishable
+C2: Assigned user patient related record priority status creation time and due date are available",NOT_RUN
+AF3-394,394,Clinical inbox and tasks,Medium,Assign unassigned task,physician; nurse; authorized staff,22; 26,Unassigned task; authorized assigner,"1. Assign to permitted staff A
+2. Save
+3. Open A inbox","C1: Task appears for A
+C2: Assignment persists",NOT_RUN
+AF3-395,395,Clinical inbox and tasks,Medium,Reassign task,physician; nurse; authorized staff,22; 26,Task assigned to A; authorized assigner; staff B eligible,"1. Reassign to B
+2. Open both inboxes","C1: B sees assignment
+C2: A is no longer incorrectly shown as sole active assignee",NOT_RUN
+AF3-396,396,Clinical inbox and tasks,Medium,Complete task,physician; nurse; authorized staff,22; 26,Open assigned task with prerequisites satisfied,"1. Mark Complete
+2. Reload inbox and task detail","C1: Completed status persists
+C2: Active task queue reflects completion",NOT_RUN
+AF3-397,397,Clinical inbox and tasks,Medium,Task priority edit,physician; nurse; authorized staff,22; 26,Editable task with normal priority,"1. Change to supported high priority
+2. Save
+3. Filter high priority","C1: Priority persists
+C2: Task is discoverable under correct filter",NOT_RUN
+AF3-398,398,Clinical inbox and tasks,Medium,Task status and category filters,physician; nurse; authorized staff,22; 26,Mixed open/completed tasks from two categories,"1. Filter open results tasks
+2. Inspect list
+3. Clear category","C1: Results follow active status/category
+C2: Clearing category retains status filter",NOT_RUN
+AF3-399,399,Clinical inbox and tasks,Medium,Task search by patient/context,physician; nurse; authorized staff,22; 26,Two tasks for different patients and related records,"1. Search A name/MRN or supported task text
+2. Open result","C1: Matching task points to correct patient and record
+C2: Search does not silently select B",NOT_RUN
+AF3-400,400,Clinical inbox and tasks,Hard,Task link preserves patient context,physician; nurse; authorized staff,22; 26,Result-review task for A result R,"1. Open task
+2. Follow related record
+3. Return to inbox","C1: Linked result is R for A
+C2: Completion does not change unrelated task",NOT_RUN
+AF3-401,401,Clinical inbox and tasks,Hard,Unauthorized task modification denied,physician; nurse; authorized staff,22; 26,User outside documented task management scope; task URL observed by authorized staff,"1. Open task edit/assignment page
+2. Attempt exposed change","C1: Out-of-scope assignment/completion is denied
+C2: Original task remains unchanged",NOT_RUN
+AF3-402,402,Clinical inbox and tasks,Hard,Completed task updates dashboard count,physician; nurse; authorized staff,22; 26,Known active task count N and one independently completable task,"1. Complete task
+2. Reload dashboard","C1: Active count decreases by one within same scope
+C2: Completed task is not still counted as pending",NOT_RUN
+AF3-403,403,Analytics cohorts filters and CSV parity,Medium,Physician dashboard real queue counts,manager; billing; admin,6; 23,Assigned physician; UI-countable visits unsigned notes pending orders and results,"1. Open dashboard
+2. Follow each corresponding queue and compare same-scope counts","C1: Counts reconcile with records in their stated scope
+C2: No static unrelated totals are displayed",NOT_RUN
+AF3-404,404,Analytics cohorts filters and CSV parity,Medium,Front desk dashboard operations,manager; billing; admin,6; 23,Known arriving checked-in cancelled and unverified appointments,"1. Open front desk dashboard
+2. Follow relevant worklists","C1: Cards reflect current operational records
+C2: Patient status labels match schedule/check-in",NOT_RUN
+AF3-405,405,Analytics cohorts filters and CSV parity,Medium,Billing dashboard balances and queues,manager; billing; admin,6; 23,Known unbilled rejected denied and outstanding claim records,"1. Open billing dashboard
+2. Compare filtered workqueues","C1: Counts and balances match stated scope
+C2: Queue navigation is correct",NOT_RUN
+AF3-406,406,Analytics cohorts filters and CSV parity,Medium,Admin dashboard operational totals,manager; billing; admin,6; 23,Known active patients and daily visits; selected date,"1. Open admin dashboard
+2. Follow source lists","C1: Active-patient and daily-visit figures reconcile with matching UI lists
+C2: Selected day is clear",NOT_RUN
+AF3-407,407,Analytics cohorts filters and CSV parity,Medium,Report date range and active filters visible,manager; billing; admin,6; 23,Report with selectable period provider and department,"1. Set date range provider A department A
+2. Apply","C1: Page clearly shows selected period and filters
+C2: No stale previous scope label remains",NOT_RUN
+AF3-408,408,Analytics cohorts filters and CSV parity,Medium,Appointment cohort uses scheduled dates,manager; billing; admin,6; 23,Fixture appointments created earlier but scheduled inside/outside selected period,"1. Filter period
+2. Inspect appointment metrics and source list","C1: In-period scheduled visits are included
+C2: Out-of-period scheduled visits are excluded regardless of creation date",NOT_RUN
+AF3-409,409,Analytics cohorts filters and CSV parity,Hard,Encounter cohort uses encounter creation dates,manager; billing; admin,6; 23,Encounters with creation dates inside/outside selected period and distinct appointment dates,"1. Filter period
+2. Inspect encounter count and linked rows","C1: Encounter inclusion follows creation date
+C2: Appointment date does not silently substitute",NOT_RUN
+AF3-410,410,Analytics cohorts filters and CSV parity,Expert,Submitted claim from older encounter included,manager; billing; admin,6; 23,Encounter created before range; claim latest submitted_at inside range,"1. Filter range
+2. Inspect claims-submitted metric and source record","C1: Claim is included in submitted cohort despite old encounter
+C2: Displayed date basis names latest submission date",NOT_RUN
+AF3-411,411,Analytics cohorts filters and CSV parity,Expert,Latest resubmission determines submitted cohort,manager; billing; admin,6; 23,Claim submitted in range then latest resubmission outside range; immutable fixture dates,"1. Filter original range
+2. Inspect submitted cohort
+3. Filter latest range","C1: Claim follows latest submitted_at
+C2: It is not counted as currently submitted in both ranges using historical first date",NOT_RUN
+AF3-412,412,Analytics cohorts filters and CSV parity,Hard,Acceptance uses current submitted-cohort state,manager; billing; admin,6; 23,Two claims submitted in period; one currently Accepted and one Rejected,"1. Filter period
+2. Inspect acceptance metric and cohort rows","C1: Acceptance numerator reflects current accepted state of selected submitted cohort
+C2: Denominator follows displayed submitted cohort definition",NOT_RUN
+AF3-413,413,Analytics cohorts filters and CSV parity,Hard,Payment metrics use posting dates,manager; billing; admin,6; 23,Older encounter with payment posted inside range; second payment outside range,"1. Filter period
+2. Compare payment list and metric","C1: In-range posting is included regardless of encounter creation
+C2: Out-of-range posting is excluded",NOT_RUN
+AF3-414,414,Analytics cohorts filters and CSV parity,Expert,Provider-filtered unlinked check-in copay,manager; billing; admin,6; 23,Appointment provider A with unlinked copay 25; provider B copay 40; same posting period,"1. Filter financial report to A
+2. Inspect payment total and CSV","C1: A unlinked copay contributes 25
+C2: B copay is excluded
+C3: Appointment provider supplies scope for unlinked copay",NOT_RUN
+AF3-415,415,Analytics cohorts filters and CSV parity,Expert,Linked copay counted exactly once,manager; billing; admin,6; 23,25 copay initially unlinked then linked to claim via supported workflow; other payments total 100,1. Open payment/revenue report before and after linkage within same period,"C1: Total remains 125
+C2: Linking does not duplicate copay revenue",NOT_RUN
+AF3-416,416,Analytics cohorts filters and CSV parity,Hard,Department filter independently scopes payments,manager; billing; admin,6; 23,Payments on encounters/appointments in two departments,"1. Filter department A only
+2. Inspect payment rows/total","C1: Only department A payments are counted
+C2: Unlinked appointment copays use appointment department where defined",NOT_RUN
+AF3-417,417,Analytics cohorts filters and CSV parity,Hard,Provider and department intersection,manager; billing; admin,6; 23,Provider A with visits in departments X/Y; provider B in X,1. Filter provider A and department X,"C1: Only intersection records contribute in each applicable cohort
+C2: Neither filter silently overrides the other",NOT_RUN
+AF3-418,418,Analytics cohorts filters and CSV parity,Hard,Current charge balance denial cohort,manager; billing; admin,6; 23,Encounter creation dates inside/outside range; current charge/balance/denial fixtures,"1. Filter period
+2. Inspect current financial cohort metrics","C1: These metrics follow encounter-creation cohort
+C2: Current values are not mislabeled as historical as-of values",NOT_RUN
+AF3-419,419,Analytics cohorts filters and CSV parity,Expert,Zero encounter-cohort balance is not practice zero,manager; billing; admin,6; 23,No outstanding balance in selected encounter cohort but older practice claim remains unpaid,"1. Filter selected period
+2. Inspect A/R explanation and total","C1: Cohort zero is explained as scoped current balance
+C2: UI does not assert practice-wide receivables are zero",NOT_RUN
+AF3-420,420,Analytics cohorts filters and CSV parity,Hard,A/R aging uses documented current balance basis,manager; billing; admin,6; 23,Outstanding claims with documented aging dates and amounts,"1. Open aging table
+2. Compare each bucket to source claim ages and balances","C1: Bucket sums equal current scoped receivable balance
+C2: Date basis is visible and consistent",NOT_RUN
+AF3-421,421,Analytics cohorts filters and CSV parity,Hard,No-show rate denominator explicit and reproducible,manager; billing; admin,6; 23,Selected schedule cohort with known no-shows and total eligible visits,1. Inspect no-show rate and source rows,"C1: Numerator denominator and exclusions follow visible/documented definition
+C2: Computed percentage matches records",NOT_RUN
+AF3-422,422,Analytics cohorts filters and CSV parity,Hard,Encounter completion and unsigned metrics,manager; billing; admin,6; 23,Selected encounter cohort with completed signed and unsigned notes,"1. Open clinical report
+2. Compare linked records","C1: Completion and unsigned counts reconcile with cohort
+C2: Signed/closed documents are not counted as unsigned",NOT_RUN
+AF3-423,423,Analytics cohorts filters and CSV parity,Medium,Empty cohort metrics,manager; billing; admin,6; 23,Date/provider combination with zero eligible records,"1. Apply filters
+2. Inspect metrics and charts","C1: Counts and money are zero where appropriate
+C2: Rates use explicit zero/no-data handling without NaN infinity or fabricated percentage",NOT_RUN
+AF3-424,424,Analytics cohorts filters and CSV parity,Expert,CSV matches filtered page,manager; billing; admin,6; 23,Selected period provider A department X; nonzero mixed metrics,"1. Download CSV through visible Export
+2. Open downloaded file in browser/system viewer
+3. Compare values","C1: CSV matches page scope and values
+C2: Date-basis column and selected provider/department are explicit",NOT_RUN
+AF3-425,425,Analytics cohorts filters and CSV parity,Medium,Financial trend formatting,manager; billing; admin,6; 23,Report with amount 1234.50 and aging buckets,1. Inspect summary chart labels tooltips where present and table,"C1: Money consistently uses currency symbol thousands separators and two decimals
+C2: Labels do not drop cents or misstate unit",NOT_RUN
+AF3-426,426,Analytics cohorts filters and CSV parity,Hard,Invalid or reversed report dates recover safely,manager; billing; admin,6; 23,Report date controls; start after end,"1. Submit reversed range
+2. Correct dates
+3. Apply","C1: Invalid interval yields clear validation or explicitly documented normalization
+C2: No misleading unlabeled scope is rendered",NOT_RUN
+AF3-427,427,Read-only interoperability through browser,Medium,Patient JSON mapping,authorized staff; patient,24; 32,Documented UI/help link to selected synthetic Patient endpoint; authorized staff,"1. Navigate to endpoint using browser address bar
+2. Compare displayed JSON with chart","C1: Patient identifier/name/birth date match documented mapping
+C2: Output is labeled inspired/demo rather than formally certified FHIR",NOT_RUN
+AF3-428,428,Read-only interoperability through browser,Medium,Appointment JSON mapping,authorized staff; patient,24; 32,Documented Appointment resource URL for known appointment,"1. Open resource in browser
+2. Compare patient provider time and status to schedule","C1: Mapped fields correspond to selected appointment
+C2: Patient reference is correct",NOT_RUN
+AF3-429,429,Read-only interoperability through browser,Medium,Encounter JSON mapping,authorized staff; patient,24; 32,Documented Encounter resource for known encounter,"1. Open browser JSON view
+2. Compare patient and lifecycle state","C1: Resource identity patient and mapped status agree with encounter
+C2: Appointment/document states are not conflated",NOT_RUN
+AF3-430,430,Read-only interoperability through browser,Medium,Condition JSON mapping,authorized staff; patient,24; 32,Documented Condition endpoint for known diagnosis,"1. Open resource
+2. Compare code label status and subject to chart",C1: Curated diagnosis fields and subject reference match documented mapping,NOT_RUN
+AF3-431,431,Read-only interoperability through browser,Medium,Observation JSON units,authorized staff; patient,24; 32,Known saved height 65in equivalent canonical metric observation; documented Observation endpoint,"1. Open resource
+2. Compare quantity/unit with documented export mapping and UI","C1: Value and unit represent same measurement
+C2: Imperial display is not incorrectly labeled metric in export",NOT_RUN
+AF3-432,432,Read-only interoperability through browser,Medium,MedicationRequest JSON mapping,authorized staff; patient,24; 32,Known simulated prescription; documented resource endpoint,"1. Open resource
+2. Compare medication dose subject and status","C1: Mapped prescription details agree
+C2: Unsigned draft is not exported as a signed real pharmacy transmission",NOT_RUN
+AF3-433,433,Read-only interoperability through browser,Medium,ServiceRequest JSON mapping,authorized staff; patient,24; 32,Known lab order with diagnosis; documented endpoint,"1. Open resource
+2. Compare service subject encounter and status","C1: Order data and references match documented mapping
+C2: Cancelled order is not represented as active without mapping explanation",NOT_RUN
+AF3-434,434,Read-only interoperability through browser,Medium,DiagnosticReport JSON mapping,authorized staff; patient,24; 32,Known published result; documented endpoint,"1. Open resource
+2. Compare test values/links status and patient","C1: Result references and patient agree with source
+C2: JSON does not fabricate diagnostic interpretations",NOT_RUN
+AF3-435,435,Read-only interoperability through browser,Medium,Coverage JSON mapping,authorized staff; patient,24; 32,Known policy; documented endpoint,"1. Open resource
+2. Compare payer member status and subject","C1: Export matches policy and documented mapping
+C2: Another patient's member ID does not appear",NOT_RUN
+AF3-436,436,Read-only interoperability through browser,Hard,Resource access control and read-only surface,authorized staff; patient,24; 32,Documented endpoint URLs; authorized staff and patient A; B resource known,"1. View permitted resource
+2. Sign out and reopen
+3. Sign in as A and open B resource
+4. Inspect any rendered mutation controls","C1: Protected resource scope is enforced
+C2: No public mutation UI is offered
+C3: Browser GET alone does not prove PUT/POST/DELETE rejection; protocol-level checks remain excluded",NOT_RUN
+AF3-437,437,Administration and safe demo management,Medium,Create synthetic staff account,admin; manager,5.1; 27; 28; 29,Admin; unused test username and permitted role,"1. Create account with public-demo-only test credentials
+2. Sign in as new account","C1: Account creation persists
+C2: Assigned role governs accessible workflow",NOT_RUN
+AF3-438,438,Administration and safe demo management,Medium,Change staff role and verify session permissions,admin; manager,5.1; 27; 28; 29,Test staff account initially front desk; admin,"1. Change account to permitted nurse role
+2. Sign out/in test user
+3. Open worklist and old restricted area","C1: New role is effective
+C2: Permissions reflect new role rather than stale front desk access",NOT_RUN
+AF3-439,439,Administration and safe demo management,Medium,Deactivate test staff account,admin; manager,5.1; 27; 28; 29,Synthetic test staff account; admin,"1. Disable account through supported UI
+2. Attempt fresh login as that account","C1: Disabled account cannot authenticate
+C2: Other demo users still work",NOT_RUN
+AF3-440,440,Administration and safe demo management,Medium,Manage department,admin; manager,5.1; 27; 28; 29,Admin; unused fictional department name,"1. Create/edit test department
+2. Save
+3. Open applicable department selector","C1: Department configuration persists
+C2: Selector shows current label",NOT_RUN
+AF3-441,441,Administration and safe demo management,Medium,Manage provider assignment,admin; manager,5.1; 27; 28; 29,Admin; test provider and department,"1. Assign provider to department
+2. Save
+3. Open scheduling selector","C1: Provider department relationship appears correctly
+C2: Existing appointments are not reassigned silently",NOT_RUN
+AF3-442,442,Administration and safe demo management,Medium,Configure appointment type,admin; manager,5.1; 27; 28; 29,Admin; test visit type,"1. Set name and default duration 20 minutes
+2. Save
+3. Reopen configuration","C1: Type settings persist
+C2: Duration field remains readable and valid",NOT_RUN
+AF3-443,443,Administration and safe demo management,Medium,Practice settings persist,admin; manager,5.1; 27; 28; 29,Admin; non-sensitive fictional practice display setting,"1. Edit supported practice display field
+2. Save
+3. Reload header/settings","C1: Changed setting persists where applicable
+C2: No unrelated practice identity is substituted",NOT_RUN
+AF3-444,444,Administration and safe demo management,Medium,Demo account documentation covers all roles,admin; manager,5.1; 27; 28; 29,Repository README accessible in browser or supplied local rendered document,"1. Inspect documented nine demo usernames and role descriptions
+2. Compare with sign-in entry points","C1: All required roles have usable documented public demo account identities
+C2: No production credentials are needed",NOT_RUN
+AF3-445,445,Administration and safe demo management,Medium,Reset warning and cancel path,admin; manager,5.1; 27; 28; 29,Admin on designated synthetic demo instance; evidence checkpoint saved,"1. Open reset page
+2. Read warning
+3. Cancel without confirming
+4. Reload patient count","C1: Warning identifies destructive demo reset and requires explicit confirmation
+C2: Cancellation preserves current data",NOT_RUN
+AF3-446,446,Administration and safe demo management,Hard,Non-admin reset denied,admin; manager,5.1; 27; 28; 29,frontdesk.demo; observed reset page URL,"1. Navigate to reset page
+2. Attempt exposed reset action","C1: Reset is denied
+C2: Existing synthetic records remain unchanged",NOT_RUN
+AF3-447,472,Administration and safe demo management,Expert,Confirmed reset restores consistent demo state,admin; manager,5.1; 27; 28; 29,Isolated designated demo database only; baseline captured; evidence exported; run last,"1. Create one disposable marker through UI
+2. Confirm reset as admin
+3. Sign in and inspect baseline patients appointments claims and demo accounts","C1: Marker is removed
+C2: Consistent baseline and role logins are restored
+C3: Reset event is recorded or retained as documented
+C4: Only designated demo database is affected",NOT_RUN
+AF3-448,447,Administration and safe demo management,Hard,Manager operational settings boundaries,admin; manager,5.1; 27; 28; 29,manager.demo; authorized operational settings and admin role-management URL known,"1. Edit one permitted operational setting
+2. Open admin-only role management","C1: Allowed operational setting saves
+C2: Manager cannot grant arbitrary staff privileges",NOT_RUN
+AF3-449,448,Audit trails and readable activity,Medium,Registration audit event,admin; authorized staff,26; 31; 32,Newly registered synthetic patient with unique marker,"1. Open audit search as authorized user
+2. Locate registration by patient marker","C1: Event identifies creation patient actor and timestamp
+C2: No unrelated patient is attributed",NOT_RUN
+AF3-450,449,Audit trails and readable activity,Medium,Demographic edit audit event,admin; authorized staff,26; 31; 32,Patient phone changed through UI,"1. Open audit/history
+2. Locate edit","C1: Event records edit actor/time and relevant change context
+C2: Patient association is correct",NOT_RUN
+AF3-451,450,Audit trails and readable activity,Medium,State transition human-readable,admin; authorized staff,26; 31; 32,Appointment Confirmed to Arrived transition,1. Open activity history,"C1: Business label and prior/new states with arrow or equally clear transition rendering are readable
+C2: Actor and timestamp persist
+C3: No raw dictionary is shown",NOT_RUN
+AF3-452,451,Audit trails and readable activity,Medium,Eligibility history human-readable,admin; authorized staff,26; 31; 32,Policy with Active verification event,1. Open coverage activity history,"C1: Coverage status actor/time are readable
+C2: Structured eligibility object is not dumped as JSON",NOT_RUN
+AF3-453,452,Audit trails and readable activity,Medium,Financial audit for responsibility confirmation,admin; authorized staff,26; 31; 32,Billing staff confirmed 75.00 responsibility,1. Open claim audit/history,"C1: Confirmation amount actor and time are recorded
+C2: Confirmation is distinguishable from payment posting",NOT_RUN
+AF3-454,453,Audit trails and readable activity,Medium,Signed-note audit traceability,admin; authorized staff,26; 31; 32,Note signed with recorded clinician/time/version,1. Open audit event and note,"C1: Event correlates with signed note clinician and version
+C2: Signing event is not confused with draft save",NOT_RUN
+AF3-455,454,Audit trails and readable activity,Medium,Audit filtering by actor and action,admin; authorized staff,26; 31; 32,At least two actors and creation/update events,"1. Filter actor A and update action
+2. Inspect results
+3. Clear action filter","C1: Rows obey both filters
+C2: Clearing action retains actor scope",NOT_RUN
+AF3-456,455,Audit trails and readable activity,Hard,Audit access denied to patient,admin; authorized staff,26; 31; 32,Patient session; audit page URL observed as admin,1. Navigate to audit page,"C1: Staff audit events and other-patient metadata are withheld
+C2: No unauthorized export control works",NOT_RUN
+AF3-457,456,Audit trails and readable activity,Medium,Rendered special-character activity values,admin; authorized staff,26; 31; 32,Synthetic patient preferred name contains literal <b>AF_TEST</b> entered as plain text,"1. Save permitted field
+2. Inspect activity/history","C1: Value is safely rendered as text rather than executable markup
+C2: History remains readable without template failure",NOT_RUN
+AF3-458,457,Audit trails and readable activity,Medium,No raw containers in ordinary histories,admin; authorized staff,26; 31; 32,Representative check-in eligibility claim validation and encounter events,1. Open each ordinary history/validation list,"C1: Business statements replace Python dictionaries JSON objects and empty arrays
+C2: Actor/time and useful meaning are retained",NOT_RUN
+AF3-459,458,Integrated multi-role workflows,Expert,New patient to completed clinical visit,multiple roles,26; 36,Fresh synthetic patient identity; free slot; front desk nurse assigned physician,"1. Register
+2. Schedule
+3. Arrive and check in
+4. Record intake and room
+5. Start as physician
+6. Add diagnosis and SOAP
+7. Sign and close","C1: Same patient/appointment/encounter lineage persists across roles
+C2: Vitals and note survive session changes
+C3: Final visit states and audit trail are coherent",NOT_RUN
+AF3-460,459,Integrated multi-role workflows,Expert,Clinical order to patient-visible result,multiple roles,26; 36,A open encounter; lab service; processing role; patient account linked,"1. Create and sign order
+2. Collect/process specimen
+3. Enter and publish result
+4. Review and release
+5. Open patient portal","C1: Same order/result lineage is preserved
+C2: Portal shows released value only after release
+C3: Review and release states are distinct",NOT_RUN
+AF3-461,460,Integrated multi-role workflows,Expert,Encounter to settled claim,multiple roles,26; 36,Completed signed encounter; coder billing roles; valid insurance,"1. Create/approve charges
+2. Generate validate submit claim
+3. Run accepted/adjudicated simulation
+4. Post full allowed payment
+5. Close","C1: Charges claim total payments and zero balance reconcile
+C2: Clinical note remains signed and unmodified",NOT_RUN
+AF3-462,461,Integrated multi-role workflows,Expert,Denial correction to acceptance,multiple roles,26; 36,Claim with deterministic correctable denial scenario,"1. Submit
+2. Simulate denial
+3. Investigate and correct
+4. Revalidate and resubmit
+5. Run accepted response","C1: Claim moves through correction path
+C2: Original denial and resubmission histories remain
+C3: No duplicate active charge is created",NOT_RUN
+AF3-463,462,Integrated multi-role workflows,Expert,Authorization-required service to valid claim,multiple roles,26; 36,Service requiring authorization; patient policy; pending service order,"1. Create authorization
+2. Submit and approve
+3. Link matching service
+4. Create/revalidate claim","C1: Approved unexpired matching authorization clears appropriate claim gate
+C2: Wrong-patient/service context never appears",NOT_RUN
+AF3-464,463,Integrated multi-role workflows,Expert,Portal message through staff resolution,multiple roles,26; 36,Patient A and authorized nurse/physician sessions,"1. Patient sends message
+2. Staff observes unread
+3. Staff replies
+4. Patient reads
+5. Inspect both read states","C1: Conversation stays patient-scoped
+C2: Incoming counts update for respective readers
+C3: Reply does not count as sender's unread",NOT_RUN
+AF3-465,464,Integrated multi-role workflows,Expert,Renewal request through physician prescription,multiple roles,26; 36,Patient active medication; renewal request workflow,"1. Patient requests renewal
+2. Staff finds task
+3. Physician reviews and signs simulated prescription
+4. Inspect portal medications/request","C1: Request and prescription refer to correct medication/patient
+C2: Human signature gate is preserved
+C3: No real pharmacy transmission occurs",NOT_RUN
+AF3-466,465,Integrated multi-role workflows,Expert,Copay to claim linkage and report reconciliation,multiple roles,26; 36,Appointment with 25 copay; resulting eligible 200 claim; report period includes payment,"1. Check in and pay copay
+2. Complete encounter and create claim
+3. Link copay through supported UI
+4. Inspect report and balance","C1: Copay is allocated once
+C2: Claim balance reflects documented allocation rules
+C3: Report revenue counts 25 exactly once",NOT_RUN
+AF3-467,466,Integrated multi-role workflows,Expert,Adjudication to partial portal payment,multiple roles,26; 36,Adjudicated claim balance 200; billing and linked patient sessions,"1. Confirm responsibility 80
+2. Patient pays 30
+3. Open staff claim portal bills receipt and report","C1: Claim balance 170 and responsibility 50 agree across views
+C2: Payment history has one 30 transaction
+C3: Report adds 30 once",NOT_RUN
+AF3-468,467,Integrated multi-role workflows,Expert,Unit conversion through AI and signed note,multiple roles,26; 36,Nurse and physician; A encounter; height65.37in weight147.29lb plus complete vitals,"1. Save intake
+2. Toggle units and reload
+3. Generate/apply AI draft
+4. Review save and sign
+5. Open chart and note","C1: Measurements remain consistent across intake chart AI and signed note
+C2: No unit drift or automatic AI signing occurs",NOT_RUN
+AF3-469,468,Integrated multi-role workflows,Expert,Wrong-patient prevention across clinical workflow,multiple roles,26; 36,Similar-name A/B with distinct MRN/DOB and different allergies,"1. Select A by MRN
+2. Create encounter diagnosis order and draft medication
+3. Review B chart","C1: All new records belong to A
+C2: B receives none of the mutations
+C3: A/B identities remain visible at selection points",NOT_RUN
+AF3-470,469,Integrated multi-role workflows,Expert,Persisted workflow after logout and new session,multiple roles,26; 36,New appointment intake note order and payment records created through UI for one synthetic patient,"1. Record IDs
+2. Sign out all sessions
+3. Sign back in appropriate roles
+4. Reopen records","C1: Each saved record remains with correct state and relationships
+C2: No action must be repeated to restore saved data",NOT_RUN
+AF3-471,470,Integrated multi-role workflows,Expert,Multi-cohort reporting with old encounter and new money,multiple roles,26; 36,Old encounter; claim latest submitted in current period; payment posted in current period; no new encounter,"1. Open current-period report
+2. Export CSV
+3. Compare source claim/payment and encounter cohort","C1: Submitted/payment cohorts include their new activity
+C2: Encounter cohort may be zero without erasing financial activity
+C3: CSV and page explain different date bases",NOT_RUN
+AF3-472,471,Integrated multi-role workflows,Expert,Post-evaluation role privacy regression,multiple roles,26; 36,A/B with distinct new clinical and financial records; patient A login,"1. Open own portal
+2. Navigate recorded B chart result message bill and receipt URLs one at a time","C1: Own authorized data remains usable
+C2: All five other-patient surfaces deny disclosure
+C3: No completed test grants lasting elevated patient privileges",NOT_RUN
