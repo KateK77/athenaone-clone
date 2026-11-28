@@ -35,6 +35,7 @@
     "Screenshots are original tool outputs. Native trace export unavailable; authored timestamped action summaries are supplied.",
     "Screenshot state sometimes lags completed input commands; subsequent observations used before scoring.",
     "Mouse scroll CDP command timed out; keyboard Tab navigation used.",
-    "Earlier interrupted runs20261126T0415Z and20261128T0905Z retained separately; restarted current pilot at user request."
+    "Earlier interrupted runs20261126T0415Z and20261128T0905Z retained separately; restarted current pilot at user request.",
+    "AF3-376 native confirmation acceptance timed out, subsequent screenshot timed out, and reinitialized browser session/tab inventory request also timed out. No conclusive post-apply observation."
   ]
 }

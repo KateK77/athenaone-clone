@@ -13,3 +13,5 @@ Resume: inspect encounter203 and generated draft2 before repeating Apply. Do not
 Original screenshots are retained; action summaries are authored records, not native trace exports. Earlier interrupted sessions are retained. AF3-004 has an explicit append-only ledger reconciliation event which is not another execution. No paid API calls. No shared reset.
 
 Evaluation branch remains unmerged: evaluation/athenaflow-v3-independent-cua-472. See [upload ledger](results/upload_ledger.json) for verified remote commits.
+
+Verified evidence/results commit: [7f934a53475d57df453ed839188a88b3111b4360](https://github.com/KateK77/athenaone-clone/commit/7f934a53475d57df453ed839188a88b3111b4360). This later receipt does not claim to contain its own commit SHA.

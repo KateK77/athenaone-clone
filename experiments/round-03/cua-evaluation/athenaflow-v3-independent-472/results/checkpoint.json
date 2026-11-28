@@ -478,9 +478,10 @@
     "AF3-447"
   ],
   "run_id": "20261128T0907Z",
-  "last_remote_commit": "682abba2b5105feda58b11291540e01651e7a945",
-  "last_uploaded_batch": null,
+  "last_remote_commit": "7f934a53475d57df453ed839188a88b3111b4360",
+  "last_uploaded_batch": "batch-001-partial",
   "status": "INTERRUPTED",
   "resume_instruction": "Inspect encounter203 and pending native confirmation before repeating Apply. Do not repeat completed PASS/FAIL cases.",
-  "last_observed_state": "Generated draft2 reviewed; Apply clicked; native confirm acceptance timed out; screenshot timed out."
+  "last_observed_state": "Generated draft2 reviewed; Apply clicked; native confirm acceptance timed out; screenshot timed out.",
+  "browser_recovery": "Reinitialized browser runtime, then session naming/documentation/tab inventory request timed out. Browser work paused; user asked to inspect connection/confirmation."
 }

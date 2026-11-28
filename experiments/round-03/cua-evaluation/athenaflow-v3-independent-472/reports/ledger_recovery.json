@@ -16,5 +16,21 @@
     "test_id": "AF3-004",
     "attempt_number": 1
   },
-  "note": "Original attempt entries retained unchanged; historical entries appended; snapshot outcome restored by explicit reconciliation event."
+  "note": "Original attempt entries retained unchanged; historical entries appended; snapshot outcome restored by explicit reconciliation event.",
+  "historical_criterion_supplement": [
+    {
+      "test_id": "AF3-004",
+      "attempt_number": 2,
+      "criterion_id": "C2",
+      "verdict": "UNOBSERVED",
+      "observation": "Assigned chart opening not conclusively observed before historical interruption."
+    },
+    {
+      "test_id": "AF3-004",
+      "attempt_number": 3,
+      "criterion_id": "C2",
+      "verdict": "UNOBSERVED",
+      "observation": "Assigned chart opening not conclusively observed before historical interruption."
+    }
+  ]
 }
