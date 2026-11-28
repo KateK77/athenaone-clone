@@ -1,0 +1,106 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:32:39.675Z",
+      "test": "AF3-351",
+      "action": "准备消息发送测试角色",
+      "code": "await testTab.cua.click({x:1325,y:51});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/01-role-menu.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:32:47.893Z",
+      "test": "AF3-351",
+      "action": "退出账单角色",
+      "code": "await testTab.cua.click({x:1254,y:152});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/02-signout.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:32:55.257Z",
+      "test": "AF3-351",
+      "action": "登录合成患者门户",
+      "code": "await testTab.cua.click({x:1265,y:723}); await testTab.cua.click({x:1062,y:430});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/03-patient-login.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:33:04.494Z",
+      "test": "AF3-351",
+      "action": "记录发送前的消息列表",
+      "code": "await testTab.cua.click({x:89,y:327});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/04-threads-before.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:33:10.851Z",
+      "test": "AF3-351",
+      "action": "打开空白消息编辑表单",
+      "code": "await testTab.cua.click({x:1336,y:135});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/05-compose-empty.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:33:19.015Z",
+      "test": "AF3-351",
+      "action": "填写唯一主题与首条合成消息",
+      "code": "await testTab.cua.click({x:525,y:354}); await testTab.cua.type({text:\"AF3 20261128 AF3-351 atomic subject\"}); await testTab.cua.click({x:1025,y:405}); await testTab.cua.type({text:\"AF3 20261128 AF3-351 first body. Synthetic test message; no care action requested.\"});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/06-compose-filled.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:33:26.728Z",
+      "test": "AF3-351",
+      "action": "核对发送内容",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/07-before-send.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:33:36.405Z",
+      "test": "AF3-351",
+      "action": "发送已授权的合成测试消息",
+      "code": "await testTab.cua.click({x:1186,y:566}); await nodeRepl.write(await testTab.url());",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/08-send-result.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:33:45.004Z",
+      "test": "AF3-351",
+      "action": "核对新增会话数量",
+      "code": "await nodeRepl.write(await testTab.url()); await testTab.cua.click({x:1351,y:136});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/09-threads-after.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:33:52.371Z",
+      "test": "AF3-351",
+      "action": "重新打开新增会话核对首条消息",
+      "code": "await testTab.cua.click({x:628,y:405});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-351/attempt-01/10-thread-reopened.jpg"
+      ],
+      "tool_error": false
+    }
+  ]
+}

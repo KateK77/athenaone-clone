@@ -1,0 +1,26 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:08:22.569Z",
+      "test": "AF3-019",
+      "action": "搜索同姓 Alder 的患者并检查身份区分",
+      "code": "await testTab.cua.click({x:580,y:40}); await testTab.cua.type({text:\"Alder\"}); await testTab.cua.keypress({keys:[\"ENTER\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-019/attempt-01/01-search-results.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:08:32.804Z",
+      "test": "AF3-019",
+      "action": "选择目标 MRN AF-100009 并核对 Lucas Alder 病历",
+      "code": "await testTab.cua.click({x:340,y:580}); await nodeRepl.write(await testTab.url());",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-019/attempt-01/02-selected-chart.jpg"
+      ],
+      "tool_error": false
+    }
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:29:43.790Z",
+      "test": "AF3-261",
+      "action": "切换账单验证角色",
+      "code": "await testTab.goto(\"http://127.0.0.1:18310/dashboard/\"); await testTab.cua.click({x:1310,y:51});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/01-switch-role.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:29:51.435Z",
+      "test": "AF3-261",
+      "action": "退出医生角色",
+      "code": "await testTab.cua.click({x:1255,y:154});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/02-signout.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:29:58.362Z",
+      "test": "AF3-261",
+      "action": "登录账单专员",
+      "code": "await testTab.cua.click({x:888,y:721}); await testTab.cua.click({x:1063,y:431});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/03-billing-login.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:30:05.887Z",
+      "test": "AF3-261",
+      "action": "查找缺少诊断的测试账单",
+      "code": "await testTab.cua.click({x:84,y:563});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/04-claims.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:30:13.934Z",
+      "test": "AF3-261",
+      "action": "查看可筛选账单状态",
+      "code": "await testTab.cua.click({x:716,y:276});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/05-status-options.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:30:22.943Z",
+      "test": "AF3-261",
+      "action": "筛选草稿账单",
+      "code": "await testTab.cua.keypress({keys:[\"d\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:968,y:277});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/06-draft-filter.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:30:32.499Z",
+      "test": "AF3-261",
+      "action": "查看首个具体账单状态",
+      "code": "await testTab.cua.click({x:712,y:279}); await testTab.cua.keypress({keys:[\"HOME\"]}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/07-first-status.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:30:41.752Z",
+      "test": "AF3-261",
+      "action": "读取账单状态选择结果",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/08-status-selected.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:30:56.522Z",
+      "test": "AF3-261",
+      "action": "检查草稿筛选是否可用",
+      "code": "await testTab.cua.click({x:710,y:275}); await testTab.cua.keypress({keys:[\"d\"]}); await testTab.cua.keypress({keys:[\"r\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/09-status-typeahead.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:31:04.670Z",
+      "test": "AF3-261",
+      "action": "查看草稿账单列表",
+      "code": "await testTab.cua.click({x:968,y:275});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/10-draft-list.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:31:12.869Z",
+      "test": "AF3-261",
+      "action": "检查草稿账单诊断前提",
+      "code": "await testTab.cua.click({x:411,y:405}); await nodeRepl.write(await testTab.url());",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/11-claim-before.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:31:21.332Z",
+      "test": "AF3-261",
+      "action": "核对账单的诊断关联",
+      "code": "await testTab.cua.click({x:1189,y:575});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/12-coding-precondition.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:31:30.017Z",
+      "test": "AF3-261",
+      "action": "查看可生成账单的就诊列表",
+      "code": "await testTab.cua.click({x:78,y:521});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/13-billing-list.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:31:40.542Z",
+      "test": "AF3-261",
+      "action": "检查新收费项能否建立缺诊断夹具",
+      "code": "await testTab.cua.click({x:1315,y:135});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/14-new-charge.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:31:50.195Z",
+      "test": "AF3-261",
+      "action": "选择可用就诊与收费项目",
+      "code": "await testTab.cua.click({x:527,y:355}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:1020,y:354}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/15-charge-selections.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:31:57.990Z",
+      "test": "AF3-261",
+      "action": "核对收费前置选择",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/16-charge-ready.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:32:04.989Z",
+      "test": "AF3-261",
+      "action": "尝试保存不带诊断的合成收费项",
+      "code": "await testTab.cua.click({x:496,y:569}); await testTab.cua.type({text:\"125\"}); await testTab.cua.click({x:1197,y:669});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/17-no-diagnosis-save.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:32:18.235Z",
+      "test": "AF3-261",
+      "action": "读取缺诊断收费保存结果",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-261/attempt-01/18-charge-save-result.jpg"
+      ],
+      "tool_error": false
+    }
+  ]
+}

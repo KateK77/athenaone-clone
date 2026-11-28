@@ -1,0 +1,184 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:08:45.531Z",
+      "test": "AF3-039",
+      "action": "切换至前台账号以执行患者注册",
+      "code": "await testTab.cua.click({x:1295,y:53});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/01-account-menu.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:08:53.015Z",
+      "test": "AF3-039",
+      "action": "退出医生账号",
+      "code": "await testTab.cua.click({x:1256,y:155});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/02-signed-out.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:09:00.980Z",
+      "test": "AF3-039",
+      "action": "选择 Front Desk 演示身份",
+      "code": "await testTab.cua.click({x:1263,y:590});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/03-frontdesk-selection.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:09:07.656Z",
+      "test": "AF3-039",
+      "action": "登录 frontdesk.demo",
+      "code": "await testTab.cua.click({x:1066,y:432});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/04-frontdesk-login.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:09:15.429Z",
+      "test": "AF3-039",
+      "action": "搜索本次注册 MRN，确认没有重复患者",
+      "code": "await testTab.cua.click({x:565,y:42}); await testTab.cua.type({text:\"AF3261128039\"}); await testTab.cua.keypress({keys:[\"ENTER\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/05-no-duplicate.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:09:22.853Z",
+      "test": "AF3-039",
+      "action": "打开新患者注册表单",
+      "code": "await testTab.cua.click({x:1327,y:136});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/06-registration-form.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:09:37.070Z",
+      "test": "AF3-039",
+      "action": "填写合成患者姓名、生日和联系方式",
+      "code": "await testTab.cua.click({x:473,y:350}); await testTab.cua.type({text:\"Avery\"}); await testTab.cua.click({x:477,y:460}); await testTab.cua.type({text:\"AF3 20261128 AF3-039\"}); await testTab.cua.click({x:335,y:570}); await testTab.cua.keypress({keys:[\"ARROWUP\"]}); await testTab.cua.keypress({keys:[\"4\"]}); await testTab.cua.keypress({keys:[\"ARROWRIGHT\"]}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.keypress({keys:[\"ARROWRIGHT\"]}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"9\"]}); await testTab.cua.keypress({keys:[\"8\"]}); await testTab.cua.keypress({keys:[\"8\"]}); await testTab.cua.click({x:1012,y:567}); await testTab.cua.keypress({keys:[\"F\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:984,y:675}); await testTab.cua.type({text:\"202-555-0147\"}); await testTab.cua.click({x:496,y:783}); await testTab.cua.type({text:\"af3.039@example.com\"}); await testTab.cua.click({x:969,y:785}); await testTab.cua.type({text:\"39 Example Lane, Demo City, MN 55101\"});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/07-demographics.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:10:00.742Z",
+      "test": "AF3-039",
+      "action": "纠正日期分段输入并查看剩余注册字段",
+      "code": "await testTab.cua.click({x:363,y:569}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.click({x:413,y:568}); await testTab.cua.keypress({keys:[\"BACKSPACE\"]}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"9\"]}); await testTab.cua.keypress({keys:[\"8\"]}); await testTab.cua.keypress({keys:[\"8\"]}); await testTab.cua.click({x:964,y:784}); await testTab.cua.type({text:\"39 Example Lane, Demo City, MN 55101\"}); await testTab.cua.scroll({x:1238,y:764,scrollY:589,scrollX:0});",
+      "evidence": [],
+      "tool_error": true
+    },
+    {
+      "at": "2026-11-28T09:10:27.381Z",
+      "test": "AF3-039",
+      "action": "检查滚动超时后保留的注册表单状态",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/09-form-state.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:10:38.824Z",
+      "test": "AF3-039",
+      "action": "修正地址并通过键盘查看表单下半部分",
+      "code": "await testTab.cua.click({x:1002,y:784}); await testTab.cua.keypress({keys:[\"Control\",\"A\"]}); await testTab.cua.type({text:\"39 Example Lane, Demo City, MN 55101\"}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"PAGEDOWN\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/10-lower-form.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:10:48.039Z",
+      "test": "AF3-039",
+      "action": "检查键盘操作后的最终页面位置",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/11-stable-form.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:11:02.691Z",
+      "test": "AF3-039",
+      "action": "填写紧急联系人并继续到表单末尾",
+      "code": "await testTab.cua.type({text:\"Fictional Contact 202-555-0199\"}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/12-end-fields.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:11:12.869Z",
+      "test": "AF3-039",
+      "action": "读取注册表单末尾的选项和保存按钮",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/13-bottom.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:11:27.839Z",
+      "test": "AF3-039",
+      "action": "选择医生并勾选合成注册同意状态",
+      "code": "await testTab.cua.keypress({keys:[\"ARROWDOWN\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:804,y:546});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/14-ready-to-save.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:11:35.294Z",
+      "test": "AF3-039",
+      "action": "核对提交前的注册选项",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/15-ready-confirmed.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:11:41.539Z",
+      "test": "AF3-039",
+      "action": "保存唯一合成患者记录",
+      "code": "await testTab.cua.click({x:1177,y:743}); await nodeRepl.write(await testTab.url());",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/16-save-result.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:11:52.734Z",
+      "test": "AF3-039",
+      "action": "按实际生成的 MRN 核对新增记录数量",
+      "code": "await testTab.cua.click({x:574,y:41}); await testTab.cua.type({text:\"AF-2AFE27F93C\"}); await testTab.cua.keypress({keys:[\"ENTER\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/17-directory.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:12:04.129Z",
+      "test": "AF3-039",
+      "action": "重新加载目录确认患者持久保存且只有一条",
+      "code": "await testTab.reload();",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-039/attempt-01/18-directory-reloaded.jpg"
+      ],
+      "tool_error": false
+    }
+  ]
+}

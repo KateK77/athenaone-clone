@@ -2,7 +2,7 @@
 AF3-001,Authentication and role boundaries,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-002,Authentication and role boundaries,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-003,Authentication and role boundaries,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-004,Authentication and role boundaries,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-004,Authentication and role boundaries,Easy,PASS,4,ALL_CRITERIA_OBSERVED,Signed in as physician.demo; header shows Alex Morgan / Physician.; Opened Jamie Alder AF-100001 DOB 1950-01-01; chart primary provider is Dr. Alex Morgan.,Chrome-extension-local-user-browser,UNVERIFIED
 AF3-005,Authentication and role boundaries,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-006,Authentication and role boundaries,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-007,Authentication and role boundaries,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
@@ -17,7 +17,7 @@ AF3-015,Authentication and role boundaries,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFI
 AF3-016,Authentication and role boundaries,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-017,Authentication and role boundaries,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-018,Authentication and role boundaries,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-019,Global navigation and accessibility,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-019,Global navigation and accessibility,Easy,PASS,1,ALL_CRITERIA_OBSERVED,"Alder global search returned Evelyn AF-100017 DOB 1966-05-17, Jamie AF-100001 DOB 1950-01-01, Lucas AF-100009 DOB 1958-09-09.; Selected AF-100009 opens Lucas Alder with matching MRN and DOB.",Chrome-extension-local-user-browser,UNVERIFIED
 AF3-020,Global navigation and accessibility,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-021,Global navigation and accessibility,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-022,Global navigation and accessibility,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
@@ -37,7 +37,7 @@ AF3-035,Global navigation and accessibility,Medium,NOT_RUN,0,NOT_STARTED,,,UNVER
 AF3-036,Global navigation and accessibility,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-037,Global navigation and accessibility,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-038,Global navigation and accessibility,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-039,Registration and patient selection,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-039,Registration and patient selection,Medium,BLOCKED,1,ORACLE_AMBIGUITY,"One new record persists after directory reload; actual generated MRN AF-2AFE27F93C.; Name, DOB and contacts match. Frozen C2 also requires MRN to match an entered value, but registration has no MRN input and generates it. Description V3 requires a unique MRN, not manual entry, so this part of the oracle is ambiguous.",Chrome-extension-local-user-browser,UNVERIFIED
 AF3-040,Registration and patient selection,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-041,Registration and patient selection,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-042,Registration and patient selection,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
@@ -76,7 +76,7 @@ AF3-074,Longitudinal patient chart,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-075,Longitudinal patient chart,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-076,Longitudinal patient chart,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-077,Scheduling and waitlist,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-078,Scheduling and waitlist,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-078,Scheduling and waitlist,Medium,PASS,1,ALL_CRITERIA_OBSERVED,Changing only the date day from 1 to 2 updates heading to Wednesday December 2 2026.; Without Apply the visible appointment switches from day D marker to day D+1 marker; both days have separately saved appointments.,Chrome-extension-local-user-browser,UNVERIFIED
 AF3-079,Scheduling and waitlist,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-080,Scheduling and waitlist,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-081,Scheduling and waitlist,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
@@ -113,7 +113,7 @@ AF3-111,Front desk check-in,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-112,Front desk check-in,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-113,Front desk check-in,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-114,Front desk check-in,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-115,Vitals units and clinical intake,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-115,Vitals units and clinical intake,Easy,PASS,1,ALL_CRITERIA_OBSERVED,"Fresh intake for encounter 203 displays Height unit Inches (in), with no previous vitals.; Fresh intake for encounter 203 displays Weight unit Pounds (lb).",Chrome-extension-local-user-browser,UNVERIFIED
 AF3-116,Vitals units and clinical intake,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-117,Vitals units and clinical intake,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-118,Vitals units and clinical intake,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
@@ -144,7 +144,7 @@ AF3-142,Encounters notes and signatures,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIE
 AF3-143,Encounters notes and signatures,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-144,Encounters notes and signatures,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-145,Encounters notes and signatures,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-146,Encounters notes and signatures,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-146,Encounters notes and signatures,Medium,PASS,1,ALL_CRITERIA_OBSERVED,"Complaint persisted in encounter header and Subjective; distinct HPI and ROS within Subjective, Exam within Objective, Assessment and Plan all persisted after Save draft and reload.; After reload note is Unsigned draft, Documentation Pending, version2; sign saved note remains a separate unperformed action.",Chrome-extension-local-user-browser,UNVERIFIED
 AF3-147,Encounters notes and signatures,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-148,Encounters notes and signatures,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-149,Encounters notes and signatures,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
@@ -259,7 +259,7 @@ AF3-257,Claim validation and payer lifecycle,Medium,NOT_RUN,0,NOT_STARTED,,,UNVE
 AF3-258,Claim validation and payer lifecycle,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-259,Claim validation and payer lifecycle,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-260,Claim validation and payer lifecycle,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-261,Claim validation and payer lifecycle,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-261,Claim validation and payer lifecycle,Medium,BLOCKED,1,FIXTURE_UNAVAILABLE,"Could not bind a claim without required diagnosis. Sampled existing Draft CLM-00145 has encounter diagnosis E11.9. New charge for diagnosis-free encounter203 cannot be saved: native validation requires a diagnosis. Downstream claim scrub was not executed.; No malformed claim was created, so submission readiness for the required fixture remains unobserved.",Chrome-extension-local-user-browser,UNVERIFIED
 AF3-262,Claim validation and payer lifecycle,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-263,Claim validation and payer lifecycle,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-264,Claim validation and payer lifecycle,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
@@ -349,7 +349,7 @@ AF3-347,Patient portal workflows,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-348,Patient portal workflows,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-349,Patient portal workflows,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-350,Patient portal workflows,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-351,Messaging unread state and privacy,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-351,Messaging unread state and privacy,Medium,PASS,1,ALL_CRITERIA_OBSERVED,"Thread63 contains exact unique subject and first synthetic message after sending and reopening.; Patient-scoped complete list grew from3 to4 records, with exactly one new nonempty thread and the same three prior threads.",Chrome-extension-local-user-browser,UNVERIFIED
 AF3-352,Messaging unread state and privacy,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-353,Messaging unread state and privacy,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-354,Messaging unread state and privacy,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
@@ -374,7 +374,7 @@ AF3-372,AI assistance and unsigned documentation,Medium,NOT_RUN,0,NOT_STARTED,,,
 AF3-373,AI assistance and unsigned documentation,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-374,AI assistance and unsigned documentation,Medium,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-375,AI assistance and unsigned documentation,Easy,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
-AF3-376,AI assistance and unsigned documentation,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
+AF3-376,AI assistance and unsigned documentation,Hard,NOT_RUN,1,INTERRUPTED,Draft2 was generated and reviewed for encounter203. Apply invoked and native confirmation acceptance timed out; transfer result not observed.; Note was unsigned before Apply. Post-apply state inaccessible while browser dialog/screenshot commands stalled.,Chrome-extension-local-user-browser,UNVERIFIED
 AF3-377,AI assistance and unsigned documentation,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-378,AI assistance and unsigned documentation,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED
 AF3-379,AI assistance and unsigned documentation,Hard,NOT_RUN,0,NOT_STARTED,,,UNVERIFIED

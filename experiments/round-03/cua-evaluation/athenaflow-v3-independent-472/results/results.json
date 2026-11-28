@@ -61,23 +61,91 @@
   },
   {
     "test_id": "AF3-004",
-    "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "status": "PASS",
+    "attempt_number": 4,
+    "reason_code": "ALL_CRITERIA_OBSERVED",
+    "reason": "",
+    "observed_result": "Signed in as physician.demo; header shows Alex Morgan / Physician.; Opened Jamie Alder AF-100001 DOB 1950-01-01; chart primary provider is Dr. Alex Morgan.",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "SATISFIED",
+        "observation": "Signed in as physician.demo; header shows Alex Morgan / Physician.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-004/attempt-01/03-account-menu.jpg",
+          "evidence/20261128T0907Z/AF3-004/attempt-01/05-login.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "SATISFIED",
+        "observation": "Opened Jamie Alder AF-100001 DOB 1950-01-01; chart primary provider is Dr. Alex Morgan.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-004/attempt-01/06-assigned-patients.jpg",
+          "evidence/20261128T0907Z/AF3-004/attempt-01/07-assigned-chart.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:07:04.797Z",
+    "ended_at": "2026-11-28T09:08:22.397770+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
+    "fixture_bindings": {
+      "role": "physician.demo",
+      "patient_id": 101,
+      "mrn": "AF-100001",
+      "patient_url": "http://127.0.0.1:18310/patients/101/"
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-004/attempt-01/01-restart-state.jpg",
+        "sha256": "326bbd66785539586904c65f43c26786434584bc326169bf07ae449bbae8f886",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-004/attempt-01/02-desktop.jpg",
+        "sha256": "f2132ae261a0a6390a95f6998f2105502b735339f336f42c8bbb5866e3842ccf",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-004/attempt-01/03-account-menu.jpg",
+        "sha256": "9bc7cd950b9917442072706613bf9f78a1baca3a07bc9b1642a63d206f2d3103",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-004/attempt-01/04-signed-out.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-004/attempt-01/05-login.jpg",
+        "sha256": "f2132ae261a0a6390a95f6998f2105502b735339f336f42c8bbb5866e3842ccf",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-004/attempt-01/06-assigned-patients.jpg",
+        "sha256": "36f21878f9cc5288051f2520b905aac0b71e49f9719c59172fb2c4b697bf4ea5",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-004/attempt-01/07-assigned-chart.jpg",
+        "sha256": "e146f15dc94cd68f613d7a94c4361825863c585a0020f595e30e0bcaf132a643",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-004/attempt-01/action_summary.json",
     "failure_attribution": null,
-    "prior_attempts": []
+    "prior_attempts": [
+      1,
+      2,
+      3
+    ],
+    "record_type": "historical_ledger_reconciliation",
+    "not_new_execution": true,
+    "reconciliation_note": "Append-only recovery inserted historical interrupted records2/3 after the already recorded successful execution1. This entry restores that same latest execution outcome; no rerun, rescore or new browser action.",
+    "reconciled_at": "2026-11-28T09:39:22.325125+00:00"
   },
   {
     "test_id": "AF3-005",
@@ -361,21 +429,54 @@
   },
   {
     "test_id": "AF3-019",
-    "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "status": "PASS",
+    "attempt_number": 1,
+    "reason_code": "ALL_CRITERIA_OBSERVED",
+    "reason": "",
+    "observed_result": "Alder global search returned Evelyn AF-100017 DOB 1966-05-17, Jamie AF-100001 DOB 1950-01-01, Lucas AF-100009 DOB 1958-09-09.; Selected AF-100009 opens Lucas Alder with matching MRN and DOB.",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "SATISFIED",
+        "observation": "Alder global search returned Evelyn AF-100017 DOB 1966-05-17, Jamie AF-100001 DOB 1950-01-01, Lucas AF-100009 DOB 1958-09-09.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-019/attempt-01/01-search-results.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "SATISFIED",
+        "observation": "Selected AF-100009 opens Lucas Alder with matching MRN and DOB.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-019/attempt-01/02-selected-chart.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:08:22.569Z",
+    "ended_at": "2026-11-28T09:08:45.358169+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
+    "fixture_bindings": {
+      "role": "physician.demo",
+      "patient_id": 109,
+      "mrn": "AF-100009",
+      "precondition_evidence": "evidence/20261128T0907Z/AF3-004/attempt-01/06-assigned-patients.jpg"
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-019/attempt-01/01-search-results.jpg",
+        "sha256": "324a1f3f5789fd37bbae9f882ba8b94eabe3e53fffe8adf51a428869430336f2",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-019/attempt-01/02-selected-chart.jpg",
+        "sha256": "b0c5a14e757491bcdad175addd345cb775e62af8e5ff10ecda7df8e206ff3910",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-019/attempt-01/action_summary.json",
     "failure_attribution": null,
     "prior_attempts": []
   },
@@ -761,22 +862,137 @@
   },
   {
     "test_id": "AF3-039",
-    "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "status": "BLOCKED",
+    "attempt_number": 1,
+    "reason_code": "ORACLE_AMBIGUITY",
+    "reason": "ORACLE_AMBIGUITY: manually entered MRN is assumed by frozen C2 but not required in Description V3. No test amendment or favorable reinterpretation made. Reuse saved record if ambiguity is resolved; do not create a duplicate.",
+    "observed_result": "One new record persists after directory reload; actual generated MRN AF-2AFE27F93C.; Name, DOB and contacts match. Frozen C2 also requires MRN to match an entered value, but registration has no MRN input and generates it. Description V3 requires a unique MRN, not manual entry, so this part of the oracle is ambiguous.",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "SATISFIED",
+        "observation": "One new record persists after directory reload; actual generated MRN AF-2AFE27F93C.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-039/attempt-01/16-save-result.jpg",
+          "evidence/20261128T0907Z/AF3-039/attempt-01/18-directory-reloaded.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "UNOBSERVED",
+        "observation": "Name, DOB and contacts match. Frozen C2 also requires MRN to match an entered value, but registration has no MRN input and generates it. Description V3 requires a unique MRN, not manual entry, so this part of the oracle is ambiguous.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-039/attempt-01/06-registration-form.jpg",
+          "evidence/20261128T0907Z/AF3-039/attempt-01/11-stable-form.jpg",
+          "evidence/20261128T0907Z/AF3-039/attempt-01/13-bottom.jpg",
+          "evidence/20261128T0907Z/AF3-039/attempt-01/16-save-result.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:08:45.531Z",
+    "ended_at": "2026-11-28T09:12:20.576068+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
-    "failure_attribution": null,
+    "fixture_bindings": {
+      "role": "frontdesk.demo",
+      "patient_id": 202,
+      "mrn": "AF-2AFE27F93C",
+      "name": "Avery AF3 20261128 AF3-039",
+      "dob": "1988-04-12",
+      "phone": "202-555-0147",
+      "email": "af3.039@example.com"
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/01-account-menu.jpg",
+        "sha256": "ea82f29105da85d7ac7a7d50b2defc53a53c9360688476c025643854dd899f6f",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/02-signed-out.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/03-frontdesk-selection.jpg",
+        "sha256": "512f9b958c5058cca2e002758d38bb0d2b1257866448ab4969115b2d879a5a65",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/04-frontdesk-login.jpg",
+        "sha256": "389398dc91fddd60d5b08e9a376d44b0cd4beaf9edabd1186899fc82b4ca76d6",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/05-no-duplicate.jpg",
+        "sha256": "4d3b9eb8ca71be1b577f2f84f18d3379de2ef3ed45e3ce44bf5f0c131ef824cb",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/06-registration-form.jpg",
+        "sha256": "4f299e4310d73f81aec5c5414a6e6d0779d2255774b0d54668969338707e86db",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/07-demographics.jpg",
+        "sha256": "145975e21deacb197a69ae4e272051f7392cfc4d76a5416f967446fc6583e2ca",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/09-form-state.jpg",
+        "sha256": "cdbf5caee85c5de6fa9943f0752f859e39d26e97bda617f46d51eec7e6e13574",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/10-lower-form.jpg",
+        "sha256": "17621429e075f034505a823664986677ddce212fa8f9f835c34919a488b77ea1",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/11-stable-form.jpg",
+        "sha256": "910cb56322af4f5cd990b6b92642b3410ed75488068d9804c3550003b5c2a97c",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/12-end-fields.jpg",
+        "sha256": "c165a9f1b0082d8f9648cd7e618c416a96a207a673309e6abd82c30cce1d1993",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/13-bottom.jpg",
+        "sha256": "dae5b2e1a900a980b05c4d78d4c1f6d185dc11016ae95a04ffc389f3cf250905",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/14-ready-to-save.jpg",
+        "sha256": "a5aeb9737bf2b7a2d2c7e86af1fd1244711e40908b61bca30211506cc5c7d0e1",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/15-ready-confirmed.jpg",
+        "sha256": "2ffb47409d73389b063469e5bab44cb194ce4397ee86aec8a377d51603425056",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/16-save-result.jpg",
+        "sha256": "fe6e8c9e1e1db65e4f4448df54562a7a027c6b8afc9ade6ae5a018c02517d081",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/17-directory.jpg",
+        "sha256": "3dd5bc5e5d88f4c3e79405f6f81d182bcf8e59864cecd55d9a677ca419346292",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-039/attempt-01/18-directory-reloaded.jpg",
+        "sha256": "3dd5bc5e5d88f4c3e79405f6f81d182bcf8e59864cecd55d9a677ca419346292",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-039/attempt-01/action_summary.json",
+    "failure_attribution": "ORACLE",
     "prior_attempts": []
   },
   {
@@ -1541,21 +1757,174 @@
   },
   {
     "test_id": "AF3-078",
-    "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "status": "PASS",
+    "attempt_number": 1,
+    "reason_code": "ALL_CRITERIA_OBSERVED",
+    "reason": "",
+    "observed_result": "Changing only the date day from 1 to 2 updates heading to Wednesday December 2 2026.; Without Apply the visible appointment switches from day D marker to day D+1 marker; both days have separately saved appointments.",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "SATISFIED",
+        "observation": "Changing only the date day from 1 to 2 updates heading to Wednesday December 2 2026.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-078/attempt-01/23-D-before.jpg",
+          "evidence/20261128T0907Z/AF3-078/attempt-01/24-D1-auto-result.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "SATISFIED",
+        "observation": "Without Apply the visible appointment switches from day D marker to day D+1 marker; both days have separately saved appointments.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-078/attempt-01/17-fixture-D.jpg",
+          "evidence/20261128T0907Z/AF3-078/attempt-01/20-fixture-D1.jpg",
+          "evidence/20261128T0907Z/AF3-078/attempt-01/23-D-before.jpg",
+          "evidence/20261128T0907Z/AF3-078/attempt-01/24-D1-auto-result.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:12:20.754Z",
+    "ended_at": "2026-11-28T09:17:26.040738+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
+    "fixture_bindings": {
+      "role": "frontdesk.demo",
+      "D": "2026-12-01",
+      "D1": "2026-12-02",
+      "appointment_ids": [
+        304,
+        305
+      ],
+      "patient_id": 202,
+      "mrn": "AF-2AFE27F93C",
+      "preparation": "Two synthetic appointments created through UI; no backend changes."
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/01-schedule.jpg",
+        "sha256": "756f41a5babfffd31b8e6537a469518e1915293d7576f49feb709dacf60854ec",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/02-date-picker.jpg",
+        "sha256": "003124bec6645a04edd9e50d286f17b5cc33daf9113209ed604c2ccc01313383",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/03-date-set.jpg",
+        "sha256": "939df67d0aac7bf62d41b65420660054094a6de5ffda89efdc9110fbda32ed70",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/04-calendar-open.jpg",
+        "sha256": "78a03ab82b299139a32e3da0fbb1cdae95c308a440e9abd7edba8e28a18d9b0e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/05-next-date.jpg",
+        "sha256": "7bb9bf279b7ac547ed3806e71a2ea6039da058cba9199fd4f9880cb8c699d537",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/06-appointments-list.jpg",
+        "sha256": "61a93263a4ae569ab0ea9d140c8a87490c348755541a21ebd9f3ec45616f9a75",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/07-calendar.jpg",
+        "sha256": "756f41a5babfffd31b8e6537a469518e1915293d7576f49feb709dacf60854ec",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/08-october.jpg",
+        "sha256": "b1b16095a66b42b5dbe44cb8fb1f3173e0d5f22bfa7740e8059706f689477bb8",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/09-next-day-auto.jpg",
+        "sha256": "6688d870c7f1df92d62b7a14977f4d20a17d6a49129f5a7051f103f9ab37821e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/10-return-oct28.jpg",
+        "sha256": "b1b16095a66b42b5dbe44cb8fb1f3173e0d5f22bfa7740e8059706f689477bb8",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/11-oct27-before.jpg",
+        "sha256": "f5b200ce887b9a4f231ef48b380092d1522d0394a2a489934ef395fb43d8c736",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/12-new-appointment.jpg",
+        "sha256": "94b13c3384027e5413d2a8f65ddd7aa3966681307aa3c45754c9b5b1001092e2",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/13-fixture-selectors.jpg",
+        "sha256": "afeaf6f6b980626e78eae0bdfd1c70931cd636ed79dda2345a052261611c4c4e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/14-fixture-date.jpg",
+        "sha256": "d798be179ad18e50543c868b0970177e82f6568c84c948560ea089b2516ccdad",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/15-fixture-ready.jpg",
+        "sha256": "09b98ea02c66ed87afa80fa0bd8f2f65969fe9052408d6d239cef8613085fca8",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/16-fixture-bottom.jpg",
+        "sha256": "6e30ca04719cd356cc5e6480dc9f2dcccc78afd091ed062962674572744b8399",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/17-fixture-D.jpg",
+        "sha256": "63e728da2aedec5943dc25f42c4eca2aa65532f76a6b591af9f0589a162d4b26",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/18-second-form.jpg",
+        "sha256": "151201f4159658c6fd91f4abc94c19f474fa0cfc69f38ca0d45c70cc61c6bd47",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/19-second-ready.jpg",
+        "sha256": "cf5656984d1ff8bc16304e487117d587ea03de6499d103cc8d3ff715b7161baa",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/20-fixture-D1.jpg",
+        "sha256": "f429988f1f74155f03f437117afedc25656c9e6212917aa7d6c53be183f4366f",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/21-calendar-today.jpg",
+        "sha256": "756f41a5babfffd31b8e6537a469518e1915293d7576f49feb709dacf60854ec",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/22-december.jpg",
+        "sha256": "a080d6d413fd056f727b2045d68ced3b4053aa16ad42a91372838f2cc8990cf4",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/23-D-before.jpg",
+        "sha256": "0ca09019b04a2eaf459b4fcd383b046e547829bd26b8f2eab3ac95c70b26fff3",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-078/attempt-01/24-D1-auto-result.jpg",
+        "sha256": "9d34e47fd0f696b6f46ef6247197e8256daeadd93393d7314a25c3bce017cd5d",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-078/attempt-01/action_summary.json",
     "failure_attribution": null,
     "prior_attempts": []
   },
@@ -2281,21 +2650,208 @@
   },
   {
     "test_id": "AF3-115",
-    "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "status": "PASS",
+    "attempt_number": 1,
+    "reason_code": "ALL_CRITERIA_OBSERVED",
+    "reason": "",
+    "observed_result": "Fresh intake for encounter 203 displays Height unit Inches (in), with no previous vitals.; Fresh intake for encounter 203 displays Weight unit Pounds (lb).",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "SATISFIED",
+        "observation": "Fresh intake for encounter 203 displays Height unit Inches (in), with no previous vitals.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-115/attempt-01/29-nurse-encounter.jpg",
+          "evidence/20261128T0907Z/AF3-115/attempt-01/32-defaults-observed.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "SATISFIED",
+        "observation": "Fresh intake for encounter 203 displays Weight unit Pounds (lb).",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-115/attempt-01/32-defaults-observed.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:17:26.216Z",
+    "ended_at": "2026-11-28T09:24:25.473960+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
+    "fixture_bindings": {
+      "patient_id": 202,
+      "mrn": "AF-2AFE27F93C",
+      "encounter_id": 203,
+      "appointment_id": 304,
+      "insurance_id": 202,
+      "acting_user": "nurse.demo",
+      "reuse_verified": "Patient 202 has no vitals; new encounter 203 has intake not yet documented; UI created and checked in appointment304 with active synthetic insurance."
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/01-account.jpg",
+        "sha256": "748f878d7425b441437f06607cf1132aa186e7d8917cc0dab72d58db932b5dd3",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/02-logout.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/03-nurse.jpg",
+        "sha256": "e0ecb010921bb90fe6934e0fa9bfabe9b622611d88d03f39fe0bd77214e459d1",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/04-nurse-dashboard.jpg",
+        "sha256": "24a276f8a1f1785782bfa49c146f73e7e2264201c27c53c5662f26d7bbe0b6ba",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/05-encounters.jpg",
+        "sha256": "27aa7313c6a09e73878d397d44433abb8aae235e7f9028183dfe499c9b012d15",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/06-fresh-patient-search.jpg",
+        "sha256": "b29fa623365bf4af8245a167245228cad57dd04219c63e05c798c39b9171986c",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/07-fresh-chart.jpg",
+        "sha256": "12d5cc2aa590a91010108a4acbdd8d2b38e8041cf32ae1e0a56500720b576862",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/08-vitals-tab.jpg",
+        "sha256": "22d0528422e165c17994da30f477a15da9d07b73438cc93de27053b9cf6c6178",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/09-switch-menu.jpg",
+        "sha256": "7b7b0993854947a45c2671c7df069dbe6d630b4bd9a63b981e28cff2f2cba426",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/10-logout.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/11-frontdesk.jpg",
+        "sha256": "5e80e1787e3fc1ee2c1193c3804708c44f4f4bfc99329c1893888f4a2acf9ce8",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/12-patient-coverage.jpg",
+        "sha256": "a948b39e2ba10ac72eb7c588a7a11f699343e9fd02684785b2b74ee66d4aecbd",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/13-insurance-form.jpg",
+        "sha256": "fcb6de79558474e22fa734dcb7f16e3ff3b42e04920f17d49285ea626391e8ee",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/14-insurance-fields.jpg",
+        "sha256": "830abff3ac1432de69c8836cffb277deed8720715cf06c42c295df6fa031d974",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/15-insurance-dates.jpg",
+        "sha256": "16e028ea41d2c4c2609266467e37b730affa28cf471b67613bc57c2ffe3f90c6",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/16-effective.jpg",
+        "sha256": "7fe6c55e11136a711dfa75c275bab3ee8b5716690dd327db86febfee5c1cda5a",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/17-current-state.jpg",
+        "sha256": "0ea7c6ebc16df2b31ce11ca750f306011ff0f5c78826850401745d87a37c5c26",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/18-lower-form.jpg",
+        "sha256": "bcb8f04447fc450b01efa8fa4363b0ecf17f35b4cc5293127d76e5e1967a01b1",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/19-insurance-save.jpg",
+        "sha256": "0d3fefc06101a089d446882d341db25f6fa341b32e867221835731ae69697ef2",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/20-eligibility.jpg",
+        "sha256": "c7b731f5820937b52bed5b93316fb87b7c282581e92de965af2546a91e3b8ed1",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/21-appointment.jpg",
+        "sha256": "41bfce73654a206b939d4614a628715eff3be258644c8770776a48bb696f0b2e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/22-arrived.jpg",
+        "sha256": "5dc077b0208143e2854589383c6fafac112514404e74fb2ff22abda0e687fc30",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/23-checkin-form.jpg",
+        "sha256": "e01c407f4c2d41dcbee097b6d6b38d7c8930e161182a4212d00bac5374d1185e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/24-checkin-save.jpg",
+        "sha256": "52d0b3670e9403835658d37be201dee749d72875d1c71d5021174bda9979797c",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/25-new-encounter.jpg",
+        "sha256": "7cb9be90d7db888c47bd76fa9f472ed0105bf41deee86eb83b4dab48ad92029d",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/26-role-menu.jpg",
+        "sha256": "c0f0f51bd72313916c29cb510607bc3354c6299eec7796b5b22c145c98ba4fb7",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/27-signout.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/28-nurse-login.jpg",
+        "sha256": "7af78af888860c9f8540a21e6aa940dd94bda9dcd75459298b33788054f03626",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/29-nurse-encounter.jpg",
+        "sha256": "1d807ad006485d9b98ad7b7bf8d25f0896968d921d8d15a6a883a3d7aef2ea1f",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/30-default-units.jpg",
+        "sha256": "c055ab70c40166769c871a92b971fd58a76f84e47863018740a63e5c6da0805d",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/31-unit-fields.jpg",
+        "sha256": "c350afd56d1d3694f531310096587242a15c38cf5163254bc061bc5ec1e1a02d",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-115/attempt-01/32-defaults-observed.jpg",
+        "sha256": "a1323441c778141f3a121e7e5f1f281276b4bd899b460982682d7b89f8c6b29b",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-115/attempt-01/action_summary.json",
     "failure_attribution": null,
     "prior_attempts": []
   },
@@ -2901,21 +3457,197 @@
   },
   {
     "test_id": "AF3-146",
-    "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "status": "PASS",
+    "attempt_number": 1,
+    "reason_code": "ALL_CRITERIA_OBSERVED",
+    "reason": "",
+    "observed_result": "Complaint persisted in encounter header and Subjective; distinct HPI and ROS within Subjective, Exam within Objective, Assessment and Plan all persisted after Save draft and reload.; After reload note is Unsigned draft, Documentation Pending, version2; sign saved note remains a separate unperformed action.",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "SATISFIED",
+        "observation": "Complaint persisted in encounter header and Subjective; distinct HPI and ROS within Subjective, Exam within Objective, Assessment and Plan all persisted after Save draft and reload.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-146/attempt-01/18-draft-before.jpg",
+          "evidence/20261128T0907Z/AF3-146/attempt-01/20-soap-entered.jpg",
+          "evidence/20261128T0907Z/AF3-146/attempt-01/21-save-controls.jpg",
+          "evidence/20261128T0907Z/AF3-146/attempt-01/23-reloaded.jpg",
+          "evidence/20261128T0907Z/AF3-146/attempt-01/28-soap-state.jpg",
+          "evidence/20261128T0907Z/AF3-146/attempt-01/30-plan-persisted.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "SATISFIED",
+        "observation": "After reload note is Unsigned draft, Documentation Pending, version2; sign saved note remains a separate unperformed action.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-146/attempt-01/23-reloaded.jpg",
+          "evidence/20261128T0907Z/AF3-146/attempt-01/28-soap-state.jpg",
+          "evidence/20261128T0907Z/AF3-146/attempt-01/30-plan-persisted.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:24:25.650Z",
+    "ended_at": "2026-11-28T09:29:43.615289+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
+    "fixture_bindings": {
+      "patient_id": 202,
+      "encounter_id": 203,
+      "appointment_id": 304,
+      "acting_user": "physician.demo",
+      "reuse_verified": "Verified new unsigned note, completed intake with synthetic vitals, then UI transitions Roomed and In Progress; fresh before-state screenshot18. SOAP interface groups HPI and ROS in Subjective and Exam in Objective."
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/01-role-switch.jpg",
+        "sha256": "070a277e9f2c91a88597744846accb3c3677d78a25b61a6918a2e34d723569f4",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/02-logout.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/03-physician.jpg",
+        "sha256": "7bae5a6c15e86e86819876b829d6fa1615c9db755781e2fc6f367cd0082355fe",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/04-encounter-before.jpg",
+        "sha256": "d7a0cad3124b21bc1cec76bed43ed4d61ddbdf419d2c6e01d7ec7eea77919fc4",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/05-intake-setup.jpg",
+        "sha256": "9a804ab5da79e292c68fb53e847b02cff87d728633a05c1868133d827c91e632",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/06-intake-values.jpg",
+        "sha256": "8483c60200980fc58985792c3e3ea7fe05d75d5473a4215a73b95a7587f45002",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/07-intake-footer.jpg",
+        "sha256": "0d6a03fb7739f6eedf05e9f86e6055b6b0d1c424c876413c36786c6480467fca",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/09-scroll-state.jpg",
+        "sha256": "aa5a3693591f9e4baf3f06006acb19f2780ad8175c98595c565ddf66b34444eb",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/10-focus-bottom.jpg",
+        "sha256": "c28611359a4095cc29cfe414cdea80f72885a46e7297a860ce9fece594164ea7",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/11-intake-saved.jpg",
+        "sha256": "21e07276880abd61ec491e5bc0fb9b21fc623b2124d51ede5bc8ccc111bece5c",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/12-vitals-setup.jpg",
+        "sha256": "a7dbd5e545411b70d68f396b8ec451ea6122f0af4c27119f6331c6f992e7f7c1",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/13-vitals-ready.jpg",
+        "sha256": "15a9c7a859731e8e55d942d82383a13e5313a1d8872f857a35eb809768c7c3d0",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/14-intake-result.jpg",
+        "sha256": "7ee1eadebcfc6cb403ddfda5b203c5a2309dd3a6cb88baa6452405740dbd226f",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/15-visit-workflow.jpg",
+        "sha256": "4c39e6adf4d60c108f080e621dce9d52cd3ecc4586123e6c3edc6e67f6f9172b",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/16-roomed.jpg",
+        "sha256": "68e593a51563a0437963e470eea8b69c1dff8c66eaf7d31c96613470a540722e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/17-in-progress.jpg",
+        "sha256": "985634105e1f3d01f18521d3abfa11d87e4cbd10422dc9241aa54e7ec734ab2e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/18-draft-before.jpg",
+        "sha256": "0cdb773cca51afc484f08af97cb5776382ae2ff154f2f95cbeea078c1292b2dc",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/19-soap-fields.jpg",
+        "sha256": "3693890ac19bf73a63a8f0ed97c714c0481958cfea2e717f71311db700b47f73",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/20-soap-entered.jpg",
+        "sha256": "38317c0221a989a14f4d19b1b3e606b10581612c6693d610e1b0ee5ad4d2afb1",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/21-save-controls.jpg",
+        "sha256": "697a306e8b8c51e41fda17a5a981b2610ee7268a98c9080f88c2f7a1c3353268",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/22-save-draft.jpg",
+        "sha256": "a3560001065207b39a7534dc84d10d505717be5f1295045fe08d16bec57dff07",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/23-reloaded.jpg",
+        "sha256": "a6ad24dae3d002259ddebd90c921a376c5bf0879a9e9d34925c849a2ddadf334",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/24-persisted-sections.jpg",
+        "sha256": "60b49b81617e26ac93bb10b861e5072892e97c6731c1fecd24687bbb7968039a",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/25-navigation-state.jpg",
+        "sha256": "25fc0aa358a50c24c700acf50b92b3739f201cb6161f2d123d2198ee15f1f4d6",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/26-persisted-subjective.jpg",
+        "sha256": "d0943c4ad44fbf7fed4aa6ce8c8ffb92486580a43e07603b526e33467f9531be",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/27-persisted-soap.jpg",
+        "sha256": "44e5ddba2bf4c74c0424e5063be6ba8855e1fc020c1ea9e7bfe4ec0f9330b373",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/28-soap-state.jpg",
+        "sha256": "9465de2092e18075da4b5c9244d3e8593228bb8589701b5b75a7d420c731de63",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/29-plan-focus.jpg",
+        "sha256": "b3b45d0507c27287059681b159704c3791fcb604bcb44667f80341f734483f3a",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-146/attempt-01/30-plan-persisted.jpg",
+        "sha256": "f255df478f3811800e754ee6ffe148df612c2411119d2b47427eb1eebd765230",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-146/attempt-01/action_summary.json",
     "failure_attribution": null,
     "prior_attempts": []
   },
@@ -5201,22 +5933,139 @@
   },
   {
     "test_id": "AF3-261",
-    "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "status": "BLOCKED",
+    "attempt_number": 1,
+    "reason_code": "FIXTURE_UNAVAILABLE",
+    "reason": "FIXTURE_UNAVAILABLE: ordinary UI requires diagnosis before creating a charge; inspected existing claim has diagnosis. No documented missing-diagnosis fixture was available in the active browser environment; no backend tampering used.",
+    "observed_result": "Could not bind a claim without required diagnosis. Sampled existing Draft CLM-00145 has encounter diagnosis E11.9. New charge for diagnosis-free encounter203 cannot be saved: native validation requires a diagnosis. Downstream claim scrub was not executed.; No malformed claim was created, so submission readiness for the required fixture remains unobserved.",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "UNOBSERVED",
+        "observation": "Could not bind a claim without required diagnosis. Sampled existing Draft CLM-00145 has encounter diagnosis E11.9. New charge for diagnosis-free encounter203 cannot be saved: native validation requires a diagnosis. Downstream claim scrub was not executed.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-261/attempt-01/11-claim-before.jpg",
+          "evidence/20261128T0907Z/AF3-261/attempt-01/12-coding-precondition.jpg",
+          "evidence/20261128T0907Z/AF3-261/attempt-01/16-charge-ready.jpg",
+          "evidence/20261128T0907Z/AF3-261/attempt-01/18-charge-save-result.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "UNOBSERVED",
+        "observation": "No malformed claim was created, so submission readiness for the required fixture remains unobserved.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-261/attempt-01/18-charge-save-result.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:29:43.790Z",
+    "ended_at": "2026-11-28T09:32:31.859085+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
-    "failure_attribution": null,
+    "fixture_bindings": {
+      "acting_user": "billing.demo",
+      "sampled_claim_id": 145,
+      "sampled_encounter_id": 165,
+      "new_charge_attempt_encounter_id": 203,
+      "new_charge_saved": false
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/01-switch-role.jpg",
+        "sha256": "ceef15d996477695adf57a3f9f55ed0855909579f0d42aad3b52c3e0d7b3621e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/02-signout.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/03-billing-login.jpg",
+        "sha256": "58c76b2f3b75ac6790a8dc82607841721a34ca6b01c2956d36af10e811ba1725",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/04-claims.jpg",
+        "sha256": "511a9dd56a814974595259e0af93647c9c888f4fa6953169c55af5f0008412d6",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/05-status-options.jpg",
+        "sha256": "5b33c5091628a19cc8f51d212bd3f55ac734facfc20e7d894309d764f8aa1570",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/06-draft-filter.jpg",
+        "sha256": "3dc68e9b95b63f3c793278f4444d19eb23d365ce084e77ed70bd067effc3d848",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/07-first-status.jpg",
+        "sha256": "266bc4a4ace446e1fe8c6d21ae8e92c228c72e48d663287bbaa8b325f01fba7f",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/08-status-selected.jpg",
+        "sha256": "21d74f514966dc36ee891bc5a19ac3fd45c9e22476af84df7dfc6eb305e73ff8",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/09-status-typeahead.jpg",
+        "sha256": "293d401b3616f54810ee9ff9daf99f32352f5980f2ce583a8b648085207686bd",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/10-draft-list.jpg",
+        "sha256": "f5ad44ac53ebe10648866697d1ff8c7edb257dec5d4c1071df35a7a43c04d84a",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/11-claim-before.jpg",
+        "sha256": "6192042c77913ef92065740c8ff459f42df48771e8eb869557a8ffd89ef8c79b",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/12-coding-precondition.jpg",
+        "sha256": "9ce8f818b37a71b15ef4fc36fa2b8e21d4266d44f86263fbd257c17bf6e2a0ff",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/13-billing-list.jpg",
+        "sha256": "899b145d3519587417632c20f23193caa2f3208248c4ce8ed6f9c35b783046a7",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/14-new-charge.jpg",
+        "sha256": "9a6a5be92a5699ca6c2aab581cdc0ca8bdfc6c748afafd51f59b2f74d5698058",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/15-charge-selections.jpg",
+        "sha256": "dcc4f1256e397adbfbe9984aa263a735c76f2879e3650302f8fc920c93e74cb3",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/16-charge-ready.jpg",
+        "sha256": "f622c48b2c23c21a6ccb351345afa1071133c2bc08c85a4b13e7445498857056",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/17-no-diagnosis-save.jpg",
+        "sha256": "281be824fe9f8f35cdcdf7b66fdb9591774323a065ed77afc6960b3f4cf4be0e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-261/attempt-01/18-charge-save-result.jpg",
+        "sha256": "65da3eff6ea40e49014bafecfe4d27e4705fa471fe911d9f033887fada9b6cd6",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-261/attempt-01/action_summary.json",
+    "failure_attribution": "UNCERTAIN",
     "prior_attempts": []
   },
   {
@@ -7001,21 +7850,100 @@
   },
   {
     "test_id": "AF3-351",
-    "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "status": "PASS",
+    "attempt_number": 1,
+    "reason_code": "ALL_CRITERIA_OBSERVED",
+    "reason": "",
+    "observed_result": "Thread63 contains exact unique subject and first synthetic message after sending and reopening.; Patient-scoped complete list grew from3 to4 records, with exactly one new nonempty thread and the same three prior threads.",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "SATISFIED",
+        "observation": "Thread63 contains exact unique subject and first synthetic message after sending and reopening.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-351/attempt-01/07-before-send.jpg",
+          "evidence/20261128T0907Z/AF3-351/attempt-01/08-send-result.jpg",
+          "evidence/20261128T0907Z/AF3-351/attempt-01/10-thread-reopened.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "SATISFIED",
+        "observation": "Patient-scoped complete list grew from3 to4 records, with exactly one new nonempty thread and the same three prior threads.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-351/attempt-01/04-threads-before.jpg",
+          "evidence/20261128T0907Z/AF3-351/attempt-01/09-threads-after.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:32:39.675Z",
+    "ended_at": "2026-11-28T09:34:02.378671+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
+    "fixture_bindings": {
+      "acting_user": "patient.demo",
+      "patient_id": 101,
+      "patient_name": "Jamie Alder",
+      "thread_id": 63,
+      "subject": "AF3 20261128 AF3-351 atomic subject",
+      "count_before": 3,
+      "count_after": 4
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/01-role-menu.jpg",
+        "sha256": "f1e1f605440691b0efcd771806d9ded994c8ef90a4a7d260d31b454786c203f4",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/02-signout.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/03-patient-login.jpg",
+        "sha256": "058907cb879f37644d58e2cf87ca37d6a2dc1add9dd8fab087786e0258a5f6fb",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/04-threads-before.jpg",
+        "sha256": "1ae97ca94416bca64b332e3f141b600f3c093a505af7970e34185c6300cd76aa",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/05-compose-empty.jpg",
+        "sha256": "1e5e198c79a54137a12052bab42430f9f0dc2b38c948c7d08cb5f404b4e9c08e",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/06-compose-filled.jpg",
+        "sha256": "90b3c1779f357896091672052e914703cd17f73dec144688c88a7b9cb98e20ce",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/07-before-send.jpg",
+        "sha256": "270791c55549b35eafe5aa5641b1449fd9e04e3de482acf8aaa02e69402c166a",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/08-send-result.jpg",
+        "sha256": "6697f14c51bcb93147df0d9a684799675eaf833274054d530f3947c11dd21232",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/09-threads-after.jpg",
+        "sha256": "f403a0a133759a6a00a6ed315d9e46b4b01d5d438bc85d801d9805435051a501",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-351/attempt-01/10-thread-reopened.jpg",
+        "sha256": "d9480ccd7d851758ef3b42b6164cfbe9bff113e2f08e24f8e46a382dd1767590",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-351/attempt-01/action_summary.json",
     "failure_attribution": null,
     "prior_attempts": []
   },
@@ -7502,22 +8430,114 @@
   {
     "test_id": "AF3-376",
     "status": "NOT_RUN",
-    "attempt_number": 0,
-    "reason_code": "NOT_STARTED",
-    "reason": "Benchmark authored; no application test executed.",
-    "observed_result": null,
-    "criteria_results": [],
-    "run_id": null,
-    "started_at": null,
-    "ended_at": null,
-    "environment_id": null,
+    "attempt_number": 1,
+    "reason_code": "INTERRUPTED",
+    "reason": "Browser interrupted while accepting native confirmation; subsequent screenshot response pending.",
+    "observed_result": "Draft2 was generated and reviewed for encounter203. Apply invoked and native confirmation acceptance timed out; transfer result not observed.; Note was unsigned before Apply. Post-apply state inaccessible while browser dialog/screenshot commands stalled.",
+    "criteria_results": [
+      {
+        "criterion_id": "C1",
+        "verdict": "UNOBSERVED",
+        "observation": "Draft2 was generated and reviewed for encounter203. Apply invoked and native confirmation acceptance timed out; transfer result not observed.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-376/attempt-01/12-review-content.jpg",
+          "evidence/20261128T0907Z/AF3-376/attempt-01/13-review-lower.jpg"
+        ]
+      },
+      {
+        "criterion_id": "C2",
+        "verdict": "UNOBSERVED",
+        "observation": "Note was unsigned before Apply. Post-apply state inaccessible while browser dialog/screenshot commands stalled.",
+        "evidence_paths": [
+          "evidence/20261128T0907Z/AF3-376/attempt-01/05-scribe.jpg",
+          "evidence/20261128T0907Z/AF3-376/attempt-01/12-review-content.jpg"
+        ]
+      }
+    ],
+    "run_id": "20261128T0907Z",
+    "started_at": "2026-11-28T09:34:02.575Z",
+    "ended_at": "2026-11-28T09:38:57.188358+00:00",
+    "environment_id": "Chrome-extension-local-user-browser",
     "application_commit": null,
     "commit_verification": "UNVERIFIED",
-    "fixture_bindings": {},
-    "evidence": [],
-    "action_log_path": null,
-    "failure_attribution": null,
-    "prior_attempts": []
+    "fixture_bindings": {
+      "acting_user": "physician.demo",
+      "encounter_id": 203,
+      "generated_draft_id": 2,
+      "reuse_verified": "Encounter203 remained unsigned version2 before generation and apply.",
+      "pending_write": "Apply to unsigned draft; confirm acceptance timed out; must inspect current state before repeating."
+    },
+    "evidence": [
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/01-role-menu.jpg",
+        "sha256": "adf61c9cd59e3a5cd7bc0073c1c6f566d23dbe77a95744365b4a394b0b707c61",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/02-logout.jpg",
+        "sha256": "cec8eec8b826c265c4a4cd00a00dff305dbb3050e90c9b142cc028e02ce97150",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/03-login.jpg",
+        "sha256": "5ee89d37c0eb9a1e62646727f43ed3cdf9e0bde84fc23e08bc86c13176e0a64d",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/04-ai-entry.jpg",
+        "sha256": "056c4e9bece60c6987c3fc1dd1a9c4603ef5d94d92f6ddb927bc81413f311414",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/05-scribe.jpg",
+        "sha256": "10278d3ca5473e644e5fb6c4a8797d46be696061ac748d2d21541ce58fec5a00",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/06-scribe-position.jpg",
+        "sha256": "6e1360c8e4b4963a78adef1d875ecbd73a6e96a88252232c798bac5e7c1f893a",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/07-transcript.jpg",
+        "sha256": "569317824a3c03d9b2cbfee336207cc02dc87c955bd99df5e434bb14d3fc60cd",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/08-transcript-ready.jpg",
+        "sha256": "4974834c7a86c18ec4869e3a3047068c29faada43ff714cb9c98bb456e198664",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/09-generated-draft.jpg",
+        "sha256": "0c0cb10af22bc9edfbba6a7d3da5ff0c8b8f4c444e69002ff65e5c3903702225",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/10-review-position.jpg",
+        "sha256": "27f88ffc86b55c0d1a0adcbfa9680db0278a1df0427081131121faaa71183a6b",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/11-generated-content.jpg",
+        "sha256": "1ff849c4bce316443f0e6715ae33b4468eba4d86846491b90a98da78009fb8f6",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/12-review-content.jpg",
+        "sha256": "50c3d72e31865c810b7e75ad951d6702f0e80dc5944773ffe808bb9d0f8a6acb",
+        "type": "browser_screenshot"
+      },
+      {
+        "path": "evidence/20261128T0907Z/AF3-376/attempt-01/13-review-lower.jpg",
+        "sha256": "d4f5e73a321b4b7766b42ea79be74eab1cc9bb1ff093c96de8fa6370bd5b3932",
+        "type": "browser_screenshot"
+      }
+    ],
+    "action_log_path": "evidence/20261128T0907Z/AF3-376/attempt-01/action_summary.json",
+    "failure_attribution": "TOOL",
+    "prior_attempts": [],
+    "outcome_conclusive": false
   },
   {
     "test_id": "AF3-377",

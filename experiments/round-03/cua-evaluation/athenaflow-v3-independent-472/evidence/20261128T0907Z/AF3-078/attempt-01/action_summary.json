@@ -1,0 +1,246 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:12:20.754Z",
+      "test": "AF3-078",
+      "action": "打开排班日历，寻找相邻日期的预约前置数据",
+      "code": "await testTab.cua.click({x:89,y:329});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/01-schedule.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:12:34.794Z",
+      "test": "AF3-078",
+      "action": "打开日期选择器以绑定有预约的日期",
+      "code": "await testTab.cua.click({x:440,y:364});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/02-date-picker.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:12:44.273Z",
+      "test": "AF3-078",
+      "action": "将排班日期设为 11 月 16 日",
+      "code": "await testTab.cua.keypress({keys:[\"ESC\"]}); await testTab.cua.click({x:349,y:363}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"6\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/03-date-set.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:13:00.700Z",
+      "test": "AF3-078",
+      "action": "展开日历日期选项",
+      "code": "await testTab.cua.click({x:440,y:363});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/04-calendar-open.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:13:14.821Z",
+      "test": "AF3-078",
+      "action": "查看下一日以定位已有预约",
+      "code": "await testTab.cua.keypress({keys:[\"ESC\"]}); await testTab.cua.click({x:655,y:281});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/05-next-date.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:13:46.109Z",
+      "test": "AF3-078",
+      "action": "查看预约列表以确认相邻日期前置数据",
+      "code": "await testTab.cua.click({x:1157,y:363});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/06-appointments-list.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:13:55.703Z",
+      "test": "AF3-078",
+      "action": "返回日期视图",
+      "code": "await testTab.cua.click({x:1167,y:134});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/07-calendar.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:14:04.409Z",
+      "test": "AF3-078",
+      "action": "将月份切到 10 月查找种子预约",
+      "code": "await testTab.cua.click({x:327,y:363}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/08-october.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:14:15.418Z",
+      "test": "AF3-078",
+      "action": "仅修改日期为次日，不点击 Apply",
+      "code": "await testTab.cua.click({x:345,y:360}); await testTab.cua.keypress({keys:[\"ARROWUP\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/09-next-day-auto.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:14:25.866Z",
+      "test": "AF3-078",
+      "action": "回到 10 月 28 日",
+      "code": "await testTab.cua.click({x:348,y:363}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/10-return-oct28.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:14:33.768Z",
+      "test": "AF3-078",
+      "action": "确认 10 月 27 日的预约，绑定相邻日期",
+      "code": "await testTab.cua.click({x:346,y:360}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/11-oct27-before.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:14:48.084Z",
+      "test": "AF3-078",
+      "action": "为相邻日期测试建立独立的合成预约",
+      "code": "await testTab.cua.click({x:1315,y:134});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/12-new-appointment.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:15:01.344Z",
+      "test": "AF3-078",
+      "action": "选择已核对的合成患者、医生和预约类型",
+      "code": "await testTab.cua.click({x:491,y:389}); await testTab.cua.type({text:\"AF-2AFE27F93C\"}); await testTab.cua.click({x:532,y:445}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:1001,y:350}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:521,y:580}); await testTab.cua.keypress({keys:[\"F\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:1014,y:579}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/13-fixture-selectors.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:15:29.979Z",
+      "test": "AF3-078",
+      "action": "设置 Family Medicine、预约类型和 12 月 1 日时间",
+      "code": "await testTab.cua.click({x:515,y:663}); await testTab.cua.keypress({keys:[\"F\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:1000,y:663}); await testTab.cua.keypress({keys:[\"ARROWDOWN\"]}); await testTab.cua.keypress({keys:[\"ENTER\"]}); await testTab.cua.click({x:332,y:774}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.click({x:365,y:774}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.click({x:397,y:774}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.keypress({keys:[\"6\"]}); await testTab.cua.keypress({keys:[\"ARROWRIGHT\"]}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.keypress({keys:[\"9\"]}); await testTab.cua.keypress({keys:[\"ARROWRIGHT\"]}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.keypress({keys:[\"ARROWRIGHT\"]}); await testTab.cua.keypress({keys:[\"A\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/14-fixture-date.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:15:47.157Z",
+      "test": "AF3-078",
+      "action": "补全 09:00 AM 和测试预约标记",
+      "code": "await testTab.cua.click({x:439,y:773}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.click({x:461,y:772}); await testTab.cua.keypress({keys:[\"A\"]}); await testTab.cua.click({x:487,y:875}); await testTab.cua.type({text:\"AF3 20261128 AF3-078 day D\"}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/15-fixture-ready.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:15:58.014Z",
+      "test": "AF3-078",
+      "action": "核对预约提交前的最终内容",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/16-fixture-bottom.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:16:05.072Z",
+      "test": "AF3-078",
+      "action": "保存第一个日期的合成预约",
+      "code": "await testTab.cua.click({x:1179,y:746}); await nodeRepl.write(await testTab.url());",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/17-fixture-D.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:16:17.177Z",
+      "test": "AF3-078",
+      "action": "返回新建表单准备第二条独立预约",
+      "code": "await testTab.back();",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/18-second-form.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:16:27.167Z",
+      "test": "AF3-078",
+      "action": "将第二条预约改为 12 月 2 日并更换标记",
+      "code": "await testTab.cua.click({x:354,y:537}); await testTab.cua.keypress({keys:[\"ARROWUP\"]}); await testTab.cua.click({x:511,y:648}); await testTab.cua.keypress({keys:[\"Control\",\"A\"]}); await testTab.cua.type({text:\"AF3 20261128 AF3-078 day D+1\"}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/19-second-ready.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:16:36.183Z",
+      "test": "AF3-078",
+      "action": "保存次日的第二条合成预约",
+      "code": "await testTab.cua.click({x:1186,y:743}); await nodeRepl.write(await testTab.url());",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/20-fixture-D1.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:16:43.390Z",
+      "test": "AF3-078",
+      "action": "返回日历执行日期自动更新验证",
+      "code": "await testTab.cua.click({x:87,y:325});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/21-calendar-today.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:16:50.890Z",
+      "test": "AF3-078",
+      "action": "切换到 12 月",
+      "code": "await testTab.cua.click({x:325,y:363}); await testTab.cua.keypress({keys:[\"ARROWUP\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/22-december.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:16:59.220Z",
+      "test": "AF3-078",
+      "action": "选择前置日期 D：12 月 1 日",
+      "code": "await testTab.cua.click({x:349,y:364}); await testTab.cua.keypress({keys:[\"1\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/23-D-before.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:17:08.990Z",
+      "test": "AF3-078",
+      "action": "将日期 D 改为 D+1，观察自动更新而不点击 Apply",
+      "code": "await testTab.cua.click({x:346,y:360}); await testTab.cua.keypress({keys:[\"ARROWUP\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-078/attempt-01/24-D1-auto-result.jpg"
+      ],
+      "tool_error": false
+    }
+  ]
+}

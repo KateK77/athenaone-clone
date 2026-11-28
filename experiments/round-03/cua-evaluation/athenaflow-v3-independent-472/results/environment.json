@@ -1,26 +1,40 @@
 {
-  "run_id": null,
-  "target_url": null,
+  "run_id": "20261128T0907Z",
+  "target_url": "http://127.0.0.1:18310/",
   "repository": "https://github.com/KateK77/athenaone-clone",
-  "source_branch": null,
-  "source_commit": null,
+  "source_branch": "main",
+  "source_commit": "2723877e8f52afe06c248ce21af5a5dcac4f059e",
   "served_commit": null,
   "commit_verification": "UNVERIFIED",
-  "source_vs_served_evidence": [],
+  "source_vs_served_evidence": [
+    "Repository README/history identified V3 source main at2723877. No served SHA exposed or linkage proven."
+  ],
   "model": "UNKNOWN_UNEXPOSED",
   "reasoning_effort": "UNKNOWN_UNEXPOSED",
-  "browser_name": null,
-  "browser_version": null,
-  "computer_use_tool": null,
-  "screenshot_driven": null,
-  "execution_timezone": null,
-  "application_timezone": null,
-  "locale": null,
-  "viewports": [],
-  "demo_data_seed": null,
-  "fixture_baseline": null,
+  "browser_name": "Chrome",
+  "browser_version": "UNKNOWN_UNEXPOSED",
+  "computer_use_tool": "mcp__codex_apps__browser_js: testTab.cua and screenshots",
+  "screenshot_driven": true,
+  "execution_timezone": "America/Chicago",
+  "application_timezone": "America/Chicago (consistent with displayed timestamps; configuration unverified)",
+  "locale": "English UI; browser locale UNKNOWN_UNEXPOSED",
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 900,
+      "method": "browser viewport capability",
+      "zoom_percent": "UNKNOWN_UNEXPOSED"
+    }
+  ],
+  "demo_data_seed": "Existing synthetic demo data; seed command/version UNKNOWN_UNEXPOSED",
+  "fixture_baseline": "Existing records preserved. Synthetic patient202, appointments304/305, insurance202, encounter203 and message63 created through UI.",
   "paid_api_calls": 0,
   "notes": [
-    "No browser execution occurred during benchmark design."
+    "Execution uses public demo accounts and deterministic application mode.",
+    "Model and reasoning setting are not exposed by browser tools.",
+    "Screenshots are original tool outputs. Native trace export unavailable; authored timestamped action summaries are supplied.",
+    "Screenshot state sometimes lags completed input commands; subsequent observations used before scoring.",
+    "Mouse scroll CDP command timed out; keyboard Tab navigation used.",
+    "Earlier interrupted runs20261126T0415Z and20261128T0905Z retained separately; restarted current pilot at user request."
   ]
 }

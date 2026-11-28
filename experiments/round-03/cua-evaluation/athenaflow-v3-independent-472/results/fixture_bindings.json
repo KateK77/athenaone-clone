@@ -2,5 +2,77 @@
   "run_id": null,
   "baseline": null,
   "bindings": [],
-  "unavailable_fixtures": []
+  "unavailable_fixtures": [],
+  "AF3-004": {
+    "role": "physician.demo",
+    "patient_id": 101,
+    "mrn": "AF-100001",
+    "patient_url": "http://127.0.0.1:18310/patients/101/"
+  },
+  "AF3-019": {
+    "role": "physician.demo",
+    "patient_id": 109,
+    "mrn": "AF-100009",
+    "precondition_evidence": "evidence/20261128T0907Z/AF3-004/attempt-01/06-assigned-patients.jpg"
+  },
+  "AF3-039": {
+    "role": "frontdesk.demo",
+    "patient_id": 202,
+    "mrn": "AF-2AFE27F93C",
+    "name": "Avery AF3 20261128 AF3-039",
+    "dob": "1988-04-12",
+    "phone": "202-555-0147",
+    "email": "af3.039@example.com"
+  },
+  "AF3-078": {
+    "role": "frontdesk.demo",
+    "D": "2026-12-01",
+    "D1": "2026-12-02",
+    "appointment_ids": [
+      304,
+      305
+    ],
+    "patient_id": 202,
+    "mrn": "AF-2AFE27F93C",
+    "preparation": "Two synthetic appointments created through UI; no backend changes."
+  },
+  "AF3-115": {
+    "patient_id": 202,
+    "mrn": "AF-2AFE27F93C",
+    "encounter_id": 203,
+    "appointment_id": 304,
+    "insurance_id": 202,
+    "acting_user": "nurse.demo",
+    "reuse_verified": "Patient 202 has no vitals; new encounter 203 has intake not yet documented; UI created and checked in appointment304 with active synthetic insurance."
+  },
+  "AF3-146": {
+    "patient_id": 202,
+    "encounter_id": 203,
+    "appointment_id": 304,
+    "acting_user": "physician.demo",
+    "reuse_verified": "Verified new unsigned note, completed intake with synthetic vitals, then UI transitions Roomed and In Progress; fresh before-state screenshot18. SOAP interface groups HPI and ROS in Subjective and Exam in Objective."
+  },
+  "AF3-261": {
+    "acting_user": "billing.demo",
+    "sampled_claim_id": 145,
+    "sampled_encounter_id": 165,
+    "new_charge_attempt_encounter_id": 203,
+    "new_charge_saved": false
+  },
+  "AF3-351": {
+    "acting_user": "patient.demo",
+    "patient_id": 101,
+    "patient_name": "Jamie Alder",
+    "thread_id": 63,
+    "subject": "AF3 20261128 AF3-351 atomic subject",
+    "count_before": 3,
+    "count_after": 4
+  },
+  "AF3-376": {
+    "acting_user": "physician.demo",
+    "encounter_id": 203,
+    "generated_draft_id": 2,
+    "reuse_verified": "Encounter203 remained unsigned version2 before generation and apply.",
+    "pending_write": "Apply to unsigned draft; confirm acceptance timed out; must inspect current state before repeating."
+  }
 }

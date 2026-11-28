@@ -1,0 +1,326 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:17:26.216Z",
+      "test": "AF3-115",
+      "action": "切换到护士账号以检查新录入表单",
+      "code": "await testTab.cua.click({x:1302,y:53});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/01-account.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:17:33.732Z",
+      "test": "AF3-115",
+      "action": "退出前台账号",
+      "code": "await testTab.cua.click({x:1258,y:155});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/02-logout.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:17:41.966Z",
+      "test": "AF3-115",
+      "action": "选择 Nurse 演示身份",
+      "code": "await testTab.cua.click({x:1079,y:662});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/03-nurse.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:17:49.986Z",
+      "test": "AF3-115",
+      "action": "登录护士工作台",
+      "code": "await testTab.cua.click({x:1055,y:434});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/04-nurse-dashboard.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:17:58.103Z",
+      "test": "AF3-115",
+      "action": "查看护士可访问的就诊记录",
+      "code": "await testTab.cua.click({x:93,y:422});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/05-encounters.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:18:10.841Z",
+      "test": "AF3-115",
+      "action": "查找没有既往测量的新患者",
+      "code": "await testTab.cua.click({x:565,y:41}); await testTab.cua.type({text:\"AF-2AFE27F93C\"}); await testTab.cua.keypress({keys:[\"ENTER\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/06-fresh-patient-search.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:18:20.945Z",
+      "test": "AF3-115",
+      "action": "查看新患者的临床病历入口",
+      "code": "await testTab.cua.click({x:362,y:465});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/07-fresh-chart.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:18:28.262Z",
+      "test": "AF3-115",
+      "action": "查看空白生命体征记录入口",
+      "code": "await testTab.cua.click({x:984,y:373});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/08-vitals-tab.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:18:43.796Z",
+      "test": "AF3-115",
+      "action": "准备通过前台签到建立没有旧测量的就诊",
+      "code": "await testTab.cua.click({x:1318,y:53});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/09-switch-menu.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:18:52.994Z",
+      "test": "AF3-115",
+      "action": "退出护士账号以完成前置签到",
+      "code": "await testTab.cua.click({x:1287,y:158});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/10-logout.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:19:01.116Z",
+      "test": "AF3-115",
+      "action": "以 Front Desk 登录完成测试前置流程",
+      "code": "await testTab.cua.click({x:1266,y:590}); await testTab.cua.click({x:1053,y:432});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/11-frontdesk.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:19:09.339Z",
+      "test": "AF3-115",
+      "action": "打开已创建的测试患者病历",
+      "code": "await testTab.goto(\"http://127.0.0.1:18310/patients/202/\");",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/12-patient-coverage.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:19:16.120Z",
+      "test": "AF3-115",
+      "action": "通过界面添加签到所需的合成保险",
+      "code": "await testTab.cua.click({x:1164,y:507});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/13-insurance-form.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:19:27.441Z",
+      "test": "AF3-115",
+      "action": "填写公开演示保险的前置字段",
+      "code": "await testTab.cua.click({x:994,y:350}); await testTab.cua.type({text:\"AF3 Demo Payer\"}); await testTab.cua.click({x:498,y:663}); await testTab.cua.type({text:\"AF3 Demo Plan\"}); await testTab.cua.click({x:997,y:663}); await testTab.cua.type({text:\"AF261128115\"}); await testTab.cua.click({x:507,y:772}); await testTab.cua.type({text:\"AF3-115\"}); await testTab.cua.click({x:985,y:772}); await testTab.cua.type({text:\"Avery AF3 20261128\"}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/14-insurance-fields.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:19:40.122Z",
+      "test": "AF3-115",
+      "action": "读取保险有效期字段",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/15-insurance-dates.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:19:50.767Z",
+      "test": "AF3-115",
+      "action": "设置保险生效日期并查看后续字段",
+      "code": "await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.keypress({keys:[\"6\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/16-effective.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:21:51.149Z",
+      "test": "AF3-115",
+      "action": "核对重新连接后的保险表单状态",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/17-current-state.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:22:04.429Z",
+      "test": "AF3-115",
+      "action": "查看保险表单后续选项",
+      "code": "await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/18-lower-form.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:22:14.212Z",
+      "test": "AF3-115",
+      "action": "保存合成患者保险",
+      "code": "await testTab.cua.click({x:334,y:538}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.keypress({keys:[\"3\"]}); await testTab.cua.keypress({keys:[\"1\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.keypress({keys:[\"0\"]}); await testTab.cua.keypress({keys:[\"2\"]}); await testTab.cua.keypress({keys:[\"7\"]}); await testTab.cua.click({x:1182,y:744});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/19-insurance-save.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:22:23.213Z",
+      "test": "AF3-115",
+      "action": "核验保险资格",
+      "code": "await testTab.cua.click({x:1208,y:414});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/20-eligibility.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:22:30.213Z",
+      "test": "AF3-115",
+      "action": "打开测试预约准备签到",
+      "code": "await nodeRepl.write(await testTab.url()); await testTab.goto(\"http://127.0.0.1:18310/records/schedule/304/\");",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/21-appointment.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:22:39.875Z",
+      "test": "AF3-115",
+      "action": "标记测试预约已到达",
+      "code": "await testTab.cua.click({x:1224,y:410});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/22-arrived.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:22:46.270Z",
+      "test": "AF3-115",
+      "action": "打开签到清单",
+      "code": "await testTab.cua.click({x:1197,y:474});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/23-checkin-form.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:22:53.696Z",
+      "test": "AF3-115",
+      "action": "完成合成患者签到并生成就诊",
+      "code": "await testTab.cua.click({x:324,y:319}); await testTab.cua.click({x:812,y:319}); await testTab.cua.click({x:325,y:385}); await testTab.cua.click({x:812,y:385}); await testTab.cua.click({x:324,y:455}); await testTab.cua.click({x:1194,y:588});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/24-checkin-save.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:23:04.782Z",
+      "test": "AF3-115",
+      "action": "查看新建就诊入口",
+      "code": "await testTab.cua.click({x:1194,y:462}); await nodeRepl.write(await testTab.url());",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/25-new-encounter.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:23:10.706Z",
+      "test": "AF3-115",
+      "action": "切换护士测试角色",
+      "code": "await testTab.cua.click({x:1333,y:50});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/26-role-menu.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:23:18.251Z",
+      "test": "AF3-115",
+      "action": "退出前台角色",
+      "code": "await testTab.cua.click({x:1285,y:157});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/27-signout.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:23:26.406Z",
+      "test": "AF3-115",
+      "action": "以护士身份登录",
+      "code": "await testTab.cua.click({x:1082,y:660}); await testTab.cua.click({x:1067,y:432});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/28-nurse-login.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:23:34.016Z",
+      "test": "AF3-115",
+      "action": "打开无历史测量记录的新就诊",
+      "code": "await testTab.goto(\"http://127.0.0.1:18310/encounters/203/\");",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/29-nurse-encounter.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:23:40.849Z",
+      "test": "AF3-115",
+      "action": "检查首次体征录入默认单位",
+      "code": "await testTab.cua.click({x:1280,y:137});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/30-default-units.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:23:50.777Z",
+      "test": "AF3-115",
+      "action": "查看身高体重单位选择器",
+      "code": "await testTab.cua.click({x:476,y:841}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/31-unit-fields.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:23:58.763Z",
+      "test": "AF3-115",
+      "action": "读取焦点移动后的单位字段",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-115/attempt-01/32-defaults-observed.jpg"
+      ],
+      "tool_error": false
+    }
+  ]
+}

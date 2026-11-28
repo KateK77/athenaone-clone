@@ -1,0 +1,169 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:34:02.575Z",
+      "test": "AF3-376",
+      "action": "准备 AI 草稿应用测试",
+      "code": "await testTab.cua.click({x:1324,y:51});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/01-role-menu.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:34:10.078Z",
+      "test": "AF3-376",
+      "action": "退出患者角色",
+      "code": "await testTab.cua.click({x:1289,y:156});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/02-logout.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:34:17.829Z",
+      "test": "AF3-376",
+      "action": "登录医生角色进行 AI 草稿测试",
+      "code": "await testTab.cua.click({x:1084,y:432});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/03-login.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:34:26.291Z",
+      "test": "AF3-376",
+      "action": "查看 AI 草稿生成入口",
+      "code": "await testTab.cua.click({x:94,y:771});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/04-ai-entry.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:34:33.335Z",
+      "test": "AF3-376",
+      "action": "打开当前未签名就诊的草稿辅助工具",
+      "code": "await testTab.cua.click({x:1329,y:692});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/05-scribe.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:34:41.371Z",
+      "test": "AF3-376",
+      "action": "定位合成转录文本入口",
+      "code": "await testTab.cua.click({x:732,y:865}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/06-scribe-position.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:34:50.053Z",
+      "test": "AF3-376",
+      "action": "填写 AI 测试用合成转录",
+      "code": "await testTab.cua.click({x:1213,y:761}); await testTab.cua.type({text:\"AF3 20261128 AF3-376. The patient reports a headache for two days. No examination measurements or treatment decisions were supplied in this synthetic transcript.\"});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/07-transcript.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:34:58.025Z",
+      "test": "AF3-376",
+      "action": "核对合成转录内容",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/08-transcript-ready.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:35:06.389Z",
+      "test": "AF3-376",
+      "action": "生成待审阅的 AI 草稿",
+      "code": "await testTab.cua.click({x:1230,y:869});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/09-generated-draft.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:35:17.576Z",
+      "test": "AF3-376",
+      "action": "定位生成草稿审阅区",
+      "code": "await testTab.cua.click({x:725,y:879}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/10-review-position.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:35:26.507Z",
+      "test": "AF3-376",
+      "action": "查看生成草稿和应用选项",
+      "code": "await testTab.cua.click({x:1226,y:757}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/11-generated-content.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:35:35.530Z",
+      "test": "AF3-376",
+      "action": "读取生成草稿审阅区域",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/12-review-content.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:35:42.082Z",
+      "test": "AF3-376",
+      "action": "继续审阅生成内容",
+      "code": "await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-376/attempt-01/13-review-lower.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:35:49.285Z",
+      "test": "AF3-376",
+      "action": "将已审阅生成内容应用为未签名草稿",
+      "code": "await testTab.cua.click({x:1119,y:628}); await testTab.cua.click({x:1247,y:694});",
+      "evidence": [],
+      "tool_error": true
+    },
+    {
+      "at": "2026-11-28T09:35:57.258Z",
+      "test": "AF3-376",
+      "action": "确认应用动作是否已经完成",
+      "code": "",
+      "evidence": [],
+      "tool_error": true
+    },
+    {
+      "at": "2026-11-28T09:36:08.850Z",
+      "test": "AF3-376",
+      "action": "读取确认后的草稿状态",
+      "code": "",
+      "evidence": [],
+      "tool_error": true
+    },
+    {
+      "at": "2026-11-28T09:38:57.170979+00:00",
+      "test": "AF3-376",
+      "action": "Authored recovery note: applying draft opened a native confirm. getJsDialog confirmed type=confirm; accept timed out waiting for dialog closure. Subsequent screenshot has not returned. Result unknown; do not repeat apply until state is inspected.",
+      "code": "const pendingApplyDialog = await testTab.getJsDialog(); await nodeRepl.write({type:pendingApplyDialog.type}); await pendingApplyDialog.accept();",
+      "evidence": [],
+      "tool_error": true,
+      "timestamp_semantics": "time this recovery note was recorded, not original invocation time"
+    }
+  ]
+}

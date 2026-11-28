@@ -1,0 +1,304 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:24:25.650Z",
+      "test": "AF3-146",
+      "action": "准备医生草稿测试",
+      "code": "await testTab.goto(\"http://127.0.0.1:18310/encounters/203/\"); await testTab.cua.click({x:1313,y:52});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/01-role-switch.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:24:34.073Z",
+      "test": "AF3-146",
+      "action": "退出护士角色",
+      "code": "await testTab.cua.click({x:1252,y:154});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/02-logout.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:24:40.578Z",
+      "test": "AF3-146",
+      "action": "以医生身份登录",
+      "code": "await testTab.cua.click({x:1060,y:432});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/03-physician.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:24:48.028Z",
+      "test": "AF3-146",
+      "action": "检查医生可编辑的测试就诊",
+      "code": "await testTab.goto(\"http://127.0.0.1:18310/encounters/203/\");",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/04-encounter-before.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:25:06.018Z",
+      "test": "AF3-146",
+      "action": "完成进入诊疗所需的测试接诊信息",
+      "code": "await testTab.cua.click({x:1285,y:132});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/05-intake-setup.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:25:16.356Z",
+      "test": "AF3-146",
+      "action": "填写合成接诊信息",
+      "code": "await testTab.cua.click({x:511,y:348}); await testTab.cua.keypress({keys:[\"Control\",\"A\"]}); await testTab.cua.type({text:\"AF3 20261128 AF3-146 complaint: synthetic follow-up.\"}); await testTab.cua.click({x:1020,y:387}); await testTab.cua.type({text:\"AF3 20261128 AF3-146 setup: synthetic intake completed.\"}); await testTab.cua.click({x:321,y:558}); await testTab.cua.click({x:804,y:558}); await testTab.cua.click({x:321,y:626}); await testTab.cua.keypress({keys:[\"Control\",\"End\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/06-intake-values.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:25:27.440Z",
+      "test": "AF3-146",
+      "action": "查看接诊保存控件",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/07-intake-footer.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:25:49.676Z",
+      "test": "AF3-146",
+      "action": "查看接诊表单底部",
+      "code": "await testTab.cua.scroll({x:1300,y:753,scrollY:1051,scrollX:0});",
+      "evidence": [],
+      "tool_error": true
+    },
+    {
+      "at": "2026-11-28T09:26:04.529Z",
+      "test": "AF3-146",
+      "action": "检查滚动后的实际页面",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/09-scroll-state.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:26:14.389Z",
+      "test": "AF3-146",
+      "action": "通过键盘定位接诊保存区",
+      "code": "await testTab.cua.click({x:483,y:836}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/10-focus-bottom.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:26:23.304Z",
+      "test": "AF3-146",
+      "action": "保存接诊准备并检查就诊状态",
+      "code": "await testTab.cua.click({x:1177,y:744});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/11-intake-saved.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:26:33.683Z",
+      "test": "AF3-146",
+      "action": "补齐必填的合成生命体征",
+      "code": "await testTab.cua.type({text:\"120\"}); await testTab.cua.click({x:991,y:23}); await testTab.cua.type({text:\"80\"}); await testTab.cua.click({x:488,y:161}); await testTab.cua.type({text:\"72\"}); await testTab.cua.click({x:487,y:296}); await testTab.cua.type({text:\"36.8\"}); await testTab.cua.click({x:974,y:296}); await testTab.cua.type({text:\"98\"}); await testTab.cua.click({x:491,y:433}); await testTab.cua.type({text:\"65\"}); await testTab.cua.click({x:493,y:566}); await testTab.cua.type({text:\"140\"});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/12-vitals-setup.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:26:47.314Z",
+      "test": "AF3-146",
+      "action": "核对接诊必填值",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/13-vitals-ready.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:26:56.696Z",
+      "test": "AF3-146",
+      "action": "保存接诊并确认进入进行中状态",
+      "code": "await testTab.cua.click({x:1180,y:831});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/14-intake-result.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:27:08.047Z",
+      "test": "AF3-146",
+      "action": "检查进入诊疗状态的预约操作",
+      "code": "await testTab.cua.click({x:936,y:297});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/15-visit-workflow.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:27:16.608Z",
+      "test": "AF3-146",
+      "action": "将测试就诊标记为已入诊室",
+      "code": "await testTab.cua.click({x:1202,y:348});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/16-roomed.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:27:27.378Z",
+      "test": "AF3-146",
+      "action": "将就诊置为进行中",
+      "code": "await testTab.cua.click({x:1204,y:413});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/17-in-progress.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:27:35.648Z",
+      "test": "AF3-146",
+      "action": "打开进行中的草稿",
+      "code": "await testTab.cua.click({x:1191,y:472});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/18-draft-before.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:27:43.814Z",
+      "test": "AF3-146",
+      "action": "查看草稿编辑字段",
+      "code": "await testTab.cua.click({x:584,y:885}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/19-soap-fields.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:27:57.531Z",
+      "test": "AF3-146",
+      "action": "输入完整且可区分的 SOAP 内容",
+      "code": "await testTab.cua.click({x:651,y:284}); await testTab.cua.type({text:\"AF3 20261128 AF3-146 complaint: synthetic follow-up.\\nHPI: AF3-146-HPI synthetic symptoms began two days ago.\\nROS: AF3-146-ROS no additional synthetic concerns.\"}); await testTab.cua.click({x:645,y:477}); await testTab.cua.type({text:\"Exam: AF3-146-EXAM synthetic patient alert and comfortable.\"}); await testTab.cua.click({x:650,y:669}); await testTab.cua.type({text:\"Assessment: AF3-146-ASSESSMENT synthetic follow-up evaluation.\"}); await testTab.cua.click({x:625,y:837}); await testTab.cua.type({text:\"Plan: AF3-146-PLAN review synthetic symptoms at next demo visit.\"}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/20-soap-entered.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:28:08.788Z",
+      "test": "AF3-146",
+      "action": "核对计划与草稿保存按钮",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/21-save-controls.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:28:16.891Z",
+      "test": "AF3-146",
+      "action": "保存 SOAP 草稿",
+      "code": "await testTab.cua.click({x:985,y:451});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/22-save-draft.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:28:24.250Z",
+      "test": "AF3-146",
+      "action": "刷新验证草稿持久保存",
+      "code": "await testTab.reload();",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/23-reloaded.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:28:32.025Z",
+      "test": "AF3-146",
+      "action": "检查刷新后的 SOAP 内容",
+      "code": "await testTab.cua.drag({path:[{x:1417,y:196},{x:1417,y:333},{x:1417,y:405}]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/24-persisted-sections.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:28:42.671Z",
+      "test": "AF3-146",
+      "action": "查看已保存接诊入口",
+      "code": "await testTab.cua.click({x:746,y:580}); await testTab.cua.click({x:970,y:195});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/25-navigation-state.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:28:52.642Z",
+      "test": "AF3-146",
+      "action": "定位刷新后的主观记录字段",
+      "code": "await testTab.back(); await testTab.cua.keypress({keys:[\"Control\",\"f\"]}); await testTab.cua.type({text:\"Subjective\"}); await testTab.cua.keypress({keys:[\"ESC\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/26-persisted-subjective.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:29:03.206Z",
+      "test": "AF3-146",
+      "action": "定位已保存草稿内容",
+      "code": "await testTab.cua.click({x:725,y:865}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/27-persisted-soap.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:29:13.054Z",
+      "test": "AF3-146",
+      "action": "读取草稿字段当前状态",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/28-soap-state.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:29:22.317Z",
+      "test": "AF3-146",
+      "action": "核对刷新后的计划字段",
+      "code": "await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]}); await testTab.cua.keypress({keys:[\"TAB\"]});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/29-plan-focus.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:29:30.641Z",
+      "test": "AF3-146",
+      "action": "读取持久化的计划内容",
+      "code": "",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-146/attempt-01/30-plan-persisted.jpg"
+      ],
+      "tool_error": false
+    }
+  ]
+}

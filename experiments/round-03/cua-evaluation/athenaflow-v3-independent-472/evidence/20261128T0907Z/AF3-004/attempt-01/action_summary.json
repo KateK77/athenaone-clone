@@ -1,0 +1,76 @@
+{
+  "type": "authored_timestamped_action_summary",
+  "native_trace_export": "UNAVAILABLE",
+  "actions": [
+    {
+      "at": "2026-11-28T09:07:04.797Z",
+      "test": "AF3-004",
+      "action": "连接当前 AthenaFlow 工作台，准备重新测试",
+      "code": "const restartTabs = await browser.user.openTabs(); const testTab = await browser.user.claimTab(restartTabs.find(t => t.url === \"http://127.0.0.1:18310/dashboard/\"));",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-004/attempt-01/01-restart-state.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:07:12.029Z",
+      "test": "AF3-004",
+      "action": "恢复 1440×900 标准视口",
+      "code": "await vp.set({width:1440,height:900});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-004/attempt-01/02-desktop.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:07:18.542Z",
+      "test": "AF3-004",
+      "action": "打开医生账号菜单",
+      "code": "await testTab.cua.click({x:1296,y:51});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-004/attempt-01/03-account-menu.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:07:27.034Z",
+      "test": "AF3-004",
+      "action": "退出账号建立首项前置状态",
+      "code": "await testTab.cua.click({x:1259,y:156});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-004/attempt-01/04-signed-out.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:07:36.999Z",
+      "test": "AF3-004",
+      "action": "从未登录状态提交医生登录",
+      "code": "await testTab.cua.click({x:1056,y:432});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-004/attempt-01/05-login.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:07:44.048Z",
+      "test": "AF3-004",
+      "action": "打开医生授权的患者列表",
+      "code": "await testTab.cua.click({x:76,y:390});",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-004/attempt-01/06-assigned-patients.jpg"
+      ],
+      "tool_error": false
+    },
+    {
+      "at": "2026-11-28T09:07:51.949Z",
+      "test": "AF3-004",
+      "action": "打开 Jamie Alder 的已分配病历",
+      "code": "await testTab.cua.click({x:338,y:518}); await nodeRepl.write(await testTab.url());",
+      "evidence": [
+        "evidence/20261128T0907Z/AF3-004/attempt-01/07-assigned-chart.jpg"
+      ],
+      "tool_error": false
+    }
+  ]
+}

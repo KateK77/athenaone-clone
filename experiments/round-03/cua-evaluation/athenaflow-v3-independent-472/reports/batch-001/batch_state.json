@@ -1,0 +1,22 @@
+{
+  "status": "PARTIAL_INTERRUPTED",
+  "pilot_complete": false,
+  "final_outcomes": 8,
+  "interrupted_test": "AF3-376",
+  "not_started_pilot": [
+    "AF3-314"
+  ],
+  "next_test": "AF3-376",
+  "counts": {
+    "total": 472,
+    "PASS": 6,
+    "FAIL": 0,
+    "BLOCKED": 2,
+    "NOT_RUN": 464,
+    "evaluated": 6,
+    "evaluated_pass_rate": 1.0,
+    "execution_coverage": 0.012711864406779662,
+    "suite_success_fraction": 0.012711864406779662
+  },
+  "evidence_files": 175
+}

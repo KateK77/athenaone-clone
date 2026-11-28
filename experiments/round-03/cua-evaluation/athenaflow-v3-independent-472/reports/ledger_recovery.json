@@ -1,0 +1,20 @@
+{
+  "recovered_historical_runs": [
+    "20261126T0415Z",
+    "20261128T0905Z"
+  ],
+  "historical_attempt_numbers": [
+    2,
+    3
+  ],
+  "reconciliation_record": {
+    "test_id": "AF3-004",
+    "attempt_number": 4,
+    "not_new_execution": true
+  },
+  "original_success_record": {
+    "test_id": "AF3-004",
+    "attempt_number": 1
+  },
+  "note": "Original attempt entries retained unchanged; historical entries appended; snapshot outcome restored by explicit reconciliation event."
+}
